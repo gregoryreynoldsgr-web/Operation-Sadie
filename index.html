@@ -1,21 +1,54 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>Operation Sadie</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sadie Winters — The Official Site of the Obsessed</title>
+  <style>
+    :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
+    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif}
+    .wrap{max-width:1000px;margin:0 auto;padding:20px}
+    header{display:flex;justify-content:space-between;align-items:center;margin:6px 0 16px}
+    .logo{font-weight:800;letter-spacing:.3px}
+    .tag{color:var(--muted);font-size:.95rem}
+    .hero{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+    .hero img{display:block;width:100%;height:auto;vertical-align:middle}
+    .caption{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 60%,rgba(0,0,0,.7) 100%);padding:18px 20px}
+    h1{margin:0;font-size:clamp(22px,4vw,38px)}
+    p{margin:.4rem 0 0;color:#e6e6ee;max-width:70ch}
+    footer{color:#8c8c9b;text-align:center;margin:28px 0 10px;font-size:.9rem}
+    a{color:var(--accent);text-decoration:none}
+    /* Button styling */
+    .btn-watch{
+      display:inline-block; padding:.55rem 1rem; border-radius:9999px;
+      background:#111; color:#fff; text-decoration:none; font-weight:600;
+      transition:transform .08s ease, opacity .2s ease;
+    }
+    .btn-watch:hover{ opacity:.9; transform:translateY(-1px); }
+  </style>
 </head>
 <body>
-  <h1>Operation Sadie is live!</h1>
-<a href="/videos.html" class="btn-watch">
-  🎬 Watch Sadie Videos
-</a>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="logo">SADIE WINTERS</div>
+        <div class="tag">The Official Site of the Obsessed</div>
+      </div>
+      <nav>
+        <a href="/videos.html" class="btn-watch">🎬 Watch Sadie Videos</a>
+      </nav>
+    </header>
 
-<style>
-  .btn-watch{
-    display:inline-block; padding:.75rem 1rem; border-radius:9999px;
-    background:#111; color:#fff; text-decoration:none; font-weight:600;
-    transition:transform .08s ease, opacity .2s ease;
-  }
-  .btn-watch:hover{ opacity:.9; transform:translateY(-1px); }
-</style>
+    <figure class="hero">
+      <img src="hero.jpg" alt="Sadie on the beach at sunset">
+      <figcaption class="caption">
+        <h1>The voice you can’t forget.</h1>
+        <p>Independent, AI-born, human-felt. This is the fan-run home base. Send your best Sadie creations and we’ll feature the highlights.</p>
+      </figcaption>
+    </figure>
+
+    <footer>© 2025 SadieWinters.net — The Official Site of the Obsessed</footer>
+  </div>
 </body>
 </html>
+
