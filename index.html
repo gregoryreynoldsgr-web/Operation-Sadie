@@ -11,20 +11,35 @@
     html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
     .wrap{max-width:1000px;margin:0 auto;padding:20px}
     body {
-  background:
-    radial-gradient(circle at left center,
-      rgba(139,211,255,0.2), transparent 70%) left center no-repeat,
-    radial-gradient(circle at right center,
-      rgba(139,211,255,0.2), transparent 70%) right center no-repeat,
-    #0b0b0e;  /* your original black */
-  background-size: 25% 100%, 25% 100%, auto;
-  animation: sideGlow 8s ease-in-out infinite alternate;
+ /* Side edge glow only (keeps Sadie’s image untouched) */
+.page-background {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #0b0b0e; /* your black */
+  z-index: 0;
 }
 
-@keyframes sideGlow {
-  from { opacity: .3; }
-  to   { opacity: .6; }
+.page-background::before,
+.page-background::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 15%;
+  background: radial-gradient(circle at center,
+              rgba(139,211,255,0.3) 0%,
+              rgba(139,211,255,0) 80%);
+  pointer-events: none;
+  animation: sidePulse 8s ease-in-out infinite alternate;
 }
+
+.page-background::before { left: 0; }
+.page-background::after  { right: 0; }
+
+@keyframes sidePulse {
+  from { opacity: .25; }
+  to   { opacity: .55; }
+}
+
 
     header{display:flex;justify-content:space-between;align-items:center;margin:6px 0 16px}
     .logo{font-weight:800;letter-spacing:.3px}
