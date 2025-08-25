@@ -29,10 +29,11 @@
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center 45%;  /* ↓ move viewpoint down (0% = top, 50% = center) */
+  object-position:center 35%;  /* raise the focus back up (was 45%) */
   transform-origin:center;
-  animation: panAcross 16s ease-in-out forwards;  /* one smooth pass, no reverse */
+  animation: panAcross 16s ease-in-out forwards;
 }
+
 
 @keyframes panAcross{
   0%   { transform: scale(1.12) translateX(0%); }
