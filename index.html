@@ -37,27 +37,30 @@
   100% { transform: scale(1.12) translateX(-6%); }  /* gentle left pan */
 }
 
-/* 🔥 Light flare FX added below */
-.hero::before, .hero::after {
+/* 🔥 Light flare FX (accent-tinted, clearly visible) */
+.hero::before,
+.hero::after{
   content:"";
   position:absolute;
   top:0; bottom:0;
   width:40%;
   pointer-events:none;
+  z-index:2;                     /* <-- ensure flares sit above the photo */
   background: radial-gradient(circle at center,
-              rgba(255,255,255,0.15) 0%,
-              rgba(255,255,255,0) 70%);
+              rgba(139,211,255,0.28) 0%,   /* accent blue tint */
+              rgba(139,211,255,0.00) 70%);
   mix-blend-mode: screen;
-  opacity:0.4;
+  opacity:0.65;                  /* stronger than before */
   animation: pulse 8s ease-in-out infinite alternate;
 }
-.hero::before { left:-10%; }
-.hero::after  { right:-10%; }
+.hero::before{ left:-10%; }
+.hero::after { right:-10%; }
 
-@keyframes pulse {
-  from { opacity:.2; transform:scale(1);}
-  to   { opacity:.5; transform:scale(1.1);}
+@keyframes pulse{
+  from{ opacity:.45; transform:scale(1); }
+  to  { opacity:.85; transform:scale(1.08); }
 }
+
 
 
 
