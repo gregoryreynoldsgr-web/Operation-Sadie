@@ -99,7 +99,45 @@
 
   </style>
 </head>
+  
 <body>
+
+  <!-- Signature Animation: Sadie Winters -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+  .signature-wrap{
+    display:inline-block; 
+    background:transparent;          /* change if you want a bg */
+  }
+  svg{overflow:visible}
+  .sig-text{
+    font-family:"Great Vibes", cursive;
+    font-size:120px;                 /* resize as needed */
+    fill:transparent;
+    stroke:#111;                     /* stroke color */
+    stroke-width:2.2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:1800;           /* big enough to cover full outline */
+    stroke-dashoffset:1800;
+    animation:signature-write 3.6s ease forwards,
+               signature-fill .8s ease forwards 3.6s;
+  }
+  @keyframes signature-write { to { stroke-dashoffset:0; } }
+  @keyframes signature-fill  { to { fill:#111; } }  /* fill color */
+  @media (prefers-reduced-motion: reduce){
+    .sig-text{ animation:none; stroke-dashoffset:0; fill:#111; }
+  }
+</style>
+
+<div class="signature-wrap" aria-label="Signature of Sadie Winters">
+  <svg width="900" height="200" viewBox="0 0 900 200" role="img">
+    <!-- Using SVG <text> so you can change the name without redoing paths -->
+    <text x="10" y="140" class="sig-text">Sadie Winters</text>
+  </svg>
+</div>
+
   <!-- background glow layer -->
   <div class="page-background"></div>
 
