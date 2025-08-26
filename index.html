@@ -102,46 +102,59 @@
   
 <body>
 
- <!-- Sadie Winters — signature-style write-on (masked reveal) -->
+ 
+
+<!-- Sadie Winters signature write-on (sequential, slower, slanted) -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-  .sig-wrap{ display:inline-block }
+  .sig-wrap{ display:inline-block; }
+  .sig-tilt{ transform: skewX(-8deg); transform-origin:left center; } /* slight cursive slant */
+
   .sig-text{
     font-family:"Great Vibes", cursive;
-    font-size:120px;
-    fill:#111;                /* signature color */
+    font-size:160px;          /* bigger */
+    font-weight:400;          /* thinner */
+    fill:#111;                /* “ink” color */
   }
-  /* The moving 'ink' band that reveals the text */
-  .reveal-band{
-    animation: sweep 3.5s ease forwards;
-  }
+
+  /* Narrow “ink” band reveals the text so it looks hand-written, not a full wipe */
+  .ink-band{ animation: sweep 7s ease-in-out forwards; } /* slower */
   @keyframes sweep{
-    0%   { transform: translateX(-100%); }
+    0%   { transform: translateX(-120%); }
     100% { transform: translateX(0%); }
+  }
+
+  /* optional: shows a little pen tip dot leading the band */
+  .pen-tip{ animation: sweep 7s ease-in-out forwards; }
+
+  @media (prefers-reduced-motion: reduce){
+    .ink-band,.pen-tip{ animation:none; transform:translateX(0); }
   }
 </style>
 
-<div class="sig-wrap" aria-label="Signature of Sadie Winters">
-  <svg width="900" height="200" viewBox="0 0 900 200" role="img">
-    <!-- Mask: a slim blurred band that moves left → right and reveals the text -->
+<div class="sig-wrap sig-tilt" aria-label="Signature of Sadie Winters">
+  <svg width="1100" height="240" viewBox="0 0 1100 240" role="img">
     <defs>
-      <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-        <feGaussianBlur stdDeviation="4"/>
+      <!-- Soft blur so the reveal looks like ink feathering, not a hard slice -->
+      <filter id="soft">
+        <feGaussianBlur stdDeviation="2.5"/>
       </filter>
+
+      <!-- Mask: black hides, white reveals. A thin band & tip travel left→right -->
       <mask id="ink-mask">
-        <!-- black background = hidden -->
         <rect x="0" y="0" width="100%" height="100%" fill="black"/>
-        <!-- white band = revealed area -->
         <g filter="url(#soft)">
-          <rect class="reveal-band" x="0" y="0" width="100%" height="100%"
-                fill="white" transform="translateX(-100%)"/>
+          <!-- thin reveal band -->
+          <rect class="ink-band" x="0" y="0" width="26" height="100%" fill="white" transform="translateX(-120%)"/>
+          <!-- little circular pen tip at the front -->
+          <circle class="pen-tip" cx="13" cy="120" r="9" fill="white" transform="translateX(-120%)"/>
         </g>
       </mask>
     </defs>
 
-    <!-- The text is fully filled, but only visible where the band passes -->
-    <text x="10" y="140" class="sig-text" mask="url(#ink-mask)">Sadie Winters</text>
+    <!-- The name is fully there, but only shows where the “ink” passes -->
+    <text x="10" y="165" class="sig-text" mask="url(#ink-mask)">Sadie Winters</text>
   </svg>
 </div>
 
