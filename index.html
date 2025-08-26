@@ -96,9 +96,47 @@
 /* Put the caption above the image */
 .caption { z-index: 2; }
 
+.sadie-logo { display:inline-block }
+/* draw animation */
+.sadie-logo #trace path {
+  stroke-dasharray: var(--len, 1);
+  stroke-dashoffset: var(--len, 1);
+  animation: draw 1.8s ease-out forwards;
+}
+.sadie-logo #trace path:nth-child(2){ animation-delay:.25s }
+.sadie-logo #trace path:nth-child(3){ animation-delay:.5s }
+
+/* once-drawn class disables animation on later visits */
+.sadie-logo.drawn #trace path { animation:none; stroke-dashoffset:0 }
+
+/* respect reduced-motion */
+@media (prefers-reduced-motion: reduce){
+  .sadie-logo #trace path{ animation:none; stroke-dashoffset:0 }
+}
+
+@keyframes draw { to { stroke-dashoffset: 0 } }
 
   </style>
 </head>
+  <script>
+  (function(){
+    const logo = document.querySelector('.sadie-logo');
+    const paths = document.querySelectorAll('.sadie-logo #trace path');
+    if (!logo) return;
+    if (sessionStorage.getItem('sadieSigDrawn')) {
+      logo.classList.add('drawn');
+    } else {
+      paths.forEach(p=>{
+        const len = p.getTotalLength();
+        p.style.setProperty('--len', len);
+      });
+      paths[paths.length-1].addEventListener('animationend', ()=>{
+        sessionStorage.setItem('sadieSigDrawn','1');
+      }, { once:true });
+    }
+  })();
+</script>
+
 <body>
   <!-- background glow layer -->
   <div class="page-background"></div>
@@ -106,7 +144,38 @@
   <div class="wrap">
     <header>
       <div>
-        <div class="logo">SADIE WINTERS</div>
+       <a href="/" class="sadie-logo" aria-label="Sadie Winters">
+  <svg viewBox="0 0 600 160" width="240" height="64" role="img">
+    <g id="sig" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+      <path d="M30,90 C60,30 120,30 150,90 M150,90 C170,140 220,140 240,90 M245,90 C260,50 300,50 315,90 M320,90 C330,120 360,120 372,90" />
+      <path d="M40,120 C200,150 400,150 560,120" stroke-width="3"/>
+      <path d="M280,70 C305,130 350,130 370,70 M380,70 C395,40 430,40 445,70 M450,70 C465,110 500,110 515,70" />
+    </g>
+
+    <defs>
+      <mask id="revealMask">
+        <rect x="0" y="0" width="100%" height="100%" fill="black"/>
+        <g id="trace" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="6">
+          <path d="M30,90 C60,30 120,30 150,90 M150,90 C170,140 220,140 240,90 M245,90 C260,50 300,50 315,90 M320,90 C330,120 360,120 372,90" />
+          <path d="M40,120 C200,150 400,150 560,120" />
+          <path d="M280,70 C305,130 350,130 370,70 M380,70 C395,40 430,40 445,70 M450,70 C465,110 500,110 515,70" />
+        </g>
+      </mask>
+    </defs>
+
+    <g mask="url(#revealMask)">
+      <g fill="white">
+        <rect x="0" y="0" width="100%" height="100%" fill="none"/>
+        <g transform="translate(0,0)">
+          <path d="M30,90 C60,30 120,30 150,90 M150,90 C170,140 220,140 240,90 M245,90 C260,50 300,50 315,90 M320,90 C330,120 360,120 372,90" />
+          <path d="M40,120 C200,150 400,150 560,120" />
+          <path d="M280,70 C305,130 350,130 370,70 M380,70 C395,40 430,40 445,70 M450,70 C465,110 500,110 515,70" />
+        </g>
+      </g>
+    </g>
+  </svg>
+</a>
+
         <div class="tag">The Official Site of the Obsessed</div>
       </div>
       <nav>
