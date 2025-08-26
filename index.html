@@ -115,6 +115,16 @@
 }
 
 @keyframes draw { to { stroke-dashoffset: 0 } }
+/* signature animation */
+.sadie-logo { display:inline-block }
+.sadie-logo #trace path{
+  stroke-dasharray: var(--len, 1);
+  stroke-dashoffset: var(--len, 1);
+  animation: sigDraw 1.6s ease-out forwards;
+}
+.sadie-logo #trace path:nth-child(2){ animation-delay:.20s }
+.sadie-logo #trace path:nth-child(3){ animation-delay:.40s }
+@keyframes sigDraw { to { stroke-dashoffset: 0 } }
 
   </style>
 </head>
@@ -123,30 +133,29 @@
   <div class="page-background"></div>
 
   <div class="wrap">
-    <header>
-      <div>
-       <a href="/" class="sadie-logo" aria-label="Sadie Winters">
-  <svg viewBox="0 0 600 160" width="240" height="64" role="img">
+   <header class="site-header">
+  <div>
+    <!-- Animated signature logo -->
+    <a href="/" class="sadie-logo" aria-label="Sadie Winters">
+      <svg viewBox="0 0 600 160" width="240" height="64" role="img">
         <g id="trace" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+          <!-- placeholder strokes: swap later with real signature paths -->
+          <path d="M30,90 C60,30 120,30 150,90 M150,90 C170,140 220,140 240,90 M245,90 C260,50 300,50 315,90 M320,90 C330,120 360,120 372,90" />
+          <path d="M40,120 C200,150 400,150 560,120" stroke-width="3"/>
+          <path d="M280,70 C305,130 350,130 370,70 M380,70 C395,40 430,40 445,70 M450,70 C465,110 500,110 515,70" />
+        </g>
+      </svg>
+    </a>
 
-      <path d="M30,90 C60,30 120,30 150,90 M150,90 C170,140 220,140 240,90 M245,90 C260,50 300,50 315,90 M320,90 C330,120 360,120 372,90" />
-      <path d="M40,120 C200,150 400,150 560,120" stroke-width="3"/>
-      <path d="M280,70 C305,130 350,130 370,70 M380,70 C395,40 430,40 445,70 M450,70 C465,110 500,110 515,70" />
+    <!-- keep your tagline -->
+    <div class="tag">The Official Site of the Obsessed</div>
+  </div>
 
-    </g>
+  <nav>
+    <a href="./videos.html" class="btn-watch">🎬 Watch Sadie Videos</a>
+  </nav>
+</header>
 
-      
-      </g>
-    </g>
-  </svg>
-</a>
-
-        <div class="tag">The Official Site of the Obsessed</div>
-      </div>
-      <nav>
-        <a href="./videos.html" class="btn-watch">🎬 Watch Sadie Videos</a>
-      </nav>
-    </header>
 
     <figure class="hero">
       <img src="./hero.jpg" alt="Sadie on the beach at sunset">
@@ -176,5 +185,18 @@
     }
   })();
 </script>
+    <script>
+  (function(){
+    const logo = document.querySelector('.sadie-logo');
+    if (!logo) return;
+    const paths = logo.querySelectorAll('#trace path');
+    paths.forEach(p=>{
+      const len = p.getTotalLength();
+      p.style.setProperty('--len', len);
+    });
+    // always animate; keep it simple
+  })();
+</script>
+
 </body>
 </html>
