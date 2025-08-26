@@ -87,6 +87,15 @@
 
 /* lift your content above just in case */
 .wrap { position: relative; z-index: 1; }
+    /* Keep the background behind content without going negative */
+.page-background { z-index: 0; }
+
+/* Make sure page content sits above the background */
+.wrap, .hero { position: relative; z-index: 1; }
+
+/* Put the caption above the image */
+.caption { z-index: 2; }
+
 
   </style>
 </head>
