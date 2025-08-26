@@ -108,34 +108,37 @@
       <!-- Sadie signature (self-contained, drop-in) -->
 <!-- Sadie signature (slower, no underline) -->
 <!-- Sadie signature (slow 5s, no underline) -->
+      
+<!-- Sadie signature (slow 5s, double size, no underline) -->
 <div class="sadie-sig">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
     .sadie-sig svg{display:block}
     .sadie-sig .s-stroke, .sadie-sig .s-fill{
       font-family:'Great Vibes', cursive;
-      font-size:64px;            /* change if you want it bigger/smaller */
+      font-size:64px;
     }
     .sadie-sig .s-stroke{
       fill:none; stroke:#fff; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round;
       stroke-dasharray:2000; stroke-dashoffset:2000;
-      animation:sadDraw 5s ease-out forwards;      /* slower draw */
+      animation:sadDraw 5s ease-out forwards;
     }
     .sadie-sig .s-fill{
       fill:#fff; opacity:0;
-      animation:sadReveal .35s linear forwards 5s; /* reveal after draw */
+      animation:sadReveal .35s linear forwards 5s;
     }
     @keyframes sadDraw  { to { stroke-dashoffset:0 } }
     @keyframes sadReveal{ to { opacity:1 } }
   </style>
 
   <a href="/" aria-label="Sadie Winters">
-    <svg viewBox="0 0 600 160" width="260" height="64" role="img">
+    <svg viewBox="0 0 600 160" width="520" height="128" role="img">
       <text class="s-stroke" x="18" y="84">Sadie Winters</text>
       <text class="s-fill"   x="18" y="84">Sadie Winters</text>
     </svg>
   </a>
 </div>
+
 
 
       <div>
