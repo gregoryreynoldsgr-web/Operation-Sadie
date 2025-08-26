@@ -118,26 +118,7 @@
 
   </style>
 </head>
-  <script>
-  (function(){
-    const logo = document.querySelector('.sadie-logo');
-    const paths = document.querySelectorAll('.sadie-logo #trace path');
-    if (!logo) return;
-    if (sessionStorage.getItem('sadieSigDrawn')) {
-      logo.classList.add('drawn');
-    } else {
-      paths.forEach(p=>{
-        const len = p.getTotalLength();
-        p.style.setProperty('--len', len);
-      });
-      paths[paths.length-1].addEventListener('animationend', ()=>{
-        sessionStorage.setItem('sadieSigDrawn','1');
-      }, { once:true });
-    }
-  })();
-</script>
-
-<body>
+  <body>
   <!-- background glow layer -->
   <div class="page-background"></div>
 
@@ -194,5 +175,23 @@
 
     <footer>© 2025 SadieWinters.net — The Official Site of the Obsessed</footer>
   </div>
+    <script>
+  (function(){
+    const logo = document.querySelector('.sadie-logo');
+    const paths = document.querySelectorAll('.sadie-logo #trace path');
+    if (!logo) return;
+    if (sessionStorage.getItem('sadieSigDrawn')) {
+      logo.classList.add('drawn');
+    } else {
+      paths.forEach(p=>{
+        const len = p.getTotalLength();
+        p.style.setProperty('--len', len);
+      });
+      paths[paths.length-1].addEventListener('animationend', ()=>{
+        sessionStorage.setItem('sadieSigDrawn','1');
+      }, { once:true });
+    }
+  })();
+</script>
 </body>
 </html>
