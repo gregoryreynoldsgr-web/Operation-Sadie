@@ -82,6 +82,12 @@
     a{color:var(--accent);text-decoration:none}
     .btn-watch{display:inline-block;padding:.55rem 1rem;border-radius:9999px;background:#111;color:#fff;font-weight:600;transition:transform .08s ease,opacity .2s ease}
     .btn-watch:hover{opacity:.9;transform:translateY(-1px)}
+    /* make sure the background layer is behind everything */
+.page-background { z-index: -1; }
+
+/* lift your content above just in case */
+.wrap { position: relative; z-index: 1; }
+
   </style>
 </head>
 <body>
