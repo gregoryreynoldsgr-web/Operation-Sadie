@@ -102,29 +102,17 @@
   
 <body>
 
- 
-
-<!-- Simple Sadie Winters left→right reveal -->
+ <!-- Simple Sadie Winters left→right reveal (visible + on top) -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-  .sadie-sig {
-    display:inline-block;
-    margin:0; padding:0; line-height:0;
-  }
-  .sadie-sig svg { display:block; }
-  .sadie-sig text {
-    font-family:"Great Vibes", cursive;
-    font-size:80px;      /* NORMAL size — adjust if needed */
-    fill:#111;           /* ink color */
-  }
-  .sadie-sig .maskband {
-    animation: slide 5s linear forwards; /* 5s left→right sweep */
-  }
-  @keyframes slide {
-    from { transform: translateX(-100%); }
-    to   { transform: translateX(0); }
-  }
+  .sadie-sig{display:inline-block;margin:0;padding:0;line-height:0;position:relative;z-index:10}
+  .sadie-sig svg{display:block}
+  /* If your hero is dark, use the WHITE variant below instead of this one */
+  .sadie-sig text{font-family:"Great Vibes",cursive;font-size:80px;fill:#111;stroke:#fff;stroke-width:1}
+
+  .sadie-sig .maskband{animation:slide 5s linear forwards}
+  @keyframes slide{from{transform:translateX(-100%)}to{transform:translateX(0)}}
 </style>
 
 <div class="sadie-sig">
@@ -139,15 +127,9 @@
   </svg>
 </div>
 
-  
-   
-     
-    
-
-
-   
-
-
+<!-- WHITE INK variant (use this instead of the text above if your hero is dark):
+    .sadie-sig text{font-family:"Great Vibes",cursive;font-size:80px;fill:#fff;stroke:#000;stroke-width:1}
+-->
 
 
 
