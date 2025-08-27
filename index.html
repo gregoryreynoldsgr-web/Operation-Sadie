@@ -103,135 +103,79 @@
 <body>
 
  
-<!-- Sadie Winters – sequential letter-by-letter reveal (slow, no global margin changes) -->
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
-<style>
-  /* Scope styles to this widget only */
-  .sadie-signature { display:inline-block; margin:0; padding:0; line-height:0; }
-  .sadie-signature svg { display:block; overflow:visible; }
+<!-- SAFE-MODE: Sadie signature (removes old sigs, isolated in Shadow DOM) -->
+<div id="sadieSigMount"></div>
+<script>
+(function(){
+  // 1) Remove any previous signature blocks that might overlap
+  document.querySelectorAll('.sadie-signature,.sig-wrap,#sadieSig,[data-sadie-sig]')
+    .forEach(n => n.remove());
 
-  .sadie-text {
-    font-family:"Great Vibes", cursive;
-    font-size: 190px;         /* adjust size here */
-    font-weight: 400;
-    fill:#111;                 /* ink color */
+  // 2) Set up an isolated mount (no margins)
+  const host = document.getElementById('sadieSigMount');
+  host.setAttribute('data-sadie-sig','');
+  host.style.display = 'inline-block';
+  host.style.margin = '0';
+  host.style.padding = '0';
+  host.style.lineHeight = '0';
+
+  // 3) Shadow DOM to avoid any page CSS conflicts
+  const root = host.attachShadow({mode:'open'});
+  root.innerHTML = `
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
+    <svg id="sigSvg" width="1280" height="320" viewBox="0 0 1280 320"
+         role="img" aria-label="Signature of Sadie Winters"
+         style="display:block;overflow:visible;">
+      <defs>
+        <mask id="sigMask">
+          <rect x="0" y="0" width="100%" height="100%" fill="black"/>
+          <rect id="revealRect" x="0" y="0" width="0" height="0" fill="white" rx="2" ry="2"/>
+        </mask>
+      </defs>
+      <text id="sigText" x="40" y="220"
+            style="font-family:'Great Vibes',cursive; font-size:200px; fill:#111;"
+            mask="url(#sigMask)">Sadie Winters</text>
+    </svg>
+    <style>
+      :host{ all: initial; }
+      svg{ display:block; }
+    </style>
+  `;
+
+  // 4) True left→right growth based on actual text bounds (slow)
+  const DURATION_MS = 28000; // make bigger for slower
+  const PADX = 6, PADY = 4;
+
+  function animate(){
+    const text = root.getElementById('sigText');
+    const rect = root.getElementById('revealRect');
+    const bb = text.getBBox();
+
+    rect.setAttribute('x', bb.x - PADX);
+    rect.setAttribute('y', bb.y - PADY);
+    rect.setAttribute('height', bb.height + PADY*2);
+    rect.setAttribute('width', 0);
+
+    const total = bb.width + PADX*2;
+    const t0 = performance.now();
+    function tick(t){
+      const p = Math.min(1, (t - t0) / DURATION_MS);
+      rect.setAttribute('width', (total * p).toFixed(2));
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
   }
 
-  /* Pen dot — optional */
-  .pen-dot { fill:#111; }
-
-  @media (prefers-reduced-motion: reduce){
-    .pen-dot, .clip-reveal { animation: none !important; }
+  // 5) Wait for the font so measurements are accurate
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(animate);
+  } else {
+    window.addEventListener('load', animate);
   }
-</style>
-
-<div class="sadie-signature" aria-label="Signature of Sadie Winters">
-  <svg width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-hidden="false">
-    <!--
-      We place “Sadie Winters” once, then reveal each letter group with its own clipPath whose width animates
-      left→right. This avoids the “all at once” pop and gives you clear S→…→s sequencing.
-    -->
-
-    <!-- Define the per-letter clip boxes -->
-    <defs>
-      <!-- timings (total ~28s). Make it slower by increasing 'dur' or the individual durations. -->
-      <!-- Each clip rect starts at width=0 and grows to its letter width -->
-      <clipPath id="clip-S"><rect class="clip-reveal" x="40"  y="40" width="0" height="240">
-        <animate attributeName="width" values="0; 155" dur="3.2s" begin="0s" fill="freeze"/>
-      </rect></clipPath>
-
-      <clipPath id="clip-a"><rect x="195" y="40" width="0" height="240">
-        <animate attributeName="width" values="0; 95" dur="2.6s" begin="clip-S.end+0.2s" fill="freeze"/>
-      </rect></clipPath>
-
-      <clipPath id="clip-d"><rect x="290" y="40" width="0" height="240">
-        <animate attributeName="width" values="0; 110" dur="2.8s" begin="clip-a.end+0.2s" fill="freeze"/>
-      </rect></clipPath>
-
-      <clipPath id="clip-i1"><rect x="400" y="40" width="0" height="240">
-        <animate attributeName="width" values="0; 70" dur="2.2s" begin="clip-d.end+0.2s" fill="freeze"/>
-      </rect></clipPath>
-
-      <clipPath id="clip-e"><rect x="470" y="40" width="0" height="240">
-        <animate attributeName="width" values="0; 110" dur="2.6s" begin="clip-i1.end+0.2s" fill="freeze"/>
-      </rect></clipPath>
-
-      <!-- small spacer between words -->
-      <clipPath id="clip-space"><rect x="580" y="40" width="0" height="240">
-        <animate attributeName="width" values="0; 35" dur="0.7s" begin="clip-e.end+0.1s" fill="freeze"/>
-      </rect></clipPath>
-
-      <clipPath id="clip-W"><rect x="615" y="40" width="0" height="240">
-        <animate attributeName="width" values="0; 165" dur="3.2s" begin="clip-space.end+0.1s" fill="freeze"/>
-      </rect></clipPath>
-
-      <clipPath id="clip-i2"><rect x="780" y="40" width="0" height="240">
-        <animate attributeName="width" values="0; 70" dur="2.0s" begin="clip-W.end+0.2s" fill="freeze"/>
-      </rect></clipPath>
-
-      <clipPath id="clip-n"><rect x="850" y="40" width="0" height="240">
-        <animate attributeName="width" values="0; 95" dur="2.4s" begin="clip-i2.end+0.2s" fill="freeze"/>
-      </rect></clipPath>
-
-      <clipPath id="clip-t"><rect x="945" y="40" width="0" height="240">
-        <animate attributeName="width" values="0; 90" dur="2.4s" begin="clip-n.end+0.2s" fill="freeze"/>
-      </rect></clipPath>
-
-      <clipPath id="clip-e2"><rect x="1035" y="40" width="0" height="240">
-        <animate attributeName="width" values="0; 100" dur="2.4s" begin="clip-t.end+0.2s" fill="freeze"/>
-      </rect></clipPath>
-
-      <clipPath id="clip-r"><rect x="1135" y="40" width="0" height="240">
-        <animate attributeName="width" values="0; 85" dur="2.2s" begin="clip-e2.end+0.2s" fill="freeze"/>
-      </rect></clipPath>
-
-      <clipPath id="clip-s"><rect x="1220" y="40" width="0" height="240">
-        <animate attributeName="width" values="0; 60" dur="2.0s" begin="clip-r.end+0.2s" fill="freeze"/>
-      </rect></clipPath>
-    </defs>
-
-    <!-- Draw the full name once, then re-draw for each clip to reveal progressively -->
-    <!-- Position baseline at y=220, left margin x=40 -->
-    <g>
-      <!-- S -->
-      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-S)">Sadie Winters</text>
-      <!-- a -->
-      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-a)">Sadie Winters</text>
-      <!-- d -->
-      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-d)">Sadie Winters</text>
-      <!-- i -->
-      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-i1)">Sadie Winters</text>
-      <!-- e -->
-      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-e)">Sadie Winters</text>
-      <!-- space -->
-      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-space)">Sadie Winters</text>
-      <!-- W -->
-      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-W)">Sadie Winters</text>
-      <!-- i -->
-      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-i2)">Sadie Winters</text>
-      <!-- n -->
-      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-n)">Sadie Winters</text>
-      <!-- t -->
-      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-t)">Sadie Winters</text>
-      <!-- e -->
-      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-e2)">Sadie Winters</text>
-      <!-- r -->
-      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-r)">Sadie Winters</text>
-      <!-- s -->
-      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-s)">Sadie Winters</text>
-    </g>
-
-    <!-- Optional pen dot moving across (purely visual; remove if you don’t want it) -->
-    <circle class="pen-dot" r="6">
-      <animate attributeName="cx" values="40;195;290;400;470;580;615;780;850;945;1035;1135;1220;1280"
-               keyTimes="0;0.08;0.16;0.24;0.32;0.36;0.46;0.56;0.66;0.76;0.84;0.92;0.98;1"
-               dur="28s" begin="0s" fill="freeze"/>
-      <animate attributeName="cy" values="220;220;220;220;220;220;220;220;220;220;220;220;220;220"
-               dur="28s" begin="0s" fill="freeze"/>
-    </circle>
-  </svg>
-</div>
+})();
+</script>
 
      
 
@@ -250,44 +194,7 @@
  
 
 
-  <!-- background glow layer -->
-  <div class="page-background"></div>
 
-  <div class="wrap">
-    <header>
-      <!-- Sadie signature (self-contained, drop-in) -->
-<!-- Sadie signature (slower, no underline) -->
-<!-- Sadie signature (slow 5s, no underline) -->
-      
-<!-- Sadie signature (slow 5s, double size, no underline) -->
-<div class="sadie-sig">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-    .sadie-sig svg{display:block}
-    .sadie-sig .s-stroke, .sadie-sig .s-fill{
-      font-family:'Great Vibes', cursive;
-      font-size:64px;
-    }
-    .sadie-sig .s-stroke{
-      fill:none; stroke:#fff; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round;
-      stroke-dasharray:2000; stroke-dashoffset:2000;
-      animation:sadDraw 5s ease-out forwards;
-    }
-    .sadie-sig .s-fill{
-      fill:#fff; opacity:0;
-      animation:sadReveal .35s linear forwards 5s;
-    }
-    @keyframes sadDraw  { to { stroke-dashoffset:0 } }
-    @keyframes sadReveal{ to { opacity:1 } }
-  </style>
-
-  <a href="/" aria-label="Sadie Winters">
-    <svg viewBox="0 0 600 160" width="520" height="128" role="img">
-      <text class="s-stroke" x="18" y="84">Sadie Winters</text>
-      <text class="s-fill"   x="18" y="84">Sadie Winters</text>
-    </svg>
-  </a>
-</div>
 
 
 
