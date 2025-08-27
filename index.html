@@ -104,79 +104,43 @@
 
  
 
-<!-- SAFE-MODE: Sadie signature (removes old sigs, isolated in Shadow DOM) -->
-<div id="sadieSigMount"></div>
-<script>
-(function(){
-  // 1) Remove any previous signature blocks that might overlap
-  document.querySelectorAll('.sadie-signature,.sig-wrap,#sadieSig,[data-sadie-sig]')
-    .forEach(n => n.remove());
+<!-- Simple Sadie Winters left→right reveal -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
-  // 2) Set up an isolated mount (no margins)
-  const host = document.getElementById('sadieSigMount');
-  host.setAttribute('data-sadie-sig','');
-  host.style.display = 'inline-block';
-  host.style.margin = '0';
-  host.style.padding = '0';
-  host.style.lineHeight = '0';
-
-  // 3) Shadow DOM to avoid any page CSS conflicts
-  const root = host.attachShadow({mode:'open'});
-  root.innerHTML = `
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
-    <svg id="sigSvg" width="1280" height="320" viewBox="0 0 1280 320"
-         role="img" aria-label="Signature of Sadie Winters"
-         style="display:block;overflow:visible;">
-      <defs>
-        <mask id="sigMask">
-          <rect x="0" y="0" width="100%" height="100%" fill="black"/>
-          <rect id="revealRect" x="0" y="0" width="0" height="0" fill="white" rx="2" ry="2"/>
-        </mask>
-      </defs>
-      <text id="sigText" x="40" y="220"
-            style="font-family:'Great Vibes',cursive; font-size:200px; fill:#111;"
-            mask="url(#sigMask)">Sadie Winters</text>
-    </svg>
-    <style>
-      :host{ all: initial; }
-      svg{ display:block; }
-    </style>
-  `;
-
-  // 4) True left→right growth based on actual text bounds (slow)
-  const DURATION_MS = 28000; // make bigger for slower
-  const PADX = 6, PADY = 4;
-
-  function animate(){
-    const text = root.getElementById('sigText');
-    const rect = root.getElementById('revealRect');
-    const bb = text.getBBox();
-
-    rect.setAttribute('x', bb.x - PADX);
-    rect.setAttribute('y', bb.y - PADY);
-    rect.setAttribute('height', bb.height + PADY*2);
-    rect.setAttribute('width', 0);
-
-    const total = bb.width + PADX*2;
-    const t0 = performance.now();
-    function tick(t){
-      const p = Math.min(1, (t - t0) / DURATION_MS);
-      rect.setAttribute('width', (total * p).toFixed(2));
-      if(p < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
+<style>
+  .sadie-sig {
+    display:inline-block;
+    margin:0; padding:0; line-height:0;
   }
-
-  // 5) Wait for the font so measurements are accurate
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(animate);
-  } else {
-    window.addEventListener('load', animate);
+  .sadie-sig svg { display:block; }
+  .sadie-sig text {
+    font-family:"Great Vibes", cursive;
+    font-size:80px;      /* NORMAL size — change if needed */
+    fill:#111;
   }
-})();
-</script>
+  .sadie-sig .maskband {
+    animation: slide 5s linear forwards; /* 5s left→right sweep */
+  }
+  @keyframes slide {
+    from { transform: translateX(-100%); }
+    to   { transform: translateX(0); }
+  }
+</style>
 
+<div class="sadie-sig">
+  <svg width="600" height="120" viewBox="0 0 600 120">
+    <defs>
+      <mask id="sadieMask">
+        <rect x="0" y="0" width="100%" height="100%" fill="black"/>
+        <rect class="maskband" x="0" y="0" width="100%" height="100%" fill="white"/>
+      </mask>
+    </defs>
+    <text x="20" y="80" mask="url(#sadieMask)">Sadie Winters</text>
+  </svg>
+</div>
+
+  
+   
      
 
 
