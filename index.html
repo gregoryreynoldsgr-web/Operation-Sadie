@@ -104,54 +104,41 @@
 
  
 
-<!-- Clean Sadie Winters left→right write-on -->
+<!-- Simple, robust left→right signature reveal -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
-<style>
-  .sadie-sig {
-    display:inline-block;
-    margin:0; padding:0; line-height:0;
-    background:transparent;
-  }
-  .sadie-sig svg { display:block; }
-  .sadie-sig text {
-    font-family:"Great Vibes", cursive;
-    font-size:80px;      /* adjust size */
-    fill:#111;           /* ink color */
-  }
-  .maskband {
-    width:30px;          /* width of the “pen stroke” */
-    height:100%;
-    fill:white;
-    animation: slide 6s linear forwards;
-  }
-  @keyframes slide {
-    from { transform: translateX(-40px); }
-    to   { transform: translateX(600px); }
-  }
-</style>
-
-<div class="sadie-sig">
-  <svg width="600" height="120" viewBox="0 0 600 120">
+<div style="display:inline-block; margin:0; padding:0; line-height:0;">
+  <svg width="600" height="120" viewBox="0 0 600 120" role="img" aria-label="Signature: Sadie Winters" style="display:block; overflow:visible;">
     <defs>
-      <mask id="sadieMask">
-        <rect x="0" y="0" width="100%" height="100%" fill="black"/>
-        <!-- narrow band sweeps across -->
-        <rect class="maskband" y="0"/>
+      <!-- Use absolute coords inside the mask -->
+      <mask id="sadieMask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
+        <!-- Black hides everything -->
+        <rect x="0" y="0" width="600" height="120" fill="black"/>
+        <!-- Narrow white band that slides left -> right -->
+        <rect id="band" x="-40" y="0" width="30" height="120" fill="white">
+          <animate attributeName="x" from="-40" to="600" dur="6s" begin="0s" fill="freeze"/>
+        </rect>
       </mask>
     </defs>
-    <text x="20" y="80" mask="url(#sadieMask)">Sadie Winters</text>
+
+    <!-- Text: fill + thin outline so it shows on any background -->
+    <text x="20" y="82"
+          style="font-family:'Great Vibes',cursive; font-size:80px; fill:#111; stroke:#fff; stroke-width:1;"
+          mask="url(#sadieMask)">
+      Sadie Winters
+    </text>
+    <!-- If your hero is dark, switch to white ink + dark outline:
+    <text x="20" y="82"
+          style="font-family:'Great Vibes',cursive; font-size:80px; fill:#fff; stroke:#000; stroke-width:1;"
+          mask="url(#sadieMask)">Sadie Winters</text>
+    -->
   </svg>
 </div>
 
   
    
      
-
-
-
-
-      
+    
 
 
    
