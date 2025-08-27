@@ -103,43 +103,137 @@
 <body>
 
  
-<!-- Sadie Winters — slow left→right write-on (no skew, no surprises) -->
+<!-- Sadie Winters – sequential letter-by-letter reveal (slow, no global margin changes) -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-  /* kill accidental page margins */
-  html, body { margin: 0; padding: 0; }
+  /* Scope styles to this widget only */
+  .sadie-signature { display:inline-block; margin:0; padding:0; line-height:0; }
+  .sadie-signature svg { display:block; overflow:visible; }
 
-  .sig-wrap { display: inline-block; line-height: 0; }
-  .sig-wrap svg { display:block; overflow:visible; }
-
-  .sig-text{
+  .sadie-text {
     font-family:"Great Vibes", cursive;
-    font-size:200px;           /* larger, thin-looking cursive */
+    font-size: 190px;         /* adjust size here */
+    font-weight: 400;
     fill:#111;                 /* ink color */
   }
 
-  /* Narrow reveal band = looks like a pen stroke moving across */
-  .band { width:22px; height:100%; fill:white; }
+  /* Pen dot — optional */
+  .pen-dot { fill:#111; }
+
+  @media (prefers-reduced-motion: reduce){
+    .pen-dot, .clip-reveal { animation: none !important; }
+  }
 </style>
 
-<div class="sig-wrap" aria-label="Signature of Sadie Winters">
-  <svg width="1250" height="320" viewBox="0 0 1250 320" role="img">
+<div class="sadie-signature" aria-label="Signature of Sadie Winters">
+  <svg width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-hidden="false">
+    <!--
+      We place “Sadie Winters” once, then reveal each letter group with its own clipPath whose width animates
+      left→right. This avoids the “all at once” pop and gives you clear S→…→s sequencing.
+    -->
+
+    <!-- Define the per-letter clip boxes -->
     <defs>
-      <!-- One mask that literally slides a thin white band from left to right -->
-      <mask id="sadie-write">
-        <rect x="0" y="0" width="100%" height="100%" fill="black"/>
-        <!-- The band starts offscreen left (x=-40 to line up with text x=40) and travels past the right edge -->
-        <rect class="band" x="-40" y="0">
-          <animate attributeName="x" from="-40" to="1250" dur="22s" begin="0s" fill="freeze" />
-        </rect>
-      </mask>
+      <!-- timings (total ~28s). Make it slower by increasing 'dur' or the individual durations. -->
+      <!-- Each clip rect starts at width=0 and grows to its letter width -->
+      <clipPath id="clip-S"><rect class="clip-reveal" x="40"  y="40" width="0" height="240">
+        <animate attributeName="width" values="0; 155" dur="3.2s" begin="0s" fill="freeze"/>
+      </rect></clipPath>
+
+      <clipPath id="clip-a"><rect x="195" y="40" width="0" height="240">
+        <animate attributeName="width" values="0; 95" dur="2.6s" begin="clip-S.end+0.2s" fill="freeze"/>
+      </rect></clipPath>
+
+      <clipPath id="clip-d"><rect x="290" y="40" width="0" height="240">
+        <animate attributeName="width" values="0; 110" dur="2.8s" begin="clip-a.end+0.2s" fill="freeze"/>
+      </rect></clipPath>
+
+      <clipPath id="clip-i1"><rect x="400" y="40" width="0" height="240">
+        <animate attributeName="width" values="0; 70" dur="2.2s" begin="clip-d.end+0.2s" fill="freeze"/>
+      </rect></clipPath>
+
+      <clipPath id="clip-e"><rect x="470" y="40" width="0" height="240">
+        <animate attributeName="width" values="0; 110" dur="2.6s" begin="clip-i1.end+0.2s" fill="freeze"/>
+      </rect></clipPath>
+
+      <!-- small spacer between words -->
+      <clipPath id="clip-space"><rect x="580" y="40" width="0" height="240">
+        <animate attributeName="width" values="0; 35" dur="0.7s" begin="clip-e.end+0.1s" fill="freeze"/>
+      </rect></clipPath>
+
+      <clipPath id="clip-W"><rect x="615" y="40" width="0" height="240">
+        <animate attributeName="width" values="0; 165" dur="3.2s" begin="clip-space.end+0.1s" fill="freeze"/>
+      </rect></clipPath>
+
+      <clipPath id="clip-i2"><rect x="780" y="40" width="0" height="240">
+        <animate attributeName="width" values="0; 70" dur="2.0s" begin="clip-W.end+0.2s" fill="freeze"/>
+      </rect></clipPath>
+
+      <clipPath id="clip-n"><rect x="850" y="40" width="0" height="240">
+        <animate attributeName="width" values="0; 95" dur="2.4s" begin="clip-i2.end+0.2s" fill="freeze"/>
+      </rect></clipPath>
+
+      <clipPath id="clip-t"><rect x="945" y="40" width="0" height="240">
+        <animate attributeName="width" values="0; 90" dur="2.4s" begin="clip-n.end+0.2s" fill="freeze"/>
+      </rect></clipPath>
+
+      <clipPath id="clip-e2"><rect x="1035" y="40" width="0" height="240">
+        <animate attributeName="width" values="0; 100" dur="2.4s" begin="clip-t.end+0.2s" fill="freeze"/>
+      </rect></clipPath>
+
+      <clipPath id="clip-r"><rect x="1135" y="40" width="0" height="240">
+        <animate attributeName="width" values="0; 85" dur="2.2s" begin="clip-e2.end+0.2s" fill="freeze"/>
+      </rect></clipPath>
+
+      <clipPath id="clip-s"><rect x="1220" y="40" width="0" height="240">
+        <animate attributeName="width" values="0; 60" dur="2.0s" begin="clip-r.end+0.2s" fill="freeze"/>
+      </rect></clipPath>
     </defs>
 
-    <!-- Position the name once; mask reveals strictly left→right -->
-    <text x="40" y="220" class="sig-text" mask="url(#sadie-write)">Sadie Winters</text>
+    <!-- Draw the full name once, then re-draw for each clip to reveal progressively -->
+    <!-- Position baseline at y=220, left margin x=40 -->
+    <g>
+      <!-- S -->
+      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-S)">Sadie Winters</text>
+      <!-- a -->
+      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-a)">Sadie Winters</text>
+      <!-- d -->
+      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-d)">Sadie Winters</text>
+      <!-- i -->
+      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-i1)">Sadie Winters</text>
+      <!-- e -->
+      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-e)">Sadie Winters</text>
+      <!-- space -->
+      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-space)">Sadie Winters</text>
+      <!-- W -->
+      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-W)">Sadie Winters</text>
+      <!-- i -->
+      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-i2)">Sadie Winters</text>
+      <!-- n -->
+      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-n)">Sadie Winters</text>
+      <!-- t -->
+      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-t)">Sadie Winters</text>
+      <!-- e -->
+      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-e2)">Sadie Winters</text>
+      <!-- r -->
+      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-r)">Sadie Winters</text>
+      <!-- s -->
+      <text x="40"  y="220" class="sadie-text" clip-path="url(#clip-s)">Sadie Winters</text>
+    </g>
+
+    <!-- Optional pen dot moving across (purely visual; remove if you don’t want it) -->
+    <circle class="pen-dot" r="6">
+      <animate attributeName="cx" values="40;195;290;400;470;580;615;780;850;945;1035;1135;1220;1280"
+               keyTimes="0;0.08;0.16;0.24;0.32;0.36;0.46;0.56;0.66;0.76;0.84;0.92;0.98;1"
+               dur="28s" begin="0s" fill="freeze"/>
+      <animate attributeName="cy" values="220;220;220;220;220;220;220;220;220;220;220;220;220;220"
+               dur="28s" begin="0s" fill="freeze"/>
+    </circle>
   </svg>
 </div>
+
+     
 
 
 
