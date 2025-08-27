@@ -99,64 +99,39 @@
 
   </style>
 </head>
-  
 <body>
+  <!-- background glow layer -->
+  <div class="page-background"></div>
 
-<!-- Sadie Winters signature write-on (sequential, slower, slanted) -->
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <div class="wrap">
+    <header>
+      <!-- Sadie signature (self-contained, drop-in) -->
+<!-- Sadie signature (slower, no underline) -->
+<div class="sadie-sig">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+    .sadie-sig svg{display:block}
+    .sadie-sig .s-stroke,.sadie-sig .s-fill{
+      font-family:'Great Vibes',cursive; font-size:64px;
+    }
+    /* slower draw */
+    .sadie-sig .s-stroke{
+      fill:none; stroke:#fff; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round;
+      stroke-dasharray:2000; stroke-dashoffset:2000; animation:sadDraw 2.6s ease-out forwards;
+    }
+    /* fade to solid when stroke finishes */
+    .sadie-sig .s-fill{ fill:#fff; opacity:0; animation:sadReveal .3s linear forwards 2.6s; }
+    @keyframes sadDraw{ to{ stroke-dashoffset:0 } }
+    @keyframes sadReveal{ to{ opacity:1 } }
+  </style>
 
-<style>
-  .sig-wrap{ display:inline-block; }
-  .sig-tilt{ transform: skewX(-8deg); transform-origin:left center; } /* slight cursive slant */
-
-  .sig-text{
-    font-family:"Great Vibes", cursive;
-    font-size:160px;          /* bigger */
-    font-weight:400;          /* thinner */
-    fill:#111;                /* “ink” color */
-  }
-
-  /* Narrow “ink” band reveals the text so it looks hand-written, not a full wipe */
-  .ink-band{ animation: sweep 7s ease-in-out forwards; } /* slower */
-  @keyframes sweep{
-    0%   { transform: translateX(-120%); }
-    100% { transform: translateX(0%); }
-  }
-
-  /* optional: shows a little pen tip dot leading the band */
-  .pen-tip{ animation: sweep 7s ease-in-out forwards; }
-
-  @media (prefers-reduced-motion: reduce){
-    .ink-band,.pen-tip{ animation:none; transform:translateX(0); }
-  }
-</style>
-
-<div class="sig-wrap sig-tilt" aria-label="Signature of Sadie Winters">
-  <svg width="1100" height="240" viewBox="0 0 1100 240" role="img">
-    <defs>
-      <!-- Soft blur so the reveal looks like ink feathering, not a hard slice -->
-      <filter id="soft">
-        <feGaussianBlur stdDeviation="2.5"/>
-      </filter>
-
-      <!-- Mask: black hides, white reveals. A thin band & tip travel left→right -->
-      <mask id="ink-mask">
-        <rect x="0" y="0" width="100%" height="100%" fill="black"/>
-        <g filter="url(#soft)">
-          <!-- thin reveal band -->
-          <rect class="ink-band" x="0" y="0" width="26" height="100%" fill="white" transform="translateX(-120%)"/>
-          <!-- little circular pen tip at the front -->
-          <circle class="pen-tip" cx="13" cy="120" r="9" fill="white" transform="translateX(-120%)"/>
-        </g>
-      </mask>
-    </defs>
-
-    <!-- The name is fully there, but only shows where the “ink” passes -->
-    <text x="10" y="165" class="sig-text" mask="url(#ink-mask)">Sadie Winters</text>
-  </svg>
+  <a href="/" aria-label="Sadie Winters">
+    <svg viewBox="0 0 600 160" width="260" height="64" role="img">
+      <text class="s-stroke" x="18" y="84">Sadie Winters</text>
+      <text class="s-fill"   x="18" y="84">Sadie Winters</text>
+    </svg>
+  </a>
 </div>
-
-
 
       <div>
         <div class="logo">SADIE WINTERS</div>
