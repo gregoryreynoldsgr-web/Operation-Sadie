@@ -103,78 +103,63 @@
 <body>
 
  
-<!-- Sadie Winters signature write-on (S first, then W; slower; local tilt only) -->
+<!-- Sadie Winters — left→right handwritten reveal (slow, no page slant) -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
   .sig-wrap{ display:inline-block }
   svg{ overflow:visible }
 
-  /* Slight cursive slant applied ONLY to the SVG group */
-  .tilt{
-    transform: skewX(-8deg);
-    transform-box: fill-box;
-    transform-origin: left center;
-  }
-
   .sig-text{
     font-family:"Great Vibes", cursive;
-    font-size:180px;     /* larger */
-    font-weight:400;     /* thinner */
-    fill:#111;           /* ink color */
+    font-size:190px;        /* larger */
+    font-weight:400;        /* thinner look */
+    fill:#111;              /* ink color */
   }
 
-  /* Reveal bands (narrow = real write-on, not wipe) */
-  .band-sadie{ animation: sweepSadie 8s ease forwards; }          /* slower first word */
-  .band-win  { animation: sweepWin   6.5s ease forwards 8.2s; }   /* start after Sadie */
+  /* The “pen stroke” that grows from the left edge to the right */
+  .pen-path{
+    stroke:white;           /* white reveals in the mask */
+    stroke-width:90;        /* thickness of the revealed line */
+    stroke-linecap:round;
+    fill:none;
 
-  @keyframes sweepSadie{
-    0%   { transform: translateX(-105%); }
-    100% { transform: translateX(0%); }
+    /* animate lengthening from 0% to 100% */
+    stroke-dasharray:1000;   /* total length units (matches pathLength) */
+    stroke-dashoffset:1000;  /* start hidden */
+    animation: draw 12s ease-in-out forwards;  /* SLOW */
   }
-  @keyframes sweepWin{
-    0%   { transform: translateX(-105%); }
-    100% { transform: translateX(0%); }
-  }
+  @keyframes draw{ to { stroke-dashoffset:0; } }
 
   @media (prefers-reduced-motion: reduce){
-    .band-sadie, .band-win{ animation:none; transform:translateX(0); }
+    .pen-path{ animation:none; stroke-dashoffset:0; }
   }
 </style>
 
 <div class="sig-wrap" aria-label="Signature of Sadie Winters">
-  <svg width="1200" height="300" viewBox="0 0 1200 300" role="img">
-    <!-- GROUP: apply slight tilt only here so the page itself isn't skewed -->
-    <g class="tilt">
-      <defs>
-        <!-- Optional tiny blur so the edge feels like ink, but not so big it leaks -->
-        <filter id="soft"><feGaussianBlur stdDeviation="0.8"/></filter>
+  <svg width="1250" height="320" viewBox="0 0 1250 320" role="img">
+    <defs>
+      <!-- A straight-ish baseline path that runs strictly left→right -->
+      <!-- pathLength=1000 lets us use nice round dash numbers above -->
+      <path id="baseline" d="M30 210 L1220 210" pathLength="1000"/>
 
-        <!-- Mask for "Sadie" (left band sweeps across only the first word box) -->
-        <mask id="mask-sadie">
-          <rect x="0" y="0" width="100%" height="100%" fill="black"/>
-          <g filter="url(#soft)">
-            <!-- Narrow vertical band reveals as it moves → feels handwritten -->
-            <rect class="band-sadie" x="0" y="0" width="18" height="100%" fill="white" transform="translateX(-105%)"/>
-          </g>
-        </mask>
+      <!-- Mask: black hides, the growing white stroke reveals cumulatively -->
+      <mask id="ink">
+        <rect x="0" y="0" width="100%" height="100%" fill="black"/>
+        <use href="#baseline" class="pen-path"/>
+      </mask>
+    </defs>
 
-        <!-- Mask for "Winters" starts after "Sadie" finishes -->
-        <mask id="mask-win">
-          <rect x="0" y="0" width="100%" height="100%" fill="black"/>
-          <g filter="url(#soft)">
-            <rect class="band-win" x="0" y="0" width="18" height="100%" fill="white" transform="translateX(-105%)"/>
-          </g>
-        </mask>
-      </defs>
-
-      <!-- Position words separately so their masks sweep each word independently -->
-      <text x="40"  y="200" class="sig-text" mask="url(#mask-sadie)">Sadie</text>
-      <text x="430" y="200" class="sig-text" mask="url(#mask-win)">Winters</text>
-    </g>
+    <!-- Text is fully present; only shows where the pen-path has passed -->
+    <text x="40" y="220" class="sig-text" mask="url(#ink)">Sadie Winters</text>
   </svg>
 </div>
 
+ 
+
+
+
+      
 
 
    
