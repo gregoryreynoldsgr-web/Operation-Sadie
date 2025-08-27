@@ -103,45 +103,45 @@
 <body>
 
  
-<!-- Sadie Winters — slow left→right reveal (no skew, no libraries) -->
+<!-- Sadie Winters — slow left→right write-on (no skew, no surprises) -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-  .sadieSig { display:inline-block; }
-  .sadieSig svg { overflow: visible; }
+  /* kill accidental page margins */
+  html, body { margin: 0; padding: 0; }
 
-  .sadieSig .text {
-    font-family: "Great Vibes", cursive;
-    font-size: 200px;         /* larger */
-    font-weight: 400;         /* thinner look */
-    fill: #111;               /* ink color */
+  .sig-wrap { display: inline-block; line-height: 0; }
+  .sig-wrap svg { display:block; overflow:visible; }
+
+  .sig-text{
+    font-family:"Great Vibes", cursive;
+    font-size:200px;           /* larger, thin-looking cursive */
+    fill:#111;                 /* ink color */
   }
 
-  /* Mask grows strictly from the left edge across the name */
-  .sadieSig .reveal {
-    transform-box: fill-box;
-    transform-origin: left center;
-    animation: sadieDraw 24s steps(18, end) forwards; /* VERY slow & stepwise */
-  }
-  @keyframes sadieDraw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-
-  @media (prefers-reduced-motion: reduce){
-    .sadieSig .reveal { animation: none; transform: scaleX(1); }
-  }
+  /* Narrow reveal band = looks like a pen stroke moving across */
+  .band { width:22px; height:100%; fill:white; }
 </style>
 
-<div class="sadieSig" aria-label="Signature of Sadie Winters">
+<div class="sig-wrap" aria-label="Signature of Sadie Winters">
   <svg width="1250" height="320" viewBox="0 0 1250 320" role="img">
     <defs>
-      <mask id="sadie-mask">
+      <!-- One mask that literally slides a thin white band from left to right -->
+      <mask id="sadie-write">
         <rect x="0" y="0" width="100%" height="100%" fill="black"/>
-        <rect class="reveal" x="0" y="0" width="100%" height="100%" fill="white"/>
+        <!-- The band starts offscreen left (x=-40 to line up with text x=40) and travels past the right edge -->
+        <rect class="band" x="-40" y="0">
+          <animate attributeName="x" from="-40" to="1250" dur="22s" begin="0s" fill="freeze" />
+        </rect>
       </mask>
     </defs>
 
-    <text x="40" y="220" class="text" mask="url(#sadie-mask)">Sadie Winters</text>
+    <!-- Position the name once; mask reveals strictly left→right -->
+    <text x="40" y="220" class="sig-text" mask="url(#sadie-write)">Sadie Winters</text>
   </svg>
 </div>
+
+
 
 
       
