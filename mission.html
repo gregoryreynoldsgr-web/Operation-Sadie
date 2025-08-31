@@ -7,7 +7,140 @@
   <meta name="description" content="Our mission: AI-born, human-felt. Celebrating music as humanity’s forever art.">
   <style>
     :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
-    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;}
+    html,body{margin:0;background:var(--bg);color:va<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Mission — Sadie Winters</title>
+  <meta name="description" content="Our mission: AI-born, human-felt. Celebrating music as humanity’s forever art.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b0e; --text:#f6f6f8; --muted:#b6b6c5; --accent:#8bd3ff;
+      --panel:rgba(255,255,255,.02); --panelBorder:rgba(255,255,255,.06);
+    }
+    html,body{margin:0;background:var(--bg);color:var(--text);
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;}
+
+    /* page glow background */
+    .page-bg{position:fixed;inset:0;z-index:-1;background:#0b0b0e;}
+    .page-bg::before,.page-bg::after{
+      content:"";position:absolute;inset:-20%;
+      background:radial-gradient(circle at 15% 30%, rgba(139,211,255,.18), rgba(0,0,0,0) 45%),
+                 radial-gradient(circle at 85% 70%, rgba(139,211,255,.10), rgba(0,0,0,0) 40%);
+      filter:blur(20px);animation:floaty 18s ease-in-out infinite alternate;
+    }
+    @keyframes floaty{from{transform:translateY(-10px)}to{transform:translateY(10px)}}
+
+    .wrap{max-width:980px;margin:0 auto;padding:22px}
+
+    header{display:flex;justify-content:space-between;align-items:center;margin:4px 0 18px}
+    .logo{font-weight:800;letter-spacing:.3px}
+    .tag{color:var(--muted);font-size:.95rem}
+    nav .btn{display:inline-block;padding:.55rem 1rem;border-radius:9999px;background:#111;color:#fff;
+      font-weight:600;text-decoration:none;transition:transform .08s ease,opacity .2s ease}
+    nav .btn:hover{opacity:.9;transform:translateY(-1px)}
+    nav .btn + .btn{margin-left:8px}
+
+    /* hero */
+    .hero{
+      position:relative; overflow:hidden; border-radius:18px;
+      height:min(38vh,360px); display:grid; place-items:center;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.0) 0%, rgba(0,0,0,.35) 70%, rgba(0,0,0,.6) 100%),
+        url("./hero.jpg") center/cover no-repeat;
+      box-shadow:0 12px 30px rgba(0,0,0,.45), inset 0 0 0 1px var(--panelBorder);
+      animation:slowZoom 22s ease-in-out forwards;
+    }
+    @keyframes slowZoom{0%{transform:scale(1)}100%{transform:scale(1.06)}}
+    .hero .title{display:flex;align-items:center;gap:10px;padding:0 16px;text-align:center}
+    .hero .scroll{font-size:28px}
+    .hero h1{margin:0;font-size:clamp(26px,4.6vw,42px);letter-spacing:.2px}
+    .hero .sub{margin:.35rem 0 0;color:var(--muted);font-size:clamp(14px,2.4vw,16px)}
+
+    /* mission panel */
+    .panel{
+      background:var(--panel); border:1px solid var(--panelBorder); border-radius:18px;
+      padding:26px 22px; margin:18px 0 26px; position:relative;
+      box-shadow:0 10px 28px rgba(0,0,0,.35);
+    }
+    .panel::before{
+      content:""; position:absolute; left:18px; right:18px; top:-1px; height:2px; border-radius:2px;
+      background:linear-gradient(90deg, rgba(139,211,255,.0), rgba(139,211,255,.9), rgba(139,211,255,.0));
+      mask:linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
+      animation:glide 2.8s ease-in-out infinite;
+    }
+    @keyframes glide{0%{transform:translateX(-25%)}100%{transform:translateX(25%)}}
+
+    .statement{font-size:1.05rem}
+    .statement p{margin:0 0 14px;max-width:74ch}
+    .quote{
+      margin:14px 0 18px; padding:14px 16px; border-left:3px solid var(--accent);
+      background:rgba(139,211,255,.06); border-radius:10px;
+      font-size:1.02rem; color:#eaf6ff;
+    }
+
+    .sig{display:flex;align-items:center;gap:12px;margin-top:8px}
+    .sig .mark{font-family:'Great Vibes',cursive;font-size:36px;opacity:.9}
+    .sig .dash{height:1px;flex:1;background:linear-gradient(90deg,rgba(255,255,255,.0),rgba(255,255,255,.4))}
+
+    footer{color:#8c8c9b;text-align:center;margin:26px 0 10px;font-size:.9rem}
+
+    @media (max-width:640px){
+      nav{display:flex;gap:8px;flex-wrap:wrap}
+      .panel{padding:22px 18px}
+    }
+  </style>
+</head>
+<body>
+  <div class="page-bg"></div>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="logo">SADIE WINTERS</div>
+        <div class="tag">The Official Site of the Obsessed</div>
+      </div>
+      <nav>
+        <a href="/index.html" class="btn">🏠 Home</a>
+        <a href="/videos.html" class="btn">🎬 Watch Videos</a>
+      </nav>
+    </header>
+
+    <section class="hero" role="img" aria-label="Soft neon glow background">
+      <div>
+        <div class="title">
+          <div class="scroll">📜</div>
+          <h1>Our Mission</h1>
+        </div>
+        <p class="sub">AI-born. Human-felt. Fan-run.</p>
+      </div>
+    </section>
+
+    <main class="panel">
+      <div class="statement">
+        <p>We believe music will always belong to humanity.</p>
+        <p>Artificial Intelligence is not here to replace the artists we love — it’s here to carry their echoes forward.</p>
+
+        <div class="quote">When an AI-born song makes your heart ache, or lifts you up the way an anthem from the 80s did, that’s not a machine taking over. That’s the voice of every musician who has ever moved us — from the classics of our childhood to the legends of today — living on through new technology.</div>
+
+        <p>The greatest AI songs are tributes. They celebrate the riffs, the lyrics, the soul, and the sweat of the artists who built the soundtrack of our lives.</p>
+        <p><strong>Sadie Winters</strong> is our symbol of that celebration — <em>virtually born, human touched</em>, and forever connected to the music that made us who we are.</p>
+        <p>This site exists to welcome you into that world — not to fear the future, but to embrace it, together.</p>
+
+        <div class="sig">
+          <div class="mark">Sadie Winters</div>
+          <div class="dash"></div>
+        </div>
+      </div>
+    </main>
+
+    <footer>© 2025 SadieWinters.net — The Official Site of the Obsessed</footer>
+  </div>
+</body>
+</html>
+r(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;}
     .wrap{max-wi<!doctype html>
 <html lang="en">
 <head>
