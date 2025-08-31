@@ -7,6 +7,15 @@
   <meta name="description" content="Independent, AI-born, human-felt. Fan-run home base for Sadie Winters.">
   <link rel="preload" as="video" href="./landing.mp4" type="video/mp4">
   <style>
+    /* Space between header buttons */
+nav .btn-watch + .btn-watch { margin-left: 8px; }
+
+/* On small screens, stack buttons */
+@media (max-width:640px){
+  nav { display:flex; gap:8px; flex-wrap:wrap; }
+  nav .btn-watch { width:auto; }
+}
+
     :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
 
     html,body{
@@ -140,6 +149,7 @@
         <div class="tag">The Official Site of the Obsessed</div>
       </div>
       <nav>
+        <a href="./mission.html" class="btn-watch">📜 Our Mission</a>
         <a href="./videos.html" class="btn-watch">🎬 Watch Sadie Videos</a>
       </nav>
     </header>
