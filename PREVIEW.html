@@ -107,6 +107,16 @@ nav .btn-watch + .btn-watch { margin-left: 8px; }
 /* Put the caption above the image */
 .caption { z-index: 2; }
 
+/* Space between header buttons */
+nav .btn-watch + .btn-watch { margin-left: 8px; }
+
+/* On small screens, stack buttons */
+@media (max-width:640px){
+  nav { display:flex; gap:8px; flex-wrap:wrap; }
+  nav .btn-watch { width:auto; }
+}
+
+
 
   </style>
 </head>
