@@ -35,16 +35,24 @@
     nav .btn:hover{opacity:.9;transform:translateY(-1px)}
     nav .btn + .btn{margin-left:8px}
 
-   /* HERO: taller, better crop, stronger contrast */
+   /* HERO: taller frame, keep head size steady */
 .hero{
   position:relative; overflow:hidden; border-radius:18px;
-  height:min(46vh,480px);              /* was 38vh/360px */
+  height:min(52vh,540px);              /* was 46vh/480px */
   display:grid; place-items:center;
   background:
     linear-gradient(180deg, rgba(0,0,0,.00) 0%, rgba(0,0,0,.35) 65%, rgba(0,0,0,.65) 100%),
-    url("./hero.jpg") 50% 22% / cover no-repeat;  /* shift framing down */
+    url("./hero.jpg") 50% 24% / cover no-repeat;  /* nudge framing down */
   box-shadow:0 12px 30px rgba(0,0,0,.45), inset 0 0 0 1px var(--panelBorder);
   animation:slowZoom 22s ease-in-out forwards;
+}
+
+/* Gentle zoom, doesn’t balloon the head */
+@keyframes slowZoom{
+  0%{transform:scale(1)}
+  100%{transform:scale(1.03)}   /* was 1.06 */
+}
+
 }
 /* soft top vignette for readability */
 .hero::after{
