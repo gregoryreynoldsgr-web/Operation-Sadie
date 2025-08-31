@@ -7,116 +7,88 @@
   <meta name="description" content="Independent, AI-born, human-felt. Fan-run home base for Sadie Winters.">
   <link rel="preload" as="video" href="./landing.mp4" type="video/mp4">
   <style>
-    /* Space between header buttons */
-nav .btn-watch + .btn-watch { margin-left: 8px; }
+   :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
 
-/* On small screens, stack buttons */
-@media (max-width:640px){
-  nav { display:flex; gap:8px; flex-wrap:wrap; }
-  nav .btn-watch { width:auto; }
+html,body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
 }
 
-  :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
+.wrap{max-width:1000px;margin:0 auto;padding:20px}
 
-/* …all your existing CSS… */
+/* ---- Side edge glow (separate background layer; does NOT touch the image) ---- */
+.page-background{
+  position:fixed; inset:0;
+  background:#0b0b0e;
+  z-index:0;
+}
+.page-background::before,
+.page-background::after{
+  content:"";
+  position:absolute; top:0; bottom:0;
+  width:15%;
+  background:radial-gradient(circle at center,
+             rgba(139,211,255,0.30) 0%,
+             rgba(139,211,255,0.00) 80%);
+  pointer-events:none;
+  animation:sidePulse 8s ease-in-out infinite alternate;
+}
+.page-background::before{ left:0; }
+.page-background::after { right:0; }
+@keyframes sidePulse{ from{opacity:.25} to{opacity:.55} }
 
-.caption { z-index: 2; }
+header{display:flex;justify-content:space-between;align-items:center;margin:6px 0 16px}
+.logo{font-weight:800;letter-spacing:.3px}
+.tag{color:var(--muted);font-size:.95rem}
 
-/* Space between header buttons */
-nav .btn-watch + .btn-watch { margin-left: 8px; }
-
-/* On small screens, stack buttons */
-@media (max-width:640px){
-  nav { display:flex; gap:8px; flex-wrap:wrap;
-
-
-    html,body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-    }
-
-    .wrap{max-width:1000px;margin:0 auto;padding:20px}
-
-    /* ---- Side edge glow (separate background layer; does NOT touch the image) ---- */
-    .page-background{
-      position:fixed; inset:0;
-      background:#0b0b0e;
-      z-index:0;
-    }
-    .page-background::before,
-    .page-background::after{
-      content:"";
-      position:absolute; top:0; bottom:0;
-      width:15%;
-      background:radial-gradient(circle at center,
-                 rgba(139,211,255,0.30) 0%,
-                 rgba(139,211,255,0.00) 80%);
-      pointer-events:none;
-      animation:sidePulse 8s ease-in-out infinite alternate;
-    }
-    .page-background::before{ left:0; }
-    .page-background::after { right:0; }
-    @keyframes sidePulse{ from{opacity:.25} to{opacity:.55} }
-
-    header{display:flex;justify-content:space-between;align-items:center;margin:6px 0 16px}
-    .logo{font-weight:800;letter-spacing:.3px}
-    .tag{color:var(--muted);font-size:.95rem}
-
-    /* ---- Full-screen hero ---- */
-    .hero{
-      position:relative;
-      height:100vh;                 /* full screen */
-      border-radius:0;              /* immersive */
-      overflow:hidden;
-      box-shadow:0 12px 30px rgba(0,0,0,.45);
-      z-index:1;                    /* above the background layer */
-    }
-    .hero video {
-  position: relative;   /* stays above pseudo-layers */
+/* ---- Full-screen hero ---- */
+.hero{
+  position:relative;
+  height:100vh;                 /* full screen */
+  border-radius:0;              /* immersive */
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(0,0,0,.45);
+  z-index:1;                    /* above the background layer */
+}
+.hero video {
+  position: relative;
   z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;     /* fill without distortion */
-  object-position: center top;   /* <-- NEW LINE */
+  object-fit: cover;
+  object-position: center top;
   transform-origin: center;
-  animation: slowZoom 20s ease-in-out forwards; /* keep your gentle zoom */
+  animation: slowZoom 20s ease-in-out forwards;
 }
-    @keyframes slowZoom{
-      0%{transform:scale(1)}
-      100%{transform:scale(1.15)}
-    }
+@keyframes slowZoom{
+  0%{transform:scale(1)}
+  100%{transform:scale(1.15)}
+}
 
-    /* Keep it comfortable on small screens */
-    @media (max-width:640px){
-      .hero{height:72vh}
-      .hero video {object-position: center 50%;}
-    }
+/* Keep it comfortable on small screens */
+@media (max-width:640px){
+  .hero{height:72vh}
+  .hero video {object-position: center 50%;}
+}
 
-    .caption{
-      position:absolute;left:0;right:0;bottom:0;
-      background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 60%,rgba(0,0,0,.7) 100%);
-      padding:18px 20px
-    }
-    h1{margin:0;font-size:clamp(22px,4vw,38px)}
-    p{margin:.4rem 0 0;color:#e6e6ee;max-width:70ch}
-    footer{color:#8c8c9b;text-align:center;margin:28px 0 10px;font-size:.9rem}
-    a{color:var(--accent);text-decoration:none}
-    .btn-watch{display:inline-block;padding:.55rem 1rem;border-radius:9999px;background:#111;color:#fff;font-weight:600;transition:transform .08s ease,opacity .2s ease}
-    .btn-watch:hover{opacity:.9;transform:translateY(-1px)}
-    /* make sure the background layer is behind everything */
+.caption{
+  position:absolute;left:0;right:0;bottom:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 60%,rgba(0,0,0,.7) 100%);
+  padding:18px 20px
+}
+h1{margin:0;font-size:clamp(22px,4vw,38px)}
+p{margin:.4rem 0 0;color:#e6e6ee;max-width:70ch}
+footer{color:#8c8c9b;text-align:center;margin:28px 0 10px;font-size:.9rem}
+a{color:var(--accent);text-decoration:none}
+.btn-watch{display:inline-block;padding:.55rem 1rem;border-radius:9999px;background:#111;color:#fff;font-weight:600;transition:transform .08s ease,opacity .2s ease}
+.btn-watch:hover{opacity:.9;transform:translateY(-1px)}
+
+/* make sure the background layer is behind everything */
 .page-background { z-index: -1; }
-
-/* lift your content above just in case */
 .wrap { position: relative; z-index: 1; }
-    /* Keep the background behind content without going negative */
-.page-background { z-index: 0; }
-
-/* Make sure page content sits above the background */
 .wrap, .hero { position: relative; z-index: 1; }
-
-/* Put the caption above the image */
 .caption { z-index: 2; }
 
 /* Space between header buttons */
@@ -127,7 +99,6 @@ nav .btn-watch + .btn-watch { margin-left: 8px; }
   nav { display:flex; gap:8px; flex-wrap:wrap; }
   nav .btn-watch { width:auto; }
 }
-
 
 
   </style>
