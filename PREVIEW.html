@@ -16,7 +16,19 @@ nav .btn-watch + .btn-watch { margin-left: 8px; }
   nav .btn-watch { width:auto; }
 }
 
-    :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
+  :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
+
+/* …all your existing CSS… */
+
+.caption { z-index: 2; }
+
+/* Space between header buttons */
+nav .btn-watch + .btn-watch { margin-left: 8px; }
+
+/* On small screens, stack buttons */
+@media (max-width:640px){
+  nav { display:flex; gap:8px; flex-wrap:wrap;
+
 
     html,body{
       margin:0;
