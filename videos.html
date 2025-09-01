@@ -124,5 +124,52 @@
 
     <footer>© 2025 SadieWinters.net — The Official Site of the Obsessed</footer>
   </div>
+  <script>
+  // Normalize YT embeds so we can catch "ended"
+  document.querySelectorAll('.frame iframe').forEach(el => {
+    try {
+      const u = new URL(el.src, location.href);
+      if (u.hostname.includes('youtube.com')) {
+        u.searchParams.set('rel', '0');               // fewer related videos
+        u.searchParams.set('modestbranding', '1');    // minimal chrome
+        u.searchParams.set('playsinline', '1');       // no forced fullscreen
+        u.searchParams.set('enablejsapi', '1');       // allow JS API
+        u.searchParams.set('origin', location.origin);
+        el.src = u.toString();
+        el.classList.add('yt-embed');
+      }
+    } catch(_) {}
+  });
+
+  // Load the YouTube Iframe API
+  (function () {
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+  })();
+
+  // When API is ready, attach players and watch for "ended"
+  let ytPlayers = [];
+  window.onYouTubeIframeAPIReady = function () {
+    document.querySelectorAll('iframe.yt-embed').forEach((el, i) => {
+      ytPlayers[i] = new YT.Player(el, {
+        events: {
+          onStateChange: function (e) {
+            if (e.data === YT.PlayerState.ENDED) {
+              try { e.target.stopVideo(); } catch(_) {}
+              // Jump back to the top anchor without reloading the page
+              if (location.hash !== '#top') {
+                location.hash = '#top';
+              } else {
+                document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
+              }
+            }
+          }
+        }
+      });
+    });
+  };
+</script>
+
 </body>
 </html>
