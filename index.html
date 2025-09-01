@@ -8,8 +8,7 @@
   <meta name="description" content="Independent. Virtually born, human touched. Celebrating music as humanity’s forever art.">
   <link rel="preload" as="video" href="./landing.mp4" type="video/mp4">
   <style>
-     <style>
-/* ---- Hide UI-only radio inputs (fix for mobile) ---- */
+    /* ---- Hide UI-only radio inputs (fix for mobile) ---- */
 .input-visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -26,10 +25,7 @@
 }
 
    :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
-   ...
- 
-   :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
-
+   
 html,body{
   margin:0;
   background:var(--bg);
@@ -200,19 +196,54 @@ nav .btn-watch + .btn-watch { margin-left: 8px; }
     </header>
 
 <figure class="hero">
-    <video id="landingVideo" autoplay muted playsinline loop preload="auto">
+  <video id="landingVideo" autoplay muted playsinline webkit-playsinline loop preload="auto">
     <source src="./landing.mp4" type="video/mp4" />
   </video>
 
-   <figcaption class="caption">
-      <h1>the voice you can’t forget.</h1>
-      <p>Virtually born. Human touched. One small step for AI…one giant leap for mankind.</p>
-   </figcaption>
+  <figcaption class="caption">
+    <h1>the voice you can’t forget.</h1>
+    <p>Virtually born. Human touched. One small step for AI…one giant leap for mankind.</p>
+  </figcaption>
 </figure>
 
 
 
-    <footer>© 2025 SadieWinters.net — The Official Site of the Obsessed</footer>
+
+      <footer>© 2025 SadieWinters.net — The Official Site of the Obsessed</footer>
   </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const v = document.getElementById('landingVideo');
+    if (!v) return;
+
+    // Set attributes & properties (iOS is picky)
+    v.setAttribute('autoplay', '');
+    v.setAttribute('muted', '');
+    v.setAttribute('playsinline', '');
+    v.setAttribute('webkit-playsinline', '');
+    v.muted = true;
+    v.playsInline = true;
+
+    const tryPlay = () => v.play().catch(() => {});
+
+    tryPlay(); // on load
+
+    // Try again if the tab becomes visible
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) tryPlay();
+    });
+
+    // One-time tap/click fallback
+    const onFirstInteraction = () => {
+      tryPlay();
+      window.removeEventListener('touchstart', onFirstInteraction);
+      window.removeEventListener('click', onFirstInteraction);
+    };
+    window.addEventListener('touchstart', onFirstInteraction, { once: true, passive: true });
+    window.addEventListener('click', onFirstInteraction, { once: true });
+  });
+  </script>
 </body>
 </html>
+
