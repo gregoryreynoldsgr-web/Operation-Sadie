@@ -155,15 +155,11 @@
       ytPlayers[i] = new YT.Player(el, {
         events: {
           onStateChange: function (e) {
-            if (e.data === YT.PlayerState.ENDED) {
-              try { e.target.stopVideo(); } catch(_) {}
-              // Jump back to the top anchor without reloading the page
-              if (location.hash !== '#top') {
-                location.hash = '#top';
-              } else {
-                document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
-              }
-            }
+           if (e.data === YT.PlayerState.ENDED) {
+  try { e.target.stopVideo(); } catch(_) {}
+  document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
+}
+ 
           }
         }
       });
