@@ -8,6 +8,26 @@
   <meta name="description" content="Independent. Virtually born, human touched. Celebrating music as humanity’s forever art.">
   <link rel="preload" as="video" href="./landing.mp4" type="video/mp4">
   <style>
+     <style>
+/* ---- Hide UI-only radio inputs (fix for mobile) ---- */
+.input-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;      /* helps on iOS Safari */
+  pointer-events: none;       /* prevents accidental taps */
+}
+
+   :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
+   ...
+ 
    :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
 
 html,body{
