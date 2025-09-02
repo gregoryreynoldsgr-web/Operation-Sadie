@@ -85,10 +85,18 @@ header{display:flex;justify-content:space-between;align-items:center;margin:6px 
 }
 
 /* Keep it comfortable on small screens */
-@media (max-width:640px){
-  .hero{height:72vh}
-  .hero video {object-position: center 50%;}
-}
+@media (max-width:640px){           /* open media query */
+  .hero {                           /* open .hero */
+    height:72vh;
+  }                                 /* close .hero */
+
+  .hero video {                     /* open .hero video */
+    object-position: center 50%;
+    animation: none;        /* stop the zoom on mobile */
+    transform: scale(1);    /* no extra push-in */
+  }                                 /* close .hero video */
+}                                   /* close media query */
+
 
 .caption{
   position:absolute;left:0;right:0;bottom:0;
