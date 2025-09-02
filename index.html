@@ -93,23 +93,23 @@ header{display:flex;justify-content:space-between;align-items:center;margin:6px 
   100%{transform:scale(1.15)}
 }
 
-/* Keep it comfortable on small screens */
 @media (max-width:640px){
-  .hero { height:68vh; }  /* a bit shorter so less crop */
+  /* make the hero taller so the full frame can fit without cropping */
+  .hero { 
+    height: 86vh;
+    background:#000; /* behind the letterbox if any */
+  }
   .hero video {
-    object-fit: cover;
-    object-position: center 42%;  /* show more of the frame */
-    animation: none;              /* no zoom on mobile */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;   /* show full width/height, no crop */
+    object-position: center center; /* centered frame */
+    background:#000;       /* hides any transparent edges */
+    animation: none;
     transform: none;
   }
 }
 
-/* extra nudge for very tall phones (iPhone 13/14/15 etc) */
-@media (max-width:640px) and (min-aspect-ratio: 9/16){
-  .hero { height:64vh; }
-  .hero video { object-position: center 38%; }
-}
-                                  /* close media query */
 
 
 .caption{
