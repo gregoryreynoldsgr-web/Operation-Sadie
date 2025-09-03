@@ -78,6 +78,29 @@ header{display:flex;justify-content:space-between;align-items:center;margin:6px 
   box-shadow:0 12px 30px rgba(0,0,0,.45);
   z-index:1;                    /* above the background layer */
 }
+
+/* ---- Top-left gradient mask to hide video watermark ---- */
+.hero::before{
+  content:"";
+  position:absolute;
+  top:0; left:0;
+  width: 120px;   /* phones */
+  height: 70px;
+  background:linear-gradient(135deg, var(--bg) 60%, transparent 100%);
+  z-index: 2;               /* above the video */
+  pointer-events:none;      /* never blocks clicks */
+}
+
+/* scale the mask up on tablets */
+@media (min-width:641px){
+  .hero::before{ width: 160px; height: 90px; }
+}
+
+/* and a bit larger on desktop */
+@media (min-width:1025px){
+  .hero::before{ width: 200px; height: 110px; }
+}
+
 .hero video {
   position: relative;
   z-index: 1;
@@ -193,7 +216,7 @@ a{color:var(--accent);text-decoration:none}
 .page-background { z-index: -1; }
 .wrap { position: relative; z-index: 1; }
 .wrap, .hero { position: relative; z-index: 1; }
-.caption { z-index: 2; }
+.caption { z-index: 3; }
 
 /* Space between header buttons */
 nav .btn-watch + .btn-watch { margin-left: 8px; }
