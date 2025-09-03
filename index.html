@@ -154,16 +154,20 @@ figure { margin: 0; }
   .caption{ padding: 20px 22px; }
 }
 
-/* ---- Desktop framing + gentler zoom ---- */
+/* ---- Desktop: show full frame, no crop ---- */
 @media (min-width:1025px){
   .hero{
-    height: 92vh;      /* slightly shorter */
+    height: 88vh;
+    background:#000;          /* bars blend into page */
   }
   .hero video{
-    object-position: center 24%;   /* shows more torso/background */
-    animation: slowZoomSoft 20s ease-in-out forwards;
+    object-fit: contain;      /* no cropping */
+    object-position: center center;
+    animation: none !important;
+    transform: none !important;
   }
 }
+
 
 /* milder zoom for desktop */
 @keyframes slowZoomSoft{
