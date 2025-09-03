@@ -1,14 +1,53 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZD15GWTT54');
+</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sadie Winters — The Official Site of the Obsessed</title>
   <meta name="description" content="Independent. Virtually born, human touched. Celebrating music as humanity’s forever art.">
   <link rel="preload" as="video" href="./landing.mp4" type="video/mp4">
   <style>
-   :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
+    /* ---- Hide UI-only radio inputs (fix for mobile) ---- */
+.input-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;      /* helps on iOS Safari */
+  pointer-events: none;       /* prevents accidental taps */
+}
+    .promo-banner {
+  position: absolute;
+  top: 8px;   /* moves it slightly above her head */
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+  z-index: 3;   /* stays above the video & caption */
+}
 
+
+   :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
+   
 html,body{
   margin:0;
   background:var(--bg);
@@ -52,6 +91,34 @@ header{display:flex;justify-content:space-between;align-items:center;margin:6px 
   box-shadow:0 12px 30px rgba(0,0,0,.45);
   z-index:1;                    /* above the background layer */
 }
+
+/* ---- Top-left gradient mask to hide video watermark ---- */
+/* Cinematic corner vignette (replaces the triangle mask) */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;                 
+  pointer-events:none;
+  z-index:2;               
+  background:
+    radial-gradient(200px 160px at 0    0,    rgba(0,0,0,.45), transparent 70%),
+    radial-gradient(200px 160px at 100% 0,    rgba(0,0,0,.18), transparent 70%),
+    radial-gradient(220px 180px at 0    100%, rgba(0,0,0,.18), transparent 70%),
+    radial-gradient(220px 180px at 100% 100%, rgba(0,0,0,.25), transparent 70%);
+}
+
+/* Scale the vignette up slightly on larger screens */
+@media (min-width:1025px){
+  .hero::before{
+    background:
+      radial-gradient(260px 200px at 0    0,    rgba(0,0,0,.45), transparent 70%),
+      radial-gradient(260px 200px at 100% 0,    rgba(0,0,0,.18), transparent 70%),
+      radial-gradient(300px 220px at 0    100%, rgba(0,0,0,.18), transparent 70%),
+      radial-gradient(300px 220px at 100% 100%, rgba(0,0,0,.25), transparent 70%);
+  }
+}
+
+
 .hero video {
   position: relative;
   z-index: 1;
@@ -62,22 +129,100 @@ header{display:flex;justify-content:space-between;align-items:center;margin:6px 
   transform-origin: center;
   animation: slowZoom 20s ease-in-out forwards;
 }
+    /* remove default figure spacing that creates a gap under the header */
+figure { margin: 0; }
+
 @keyframes slowZoom{
   0%{transform:scale(1)}
   100%{transform:scale(1.15)}
 }
 
-/* Keep it comfortable on small screens */
 @media (max-width:640px){
-  .hero{height:72vh}
-  .hero video {object-position: center 50%;}
+  /* make the hero taller so the full frame can fit without cropping */
+.hero { 
+  height: 100vh;   /* fallback */
+  height: 100svh;  /* fixes iOS URL bar shrink */
+  background:#000;
 }
 
+  .hero video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            /* fills the screen */
+  object-position: center 40%;  /* shift focus down a bit */
+  background:#000;
+  animation: none;
+  transform: none;
+}
+
+}
+/* ---- iPad / tablet sizing fixes ---- */
+/* Portrait iPad & mid-size tablets */
+@media (hover: none) and (pointer: coarse) and (min-width:641px) and (max-width:1024px) {
+  .hero{
+    height: 88vh;     /* shrink a bit so she’s not gigantic */
+    height: 88svh;    /* iPad Safari sane viewport */
+    background:#000;
+  }
+  .hero video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 32%;  /* pull frame up slightly */
+    animation:none !important;   /* kill the slow zoom on tablets */
+    transform:none !important;
+    background:#000;
+  }
+}
+
+/* Landscape iPad (incl. 11" / 12.9") */
+@media (hover: none) and (pointer: coarse) and (min-width:1025px) and (max-width:1366px) and (orientation: landscape){
+  .hero{
+    height: 82vh;     /* a touch shorter in landscape */
+    height: 82svh;
+    background:#000;
+  }
+  .hero video{
+    object-fit:cover;
+    object-position:center 38%;  /* keep face centered */
+    animation:none !important;
+    transform:none !important;
+  }
+}
+
+/* Optional: give the caption a hair more breathing room on tablets */
+@media (hover: none) and (pointer: coarse) and (min-width:641px) and (max-width:1366px){
+  .caption{ padding: 20px 22px; }
+}
+
+/* ---- Desktop: show full frame, no crop ---- */
+@media (min-width:1025px){
+  .hero{
+    height: 88vh;
+    background:#000;          /* bars blend into page */
+  }
+  .hero video{
+    object-fit: contain;      /* no cropping */
+    object-position: center center;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+
+/* milder zoom for desktop */
+@keyframes slowZoomSoft{
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+/* existing caption block follows */
 .caption{
   position:absolute;left:0;right:0;bottom:0;
   background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 60%,rgba(0,0,0,.7) 100%);
-  padding:18px 20px
+  padding:18px 20px;
 }
+
 h1{margin:0;font-size:clamp(22px,4vw,38px)}
 p{margin:.4rem 0 0;color:#e6e6ee;max-width:70ch}
 footer{color:#8c8c9b;text-align:center;margin:28px 0 10px;font-size:.9rem}
@@ -89,7 +234,7 @@ a{color:var(--accent);text-decoration:none}
 .page-background { z-index: -1; }
 .wrap { position: relative; z-index: 1; }
 .wrap, .hero { position: relative; z-index: 1; }
-.caption { z-index: 2; }
+.caption { z-index: 3; }
 
 /* Space between header buttons */
 nav .btn-watch + .btn-watch { margin-left: 8px; }
@@ -179,19 +324,61 @@ nav .btn-watch + .btn-watch { margin-left: 8px; }
     </header>
 
 <figure class="hero">
-    <video id="landingVideo" autoplay muted playsinline loop preload="auto" controls>
+  <video id="landingVideo" autoplay muted playsinline webkit-playsinline loop preload="auto">
     <source src="./landing.mp4" type="video/mp4" />
   </video>
 
-   <figcaption class="caption">
-      <h1>the voice you can’t forget.</h1>
-      <p>Virtually born. Human touched. One small step for AI…one giant leap for mankind.</p>
-   </figcaption>
+  <!-- Promo banner teaser -->
+  <div class="promo-banner">
+    <marquee behavior="scroll" direction="left" scrollamount="4">
+      🌟 Coming Soon... Living Photo Gallery! 🌟
+    </marquee>
+  </div>
+
+  <figcaption class="caption">
+    <h1>the voice you can’t forget.</h1>
+    <p>Virtually born. Human touched. One small step for AI…one giant leap for mankind.</p>
+  </figcaption>
 </figure>
 
 
 
-    <footer>© 2025 SadieWinters.net — The Official Site of the Obsessed</footer>
+
+
+      <footer>© 2025 SadieWinters.net — The Official Site of the Obsessed</footer>
   </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const v = document.getElementById('landingVideo');
+    if (!v) return;
+
+    // Set attributes & properties (iOS is picky)
+    v.setAttribute('autoplay', '');
+    v.setAttribute('muted', '');
+    v.setAttribute('playsinline', '');
+    v.setAttribute('webkit-playsinline', '');
+    v.muted = true;
+    v.playsInline = true;
+
+    const tryPlay = () => v.play().catch(() => {});
+
+    tryPlay(); // on load
+
+    // Try again if the tab becomes visible
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) tryPlay();
+    });
+
+    // One-time tap/click fallback
+    const onFirstInteraction = () => {
+      tryPlay();
+      window.removeEventListener('touchstart', onFirstInteraction);
+      window.removeEventListener('click', onFirstInteraction);
+    };
+    window.addEventListener('touchstart', onFirstInteraction, { once: true, passive: true });
+    window.addEventListener('click', onFirstInteraction, { once: true });
+  });
+  </script>
 </body>
 </html>
