@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -32,6 +33,19 @@
   opacity: 0 !important;      /* helps on iOS Safari */
   pointer-events: none;       /* prevents accidental taps */
 }
+    .promo-banner {
+  position: absolute;
+  top: 8px;   /* moves it slightly above her head */
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+  z-index: 3;   /* stays above the video & caption */
+}
+
 
    :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
    
@@ -315,11 +329,19 @@ nav .btn-watch + .btn-watch { margin-left: 8px; }
     <source src="./landing.mp4" type="video/mp4" />
   </video>
 
+  <!-- Promo banner teaser -->
+  <div class="promo-banner">
+    <marquee behavior="scroll" direction="left" scrollamount="4">
+      🌟 Coming Soon... Living Photo Gallery! 🌟
+    </marquee>
+  </div>
+
   <figcaption class="caption">
     <h1>the voice you can’t forget.</h1>
     <p>Virtually born. Human touched. One small step for AI…one giant leap for mankind.</p>
   </figcaption>
 </figure>
+
 
 
 
@@ -361,4 +383,3 @@ nav .btn-watch + .btn-watch { margin-left: 8px; }
   </script>
 </body>
 </html>
-
