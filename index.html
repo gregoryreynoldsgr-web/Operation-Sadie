@@ -115,6 +115,44 @@ figure { margin: 0; }
 }
 
 }
+/* ---- iPad / tablet sizing fixes ---- */
+/* Portrait iPad & mid-size tablets */
+@media (hover: none) and (pointer: coarse) and (min-width:641px) and (max-width:1024px) {
+  .hero{
+    height: 88vh;     /* shrink a bit so she’s not gigantic */
+    height: 88svh;    /* iPad Safari sane viewport */
+    background:#000;
+  }
+  .hero video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 32%;  /* pull frame up slightly */
+    animation:none !important;   /* kill the slow zoom on tablets */
+    transform:none !important;
+    background:#000;
+  }
+}
+
+/* Landscape iPad (incl. 11" / 12.9") */
+@media (hover: none) and (pointer: coarse) and (min-width:1025px) and (max-width:1366px) and (orientation: landscape){
+  .hero{
+    height: 82vh;     /* a touch shorter in landscape */
+    height: 82svh;
+    background:#000;
+  }
+  .hero video{
+    object-fit:cover;
+    object-position:center 38%;  /* keep face centered */
+    animation:none !important;
+    transform:none !important;
+  }
+}
+
+/* Optional: give the caption a hair more breathing room on tablets */
+@media (hover: none) and (pointer: coarse) and (min-width:641px) and (max-width:1366px){
+  .caption{ padding: 20px 22px; }
+}
 
 
 
