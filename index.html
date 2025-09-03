@@ -80,26 +80,31 @@ header{display:flex;justify-content:space-between;align-items:center;margin:6px 
 }
 
 /* ---- Top-left gradient mask to hide video watermark ---- */
+/* Cinematic corner vignette (replaces the triangle mask) */
 .hero::before{
   content:"";
   position:absolute;
-  top:0; left:0;
-  width: 120px;   /* phones */
-  height: 70px;
-  background:linear-gradient(135deg, var(--bg) 60%, transparent 100%);
-  z-index: 2;               /* above the video */
-  pointer-events:none;      /* never blocks clicks */
+  inset:0;                 
+  pointer-events:none;
+  z-index:2;               
+  background:
+    radial-gradient(200px 160px at 0    0,    rgba(0,0,0,.45), transparent 70%),
+    radial-gradient(200px 160px at 100% 0,    rgba(0,0,0,.18), transparent 70%),
+    radial-gradient(220px 180px at 0    100%, rgba(0,0,0,.18), transparent 70%),
+    radial-gradient(220px 180px at 100% 100%, rgba(0,0,0,.25), transparent 70%);
 }
 
-/* scale the mask up on tablets */
-@media (min-width:641px){
-  .hero::before{ width: 160px; height: 90px; }
-}
-
-/* and a bit larger on desktop */
+/* Scale the vignette up slightly on larger screens */
 @media (min-width:1025px){
-  .hero::before{ width: 200px; height: 110px; }
+  .hero::before{
+    background:
+      radial-gradient(260px 200px at 0    0,    rgba(0,0,0,.45), transparent 70%),
+      radial-gradient(260px 200px at 100% 0,    rgba(0,0,0,.18), transparent 70%),
+      radial-gradient(300px 220px at 0    100%, rgba(0,0,0,.18), transparent 70%),
+      radial-gradient(300px 220px at 100% 100%, rgba(0,0,0,.25), transparent 70%);
+  }
 }
+
 
 .hero video {
   position: relative;
