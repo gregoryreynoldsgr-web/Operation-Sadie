@@ -101,6 +101,18 @@
     const viewFull = document.getElementById('view-full');
     const playPauseBtn = document.getElementById('playPause');
 
+    // Click directly on the video to pause/play
+v.addEventListener('click', async () => {
+  if (v.paused) {
+    await v.play().catch(()=>{});
+    playPauseBtn.textContent = 'Pause';
+  } else {
+    v.pause();
+    playPauseBtn.textContent = 'Play';
+  }
+});
+
+
     // iOS/Autoplay quirks
     v.muted = true; v.playsInline = true;
 
