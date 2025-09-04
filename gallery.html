@@ -1,39 +1,134 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <title>Sadie Winters — Living Gallery</title>
-  <meta name="description" content="Sadie Winters Living Gallery — immersive video moments.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sadie Winters Living Gallery — immersive video moments." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body {
-      margin: 0;
-      background: #0b0b0e;
-      color: #f6f6f8;
-      font: 16px/1.5 system-ui, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-    .gallery-video {
-      max-width: 90%;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-    }
-    .caption {
-      margin-top: 0.8rem;
-      font-size: 1.1rem;
-      color: #ccc;
-    }
+    :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;}
+    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;}
+    .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px}
+    .gallery-video{max-width:90vw;max-height:78vh;border-radius:20px;box-shadow:0 8px 20px rgba(0,0,0,.6);display:block;background:#000}
+    .caption{margin-top:.8rem;font-size:1.05rem;color:#ccc;text-align:center}
+    .controls{margin-top:14px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:center;color:var(--muted)}
+    fieldset{border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:6px 10px}
+    legend{padding:0 6px;color:#ddd;font-size:.9rem}
+    label{margin:0 10px 0 4px;cursor:pointer}
+    input[type="radio"]{accent-color:#8bd3ff;transform:translateY(1px)}
+    .hint{margin-top:8px;font-size:.85rem;color:#9aa0a6;text-align:center}
+    .btn{border:1px solid rgba(255,255,255,.18);background:#111;color:#fff;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
+    .btn:hover{opacity:.95}
   </style>
 </head>
 <body>
-  <video class="gallery-video" autoplay muted loop playsinline>
-    <source src="./sadie-beach.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <div class="caption">Sadie — Ocean Dreams</div>
+  <div class="wrap">
+    <video id="galleryVideo" class="gallery-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
+      <source src="./sadie-beach.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="caption">Sadie — Ocean Dreams</div>
+
+    <div class="controls">
+      <fieldset>
+        <legend>Sound</legend>
+        <input type="radio" name="sound" id="sound-off" value="off" checked>
+        <label for="sound-off">Off</label>
+        <input type="radio" name="sound" id="sound-on" value="on">
+        <label for="sound-on">On</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>View</legend>
+        <input type="radio" name="view" id="view-window" value="window" checked>
+        <label for="view-window">Window</label>
+        <input type="radio" name="view" id="view-full" value="full">
+        <label for="view-full">Fullscreen</label>
+      </fieldset>
+
+      <!-- optional quick actions -->
+      <button id="playPause" class="btn" type="button">Pause</button>
+    </div>
+
+    <div class="hint">Tip: browsers require an interaction to enable audio. Choose “Sound: On” and tap/click once.</div>
+  </div>
+
+  <script>
+    const v = document.getElementById('galleryVideo');
+    const soundOn  = document.getElementById('sound-on');
+    const soundOff = document.getElementById('sound-off');
+    const viewWin  = document.getElementById('view-window');
+    const viewFull = document.getElementById('view-full');
+    const playPauseBtn = document.getElementById('playPause');
+
+    // iOS/Autoplay quirks
+    v.muted = true; v.playsInline = true;
+
+    const tryPlay = () => v.play().catch(()=>{});
+    tryPlay();
+    document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) tryPlay(); });
+
+    // First user interaction can toggle sound if "On" is selected
+    const oneTimeEnableAudio = () => {
+      if (soundOn.checked) {
+        v.muted = false;
+        v.volume = 1.0;
+        tryPlay();
+      }
+      window.removeEventListener('click', oneTimeEnableAudio);
+      window.removeEventListener('touchstart', oneTimeEnableAudio);
+    };
+    window.addEventListener('click', oneTimeEnableAudio, { once:true });
+    window.addEventListener('touchstart', oneTimeEnableAudio, { once:true, passive:true });
+
+    // Sound radios
+    soundOn.addEventListener('change', () => {
+      // Requires a user gesture to actually unmute on many browsers
+      v.muted = false;
+      tryPlay();
+    });
+    soundOff.addEventListener('change', () => {
+      v.muted = true;
+    });
+
+    // View radios (fullscreen/window)
+    const enterFS = async () => {
+      if (document.fullscreenElement) return;
+      try {
+        if (v.requestFullscreen) await v.requestFullscreen();
+        else if (v.webkitRequestFullscreen) v.webkitRequestFullscreen();
+      } catch(e) {}
+    };
+    const exitFS = async () => {
+      if (!document.fullscreenElement) return;
+      try {
+        if (document.exitFullscreen) await document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      } catch(e) {}
+    };
+    viewFull.addEventListener('change', enterFS);
+    viewWin.addEventListener('change', exitFS);
+
+    // Keep radios in sync if user exits fullscreen via Esc
+    document.addEventListener('fullscreenchange', () => {
+      if (document.fullscreenElement) {
+        viewFull.checked = true;
+      } else {
+        viewWin.checked = true;
+      }
+    });
+
+    // Play/Pause button
+    playPauseBtn.addEventListener('click', async () => {
+      if (v.paused) {
+        await v.play().catch(()=>{});
+        playPauseBtn.textContent = 'Pause';
+      } else {
+        v.pause();
+        playPauseBtn.textContent = 'Play';
+      }
+    });
+  </script>
 </body>
 </html>
