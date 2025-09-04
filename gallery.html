@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sadie Winters — Living Gallery</title>
+  <meta name="description" content="Sadie Winters Living Gallery — immersive video moments.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      background: #0b0b0e;
+      color: #f6f6f8;
+      font: 16px/1.5 system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .gallery-video {
+      max-width: 90%;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+    .caption {
+      margin-top: 0.8rem;
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <video class="gallery-video" autoplay muted loop playsinline>
+    <source src="./sadie-beach.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="caption">Sadie — Ocean Dreams</div>
+</body>
+</html>
