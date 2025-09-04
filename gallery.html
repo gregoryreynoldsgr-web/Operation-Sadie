@@ -37,15 +37,16 @@
   text-align: center;
   padding: 12px 20px;
   border-radius: 14px;
-  background: linear-gradient(135deg, #3a6073, #16222a); /* calm ocean hues */
+  background: linear-gradient(135deg, #3a6073, #16222a);
   box-shadow: 0 4px 14px rgba(0,0,0,0.45);
-  opacity: 0;
-  animation: fadeIn 10s ease forwards 1s; /* slow 10s fade */
+  opacity: 0;                          /* start hidden */
+  transition: opacity 10s ease;         /* true 10s fade */
+}
+/* visible state */
+.coming-soon.show {
+  opacity: 1;
 }
 
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
 
 
   </style>
@@ -168,5 +169,14 @@
       }
     });
   </script>
+  <script>
+  // After DOM is ready, wait 1s, then start a 10s fade
+  window.addEventListener('DOMContentLoaded', () => {
+    const banner = document.querySelector('.coming-soon');
+    if (!banner) return;
+    setTimeout(() => banner.classList.add('show'), 1000); // 1s delay, then fade 10s
+  });
+</script>
+
 </body>
 </html>
