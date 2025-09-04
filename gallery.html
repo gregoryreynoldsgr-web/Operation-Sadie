@@ -29,6 +29,24 @@
     .hint{margin-top:8px;font-size:.85rem;color:#9aa0a6;text-align:center}
     .btn{border:1px solid rgba(255,255,255,.18);background:#111;color:#fff;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
     .btn:hover{opacity:.95}
+    .coming-soon {
+  margin-top: 18px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #f0f0f5;
+  text-align: center;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #3a6073, #16222a); /* calm ocean hues */
+  box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+  opacity: 0;
+  animation: fadeIn 2.5s ease forwards 1s;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
   </style>
 </head>
 <body>
@@ -65,8 +83,13 @@
       <button id="playPause" class="btn" type="button">Pause</button>
     </div>
 
-    <div class="hint">Tip: browsers require an interaction to enable audio. Choose “Sound: On” and tap/click once.</div>
-  </div>
+        <div class="hint">Tip: browsers require an interaction to enable audio. Choose “Sound: On” and tap/click once.</div>
+
+        <div class="coming-soon">
+          Keep checking in… so much more to come
+        </div>
+        </div>
+
 
   <script>
     const v = document.getElementById('galleryVideo');
