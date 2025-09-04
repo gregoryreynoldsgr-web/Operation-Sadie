@@ -1,6 +1,382 @@
 
-
 <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZD15GWTT54');
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sadie Winters — The Official Site of the Obsessed</title>
+  <meta name="description" content="Independent. Virtually born, human touched. Celebrating music as humanity’s forever art.">
+  <link rel="preload" as="video" href="./landing.mp4" type="video/mp4">
+  <style>
+    /* ---- Hide UI-only radio inputs (fix for mobile) ---- */
+.input-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;      /* helps on iOS Safari */
+  pointer-events: none;       /* prevents accidental taps */
+}
+    .promo-banner {
+  position: absolute;
+  top: 8px;   /* moves it slightly above her head */
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+  z-index: 3;   /* stays above the video & caption */
+}
+
+
+   :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
+   
+html,body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+}
+
+.wrap{max-width:1000px;margin:0 auto;padding:20px}
+
+/* ---- Side edge glow (separate background layer; does NOT touch the image) ---- */
+.page-background{
+  position:fixed; inset:0;
+  background:#0b0b0e;
+  z-index:0;
+}
+.page-background::before,
+.page-background::after{
+  content:"";
+  position:absolute; top:0; bottom:0;
+  width:15%;
+  background:radial-gradient(circle at center,
+             rgba(139,211,255,0.30) 0%,
+             rgba(139,211,255,0.00) 80%);
+  pointer-events:none;
+  animation:sidePulse 8s ease-in-out infinite alternate;
+}
+.page-background::before{ left:0; }
+.page-background::after { right:0; }
+@keyframes sidePulse{ from{opacity:.25} to{opacity:.55} }
+
+header{display:flex;justify-content:space-between;align-items:center;margin:6px 0 16px}
+.logo{font-weight:800;letter-spacing:.3px}
+.tag{color:var(--muted);font-size:.95rem}
+
+/* ---- Full-screen hero ---- */
+.hero{
+  position:relative;
+  height:100vh;                 /* full screen */
+  border-radius:0;              /* immersive */
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(0,0,0,.45);
+  z-index:1;                    /* above the background layer */
+}
+
+/* ---- Top-left gradient mask to hide video watermark ---- */
+/* Cinematic corner vignette (replaces the triangle mask) */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;                 
+  pointer-events:none;
+  z-index:2;               
+  background:
+    radial-gradient(200px 160px at 0    0,    rgba(0,0,0,.45), transparent 70%),
+    radial-gradient(200px 160px at 100% 0,    rgba(0,0,0,.18), transparent 70%),
+    radial-gradient(220px 180px at 0    100%, rgba(0,0,0,.18), transparent 70%),
+    radial-gradient(220px 180px at 100% 100%, rgba(0,0,0,.25), transparent 70%);
+}
+
+/* Scale the vignette up slightly on larger screens */
+@media (min-width:1025px){
+  .hero::before{
+    background:
+      radial-gradient(260px 200px at 0    0,    rgba(0,0,0,.45), transparent 70%),
+      radial-gradient(260px 200px at 100% 0,    rgba(0,0,0,.18), transparent 70%),
+      radial-gradient(300px 220px at 0    100%, rgba(0,0,0,.18), transparent 70%),
+      radial-gradient(300px 220px at 100% 100%, rgba(0,0,0,.25), transparent 70%);
+  }
+}
+
+
+.hero video {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transform-origin: center;
+  animation: slowZoom 20s ease-in-out forwards;
+}
+    /* remove default figure spacing that creates a gap under the header */
+figure { margin: 0; }
+
+@keyframes slowZoom{
+  0%{transform:scale(1)}
+  100%{transform:scale(1.15)}
+}
+
+@media (max-width:640px){
+  /* make the hero taller so the full frame can fit without cropping */
+.hero { 
+  height: 100vh;   /* fallback */
+  height: 100svh;  /* fixes iOS URL bar shrink */
+  background:#000;
+}
+
+  .hero video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            /* fills the screen */
+  object-position: center 40%;  /* shift focus down a bit */
+  background:#000;
+  animation: none;
+  transform: none;
+}
+
+}
+/* ---- iPad / tablet sizing fixes ---- */
+/* Portrait iPad & mid-size tablets */
+@media (hover: none) and (pointer: coarse) and (min-width:641px) and (max-width:1024px) {
+  .hero{
+    height: 88vh;     /* shrink a bit so she’s not gigantic */
+    height: 88svh;    /* iPad Safari sane viewport */
+    background:#000;
+  }
+  .hero video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 32%;  /* pull frame up slightly */
+    animation:none !important;   /* kill the slow zoom on tablets */
+    transform:none !important;
+    background:#000;
+  }
+}
+
+/* Landscape iPad (incl. 11" / 12.9") */
+@media (hover: none) and (pointer: coarse) and (min-width:1025px) and (max-width:1366px) and (orientation: landscape){
+  .hero{
+    height: 82vh;     /* a touch shorter in landscape */
+    height: 82svh;
+    background:#000;
+  }
+  .hero video{
+    object-fit:cover;
+    object-position:center 38%;  /* keep face centered */
+    animation:none !important;
+    transform:none !important;
+  }
+}
+
+/* Optional: give the caption a hair more breathing room on tablets */
+@media (hover: none) and (pointer: coarse) and (min-width:641px) and (max-width:1366px){
+  .caption{ padding: 20px 22px; }
+}
+
+/* ---- Desktop: show full frame, no crop ---- */
+@media (min-width:1025px){
+  .hero{
+    height: 88vh;
+    background:#000;          /* bars blend into page */
+  }
+  .hero video{
+    object-fit: contain;      /* no cropping */
+    object-position: center center;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+
+/* milder zoom for desktop */
+@keyframes slowZoomSoft{
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+/* existing caption block follows */
+.caption{
+  position:absolute;left:0;right:0;bottom:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 60%,rgba(0,0,0,.7) 100%);
+  padding:18px 20px;
+}
+
+h1{margin:0;font-size:clamp(22px,4vw,38px)}
+p{margin:.4rem 0 0;color:#e6e6ee;max-width:70ch}
+footer{color:#8c8c9b;text-align:center;margin:28px 0 10px;font-size:.9rem}
+a{color:var(--accent);text-decoration:none}
+.btn-watch{display:inline-block;padding:.55rem 1rem;border-radius:9999px;background:#111;color:#fff;font-weight:600;transition:transform .08s ease,opacity .2s ease}
+.btn-watch:hover{opacity:.9;transform:translateY(-1px)}
+
+/* make sure the background layer is behind everything */
+.page-background { z-index: -1; }
+.wrap { position: relative; z-index: 1; }
+.wrap, .hero { position: relative; z-index: 1; }
+.caption { z-index: 3; }
+
+/* Space between header buttons */
+nav .btn-watch + .btn-watch { margin-left: 8px; }
+
+/* On small screens, stack buttons */
+/* MOBILE HEADER + NAV FIX */
+@media (max-width:640px){
+  /* stack the header content instead of squishing to the right */
+  header{
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  /* scale the script logo nicely on phones */
+  .sadie-sig svg{
+    width: 200px;
+    height: auto;
+  }
+
+  .logo{ font-size: 1.1rem; }
+  .tag{ font-size: .9rem; }
+
+  /* center the buttons and wrap cleanly */
+  nav{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  nav .btn-watch{
+    width: auto;
+    font-size: .95rem;
+    padding: .45rem .8rem;
+  }
+}
+
+
+
+  </style>
+</head>
+<body>
+  <!-- background glow layer -->
+  <div class="page-background"></div>
+
+  <div class="wrap">
+    <header>
+      <!-- Sadie signature (self-contained, drop-in) -->
+<!-- Sadie signature (slower, no underline) -->
+<div class="sadie-sig">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+    .sadie-sig svg{display:block}
+    .sadie-sig .s-stroke,.sadie-sig .s-fill{
+      font-family:'Great Vibes',cursive; font-size:64px;
+    }
+    /* slower draw */
+    .sadie-sig .s-stroke{
+      fill:none; stroke:#fff; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round;
+      stroke-dasharray:2000; stroke-dashoffset:2000; animation:sadDraw 2.6s ease-out forwards;
+    }
+    /* fade to solid when stroke finishes */
+    .sadie-sig .s-fill{ fill:#fff; opacity:0; animation:sadReveal .3s linear forwards 2.6s; }
+    @keyframes sadDraw{ to{ stroke-dashoffset:0 } }
+    @keyframes sadReveal{ to{ opacity:1 } }
+  </style>
+
+  <a href="/" aria-label="Sadie Winters">
+    <svg viewBox="0 0 600 160" width="260" height="64" role="img">
+      <text class="s-stroke" x="18" y="84">Sadie Winters</text>
+      <text class="s-fill"   x="18" y="84">Sadie Winters</text>
+    </svg>
+  </a>
+</div>
+
+      <div>
+        <div class="logo">SADIE WINTERS</div>
+        <div class="tag">The Official Site of the Obsessed</div>
+      </div>
+      <nav>
+  <a href="./mission.html" class="btn-watch">📜 Our Mission</a>
+  <a href="./videos.html" class="btn-watch" aria-label="Watch Music Videos">🎬 Watch Music Videos</a>
+  <a href="./gallery.html" class="btn-watch" aria-label="Living Gallery">🖼️ Living Gallery</a>
+      </nav>
+
+    </header>
+
+<figure class="hero">
+  <video id="landingVideo" autoplay muted playsinline webkit-playsinline loop preload="auto">
+    <source src="./landing.mp4" type="video/mp4" />
+  </video>
+
+  <figcaption class="caption">
+    <h1>the voice you can’t forget.</h1>
+    <p>Virtually born. Human touched. One small step for AI…one giant leap for mankind.</p>
+  </figcaption>
+</figure>
+
+
+
+
+
+      <footer>© 2025 SadieWinters.net — The Official Site of the Obsessed</footer>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const v = document.getElementById('landingVideo');
+    if (!v) return;
+
+    // Set attributes & properties (iOS is picky)
+    v.setAttribute('autoplay', '');
+    v.setAttribute('muted', '');
+    v.setAttribute('playsinline', '');
+    v.setAttribute('webkit-playsinline', '');
+    v.muted = true;
+    v.playsInline = true;
+
+    const tryPlay = () => v.play().catch(() => {});
+
+    tryPlay(); // on load
+
+    // Try again if the tab becomes visible
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) tryPlay();
+    });
+
+    // One-time tap/click fallback
+    const onFirstInteraction = () => {
+      tryPlay();
+      window.removeEventListener('touchstart', onFirstInteraction);
+      window.removeEventListener('click', onFirstInteraction);
+    };
+    window.addEventListener('touchstart', onFirstInteraction, { once: true, passive: true });
+    window.addEventListener('click', onFirstInteraction, { once: true });
+  });
+  </script>
+</body>
+</html><!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
