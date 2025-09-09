@@ -26,7 +26,7 @@
 
     .wrap{max-width:1000px;margin:0 auto;padding:20px}
 
-    /* ---- Side edge glow (match index) ---- */
+    /* ---- Side edge glow ---- */
     .page-background{
       position:fixed; inset:0;
       background:#0b0b0e;
@@ -47,11 +47,11 @@
     .page-background::after { right:0; }
     @keyframes sidePulse{ from{opacity:.25} to{opacity:.55} }
 
-    /* ---- Header (exactly like index) ---- */
+    /* ---- Header (same as index) ---- */
     header{
       display:flex;
-      flex-direction: column;   /* stack logo + nav */
-      align-items: center;      /* center horizontally */
+      flex-direction: column;
+      align-items: center;
       gap: 8px;
       text-align: center;
       margin: 6px 0 16px;
@@ -65,7 +65,7 @@
     .btn-watch:hover{opacity:.9;transform:translateY(-1px)}
     nav .btn-watch + .btn-watch { margin-left: 8px; }
 
-    /* MOBILE header + nav (match index) */
+    /* MOBILE header + nav */
     @media (max-width:640px){
       header{flex-direction:column;align-items:center;gap:8px;text-align:center}
       .sadie-sig svg{width:200px;height:auto}
@@ -75,11 +75,10 @@
       nav .btn-watch{width:auto;font-size:.95rem;padding:.45rem .8rem}
     }
 
-    /* keep layers ordered */
     .page-background { z-index:-1; }
     .wrap { position:relative; z-index:1; }
 
-    /* ---- HERO (our girl in the background) ---- */
+    /* ---- HERO ---- */
     .hero{
       position:relative;
       overflow:hidden;
@@ -89,7 +88,7 @@
       place-items:center;
       background:
         linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 65%, rgba(0,0,0,.65) 100%),
-        url("./hero.jpg") 50% 18% / cover no-repeat;  /* our girl */
+        url("./hero.jpg") 50% 18% / cover no-repeat;
       box-shadow:0 12px 30px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
       animation:heroZoom 22s ease-in-out forwards;
     }
@@ -99,25 +98,18 @@
       background:radial-gradient(100% 60% at 50% 0%, rgba(0,0,0,.28), transparent 60%);
       pointer-events:none;
     }
-    .hero .title, .hero .sub{
-      max-width:820px; margin:0 auto; text-align:center;
-      text-shadow:0 2px 20px rgba(0,0,0,.45);
-    }
-    .hero h1{margin:0 0 .35rem;font-size:clamp(28px,5vw,44px);letter-spacing:.2px}
-    .hero .sub{margin:.25rem 0 0;color:var(--muted);font-size:clamp(15px,2.6vw,17px);font-weight:500}
-    .hero .scroll{font-size:28px}
     .hero .title-row{display:flex;align-items:center;gap:10px;justify-content:center;padding:0 16px}
+    .hero h1{margin:0;font-size:clamp(28px,5vw,44px);letter-spacing:.2px;color:#fff}
+    .hero .sub{margin:.25rem 0 0;color:var(--muted);font-size:clamp(15px,2.6vw,17px);font-weight:500;text-shadow:0 1px 12px rgba(0,0,0,.35)}
 
     @media (max-width:640px){
       .hero{height:min(44vh,420px)}
     }
 
     /* ---- Mission content ---- */
-    h1{margin:8px 0 6px}
-    .tagline{color:var(--muted);margin:0 0 20px}
     .panel{
       background:#0f0f14;border:1px solid #1e1e26;border-radius:16px;
-      padding:22px;box-shadow:0 10px 28px rgba(0,0,0,.35)
+      padding:22px;box-shadow:0 10px 28px rgba(0,0,0,.35);margin-top:20px
     }
     .panel p{margin:0 0 14px;color:#e8e8f0;max-width:74ch}
     .quote{
@@ -137,7 +129,7 @@
 
   <div class="wrap">
     <header>
-      <!-- Signature header (exact match to index) -->
+      <!-- Signature header -->
       <div class="sadie-sig">
         <style>
           @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
@@ -152,6 +144,7 @@
       </div>
 
       <nav>
+        <a href="./index.html" class="btn-watch">🏠 Back to Home</a>
         <a href="./shorts.html"  class="btn-watch">▶️ YouTube Shorts</a>
         <a href="./videos.html"  class="btn-watch">🎬 Watch Music Videos</a>
         <a href="./gallery.html" class="btn-watch">🖼️ Living Gallery</a>
@@ -159,12 +152,11 @@
       </nav>
     </header>
 
-    <!-- HERO with our girl -->
-    <section class="hero" role="img" aria-label="Soft neon glow with Sadie in the background">
+    <!-- HERO -->
+    <section class="hero" role="img" aria-label="Sadie Winters mission background">
       <div>
         <div class="title-row">
-          <div class="scroll">📜</div>
-          <h1>Our Mission</h1>
+          <h1>📜 Our Mission</h1>
         </div>
         <p class="sub">Virtually born. Human touched.</p>
       </div>
