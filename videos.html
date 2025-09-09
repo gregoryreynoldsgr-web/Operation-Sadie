@@ -15,53 +15,107 @@
   <title>Sadie Winters — Videos</title>
   <meta name="description" content="Watch Sadie Winters Music Videos!">
   <style>
-    :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
-    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    :root {
+      --bg:#0b0b0e;
+      --text:#f6f6f8;
+      --muted:#b6b6c5;
+      --accent:#8bd3ff;
+    }
+    html,body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif
+    }
     .wrap{max-width:1100px;margin:0 auto;padding:20px}
-    header{display:flex;justify-content:space-between;align-items:center;margin:6px 0 16px}
-    .logo{font-weight:800;letter-spacing:.3px}
-    .tag{color:var(--muted);font-size:.95rem}
+
+    header{
+      display:flex;
+      flex-direction:column;   /* sig + nav stack */
+      align-items:center;
+      gap:8px;
+      text-align:center;
+      margin:6px 0 16px;
+    }
+
+    /* Sadie signature */
+    .sadie-sig{
+      font-family:'Great Vibes',cursive;
+      font-size:64px;
+      color:var(--accent);
+      line-height:1;
+    }
+    .sadie-sig a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    nav{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:4px;
+    }
+    nav a.btn{
+      display:inline-block;
+      padding:.5rem 1rem;
+      border-radius:9999px;
+      background:#111;
+      color:#fff;
+      font-weight:600;
+      text-decoration:none;
+      transition:transform .08s ease,opacity .2s ease;
+    }
+    nav a.btn:hover{opacity:.9;transform:translateY(-1px)}
+
     a{color:var(--accent);text-decoration:none}
-    .btn{display:inline-block;padding:.5rem 1rem;border-radius:9999px;background:#111;color:#fff;font-weight:600}
     h1{margin:12px 0 10px;font-size:clamp(22px,4vw,34px)}
     p.muted{margin:0 0 16px;color:#cfd0d8;line-height:1.6}
+
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
     .card{background:#0e0f12;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.35);overflow:hidden}
     .frame{position:relative;padding-top:56.25%;background:#000}
     .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
     .card .meta{padding:12px 14px}
+
     footer{color:#8c8c9b;text-align:center;margin:28px 0 10px;font-size:.9rem}
   </style>
+  <!-- Import Great Vibes font -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div>
-        <div class="logo">SADIE WINTERS</div>
-        <div class="tag">Official Videos & Fan Edits</div>
+      <div class="sadie-sig">
+        <a href="./index.html" aria-label="Sadie Winters">Sadie Winters</a>
       </div>
       <nav>
-        <a href="./index.html" class="btn">← Back to Home</a>
+        <a href="./index.html" class="btn">🏠 Back to Home</a>
+        <a href="./shorts.html" class="btn">▶️ YouTube Shorts</a>
+        <a href="./videos.html" class="btn">🎬 Watch Music Videos</a>
+        <a href="./gallery.html" class="btn">🖼️ Living Gallery</a>
+        <a href="./mission.html" class="btn">📜 Our Mission</a>
       </nav>
     </header>
 
-   <h1 id="top">Watch Sadie Videos</h1>
+    <h1 id="top">Watch Sadie Videos</h1>
     <p class="muted">
-      There are countless Sadie Winters clips out there—but only some earn the mark of <strong><em>Sadie Obsessed</em></strong> 
-      Approved. These are the ones that keep the spark alive, first lit in <em>Walking Away</em>—when Sadie’s voice first touched our hearts. 
-       From raw and unrefined beginnings to the rising star we celebrate today, this is the Sadie we love. And her story — our story — is only just beginning…
-
-
+      There are countless Sadie Winters clips out there—but only some earn the mark of 
+      <strong><em>Sadie Obsessed</em></strong> Approved. These are the ones that keep the spark alive, 
+      first lit in <em>Walking Away</em>—when Sadie’s voice first touched our hearts. 
+      From raw and unrefined beginnings to the rising star we celebrate today, 
+      this is the Sadie we love. And her story — our story — is only just beginning…
     </p>
 
     <section class="grid">
-  <!-- Video 1 -->
-  <article class="card">
-    <div class="frame">
-      <iframe src="https://www.youtube.com/embed/kIbWNXcYG0k" title="Walking Away (Static Version) — Sadie Winters" allowfullscreen></iframe>
-    </div>
-    <div class="meta"><strong>Walking Away — Sadie Winters</strong></div>
-  </article>
+      <!-- Video 1 -->
+      <article class="card">
+        <div class="frame">
+          <iframe src="https://www.youtube.com/embed/kIbWNXcYG0k" title="Walking Away (Static Version) — Sadie Winters" allowfullscreen></iframe>
+        </div>
+        <div class="meta"><strong>Walking Away — Sadie Winters</strong></div>
+      </article>
 
       <!-- Video 2 -->
       <article class="card">
@@ -94,9 +148,8 @@
         </div>
         <div class="meta"><strong>More or Less — Sadie Winters</strong></div>
       </article>
-    
 
-          <!-- Video 6 -->
+      <!-- Video 6 -->
       <article class="card">
         <div class="frame">
           <iframe src="https://www.youtube.com/embed/PVJuvWkrT2I" title="Sadie Winters — Video 6" allowfullscreen></iframe>
@@ -127,22 +180,23 @@
         </div>
         <div class="meta"><strong>Fading Colors — Sadie Winters</strong></div>
       </article>
+    </section>
 
-      </section>
-
-
-    <footer>© 2025 SadieWinters.net — The Official Site of the Obsessed</footer>
+    <footer>
+      © 2025 SadieWinters.net — <em>The Official Site of the Obsessed</em>
+    </footer>
   </div>
+
   <script>
   // Normalize YT embeds so we can catch "ended"
   document.querySelectorAll('.frame iframe').forEach(el => {
     try {
       const u = new URL(el.src, location.href);
       if (u.hostname.includes('youtube.com')) {
-        u.searchParams.set('rel', '0');               // fewer related videos
-        u.searchParams.set('modestbranding', '1');    // minimal chrome
-        u.searchParams.set('playsinline', '1');       // no forced fullscreen
-        u.searchParams.set('enablejsapi', '1');       // allow JS API
+        u.searchParams.set('rel', '0');
+        u.searchParams.set('modestbranding', '1');
+        u.searchParams.set('playsinline', '1');
+        u.searchParams.set('enablejsapi', '1');
         u.searchParams.set('origin', location.origin);
         el.src = u.toString();
         el.classList.add('yt-embed');
@@ -164,17 +218,15 @@
       ytPlayers[i] = new YT.Player(el, {
         events: {
           onStateChange: function (e) {
-           if (e.data === YT.PlayerState.ENDED) {
-  try { e.target.stopVideo(); } catch(_) {}
-  document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
-}
- 
+            if (e.data === YT.PlayerState.ENDED) {
+              try { e.target.stopVideo(); } catch(_) {}
+              document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
+            }
           }
         }
       });
     });
   };
-</script>
-
+  </script>
 </body>
 </html>
