@@ -78,9 +78,15 @@ html,body{
 .page-background::after { right:0; }
 @keyframes sidePulse{ from{opacity:.25} to{opacity:.55} }
 
-header{display:flex;justify-content:space-between;align-items:center;margin:6px 0 16px}
-.logo{font-weight:800;letter-spacing:.3px}
-.tag{color:var(--muted);font-size:.95rem}
+header{
+  display:flex;
+  flex-direction: column;   /* stack logo + nav */
+  align-items: center;      /* center horizontally */
+  gap: 8px;
+  text-align: center;
+  margin: 6px 0 16px;
+}
+
 
 /* ---- Full-screen hero ---- */
 .hero{
@@ -318,9 +324,9 @@ nav .btn-watch + .btn-watch { margin-left: 8px; }
         <div class="tag">The Official Site of the Obsessed</div>
       </div>
 <nav>
-  <a href="./shorts.html" class="btn-watch" aria-label="YouTube Shorts">▶️ YouTube Shorts</a>
-  <a href="./videos.html" class="btn-watch" aria-label="Watch Music Videos">🎬 Watch Music Videos</a>
-  <a href="./gallery.html" class="btn-watch" aria-label="Living Gallery">🖼️ Living Gallery</a>
+  <a href="./shorts.html" class="btn-watch">▶️ YouTube Shorts</a>
+  <a href="./videos.html" class="btn-watch">🎬 Watch Music Videos</a>
+  <a href="./gallery.html" class="btn-watch">🖼️ Living Gallery</a>
   <a href="./mission.html" class="btn-watch">📜 Our Mission</a>
 </nav>
 
