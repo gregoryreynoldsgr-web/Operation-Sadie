@@ -1,1 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sadie Winters • YouTube Shorts</title>
+  <style>
+    :root {
+      --bg: #0b0b0e;
+      --text: #f6f6f8;
+      --accent: #8bd3ff;
+    }
+
+    html, body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    .wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 6px 0 16px;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: .3px;
+    }
+
+    .tag {
+      color: var(--accent);
+      font-size: .95rem;
+    }
+
+    nav a.btn-watch {
+      display: inline-block;
+      padding: .55rem 1rem;
+      border-radius: 9999px;
+      background: #111;
+      color: #fff;
+      font-weight: 600;
+      margin-left: 8px;
+      text-decoration: none;
+      transition: transform .08s ease, opacity .2s ease;
+    }
+
+    nav a.btn-watch:hover {
+      opacity: .9;
+      transform: translateY(-1px);
+    }
+
+    .shorts-grid {
+      display: grid;
+      gap: 14px;
+      justify-items: center;
+      margin-top: 20px;
+    }
+
+    /* 2-column grid on mobile, 4-column on wider screens */
+    @media (max-width: 640px) {
+      .shorts-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 641px) {
+      .shorts-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    iframe {
+      width: 100%;
+      height: 220px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: .9rem;
+      margin: 28px 0 10px;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">SADIE WINTERS</div>
+      <div class="tag">The Official Site of the Obsessed</div>
+      <nav>
+        <a href="./shorts.html" class="btn-watch">▶️ YouTube Shorts</a>
+        <a href="./videos.html" class="btn-watch">🎬 Watch Music Videos</a>
+        <a href="./gallery.html" class="btn-watch">🖼️ Living Gallery</a>
+        <a href="./mission.html" class="btn-watch">📜 Our Mission</a>
+      </nav>
+    </header>
+
+    <div class="shorts-grid">
+      <!-- Short #1 -->
+      <iframe src="https://www.youtube.com/embed/eXUtAzRyzmY"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+      </iframe>
+
+      <!-- Short #2 -->
+      <iframe src="https://www.youtube.com/embed/WGYO_E0JZaQ"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+      </iframe>
+    </div>
+
+    <footer>
+      © 2025 SadieWinters.net — The Official Site of the Obsessed
+    </footer>
+  </div>
+</body>
+</html>
 
