@@ -78,9 +78,15 @@ html,body{
 .page-background::after { right:0; }
 @keyframes sidePulse{ from{opacity:.25} to{opacity:.55} }
 
-header{display:flex;justify-content:space-between;align-items:center;margin:6px 0 16px}
-.logo{font-weight:800;letter-spacing:.3px}
-.tag{color:var(--muted);font-size:.95rem}
+header{
+  display:flex;
+  flex-direction: column;   /* stack logo + nav */
+  align-items: center;      /* center horizontally */
+  gap: 8px;
+  text-align: center;
+  margin: 6px 0 16px;
+}
+
 
 /* ---- Full-screen hero ---- */
 .hero{
@@ -290,38 +296,26 @@ nav .btn-watch + .btn-watch { margin-left: 8px; }
 <div class="sadie-sig">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-    .sadie-sig svg{display:block}
-    .sadie-sig .s-stroke,.sadie-sig .s-fill{
-      font-family:'Great Vibes',cursive; font-size:64px;
+    .sadie-sig {
+      font-family: 'Great Vibes', cursive;
+      font-size: 64px;   /* same size as Mission */
+      color: #fff;       /* white text for contrast */
+      text-align: center;
     }
-    /* slower draw */
-    .sadie-sig .s-stroke{
-      fill:none; stroke:#fff; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round;
-      stroke-dasharray:2000; stroke-dashoffset:2000; animation:sadDraw 2.6s ease-out forwards;
-    }
-    /* fade to solid when stroke finishes */
-    .sadie-sig .s-fill{ fill:#fff; opacity:0; animation:sadReveal .3s linear forwards 2.6s; }
-    @keyframes sadDraw{ to{ stroke-dashoffset:0 } }
-    @keyframes sadReveal{ to{ opacity:1 } }
   </style>
-
   <a href="/" aria-label="Sadie Winters">
-    <svg viewBox="0 0 600 160" width="260" height="64" role="img">
-      <text class="s-stroke" x="18" y="84">Sadie Winters</text>
-      <text class="s-fill"   x="18" y="84">Sadie Winters</text>
-    </svg>
+    Sadie Winters
   </a>
 </div>
 
-      <div>
-        <div class="logo">SADIE WINTERS</div>
-        <div class="tag">The Official Site of the Obsessed</div>
-      </div>
-      <nav>
+    
+<nav>
+  <a href="./shorts.html" class="btn-watch">▶️ YouTube Shorts</a>
+  <a href="./videos.html" class="btn-watch">🎬 Watch Music Videos</a>
+  <a href="./gallery.html" class="btn-watch">🖼️ Living Gallery</a>
   <a href="./mission.html" class="btn-watch">📜 Our Mission</a>
-  <a href="./videos.html" class="btn-watch" aria-label="Watch Music Videos">🎬 Watch Music Videos</a>
-  <a href="./gallery.html" class="btn-watch" aria-label="Living Gallery">🖼️ Living Gallery</a>
-      </nav>
+</nav>
+
 
     </header>
 
