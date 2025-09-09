@@ -2,61 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-ZD15GWTT54');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZD15GWTT54');
+  </script>
 
   <title>Sadie Winters — Living Gallery</title>
   <meta name="description" content="Sadie Winters Living Gallery — immersive video moments." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
-    :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;}
-    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;}
-    .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px}
+    :root {
+      --bg:#0b0b0e;
+      --text:#f6f6f8;
+      --accent:#8bd3ff;
+    }
+    html,body {
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+    }
+    .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px}
+
+    header{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      text-align:center;
+      margin:6px 0 16px;
+    }
+    .sadie-sig{
+      font-family:'Great Vibes',cursive;
+      font-size:64px;
+      color:var(--accent);
+      line-height:1;
+    }
+    .sadie-sig a{
+      color:inherit;
+      text-decoration:none;
+    }
+    nav{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:4px;
+    }
+    nav a.btn{
+      display:inline-block;
+      padding:.5rem 1rem;
+      border-radius:9999px;
+      background:#111;
+      color:#fff;
+      font-weight:600;
+      text-decoration:none;
+      transition:transform .08s ease,opacity .2s ease;
+    }
+    nav a.btn:hover{opacity:.9;transform:translateY(-1px)}
+
     .gallery-video{max-width:90vw;max-height:78vh;border-radius:20px;box-shadow:0 8px 20px rgba(0,0,0,.6);display:block;background:#000}
     .caption{margin-top:.8rem;font-size:1.05rem;color:#ccc;text-align:center}
-    .controls{margin-top:14px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:center;color:var(--muted)}
+    .controls{margin-top:14px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:center;color:#ccc}
     fieldset{border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:6px 10px}
     legend{padding:0 6px;color:#ddd;font-size:.9rem}
     label{margin:0 10px 0 4px;cursor:pointer}
-    input[type="radio"]{accent-color:#8bd3ff;transform:translateY(1px)}
+    input[type="radio"]{accent-color:var(--accent);transform:translateY(1px)}
     .hint{margin-top:8px;font-size:.85rem;color:#9aa0a6;text-align:center}
     .btn{border:1px solid rgba(255,255,255,.18);background:#111;color:#fff;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
     .btn:hover{opacity:.95}
-.coming-soon {
-  margin-top: 18px;
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: #f0f0f5;
-  text-align: center;
-  padding: 12px 20px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #3a6073, #16222a);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.45);
-  opacity: 0;                          /* start hidden */
-  transition: opacity 90s ease;         /* true 90s fade */
-}
-/* visible state */
-.coming-soon.show {
-  opacity: 1;
-}
 
+    .coming-soon {
+      margin-top:18px;
+      font-size:1.05rem;
+      font-weight:500;
+      color:#f0f0f5;
+      text-align:center;
+      padding:12px 20px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#3a6073,#16222a);
+      box-shadow:0 4px 14px rgba(0,0,0,0.45);
+      opacity:0;
+      transition:opacity 90s ease;
+    }
+    .coming-soon.show {opacity:1;}
 
-
+    footer{color:#8c8c9b;text-align:center;margin:28px 0 10px;font-size:.9rem}
   </style>
+  <!-- Import Great Vibes font -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="wrap">
-     <nav style="margin-bottom:20px; text-align:center;">
-        <a href="./index.html" class="btn" style="text-decoration:none;">🏠 Return Home</a>
-  </nav>
- 
+    <header>
+      <div class="sadie-sig">
+        <a href="./index.html" aria-label="Sadie Winters">Sadie Winters</a>
+      </div>
+      <nav>
+        <a href="./index.html" class="btn">🏠 Back to Home</a>
+        <a href="./shorts.html" class="btn">▶️ YouTube Shorts</a>
+        <a href="./videos.html" class="btn">🎬 Watch Music Videos</a>
+        <a href="./gallery.html" class="btn">🖼️ Living Gallery</a>
+        <a href="./mission.html" class="btn">📜 Our Mission</a>
+      </nav>
+    </header>
+
     <video id="galleryVideo" class="gallery-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
       <source src="./sadie-beach.mp4" type="video/mp4" />
       Your browser does not support the video tag.
@@ -81,17 +136,17 @@
         <label for="view-full">Fullscreen</label>
       </fieldset>
 
-      <!-- optional quick actions -->
       <button id="playPause" class="btn" type="button">Pause</button>
     </div>
 
-        <div class="hint">Tip: browsers require an interaction to enable audio. Choose “Sound: On” and tap/click once.</div>
+    <div class="hint">Tip: browsers require an interaction to enable audio. Choose “Sound: On” and tap/click once.</div>
 
-        <div class="coming-soon">
-          Keep checking in. So much more to come...
-        </div>
-        </div>
+    <div class="coming-soon">Keep checking in. So much more to come...</div>
 
+    <footer>
+      © 2025 SadieWinters.net — <em>The Official Site of the Obsessed</em>
+    </footer>
+  </div>
 
   <script>
     const v = document.getElementById('galleryVideo');
@@ -101,26 +156,21 @@
     const viewFull = document.getElementById('view-full');
     const playPauseBtn = document.getElementById('playPause');
 
-    // Click directly on the video to pause/play
-v.addEventListener('click', async () => {
-  if (v.paused) {
-    await v.play().catch(()=>{});
-    playPauseBtn.textContent = 'Pause';
-  } else {
-    v.pause();
-    playPauseBtn.textContent = 'Play';
-  }
-});
+    v.addEventListener('click', async () => {
+      if (v.paused) {
+        await v.play().catch(()=>{});
+        playPauseBtn.textContent = 'Pause';
+      } else {
+        v.pause();
+        playPauseBtn.textContent = 'Play';
+      }
+    });
 
-
-    // iOS/Autoplay quirks
     v.muted = true; v.playsInline = true;
-
     const tryPlay = () => v.play().catch(()=>{});
     tryPlay();
     document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) tryPlay(); });
 
-    // First user interaction can toggle sound if "On" is selected
     const oneTimeEnableAudio = () => {
       if (soundOn.checked) {
         v.muted = false;
@@ -133,17 +183,12 @@ v.addEventListener('click', async () => {
     window.addEventListener('click', oneTimeEnableAudio, { once:true });
     window.addEventListener('touchstart', oneTimeEnableAudio, { once:true, passive:true });
 
-    // Sound radios
     soundOn.addEventListener('change', () => {
-      // Requires a user gesture to actually unmute on many browsers
       v.muted = false;
       tryPlay();
     });
-    soundOff.addEventListener('change', () => {
-      v.muted = true;
-    });
+    soundOff.addEventListener('change', () => { v.muted = true; });
 
-    // View radios (fullscreen/window)
     const enterFS = async () => {
       if (document.fullscreenElement) return;
       try {
@@ -161,16 +206,11 @@ v.addEventListener('click', async () => {
     viewFull.addEventListener('change', enterFS);
     viewWin.addEventListener('change', exitFS);
 
-    // Keep radios in sync if user exits fullscreen via Esc
     document.addEventListener('fullscreenchange', () => {
-      if (document.fullscreenElement) {
-        viewFull.checked = true;
-      } else {
-        viewWin.checked = true;
-      }
+      if (document.fullscreenElement) viewFull.checked = true;
+      else viewWin.checked = true;
     });
 
-    // Play/Pause button
     playPauseBtn.addEventListener('click', async () => {
       if (v.paused) {
         await v.play().catch(()=>{});
@@ -180,15 +220,13 @@ v.addEventListener('click', async () => {
         playPauseBtn.textContent = 'Play';
       }
     });
-  </script>
-  <script>
-  // After DOM is ready, wait 1s, then start a 10s fade
-  window.addEventListener('DOMContentLoaded', () => {
-    const banner = document.querySelector('.coming-soon');
-    if (!banner) return;
-    setTimeout(() => banner.classList.add('show'), 1000); // 1s delay, then fade 10s
-  });
-</script>
 
+    // Fade-in for "coming soon"
+    window.addEventListener('DOMContentLoaded', () => {
+      const banner = document.querySelector('.coming-soon');
+      if (!banner) return;
+      setTimeout(() => banner.classList.add('show'), 1000);
+    });
+  </script>
 </body>
 </html>
