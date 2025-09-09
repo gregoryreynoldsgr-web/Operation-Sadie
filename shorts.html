@@ -29,19 +29,31 @@
 
     header {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;   /* stack sig + nav */
       align-items: center;
+      gap: 8px;
+      text-align: center;
       margin: 6px 0 16px;
     }
 
-    .logo {
-      font-weight: 800;
-      letter-spacing: .3px;
+    /* Sadie signature */
+    .sadie-sig {
+      font-family: 'Great Vibes', cursive;
+      font-size: 64px;
+      color: var(--accent);     /* same blue as index */
+      line-height: 1;
+    }
+    .sadie-sig a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .tag {
-      color: var(--accent);
-      font-size: .95rem;
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
     }
 
     nav a.btn-watch {
@@ -51,7 +63,6 @@
       background: #111;
       color: #fff;
       font-weight: 600;
-      margin-left: 8px;
       text-decoration: none;
       transition: transform .08s ease, opacity .2s ease;
     }
@@ -94,13 +105,19 @@
       color: var(--accent);
     }
   </style>
+
+  <!-- Import Great Vibes font for the signature -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div class="logo">SADIE WINTERS</div>
-      <div class="tag">The Official Site of the Obsessed</div>
+      <div class="sadie-sig">
+        <a href="/" aria-label="Sadie Winters">Sadie Winters</a>
+      </div>
+
       <nav>
+        <a href="./index.html" class="btn-watch">🏠 Back to Home</a>
         <a href="./shorts.html" class="btn-watch">▶️ YouTube Shorts</a>
         <a href="./videos.html" class="btn-watch">🎬 Watch Music Videos</a>
         <a href="./gallery.html" class="btn-watch">🖼️ Living Gallery</a>
@@ -123,9 +140,8 @@
     </div>
 
     <footer>
-      © 2025 SadieWinters.net — The Official Site of the Obsessed
+      © 2025 SadieWinters.net — <em>The Official Site of the Obsessed</em>
     </footer>
   </div>
 </body>
 </html>
-
