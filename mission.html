@@ -3,198 +3,230 @@
 <head>
   <meta charset="utf-8">
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZD15GWTT54');
+  </script>
 
-  gtag('config', 'G-ZD15GWTT54');
-</script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Our Mission — Sadie Winters</title>
-  <meta name="description" content="Our mission: Virtually born. Human touched. Celebrating music as humanity’s forever art.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <title>Sadie Winters — Living Gallery</title>
+  <meta name="description" content="Sadie Winters Living Gallery — immersive video moments." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
-    :root{
-      --bg:#0b0b0e; --text:#f6f6f8; --muted:#b6b6c5; --accent:#8bd3ff;
-      --panel:rgba(255,255,255,.02); --panelBorder:rgba(255,255,255,.06);
+    :root {
+      --bg:#0b0b0e;
+      --text:#f6f6f8;
+      --accent:#8bd3ff;
     }
-    html,body{margin:0;background:var(--bg);color:var(--text);
-      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;}
-
-    /* page glow background */
-    .page-bg{position:fixed;inset:0;z-index:-1;background:#0b0b0e;}
-    .page-bg::before,.page-bg::after{
-      content:"";position:absolute;inset:-20%;
-      background:radial-gradient(circle at 15% 30%, rgba(139,211,255,.18), rgba(0,0,0,0) 45%),
-                 radial-gradient(circle at 85% 70%, rgba(139,211,255,.10), rgba(0,0,0,0) 40%);
-      filter:blur(20px);animation:floaty 18s ease-in-out infinite alternate;
+    html,body {
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
     }
-    @keyframes floaty{from{transform:translateY(-10px)}to{transform:translateY(10px)}}
+    .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px}
 
-    .wrap{max-width:980px;margin:0 auto;padding:22px}
-
-    header{display:flex;justify-content:space-between;align-items:center;margin:4px 0 18px}
-    .logo{font-weight:800;letter-spacing:.3px}
-    .tag{color:var(--muted);font-size:.95rem}
-    nav .btn{display:inline-block;padding:.55rem 1rem;border-radius:9999px;background:#111;color:#fff;
-      font-weight:600;text-decoration:none;transition:transform .08s ease,opacity .2s ease}
-    nav .btn:hover{opacity:.9;transform:translateY(-1px)}
-    nav .btn + .btn{margin-left:8px}
-
- /* HERO: taller frame, keep head size steady */
-.hero{
-  position:relative;
-  overflow:hidden;
-  border-radius:18px;
-  height:min(58vh,600px);     /* more room at the bottom */
-  display:grid;
-  place-items:center;
-  background:
-    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 65%, rgba(0,0,0,.65) 100%),
-    url("./hero.jpg") 50% 18% / cover no-repeat; /* nudged lower */
-  box-shadow:0 12px 30px rgba(0,0,0,.45), inset 0 0 0 1px var(--panelBorder);
-  animation:slowZoom 22s ease-in-out forwards;
-}
-
-/* Gentle zoom, doesn’t balloon the head */
-@keyframes slowZoom{
-  0%{transform:scale(1)}
-  100%{transform:scale(1.03)}  /* was 1.06 */
-}
-
-/* Optional: keep it tighter on small screens */
-@media (max-width: 640px){
-  .hero{ height:min(44vh,420px); }
-}
-
-/* soft top vignette for readability */
-.hero::after{
-  content:""; position:absolute; inset:0;
-  background:radial-gradient(100% 60% at 50% 0%, rgba(0,0,0,.28), transparent 60%);
-  pointer-events:none;
-}
-
-/* center title + tagline and boost legibility */
-.hero .title,
-.hero .sub{
-  max-width:820px;
-  margin:0 auto;
-  text-align:center;
-}
-.hero h1{
-  margin:0 0 .35rem;
-  font-size:clamp(28px,5vw,44px);
-  letter-spacing:.2px;
-  text-shadow:0 2px 20px rgba(0,0,0,.45);
-}
-.hero .sub{
-  margin:.25rem 0 0;
-  color:var(--muted);
-  font-size:clamp(15px,2.6vw,17px);
-  font-weight:500;
-  text-shadow:0 1px 12px rgba(0,0,0,.35);
-}
-
+    header{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      text-align:center;
+      margin:6px 0 16px;
     }
-    @keyframes slowZoom{0%{transform:scale(1)}100%{transform:scale(1.06)}}
-    .hero .title{display:flex;align-items:center;gap:10px;padding:0 16px;text-align:center}
-    .hero .scroll{font-size:28px}
-    .hero h1{margin:0;font-size:clamp(26px,4.6vw,42px);letter-spacing:.2px}
-    .hero .sub{
-      margin:.35rem 0 0;
-      color:var(--muted);
-      font-size:clamp(14px,2.4vw,16px);
-      text-align:center;   /* <-- add this */
+    .sadie-sig{
+      font-family:'Great Vibes',cursive;
+      font-size:64px;
+      color:var(--accent);
+      line-height:1;
     }
-
-
-    /* mission panel */
-    .panel{
-      background:var(--panel); border:1px solid var(--panelBorder); border-radius:18px;
-      padding:26px 22px; margin:18px 0 26px; position:relative;
-      box-shadow:0 10px 28px rgba(0,0,0,.35);
+    .sadie-sig a{
+      color:inherit;
+      text-decoration:none;
     }
-    .panel::before{
-      content:""; position:absolute; left:18px; right:18px; top:-1px; height:2px; border-radius:2px;
-      background:linear-gradient(90deg, rgba(139,211,255,.0), rgba(139,211,255,.9), rgba(139,211,255,.0));
-      mask:linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
-      animation:glide 2.8s ease-in-out infinite;
+    nav{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:4px;
     }
-    @keyframes glide{0%{transform:translateX(-25%)}100%{transform:translateX(25%)}}
-
-    .statement{font-size:1.05rem}
-    .statement p{margin:0 0 14px;max-width:74ch}
-    .quote{
-      margin:14px 0 18px; padding:14px 16px; border-left:3px solid var(--accent);
-      background:rgba(139,211,255,.06); border-radius:10px;
-      font-size:1.02rem; color:#eaf6ff;
+    nav a.btn{
+      display:inline-block;
+      padding:.5rem 1rem;
+      border-radius:9999px;
+      background:#111;
+      color:#fff;
+      font-weight:600;
+      text-decoration:none;
+      transition:transform .08s ease,opacity .2s ease;
     }
+    nav a.btn:hover{opacity:.9;transform:translateY(-1px)}
 
-    .sig{display:flex;align-items:center;gap:12px;margin-top:8px}
-    .sig .mark{font-family:'Great Vibes',cursive;font-size:36px;opacity:.9}
-    .sig .dash{height:1px;flex:1;background:linear-gradient(90deg,rgba(255,255,255,.0),rgba(255,255,255,.4))}
+    .gallery-video{max-width:90vw;max-height:78vh;border-radius:20px;box-shadow:0 8px 20px rgba(0,0,0,.6);display:block;background:#000}
+    .caption{margin-top:.8rem;font-size:1.05rem;color:#ccc;text-align:center}
+    .controls{margin-top:14px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:center;color:#ccc}
+    fieldset{border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:6px 10px}
+    legend{padding:0 6px;color:#ddd;font-size:.9rem}
+    label{margin:0 10px 0 4px;cursor:pointer}
+    input[type="radio"]{accent-color:var(--accent);transform:translateY(1px)}
+    .hint{margin-top:8px;font-size:.85rem;color:#9aa0a6;text-align:center}
+    .btn{border:1px solid rgba(255,255,255,.18);background:#111;color:#fff;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
+    .btn:hover{opacity:.95}
 
-    footer{color:#8c8c9b;text-align:center;margin:26px 0 10px;font-size:.9rem}
-
-    @media (max-width:640px){
-      nav{display:flex;gap:8px;flex-wrap:wrap}
-      .panel{padding:22px 18px}
+    .coming-soon {
+      margin-top:18px;
+      font-size:1.05rem;
+      font-weight:500;
+      color:#f0f0f5;
+      text-align:center;
+      padding:12px 20px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#3a6073,#16222a);
+      box-shadow:0 4px 14px rgba(0,0,0,0.45);
+      opacity:0;
+      transition:opacity 90s ease;
     }
+    .coming-soon.show {opacity:1;}
+
+    footer{color:#8c8c9b;text-align:center;margin:28px 0 10px;font-size:.9rem}
   </style>
+  <!-- Import Great Vibes font -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="page-bg"></div>
   <div class="wrap">
     <header>
-      <div>
-        <div class="logo">SADIE WINTERS</div>
-        <div class="tag">The Official Site of the Obsessed</div>
+      <div class="sadie-sig">
+        <a href="./index.html" aria-label="Sadie Winters">Sadie Winters</a>
       </div>
       <nav>
-        <a href="/index.html" class="btn">🏠 Home</a>
-        <a href="/videos.html" class="btn">🎬 Watch Videos</a>
+        <a href="./index.html" class="btn">🏠 Back to Home</a>
+        <a href="./shorts.html" class="btn">▶️ YouTube Shorts</a>
+        <a href="./videos.html" class="btn">🎬 Watch Music Videos</a>
+        <a href="./gallery.html" class="btn">🖼️ Living Gallery</a>
+        <a href="./mission.html" class="btn">📜 Our Mission</a>
       </nav>
     </header>
 
-    <section class="hero" role="img" aria-label="Soft neon glow background">
-      <div>
-        <div class="title">
-          <div class="scroll">📜</div>
-          <h1>Our Mission</h1>
-        </div>
-        <p class="sub">      Virtually born. Human touched. </p>
-      </div>
-    </section>
+    <video id="galleryVideo" class="gallery-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
+      <source src="./sadie-beach.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
 
-    <main class="panel">
-      <div class="statement">
-        <p>We believe music will always belong to humanity.</p>
-        <p>Artificial Intelligence is not here to replace the artists we love — it’s here to carry their echoes forward.</p>
+    <div class="caption">Sadie — Ocean Dreams</div>
 
-        <div class="quote">When an AI-born song makes your heart ache, or lifts you up the way an anthem from the 80s did, that’s not a machine taking over. That’s the voice of every musician who has ever moved us — from the classics of our childhood to the legends of today — living on through new technology.</div>
+    <div class="controls">
+      <fieldset>
+        <legend>Sound</legend>
+        <input type="radio" name="sound" id="sound-off" value="off" checked>
+        <label for="sound-off">Off</label>
+        <input type="radio" name="sound" id="sound-on" value="on">
+        <label for="sound-on">On</label>
+      </fieldset>
 
-        <p>The greatest AI songs are tributes. They celebrate the riffs, the lyrics, the soul, and the sweat of the artists who built the soundtrack of our lives.</p>
-        <p><strong>Sadie Winters</strong> is our symbol of that celebration — <em>virtually born, human touched</em>, and forever connected to the music that made us who we are.</p>
-        <p>This site exists to welcome you into that world — not to fear the future, but to embrace it, together.</p>
+      <fieldset>
+        <legend>View</legend>
+        <input type="radio" name="view" id="view-window" value="window" checked>
+        <label for="view-window">Window</label>
+        <input type="radio" name="view" id="view-full" value="full">
+        <label for="view-full">Fullscreen</label>
+      </fieldset>
 
-        <div class="sig">
-          <div class="mark">Sadie Winters</div>
-          <div class="dash"></div>
-        </div>
-      </div>
-    </main>
+      <button id="playPause" class="btn" type="button">Pause</button>
+    </div>
+
+    <div class="hint">Tip: browsers require an interaction to enable audio. Choose “Sound: On” and tap/click once.</div>
+
+    <div class="coming-soon">Keep checking in. So much more to come...</div>
 
     <footer>
-  © 2025 SadieWinters.net — The Official Site of the Obsessed  
-  <br>
-  <a href="./index.html" style="color:var(--accent);text-decoration:none;font-weight:600;">
-    ⬅ Return to Home
-  </a>
-</footer>
-
+      © 2025 SadieWinters.net — <em>The Official Site of the Obsessed</em>
+    </footer>
   </div>
+
+  <script>
+    const v = document.getElementById('galleryVideo');
+    const soundOn  = document.getElementById('sound-on');
+    const soundOff = document.getElementById('sound-off');
+    const viewWin  = document.getElementById('view-window');
+    const viewFull = document.getElementById('view-full');
+    const playPauseBtn = document.getElementById('playPause');
+
+    v.addEventListener('click', async () => {
+      if (v.paused) {
+        await v.play().catch(()=>{});
+        playPauseBtn.textContent = 'Pause';
+      } else {
+        v.pause();
+        playPauseBtn.textContent = 'Play';
+      }
+    });
+
+    v.muted = true; v.playsInline = true;
+    const tryPlay = () => v.play().catch(()=>{});
+    tryPlay();
+    document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) tryPlay(); });
+
+    const oneTimeEnableAudio = () => {
+      if (soundOn.checked) {
+        v.muted = false;
+        v.volume = 1.0;
+        tryPlay();
+      }
+      window.removeEventListener('click', oneTimeEnableAudio);
+      window.removeEventListener('touchstart', oneTimeEnableAudio);
+    };
+    window.addEventListener('click', oneTimeEnableAudio, { once:true });
+    window.addEventListener('touchstart', oneTimeEnableAudio, { once:true, passive:true });
+
+    soundOn.addEventListener('change', () => {
+      v.muted = false;
+      tryPlay();
+    });
+    soundOff.addEventListener('change', () => { v.muted = true; });
+
+    const enterFS = async () => {
+      if (document.fullscreenElement) return;
+      try {
+        if (v.requestFullscreen) await v.requestFullscreen();
+        else if (v.webkitRequestFullscreen) v.webkitRequestFullscreen();
+      } catch(e) {}
+    };
+    const exitFS = async () => {
+      if (!document.fullscreenElement) return;
+      try {
+        if (document.exitFullscreen) await document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      } catch(e) {}
+    };
+    viewFull.addEventListener('change', enterFS);
+    viewWin.addEventListener('change', exitFS);
+
+    document.addEventListener('fullscreenchange', () => {
+      if (document.fullscreenElement) viewFull.checked = true;
+      else viewWin.checked = true;
+    });
+
+    playPauseBtn.addEventListener('click', async () => {
+      if (v.paused) {
+        await v.play().catch(()=>{});
+        playPauseBtn.textContent = 'Pause';
+      } else {
+        v.pause();
+        playPauseBtn.textContent = 'Play';
+      }
+    });
+
+    // Fade-in for "coming soon"
+    window.addEventListener('DOMContentLoaded', () => {
+      const banner = document.querySelector('.coming-soon');
+      if (!banner) return;
+      setTimeout(() => banner.classList.add('show'), 1000);
+    });
+  </script>
 </body>
 </html>
