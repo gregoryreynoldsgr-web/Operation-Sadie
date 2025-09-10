@@ -8,9 +8,10 @@
     :root {
       --bg: #0b0b0e;
       --text: #f6f6f8;
-      --accent: #ff4fa3;  /* HOT PINK accent */
+      --accent: #8bd3ff;  /* blue for site */
       --muted: #b6b6c2;
       --card: #111318;
+      --hotpink: #ff4fa3; /* special just for the number */
     }
 
     html, body {
@@ -101,8 +102,8 @@
     /* 9:16 responsive embed wrapper for Shorts */
     .short {
       width: 100%;
-      max-width: 240px;           /* nice compact columns on desktop */
-      aspect-ratio: 9 / 16;       /* keep vertical-short shape */
+      max-width: 240px;           
+      aspect-ratio: 9 / 16;       
       border-radius: 10px;
       overflow: hidden;
       background: #111;
@@ -124,8 +125,8 @@
     .counter-card{
       width: 100%;
       max-width: 920px;
-      background: linear-gradient(180deg, rgba(255,79,163,.12), rgba(255,79,163,.04));
-      border: 1px solid rgba(255,79,163,.35);
+      background: linear-gradient(180deg, rgba(139,211,255,.10), rgba(139,211,255,.02));
+      border: 1px solid rgba(139,211,255,.25);
       border-radius: 16px;
       padding: 18px 18px 14px;
       box-shadow: 0 10px 30px rgba(0,0,0,.25);
@@ -149,7 +150,7 @@
       line-height: 1.1;
       margin: 6px 0 4px;
       letter-spacing: .02em;
-      color: var(--accent);
+      color: var(--hotpink);  /* ONLY the number is pink */
       text-shadow: 0 2px 18px rgba(255,79,163,.35);
     }
     .counter-updated{
@@ -165,13 +166,12 @@
       color: var(--accent);
     }
 
-    /* Reduce motion for folks who prefer it */
     @media (prefers-reduced-motion: reduce) {
       .counter-number { transition: none !important; }
     }
   </style>
 
-  <!-- Import Great Vibes font for the signature -->
+  <!-- Import Great Vibes font -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -242,7 +242,7 @@
   </div>
 
   <script>
-    // Animated counter (starts when scrolled into view)
+    // Animated counter
     (function(){
       const el = document.getElementById('viewsCounter');
       if (!el) return;
@@ -253,14 +253,13 @@
       function format(n){ return n.toLocaleString(); }
 
       function animate(){
-        const duration = 1200; // ms
+        const duration = 1200;
         const start = performance.now();
         const startVal = 0;
         const change = target - startVal;
 
         function tick(now){
           const t = Math.min(1, (now - start) / duration);
-          // easeOutCubic
           const eased = 1 - Math.pow(1 - t, 3);
           const val = Math.round(startVal + change * eased);
           el.textContent = format(val);
