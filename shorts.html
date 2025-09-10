@@ -102,8 +102,8 @@
     /* 9:16 responsive embed wrapper for Shorts */
     .short {
       width: 100%;
-      max-width: 240px;           
-      aspect-ratio: 9 / 16;       
+      max-width: 240px;
+      aspect-ratio: 9 / 16;
       border-radius: 10px;
       overflow: hidden;
       background: #111;
@@ -152,7 +152,12 @@
       letter-spacing: .02em;
       color: var(--hotpink);  /* ONLY the number is pink */
       text-shadow: 0 2px 18px rgba(255,79,163,.35);
+      will-change: transform;
     }
+    /* subtle victory pop when the count finishes */
+    @keyframes pop { 0%{transform:scale(1)} 60%{transform:scale(1.04)} 100%{transform:scale(1)} }
+    .counter-number.pop { animation: pop .35s ease-out 1; }
+
     .counter-updated{
       margin-top: 2px;
       font-size: .9rem;
@@ -167,7 +172,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .counter-number { transition: none !important; }
+      .counter-number { transition: none !important; animation: none !important; }
     }
   </style>
 
@@ -242,7 +247,7 @@
   </div>
 
   <script>
-    // Animated counter
+    // Animated counter with slow quintic easing + subtle victory pop
     (function(){
       const el = document.getElementById('viewsCounter');
       if (!el) return;
@@ -253,17 +258,26 @@
       function format(n){ return n.toLocaleString(); }
 
       function animate(){
-        const duration = 1200;
+        const duration = 1200; // keep it slow and prestigious
         const start = performance.now();
         const startVal = 0;
         const change = target - startVal;
 
         function tick(now){
           const t = Math.min(1, (now - start) / duration);
-          const eased = 1 - Math.pow(1 - t, 3);
+          // easeOutQuint for an extra slow finish
+          const eased = 1 - Math.pow(1 - t, 5);
           const val = Math.round(startVal + change * eased);
           el.textContent = format(val);
-          if (t < 1) requestAnimationFrame(tick);
+
+          if (t < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            // land exactly on target, then do a tiny "pop"
+            el.textContent = format(target);
+            el.classList.add('pop');
+            setTimeout(()=>el.classList.remove('pop'), 400);
+          }
         }
         requestAnimationFrame(tick);
       }
