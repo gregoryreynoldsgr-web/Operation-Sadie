@@ -10,6 +10,7 @@
       --text: #f6f6f8;
       --accent: #8bd3ff;
       --muted: #b6b6c2;
+      --card: #111318;
     }
 
     html, body {
@@ -114,11 +115,59 @@
       display: block;
     }
 
+    /* Counter section */
+    .counter-wrap{
+      margin: 28px auto 6px;
+      display: grid;
+      place-items: center;
+    }
+    .counter-card{
+      width: 100%;
+      max-width: 920px;
+      background: linear-gradient(180deg, rgba(139,211,255,.10), rgba(139,211,255,.02));
+      border: 1px solid rgba(139,211,255,.25);
+      border-radius: 16px;
+      padding: 18px 18px 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      text-align: center;
+    }
+    .counter-kicker{
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .78rem;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .counter-line{
+      font-size: 1.05rem;
+      color: var(--text);
+      opacity: .95;
+    }
+    .counter-number{
+      font-weight: 900;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.1;
+      margin: 6px 0 4px;
+      letter-spacing: .02em;
+      color: var(--accent);
+      text-shadow: 0 2px 18px rgba(139,211,255,.25);
+    }
+    .counter-updated{
+      margin-top: 2px;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
     footer {
       text-align: center;
       font-size: .9rem;
       margin: 28px 0 10px;
       color: var(--accent);
+    }
+
+    /* Reduce motion for folks who prefer it */
+    @media (prefers-reduced-motion: reduce) {
+      .counter-number { transition: none !important; }
     }
   </style>
 
@@ -171,9 +220,71 @@
       </div>
     </div>
 
+    <!-- ===== Shorts View Counter ===== -->
+    <section class="counter-wrap" aria-label="YouTube Shorts View Count">
+      <div class="counter-card">
+        <div class="counter-kicker">SadieWinters.net</div>
+        <div class="counter-line">
+          Our homegrown YouTube Shorts have already received
+        </div>
+
+        <!-- EDIT THIS NUMBER ONLY -->
+        <div id="viewsCounter" class="counter-number" data-target="3300">0</div>
+
+        <div class="counter-line">total views — and counting.</div>
+        <div class="counter-updated">Last updated: <span contenteditable="true">Sep 10, 2025</span></div>
+      </div>
+    </section>
+
     <footer>
       © 2025 SadieWinters.net — <em>The Official Site of the Obsessed</em>
     </footer>
   </div>
+
+  <script>
+    // Animated counter (starts when scrolled into view)
+    (function(){
+      const el = document.getElementById('viewsCounter');
+      if (!el) return;
+
+      const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function format(n){ return n.toLocaleString(); }
+
+      function animate(){
+        const duration = 1200; // ms
+        const start = performance.now();
+        const startVal = 0;
+        const change = target - startVal;
+
+        function tick(now){
+          const t = Math.min(1, (now - start) / duration);
+          // easeOutCubic
+          const eased = 1 - Math.pow(1 - t, 3);
+          const val = Math.round(startVal + change * eased);
+          el.textContent = format(val);
+          if (t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+
+      if (prefersReduced){
+        el.textContent = format(target);
+        return;
+      }
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting){
+            animate();
+            io.disconnect();
+          }
+        });
+      }, { threshold: 0.35 });
+
+      io.observe(el);
+    })();
+  </script>
 </body>
 </html>
