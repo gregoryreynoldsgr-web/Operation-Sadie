@@ -18,8 +18,10 @@
   <style>
     :root { --bg:#0b0b0e; --text:#f6f6f8; --accent:#8bd3ff; --muted:#b6b6c2; --card:#111318; --hotpink:#ff4fa3; }
 
-    html,body{ margin:0; background:var(--bg); color:var(--text);
-      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif; line-height:1.5; }
+    html,body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif; line-height:1.5;
+    }
 
     .wrap{ max-width:1000px; margin:0 auto; padding:20px; position:relative; z-index:1; }
 
@@ -27,40 +29,48 @@
     .sadie-sig{ font-family:'Great Vibes',cursive; font-size:64px; color:var(--accent); line-height:1; margin-top:2px; }
     .sadie-sig a{ color:inherit; text-decoration:none; }
 
-    .tagline{ font-weight:800; font-size:1.05rem; letter-spacing:.2px; color:var(--text); max-width:820px; margin:4px auto 0; }
+    .tagline{
+      font-weight:800; font-size:1.05rem; letter-spacing:.2px; color:var(--text);
+      max-width:820px; margin:4px auto 0;
+    }
 
     nav{ display:flex; justify-content:center; flex-wrap:wrap; gap:8px; margin-top:8px; }
-    nav a.btn-watch{ display:inline-block; padding:.55rem 1rem; border-radius:9999px; background:#111; color:#fff; font-weight:600; text-decoration:none; transition:transform .08s ease, opacity .2s ease; }
+    nav a.btn-watch{
+      display:inline-block; padding:.55rem 1rem; border-radius:9999px; background:#111; color:#fff;
+      font-weight:600; text-decoration:none; transition:transform .08s ease, opacity .2s ease;
+    }
     nav a.btn-watch:hover{ opacity:.9; transform:translateY(-1px); }
 
+    /* Grid for vertical 9:16 cards */
     .shorts-grid{ display:grid; gap:14px; justify-items:center; margin-top:18px; }
-    @media (max-width:640px){ .shorts-grid{ grid-template-columns:repeat(2,1fr);} }
-    @media (min-width:641px){ .shorts-grid{ grid-template-columns:repeat(4,1fr);} }
+    @media (max-width:640px){ .shorts-grid{ grid-template-columns:repeat(2,1fr); } }
+    @media (min-width:641px){ .shorts-grid{ grid-template-columns:repeat(4,1fr); } }
 
-    .short{ position:relative; width:100%; max-width:240px; aspect-ratio:9/16;
-      border-radius:10px; overflow:hidden; background:#111; box-shadow:0 2px 14px rgba(0,0,0,.35); }
+    /* 9:16 card */
+    .short{
+      position:relative; width:100%; max-width:240px; aspect-ratio:9/16;
+      border-radius:10px; overflow:hidden; background:#111; box-shadow:0 2px 14px rgba(0,0,0,.35);
+    }
+    .short iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
 
-    .short iframe{ width:100%; height:100%; border:0; display:block; pointer-events:none; } /* disabled until tap */
-
-    .tap-cover{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-      background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.35)); cursor:pointer; user-select:none; }
-    .tap-btn{ padding:.6rem 1rem; border-radius:9999px; background:#000; color:#fff; font-weight:800;
-      box-shadow:0 6px 20px rgba(0,0,0,.35); }
-    .tap-cover.hide{ display:none; }
-
-    /* Android/Desktop fullscreen */
-    .short:fullscreen,.short:-webkit-full-screen{ width:100vw!important; height:100vh!important; max-width:none!important; border-radius:0; }
-    .short:fullscreen iframe,.short:-webkit-full-screen iframe{ width:100%; height:100%; }
-
+    /* Counter */
     .counter-wrap{ margin:28px auto 6px; display:grid; place-items:center; }
-    .counter-card{ width:100%; max-width:920px; background:linear-gradient(180deg,rgba(139,211,255,.10),rgba(139,211,255,.02));
-      border:1px solid rgba(139,211,255,.25); border-radius:16px; padding:18px 18px 14px; box-shadow:0 10px 30px rgba(0,0,0,.25); text-align:center; }
+    .counter-card{
+      width:100%; max-width:920px; background:linear-gradient(180deg, rgba(139,211,255,.10), rgba(139,211,255,.02));
+      border:1px solid rgba(139,211,255,.25); border-radius:16px; padding:18px 18px 14px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25); text-align:center;
+    }
     .counter-kicker{ text-transform:uppercase; letter-spacing:.16em; font-size:.78rem; color:var(--muted); margin-bottom:2px; }
     .counter-line{ font-size:1.05rem; color:var(--text); opacity:.95; }
-    .counter-number{ font-weight:900; font-size:clamp(2rem,5vw,3.2rem); line-height:1.1; margin:6px 0 4px; letter-spacing:.02em; color:var(--hotpink);
-      text-shadow:0 2px 18px rgba(255,79,163,.35); will-change:transform; }
-    @keyframes pop{ 0%{transform:scale(1);text-shadow:0 2px 18px rgba(255,79,163,.35);}
-      60%{transform:scale(1.25);text-shadow:0 6px 32px rgba(255,79,163,.60);} 100%{transform:scale(1);text-shadow:0 2px 18px rgba(255,79,163,.35);} }
+    .counter-number{
+      font-weight:900; font-size:clamp(2rem,5vw,3.2rem); line-height:1.1; margin:6px 0 4px; letter-spacing:.02em;
+      color:var(--hotpink); text-shadow:0 2px 18px rgba(255,79,163,.35); will-change:transform;
+    }
+    @keyframes pop{
+      0%{transform:scale(1);text-shadow:0 2px 18px rgba(255,79,163,.35);}
+      60%{transform:scale(1.25);text-shadow:0 6px 32px rgba(255,79,163,.60);}
+      100%{transform:scale(1);text-shadow:0 2px 18px rgba(255,79,163,.35);}
+    }
     .counter-number.pop{ animation:pop .45s ease-out 1; }
     .counter-updated{ margin-top:2px; font-size:.9rem; color:var(--muted); }
 
@@ -87,31 +97,23 @@
     </header>
 
     <div class="shorts-grid">
-
       <!-- Short #1 -->
-      <div class="short" data-video-id="eXUtAzRyzmY">
-        <div class="tap-cover"><div class="tap-btn">▶ Play Full Screen</div></div>
+      <div class="short">
         <iframe
+          src="https://www.youtube.com/embed/eXUtAzRyzmY"
           title="Sadie Winters — Evolution"
-          src="https://www.youtube.com/embed/eXUtAzRyzmY?rel=0&modestbranding=1&loop=1&playlist=eXUtAzRyzmY&controls=1&fs=1&enablejsapi=1&origin=&playsinline=1"
           allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write"
-          loading="lazy"
-          referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen></iframe>
       </div>
 
       <!-- Short #2 -->
-      <div class="short" data-video-id="WGYO_E0JZaQ">
-        <div class="tap-cover"><div class="tap-btn">▶ Play Full Screen</div></div>
+      <div class="short">
         <iframe
+          src="https://www.youtube.com/embed/WGYO_E0JZaQ"
           title="Sadie Winters — Walking Away"
-          src="https://www.youtube.com/embed/WGYO_E0JZaQ?rel=0&modestbranding=1&loop=1&playlist=WGYO_E0JZaQ&controls=1&fs=1&enablejsapi=1&origin=&playsinline=1"
           allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write"
-          loading="lazy"
-          referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen></iframe>
       </div>
-
     </div>
 
     <!-- ===== Shorts View Counter ===== -->
@@ -129,56 +131,52 @@
   </div>
 
   <script>
-    // Detect iOS (iPhone/iPad)
+    // iOS detection
     const isiOS = /iP(hone|ad|od)/i.test(navigator.userAgent);
 
-    // Ensure iframe origin param matches current site
-    document.querySelectorAll('.short iframe').forEach(ifr => {
-      const u = new URL(ifr.src, location.href);
-      u.searchParams.set('origin', location.origin);
-
-      // iOS trick: force native fullscreen by disabling inline playback
-      // (YouTube will pop into its own fullscreen player on play)
-      if (isiOS) {
-        u.searchParams.set('playsinline', '0');
-      } else {
-        u.searchParams.set('playsinline', '1');
-      }
-
-      ifr.src = u.toString();
+    // Normalize YouTube iframes just like on the Videos page
+    document.querySelectorAll('.short iframe').forEach(el => {
+      try {
+        const u = new URL(el.src, location.href);
+        if (u.hostname.includes('youtube.com')) {
+          u.searchParams.set('rel', '0');
+          u.searchParams.set('modestbranding', '1');
+          u.searchParams.set('enablejsapi', '1');
+          u.searchParams.set('origin', location.origin);
+          // iOS → native fullscreen on play; others stay inline
+          u.searchParams.set('playsinline', isiOS ? '0' : '1');
+          // keep fullscreen capability
+          u.searchParams.set('fs', '1');
+          el.src = u.toString();
+          el.classList.add('yt-embed');
+        }
+      } catch(_) {}
     });
 
-    // Minimal postMessage helper for YouTube Iframe API
-    function ytPlay(iframe){
-      iframe.contentWindow?.postMessage(JSON.stringify({
-        event:'command', func:'playVideo', args:[]
-      }), '*');
-    }
+    // Load the YouTube Iframe API once
+    (function () {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(tag);
+    })();
 
-    async function goFullscreen(el){
-      if (isiOS) return; // iOS uses native fullscreen via playsinline=0
-      const anyEl = el;
-      if (anyEl.requestFullscreen) return anyEl.requestFullscreen();
-      if (anyEl.webkitRequestFullscreen) return anyEl.webkitRequestFullscreen();
-    }
+    // Optional: on "ended", stop the video (and you can add any UX you want)
+    let ytPlayers = [];
+    window.onYouTubeIframeAPIReady = function () {
+      document.querySelectorAll('iframe.yt-embed').forEach((el, i) => {
+        ytPlayers[i] = new YT.Player(el, {
+          events: {
+            onStateChange: function (e) {
+              if (e.data === YT.PlayerState.ENDED) {
+                try { e.target.stopVideo(); } catch(_) {}
+              }
+            }
+          }
+        });
+      });
+    };
 
-    // First tap: capture → (iOS: rely on native fullscreen) (others: requestFullscreen)
-    document.querySelectorAll('.short').forEach(wrapper => {
-      const cover = wrapper.querySelector('.tap-cover');
-      const iframe = wrapper.querySelector('iframe');
-
-      cover?.addEventListener('click', async () => {
-        cover.classList.add('hide');
-        iframe.style.pointerEvents = 'auto';
-
-        try { await goFullscreen(wrapper); } catch(e){ /* ignore */ }
-
-        // Start playback (counts as user gesture)
-        ytPlay(iframe);
-      }, { passive: true });
-    });
-
-    // Counter animation
+    // Counter animation (unchanged)
     (function(){
       const el = document.getElementById('viewsCounter'); if(!el) return;
       const target = parseInt(el.getAttribute('data-target'),10)||0;
@@ -192,7 +190,8 @@
           const eased=1-Math.pow(1-t,5);
           const val=Math.round(from+change*eased);
           el.textContent=fmt(val);
-          if(t<1) requestAnimationFrame(tick); else { el.textContent=fmt(target); el.classList.add('pop'); setTimeout(()=>el.classList.remove('pop'),500); }
+          if(t<1) requestAnimationFrame(tick);
+          else { el.textContent=fmt(target); el.classList.add('pop'); setTimeout(()=>el.classList.remove('pop'),500); }
         }
         requestAnimationFrame(tick);
       }
