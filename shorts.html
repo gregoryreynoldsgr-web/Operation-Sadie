@@ -97,7 +97,16 @@
     </header>
 
     <div class="shorts-grid">
-      <!-- Short #1 -->
+      <!-- Short #1 (NEW) -->
+      <div class="short">
+        <iframe
+          src="https://www.youtube.com/embed/kN1Bqh2oXhM"
+          title="Sadie Winters — Resurrection"
+          allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write"
+          allowfullscreen></iframe>
+      </div>
+
+      <!-- Short #2 -->
       <div class="short">
         <iframe
           src="https://www.youtube.com/embed/eXUtAzRyzmY"
@@ -106,7 +115,7 @@
           allowfullscreen></iframe>
       </div>
 
-      <!-- Short #2 -->
+      <!-- Short #3 -->
       <div class="short">
         <iframe
           src="https://www.youtube.com/embed/WGYO_E0JZaQ"
@@ -134,7 +143,7 @@
     // iOS detection
     const isiOS = /iP(hone|ad|od)/i.test(navigator.userAgent);
 
-    // Normalize YouTube iframes just like on the Videos page
+    // Normalize YouTube iframes
     document.querySelectorAll('.short iframe').forEach(el => {
       try {
         const u = new URL(el.src, location.href);
@@ -143,9 +152,7 @@
           u.searchParams.set('modestbranding', '1');
           u.searchParams.set('enablejsapi', '1');
           u.searchParams.set('origin', location.origin);
-          // iOS → native fullscreen on play; others stay inline
           u.searchParams.set('playsinline', isiOS ? '0' : '1');
-          // keep fullscreen capability
           u.searchParams.set('fs', '1');
           el.src = u.toString();
           el.classList.add('yt-embed');
@@ -160,7 +167,7 @@
       document.head.appendChild(tag);
     })();
 
-    // Optional: on "ended", stop the video (and you can add any UX you want)
+    // Stop video on end
     let ytPlayers = [];
     window.onYouTubeIframeAPIReady = function () {
       document.querySelectorAll('iframe.yt-embed').forEach((el, i) => {
@@ -176,7 +183,7 @@
       });
     };
 
-    // Counter animation (unchanged)
+    // Counter animation
     (function(){
       const el = document.getElementById('viewsCounter'); if(!el) return;
       const target = parseInt(el.getAttribute('data-target'),10)||0;
