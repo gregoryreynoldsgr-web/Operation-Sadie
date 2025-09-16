@@ -2,15 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-ZD15GWTT54');
+    gtag('js', new Date()); gtag('config', 'G-ZD15GWTT54');
   </script>
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sadie Winters — The Official Site of the Obsessed</title>
   <meta name="description" content="One small step for AI...one giant leap for mankind.">
@@ -18,25 +15,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
-    /* ---- Hide UI-only radio inputs (fix for mobile) ---- */
     .input-visually-hidden{
       position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;
       padding:0!important;border:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;
       clip-path:inset(50%)!important;white-space:nowrap!important;opacity:0!important;pointer-events:none;
     }
-
     :root{ --bg:#0b0b0e; --text:#f6f6f8; --muted:#b6b6c5; --accent:#8bd3ff; }
-
-    html,body{
-      margin:0; background:var(--bg); color:var(--text);
-      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-    }
-
+    html,body{ margin:0; background:var(--bg); color:var(--text);
+      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif; }
     .wrap{ max-width:1000px; margin:0 auto; padding:20px; position:relative; z-index:1; }
 
-    /* ---- Side edge glow (separate background layer) ---- */
     .page-background{ position:fixed; inset:0; background:#0b0b0e; z-index:0; }
-    .page-background::before, .page-background::after{
+    .page-background::before,.page-background::after{
       content:""; position:absolute; top:0; bottom:0; width:15%;
       background:radial-gradient(circle at center, rgba(139,211,255,.30) 0%, rgba(139,211,255,0) 80%);
       pointer-events:none; animation:sidePulse 8s ease-in-out infinite alternate;
@@ -44,114 +34,78 @@
     .page-background::before{ left:0; } .page-background::after{ right:0; }
     @keyframes sidePulse{ from{opacity:.25} to{opacity:.55} }
 
-    header{
-      display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center;
-      margin:6px 0 16px;
-    }
-
-    /* ---- Sadie signature ---- */
-    .sadie-sig{
-      font-family:'Great Vibes',cursive; font-size:64px; color:var(--accent); line-height:1; text-align:center;
-    }
+    header{ display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; margin:6px 0 16px; }
+    .sadie-sig{ font-family:'Great Vibes',cursive; font-size:64px; color:var(--accent); line-height:1; }
     .sadie-sig a{ color:inherit; text-decoration:none; }
-
     nav{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:4px; }
-    .btn-watch{
-      display:inline-block; padding:.55rem 1rem; border-radius:9999px; background:#111; color:#fff;
-      font-weight:600; text-decoration:none; transition:transform .08s ease, opacity .2s ease;
-    }
+    .btn-watch{ display:inline-block; padding:.55rem 1rem; border-radius:9999px; background:#111; color:#fff;
+      font-weight:600; text-decoration:none; transition:transform .08s ease, opacity .2s ease; }
     .btn-watch:hover{ opacity:.9; transform:translateY(-1px); }
 
-    /* ---- Scrolling Thank-You Banner ---- */
-    .marquee-wrap{
-      position:relative; width:100%; overflow:hidden; margin:8px 0 6px;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,.45));
-    }
+    /* ----- Scrolling Thank-You Banner (no mid-loop snap) ----- */
+    .marquee-wrap{ position:relative; width:100%; overflow:hidden; margin:8px 0 6px;
+      filter:drop-shadow(0 2px 8px rgba(0,0,0,.45)); }
     .marquee-line{
-      display:flex; align-items:center; gap:48px; white-space:nowrap;
-      will-change:transform; animation: marquee 22s linear infinite;
-      font-family:'Great Vibes',cursive; color:var(--accent);
-      font-size:clamp(22px, 3.2vw, 34px); line-height:1.1; padding:6px 0;
+      display:inline-block; white-space:nowrap; font-family:'Great Vibes',cursive;
+      color:var(--accent); font-size:clamp(22px,3.2vw,34px); line-height:1.1; padding:6px 0;
+      will-change:transform; animation:slideLeft 18s linear infinite;
+      transform:translateX(100%);  /* start just off-screen right */
     }
-    /* duplicate content for seamless loop */
-    .marquee-line > span{ padding-left:48px; }
-    @keyframes marquee{
-      from{ transform:translateX(0); }
-      to  { transform:translateX(-50%); }
+    @keyframes slideLeft{
+      0%   { transform:translateX(100%); }   /* fully off right */
+      100% { transform:translateX(-100%); }  /* fully off left, then reset */
     }
-    /* Respect reduced motion */
-    @media (prefers-reduced-motion:reduce){
-      .marquee-line{ animation:none; }
-    }
+    @media (prefers-reduced-motion:reduce){ .marquee-line{ animation:none; transform:none; } }
 
-    /* ---- Full-screen hero ---- */
     figure{ margin:0; }
-    .hero{
-      position:relative; height:100vh; border-radius:0; overflow:hidden;
-      box-shadow:0 12px 30px rgba(0,0,0,.45); z-index:1; background:#000;
-    }
+    .hero{ position:relative; height:100vh; overflow:hidden; box-shadow:0 12px 30px rgba(0,0,0,.45); z-index:1; background:#000; }
     .hero::before{
       content:""; position:absolute; inset:0; pointer-events:none; z-index:2;
       background:
-        radial-gradient(200px 160px at 0    0,    rgba(0,0,0,.45), transparent 70%),
-        radial-gradient(200px 160px at 100% 0,    rgba(0,0,0,.18), transparent 70%),
-        radial-gradient(220px 180px at 0    100%, rgba(0,0,0,.18), transparent 70%),
+        radial-gradient(200px 160px at 0 0, rgba(0,0,0,.45), transparent 70%),
+        radial-gradient(200px 160px at 100% 0, rgba(0,0,0,.18), transparent 70%),
+        radial-gradient(220px 180px at 0 100%, rgba(0,0,0,.18), transparent 70%),
         radial-gradient(220px 180px at 100% 100%, rgba(0,0,0,.25), transparent 70%);
     }
     @media (min-width:1025px){
-      .hero::before{
-        background:
-          radial-gradient(260px 200px at 0    0,    rgba(0,0,0,.45), transparent 70%),
-          radial-gradient(260px 200px at 100% 0,    rgba(0,0,0,.18), transparent 70%),
-          radial-gradient(300px 220px at 0    100%, rgba(0,0,0,.18), transparent 70%),
-          radial-gradient(300px 220px at 100% 100%, rgba(0,0,0,.25), transparent 70%);
-      }
+      .hero::before{ background:
+        radial-gradient(260px 200px at 0 0, rgba(0,0,0,.45), transparent 70%),
+        radial-gradient(260px 200px at 100% 0, rgba(0,0,0,.18), transparent 70%),
+        radial-gradient(300px 220px at 0 100%, rgba(0,0,0,.18), transparent 70%),
+        radial-gradient(300px 220px at 100% 100%, rgba(0,0,0,.25), transparent 70%); }
     }
-    .hero video{
-      position:relative; z-index:1; width:100%; height:100%;
-      object-fit:cover; object-position:center top; transform-origin:center;
-      animation:slowZoom 20s ease-in-out forwards;
-    }
+    .hero video{ position:relative; z-index:1; width:100%; height:100%;
+      object-fit:cover; object-position:center top; transform-origin:center; animation:slowZoom 20s ease-in-out forwards; }
     @keyframes slowZoom{ 0%{transform:scale(1)} 100%{transform:scale(1.15)} }
-
-    /* Phones */
     @media (max-width:640px){
       .hero{ height:100svh; }
       .hero video{ object-fit:cover; object-position:center 40%; animation:none; transform:none; }
     }
-    /* Tablets portrait */
     @media (hover:none) and (pointer:coarse) and (min-width:641px) and (max-width:1024px){
       .hero{ height:88svh; }
       .hero video{ object-fit:cover; object-position:center 32%; animation:none!important; transform:none!important; }
     }
-    /* Tablets landscape */
     @media (hover:none) and (pointer:coarse) and (min-width:1025px) and (max-width:1366px) and (orientation:landscape){
       .hero{ height:82svh; }
       .hero video{ object-fit:cover; object-position:center 38%; animation:none!important; transform:none!important; }
     }
-    /* Desktop show entire frame with bars if needed */
     @media (min-width:1025px){
       .hero{ height:88vh; }
       .hero video{ object-fit:contain; object-position:center center; animation:none!important; transform:none!important; }
     }
 
-    /* Caption */
-    .caption{
-      position:absolute; left:0; right:0; bottom:0; z-index:3;
+    .caption{ position:absolute; left:0; right:0; bottom:0; z-index:3;
       background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 60%,rgba(0,0,0,.7) 100%);
-      padding:18px 20px;
-    }
+      padding:18px 20px; }
     h1{ margin:0; font-size:clamp(22px,4vw,38px); }
     p{ margin:.4rem 0 0; color:#e6e6ee; max-width:70ch; }
 
     footer{ color:#8c8c9b; text-align:center; margin:28px 0 10px; font-size:.9rem; }
 
-    /* Layering sanity */
     .page-background{ z-index:-1; }
-    .wrap, .hero, .caption{ z-index:1; }
+    .wrap,.hero,.caption{ z-index:1; }
     .caption{ z-index:3; }
 
-    /* Mobile nav tweaks */
     @media (max-width:640px){
       nav{ justify-content:center; gap:8px; }
       .btn-watch{ font-size:.95rem; padding:.45rem .8rem; }
@@ -160,13 +114,11 @@
   </style>
 </head>
 <body>
-  <!-- background glow layer -->
   <div class="page-background"></div>
 
   <div class="wrap">
     <header>
       <div class="sadie-sig"><a href="/" aria-label="Sadie Winters">Sadie Winters</a></div>
-
       <nav>
         <a href="./shorts.html" class="btn-watch">▶️ YouTube Shorts</a>
         <a href="./videos.html" class="btn-watch">🎬 Watch Music Videos</a>
@@ -178,8 +130,7 @@
     <!-- Scrolling banner JUST ABOVE the hero -->
     <div class="marquee-wrap" aria-label="International visitors announcement">
       <div class="marquee-line">
-        <span>Thank you so much to all of you that have visited me from 32 countries around the world! ❤️</span>
-        <span>Thank you so much to all of you that have visited me from 32 countries around the world! ❤️</span>
+        ❤️ Thank you so much to all of you that have visited me from 32 countries around the world! ❤️
       </div>
     </div>
 
@@ -187,7 +138,6 @@
       <video id="landingVideo" autoplay muted playsinline webkit-playsinline loop preload="auto">
         <source src="./landing.mp4" type="video/mp4" />
       </video>
-
       <figcaption class="caption">
         <h1>the voice you can’t forget.</h1>
         <p>Virtually born. Human touched. One small step for AI…one giant leap for mankind.</p>
@@ -198,7 +148,6 @@
   </div>
 
   <script>
-    // Auto-play reliability (esp. iOS)
     document.addEventListener('DOMContentLoaded', function () {
       const v = document.getElementById('landingVideo');
       if (!v) return;
