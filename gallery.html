@@ -13,11 +13,17 @@
   </script>
 
   <title>Sadie Winters — Living Gallery</title>
-  <meta name="description" content="Sadie Winters Living Gallery — immersive video moments." />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Sadie Winters Living Gallery — immersive video moments.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    :root{ --bg:#0b0b0e; --text:#f6f6f8; --muted:#b6b6c5; --accent:#8bd3ff; --purple-1:#8a4fff; --purple-2:#6f2fe6; }
+    :root{
+      --bg:#0b0b0e; --text:#f6f6f8; --muted:#b6b6c5; --accent:#8bd3ff;
+      --ink:#111; --card:#0e0f12;
+      --purple-1:#8a4fff; --purple-2:#6f2fe6;
+      --teal:#12e3b3; --mint:#ccfff2; --emerald:#13c48f;
+      --shadow:0 8px 22px rgba(0,0,0,.35);
+    }
     html,body{
       margin:0; background:var(--bg); color:var(--text);
       font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
@@ -25,19 +31,24 @@
     }
     .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px}
 
-    /* Top bar: ONLY Back to Home, left-aligned */
+    /* Top bar: Back to Home (upper-left), black badge + colorful house */
     .topbar{width:100%;max-width:1100px;display:flex;justify-content:flex-start;margin:6px 0 10px}
     .back-home{
-      display:inline-flex;align-items:center;gap:6px;padding:.55rem .95rem;border-radius:9999px;
-      background:linear-gradient(180deg,var(--purple-1),var(--purple-2));
-      color:#fff;font-weight:700;font-size:.95rem;text-decoration:none;
-      box-shadow:0 6px 20px rgba(111,47,230,.18);
-      transition:transform .12s ease, box-shadow .12s ease;
+      display:inline-flex;align-items:center;gap:.6rem;padding:.55rem .95rem;border-radius:9999px;
+      background:var(--ink); color:#fff; font-weight:700; font-size:.95rem; text-decoration:none;
+      border:1px solid rgba(255,255,255,0.06); box-shadow:var(--shadow);
+      transition:transform .12s ease, opacity .2s ease, box-shadow .12s ease;
     }
-    .back-home:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(111,47,230,.25)}
-    .back-home svg{width:18px;height:18px;fill:#fff}
+    .back-home:hover{ opacity:.95; transform:translateY(-1px); box-shadow:0 10px 26px rgba(0,0,0,.45); }
 
-    /* Signature + Tagline (The Official AI Music HQ) */
+    .home-badge{
+      width:26px; height:26px; border-radius:7px;
+      background:#000; display:grid; place-items:center; flex-shrink:0;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 0 0 1px rgba(0,0,0,.6);
+    }
+    .home-badge svg{ width:17px; height:17px; display:block; filter: drop-shadow(0 0 6px rgba(18,227,179,.35)); }
+
+    /* Signature + Tagline */
     header{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;margin:0 0 16px}
     .sadie-sig{font-family:'Great Vibes',cursive;font-size:64px;color:var(--accent);line-height:1}
     .sadie-sig a{color:inherit;text-decoration:none}
@@ -61,7 +72,7 @@
     .coming-soon{
       margin-top:18px;font-size:1.05rem;font-weight:500;color:#f0f0f5;text-align:center;
       padding:12px 20px;border-radius:14px;background:linear-gradient(135deg,#3a6073,#16222a);
-      box-shadow:0 4px 14px rgba(0,0,0,.45);opacity:0;transition:opacity 90s ease;
+      box-shadow:0 4px 14px rgba(0,0,0,.45);opacity:0;transition:opacity 1.2s ease;
     }
     .coming-soon.show{opacity:1;}
 
@@ -75,10 +86,30 @@
 <body>
   <div class="wrap">
 
-    <!-- ONLY Back to Home (left) -->
+    <!-- Back to Home (upper-left) -->
     <div class="topbar">
       <a href="./index.html" class="back-home" aria-label="Back to Home">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 10v10h7v-6h6v6h7V10L12 3z"/></svg>
+        <span class="home-badge" aria-hidden="true">
+          <!-- Inline SVG: teal→purple roof, mint window, emerald door, subtle glow -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" aria-hidden="true">
+            <defs>
+              <linearGradient id="roofGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#12e3b3"/>
+                <stop offset="1" stop-color="#8a4fff"/>
+              </linearGradient>
+              <linearGradient id="wallStroke" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#8bd3ff" stop-opacity=".9"/>
+                <stop offset="1" stop-color="#12e3b3" stop-opacity=".9"/>
+              </linearGradient>
+            </defs>
+            <path d="M3 11L12 4l9 7" fill="url(#roofGrad)"/>
+            <path d="M6 10.8V19c0 .55.45 1 1 1h3v-5h4v5h3c.55 0 1-.45 1-1v-8.2L12 6.7 6 10.8z"
+                  fill="#ffffff" stroke="url(#wallStroke)" stroke-width=".9"/>
+            <rect x="11.25" y="14.5" width="1.5" height="4" rx=".35" fill="#13c48f"/>
+            <rect x="7.8" y="13.4" width="2" height="2" rx=".25" fill="#ccfff2"/>
+            <rect x="6" y="20.2" width="12" height=".8" rx=".4" fill="#12e3b3" opacity=".6"/>
+          </svg>
+        </span>
         Back to Home
       </a>
     </div>
@@ -90,13 +121,13 @@
     </header>
 
     <video id="galleryVideo" class="gallery-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
-      <source src="./sadie-beach.mp4" type="video/mp4" />
+      <source src="./sadie-beach.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
     <div class="caption">Sadie — Ocean Dreams</div>
 
-    <div class="controls">
+    <div class="controls" role="group" aria-label="Playback controls">
       <fieldset>
         <legend>Sound</legend>
         <input type="radio" name="sound" id="sound-off" value="off" checked>
@@ -113,12 +144,12 @@
         <label for="view-full">Fullscreen</label>
       </fieldset>
 
-      <button id="playPause" class="btn" type="button">Pause</button>
+      <button id="playPause" class="btn" type="button" aria-pressed="false">Pause</button>
     </div>
 
     <div class="hint">Tip: browsers require an interaction to enable audio. Choose “Sound: On” and tap/click once.</div>
 
-    <div class="coming-soon">Keep checking in. So much more to come...</div>
+    <div class="coming-soon" id="comingSoon">Keep checking in. So much more to come...</div>
 
     <footer>© 2025 SadieWinters.net — The Official AI Music HQ</footer>
   </div>
@@ -130,13 +161,81 @@
     const viewWin  = document.getElementById('view-window');
     const viewFull = document.getElementById('view-full');
     const playPauseBtn = document.getElementById('playPause');
+    const coming = document.getElementById('comingSoon');
 
+    // Show "coming soon" after a short delay
+    setTimeout(() => coming.classList.add('show'), 900);
+
+    // Autoplay muted as a best-effort
+    v.muted = true; v.playsInline = true;
+    const tryPlay = () => v.play().catch(()=>{ /* ignore */ });
+    tryPlay();
+
+    // Click on video toggles play/pause
     v.addEventListener('click', async () => {
-      if (v.paused) { await v.play().catch(()=>{}); playPauseBtn.textContent = 'Pause'; }
-      else { v.pause(); playPauseBtn.textContent = 'Play'; }
+      if (v.paused) { await v.play().catch(()=>{}); playPauseBtn.textContent = 'Pause'; playPauseBtn.setAttribute('aria-pressed','false'); }
+      else { v.pause(); playPauseBtn.textContent = 'Play'; playPauseBtn.setAttribute('aria-pressed','true'); }
     });
 
-    v.muted = true; v.playsInline = true;
-    const tryPlay = () => v.play().catch(()=>{});
-    tryPlay();
-    document.addEventListener('visibilitych
+    // Play/Pause button
+    playPauseBtn.addEventListener('click', async () => {
+      if (v.paused) { await v.play().catch(()=>{}); playPauseBtn.textContent = 'Pause'; playPauseBtn.setAttribute('aria-pressed','false'); }
+      else { v.pause(); playPauseBtn.textContent = 'Play'; playPauseBtn.setAttribute('aria-pressed','true'); }
+    });
+
+    // Sound toggles
+    soundOn.addEventListener('change', async () => {
+      if (soundOn.checked) {
+        v.muted = false;
+        // Some browsers require interaction; if this came from a click, play will work.
+        await v.play().catch(()=>{ /* user gesture might be needed */ });
+      }
+    });
+    soundOff.addEventListener('change', () => {
+      if (soundOff.checked) {
+        v.muted = true;
+        // Keep looping silently
+        tryPlay();
+      }
+    });
+
+    // Fullscreen handling
+    async function enterFullscreen(el){
+      const anyEl = el;
+      if (anyEl.requestFullscreen) return anyEl.requestFullscreen();
+      if (anyEl.webkitRequestFullscreen) return anyEl.webkitRequestFullscreen(); // Safari
+      if (anyEl.webkitEnterFullscreen) return anyEl.webkitEnterFullscreen();     // iOS video
+    }
+    async function exitFullscreen(){
+      if (document.exitFullscreen) return document.exitFullscreen();
+      if (document.webkitExitFullscreen) return document.webkitExitFullscreen(); // Safari
+    }
+
+    viewFull.addEventListener('change', async () => {
+      if (!viewFull.checked) return;
+      try { await enterFullscreen(v); } catch(_) {}
+    });
+    viewWin.addEventListener('change', async () => {
+      if (!viewWin.checked) return;
+      try { await exitFullscreen(); } catch(_) {}
+    });
+
+    // Keep UI in sync if user escapes fullscreen via ESC
+    document.addEventListener('fullscreenchange', () => {
+      const fs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      if (!fs) viewWin.checked = true;
+    });
+
+    // Pause when tab hidden; resume (muted) when visible if sound is off
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        v.pause();
+        playPauseBtn.textContent = 'Play';
+        playPauseBtn.setAttribute('aria-pressed','true');
+      } else {
+        if (soundOff.checked) { v.muted = true; tryPlay(); playPauseBtn.textContent = 'Pause'; playPauseBtn.setAttribute('aria-pressed','false'); }
+      }
+    });
+  </script>
+</body>
+</html>
