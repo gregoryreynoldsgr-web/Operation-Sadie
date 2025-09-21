@@ -15,8 +15,8 @@
   <meta name="description" content="Sadie Winters Living Gallery — immersive video moments." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Import Great Vibes font -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <!-- Import Great Vibes font + Cinzel for tagline -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -26,13 +26,13 @@
       --muted: #b6b6c5;
       --purple-1: #8a4fff;
       --purple-2: #6f2fe6;
-      --nav-height: 48px;
+      --nav-height: 54px; /* slightly taller for second-look */
     }
 
     html,body{
       margin:0;
       height:100%;
-      background:var(--bg);
+      background:linear-gradient(180deg,#050507 0%, #0b0b0e 40%);
       color:var(--text);
       font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;
       -webkit-font-smoothing:antialiased;
@@ -48,102 +48,133 @@
       box-sizing:border-box;
     }
 
-    /* ===== header/nav spacing + stacking fix ===== */
+    /* header + signature */
     header{
+      width:100%;
+      max-width:1100px;
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:10px;
-      text-align:center;
-      margin:6px 0 18px; /* extra bottom space so nav doesn't overlap hero */
-      width:100%;
-      max-width:1100px;
-      position:relative; /* allow z-index above hero */
-      z-index:30;
+      gap:6px;
+      margin-bottom:22px; /* extra spacing so nav doesn't crowd hero */
+      position:relative;
+      z-index:40;
     }
 
     .sadie-sig{
       font-family:'Great Vibes',cursive;
-      font-size:64px;
+      font-size:72px;         /* slightly larger */
       color:var(--accent);
       line-height:1;
       text-shadow:0 6px 24px rgba(0,0,0,.6);
+      margin-top:6px;
     }
     .sadie-sig a{ color:inherit; text-decoration:none; }
 
-    /* NAV: purple pill buttons with purple circular icons */
-    nav{
+    /* authoritative centered tagline under signature (small-caps) */
+    .ai-hq {
+      font-family: 'Cinzel', serif;
+      font-weight:700;
+      font-size:14px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      color:#ffffff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      margin-top:2px;
+      margin-bottom:10px;
+    }
+
+    /* nav wrap visually centered and spaced (matches your second screenshot) */
+    .nav-wrap{
+      width:100%;
       display:flex;
       justify-content:center;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:4px;
-      width:100%;
-      position:relative;
-      z-index:32; /* make sure nav sits above hero */
+      margin-top:6px;
+      margin-bottom:6px;
     }
+
+    nav{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
+      max-width:980px;
+      padding:6px 10px;
+    }
+
+    /* pill style tuned for the second screenshot */
     .nav-pill{
       display:inline-flex;
       align-items:center;
-      gap:10px;
-      padding:.55rem .95rem;
+      gap:12px;
+      padding:.7rem 1.25rem;
       border-radius:9999px;
       background: linear-gradient(180deg,var(--purple-1),var(--purple-2));
       color:#fff;
-      font-weight:700;
+      font-weight:800;
+      font-size:1rem;
       text-decoration:none;
       border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 8px 28px rgba(111,47,230,0.18), inset 0 -2px 0 rgba(0,0,0,0.12);
+      box-shadow:
+        0 18px 44px rgba(111,47,230,0.20),
+        inset 0 -4px 0 rgba(0,0,0,0.14);
       min-height: var(--nav-height);
       line-height:1;
       cursor:pointer;
-      transition: transform .12s cubic-bezier(.2,.9,.2,1), box-shadow .12s ease;
+      transform:translateZ(0);
+      transition: transform .14s cubic-bezier(.2,.9,.2,1), box-shadow .14s ease;
     }
-    .nav-pill:hover{ transform:translateY(-3px); box-shadow: 0 14px 36px rgba(111,47,230,0.22); }
+    .nav-pill:hover{
+      transform:translateY(-5px);
+      box-shadow:
+        0 26px 60px rgba(111,47,230,0.26),
+        inset 0 -4px 0 rgba(0,0,0,0.14);
+    }
 
-    /* icon circle left of label */
-    .nav-icon{
-      width:34px;
-      height:34px;
-      min-width:34px;
-      border-radius:50%;
+    /* small colored "chip" icon (square) like your second screenshot */
+    .nav-chip{
+      width:28px;
+      height:28px;
+      min-width:28px;
+      border-radius:6px;
       display:inline-grid;
       place-items:center;
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.12);
+      background: linear-gradient(180deg,#fff,#f3f3f3);
+      box-shadow: 0 6px 18px rgba(111,47,230,0.12);
+      font-size:14px;
+      line-height:1;
     }
-    .nav-icon svg{ width:18px; height:18px; display:block; fill: #fff; opacity:0.98; }
-    .nav-pill .nav-icon{ box-shadow:0 6px 18px rgba(111,47,230,0.16); background: linear-gradient(180deg, rgba(138,79,255,0.18), rgba(94,46,214,0.08)); }
+    /* Let emoji render inside the chip — keeps color and personality */
+    .nav-chip .emoji { font-size:14px; display:inline-block; transform:translateY(1px); }
 
-    @media (max-width:440px){
-      .nav-pill{ padding:.45rem .7rem; gap:8px; font-size:.95rem; }
-      .nav-icon{ width:28px; height:28px; min-width:28px; }
-      .nav-icon svg{ width:16px; height:16px; }
+    /* fallback smaller pills on very small widths */
+    @media (max-width:520px){
+      .nav-pill{ padding:.52rem .75rem; gap:8px; font-size:.95rem; min-height:44px; }
+      .nav-chip{ width:24px; height:24px; min-width:24px; font-size:12px; border-radius:6px; }
     }
 
-    /* ===== hero container (keeps hero behind header/nav) ===== */
+    /* hero wrapper sits behind header/nav */
     .hero {
-      margin-top: 8px;       /* clears header/nav */
-      padding-top: 6px;      /* extra clearance on small screens */
-      width: 100%;
-      max-width: 1100px;
-      z-index: 1;            /* behind header/nav */
+      width:100%;
+      max-width:1100px;
+      margin-top:8px;
+      z-index:1;
     }
 
-    /* Gallery video */
     .gallery-video{
       width:100%;
       height:min(78vh,640px);
       border-radius:20px;
-      box-shadow:0 8px 30px rgba(0,0,0,.6);
+      box-shadow:0 12px 36px rgba(0,0,0,.6);
       display:block;
       background:#000;
       object-fit:cover;
     }
-    .caption{
-      margin-top:.8rem;
+    figcaption.caption{
+      margin-top:.9rem;
       font-size:1.05rem;
-      color:#ccc;
+      color:#dcdfe6;
       text-align:center;
     }
 
@@ -209,75 +240,60 @@
     @media (max-width:640px){
       .sadie-sig{ font-size:48px; }
       .gallery-video{ height:48vh; border-radius:12px; }
-      .hero { padding-top: 12px; }
+      .ai-hq{ font-size:13px; letter-spacing:0.14em; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div class="sadie-sig">
-        <a href="./index.html" aria-label="Sadie Winters">Sadie Winters</a>
+      <div class="sadie-sig"><a href="./index.html" aria-label="Sadie Winters">Sadie Winters</a></div>
+
+      <!-- centered authoritative tagline -->
+      <div class="ai-hq" aria-hidden="false">THE OFFICIAL AI MUSIC HQ</div>
+
+      <!-- nav area wrapped for easy centering -->
+      <div class="nav-wrap">
+        <nav aria-label="Primary navigation">
+          <!-- Home -->
+          <a href="./index.html" class="nav-pill" aria-label="Back to Home">
+            <span class="nav-chip" aria-hidden="true"><span class="emoji">🏠</span></span>
+            <span>Home</span>
+          </a>
+
+          <!-- Shorts -->
+          <a href="./shorts.html" class="nav-pill" aria-label="YouTube Shorts">
+            <span class="nav-chip" aria-hidden="true"><span class="emoji">▶️</span></span>
+            <span>YouTube Shorts</span>
+          </a>
+
+          <!-- Watch Sadie Music Videos -->
+          <a href="./videos.html" class="nav-pill" aria-label="Watch Sadie Music Videos">
+            <span class="nav-chip" aria-hidden="true"><span class="emoji">🎬</span></span>
+            <span>Watch Sadie Music Videos</span>
+          </a>
+
+          <!-- Top AI -->
+          <a href="./top-ai.html" class="nav-pill" aria-label="Top AI Music Videos">
+            <span class="nav-chip" aria-hidden="true"><span class="emoji">🏆</span></span>
+            <span>Top AI Music Videos</span>
+          </a>
+
+          <!-- Living Gallery -->
+          <a href="./gallery.html" class="nav-pill" aria-label="Living Gallery">
+            <span class="nav-chip" aria-hidden="true"><span class="emoji">🖼️</span></span>
+            <span>Living Gallery</span>
+          </a>
+
+          <!-- Mission -->
+          <a href="./mission.html" class="nav-pill" aria-label="Our Mission">
+            <span class="nav-chip" aria-hidden="true"><span class="emoji">📜</span></span>
+            <span>Our Mission</span>
+          </a>
+        </nav>
       </div>
-
-      <nav aria-label="Primary navigation">
-        <!-- Home -->
-        <a href="./index.html" class="nav-pill" aria-label="Back to home">
-          <span class="nav-icon" aria-hidden="true">
-            <!-- Home icon -->
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.3 2 10v10.7A1 1 0 0 0 3 22h6v-7h4v7h6a1 1 0 0 0 1-1.3V10L12 3.3z"/></svg>
-          </span>
-          <span>Home</span>
-        </a>
-
-        <!-- Shorts -->
-        <a href="./shorts.html" class="nav-pill" aria-label="YouTube Shorts">
-          <span class="nav-icon" aria-hidden="true">
-            <!-- Play / shorts icon -->
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 2.5v19a1 1 0 0 0 1.53.86L20.6 13a1 1 0 0 0 0-1.72L5.53 1.64A1 1 0 0 0 4 2.5z"/></svg>
-          </span>
-          <span>Shorts</span>
-        </a>
-
-        <!-- Videos -->
-        <a href="./videos.html" class="nav-pill" aria-label="Watch Sadie Music Videos">
-          <span class="nav-icon" aria-hidden="true">
-            <!-- Film / video icon -->
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5c0-1.1.9-2 2-2h2v2H5v14h2v2H5c-1.1 0-2-.9-2-2V5zm14 0h2c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2h-2v-2h2V5h-2V3zM9 8h6v8H9z"/></svg>
-          </span>
-          <span>Watch Sadie Music Videos</span>
-        </a>
-
-        <!-- Top AI -->
-        <a href="./top-ai.html" class="nav-pill" aria-label="Top AI Music Videos">
-          <span class="nav-icon" aria-hidden="true">
-            <!-- Trophy / top icon -->
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 3h-2V1H8v2H6a1 1 0 0 0-1 1v3c0 2.8 2.2 5 5 5h2v4H9v2h6v-2h-4v-4h2c2.8 0 5-2.2 5-5V4a1 1 0 0 0-1-1z"/></svg>
-          </span>
-          <span>Top AI</span>
-        </a>
-
-        <!-- Gallery -->
-        <a href="./gallery.html" class="nav-pill" aria-label="Living Gallery">
-          <span class="nav-icon" aria-hidden="true">
-            <!-- Image icon -->
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14l4-4 3 3 5-5 4 4z"/></svg>
-          </span>
-          <span>Gallery</span>
-        </a>
-
-        <!-- Mission -->
-        <a href="./mission.html" class="nav-pill" aria-label="Our mission">
-          <span class="nav-icon" aria-hidden="true">
-            <!-- Scroll / mission icon -->
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h14v2H6v12h12v2H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/></svg>
-          </span>
-          <span>Mission</span>
-        </a>
-      </nav>
     </header>
 
-    <!-- hero wrapper so header/nav can float visually above if needed -->
     <figure class="hero" role="img" aria-label="Sadie Winters Living Gallery hero">
       <video id="galleryVideo" class="gallery-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="./hero.jpg">
         <source src="./sadie-beach.mp4" type="video/mp4" />
@@ -342,7 +358,7 @@
     document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) tryPlay(); });
 
     const oneTimeEnableAudio = () => {
-      if (soundOn.checked) {
+      if (soundOn && soundOn.checked) {
         v.muted = false;
         v.volume = 1.0;
         tryPlay();
@@ -353,11 +369,8 @@
     window.addEventListener('click', oneTimeEnableAudio, { once:true });
     window.addEventListener('touchstart', oneTimeEnableAudio, { once:true, passive:true });
 
-    soundOn.addEventListener('change', () => {
-      v.muted = false;
-      tryPlay();
-    });
-    soundOff.addEventListener('change', () => { v.muted = true; });
+    if (soundOn) soundOn.addEventListener('change', () => { v.muted = false; tryPlay(); });
+    if (soundOff) soundOff.addEventListener('change', () => { v.muted = true; });
 
     const enterFS = async () => {
       if (document.fullscreenElement) return;
@@ -373,12 +386,12 @@
         else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
       } catch(e) {}
     };
-    viewFull.addEventListener('change', enterFS);
-    viewWin.addEventListener('change', exitFS);
+    if (viewFull) viewFull.addEventListener('change', enterFS);
+    if (viewWin) viewWin.addEventListener('change', exitFS);
 
     document.addEventListener('fullscreenchange', () => {
-      if (document.fullscreenElement) viewFull.checked = true;
-      else viewWin.checked = true;
+      if (document.fullscreenElement && viewFull) viewFull.checked = true;
+      else if (viewWin) viewWin.checked = true;
     });
 
     playPauseBtn.addEventListener('click', async () => {
