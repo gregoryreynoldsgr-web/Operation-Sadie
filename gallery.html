@@ -15,19 +15,19 @@
   <meta name="description" content="Sadie Winters Living Gallery — immersive video moments." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Import Great Vibes font -->
+  <!-- Import Great Vibes + Cinzel -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg: #0b0b0e;
-      --text: #f6f6f8;
-      --accent: #8bd3ff;
-      --muted: #b6b6c5;
-      --purple-1: #8a4fff;
-      --purple-2: #6f2fe6;
-      --nav-height: 44px;
-      --site-max: 1100px;
+    :root{
+      --bg:#0b0b0e;
+      --text:#f6f6f8;
+      --accent:#8bd3ff;
+      --muted:#b6b6c5;
+      --purple-1:#8a4fff;
+      --purple-2:#6f2fe6;
+      --nav-height:44px;
+      --site-max:1100px;
     }
 
     html,body{
@@ -40,7 +40,6 @@
       -moz-osx-font-smoothing:grayscale;
     }
 
-    /* center page to match index/top-ai */
     .wrap{
       max-width:var(--site-max);
       margin:0 auto;
@@ -52,7 +51,6 @@
       box-sizing:border-box;
     }
 
-    /* header + stacking fix (nav above hero) */
     header{
       display:flex;
       flex-direction:column;
@@ -75,22 +73,17 @@
     }
     .sadie-sig a{ color:inherit; text-decoration:none; }
 
-    /* compact purple pills — match index/top-ai look */
+    /* compact single pill nav (matches index/top-ai) */
     nav{
-      display:flex;
-      gap:14px;
       width:100%;
       max-width:var(--site-max);
+      display:flex;
       justify-content:center;
-      /* prefer single row on wide screens; if too narrow allow horizontal scroll */
-      flex-wrap:nowrap;
-      overflow-x:auto;
-      -webkit-overflow-scrolling:touch;
-      padding-bottom:6px;
+      padding-top:6px;
       box-sizing:border-box;
+      z-index:45;
     }
 
-    /* compact pill */
     .nav-pill{
       display:inline-flex;
       align-items:center;
@@ -111,9 +104,9 @@
       transition: transform .12s cubic-bezier(.2,.9,.2,1), box-shadow .12s ease, opacity .12s ease;
     }
     .nav-pill:hover{ transform:translateY(-3px); box-shadow:0 12px 30px rgba(111,47,230,0.22); opacity:0.99; }
-    .nav-pill:focus{ outline:none; box-shadow: 0 12px 30px rgba(111,47,230,0.22), 0 0 0 4px rgba(138,79,255,0.12); }
+    .nav-pill:focus{ outline:none; box-shadow:0 12px 30px rgba(111,47,230,0.22), 0 0 0 4px rgba(138,79,255,0.12); }
 
-    /* icon circle matches index: 34x34, svg 18x18 */
+    /* icon circle exactly as on index/top-ai */
     .nav-icon{
       width:34px;
       height:34px;
@@ -127,10 +120,8 @@
     }
     .nav-icon svg{ width:18px; height:18px; display:block; fill:#fff; opacity:0.98; }
 
-    /* keep nav visually consistent with hero (nav sits above) */
-    .hero { margin-top: 8px; width:100%; max-width:var(--site-max); z-index:10; }
+    .hero { margin-top:8px; width:100%; max-width:var(--site-max); z-index:10; }
 
-    /* gallery video */
     .gallery-video{
       width:100%;
       height:min(78vh,640px);
@@ -140,14 +131,8 @@
       background:#000;
       object-fit:cover;
     }
-    .caption{
-      margin-top:.8rem;
-      font-size:1.05rem;
-      color:#ccc;
-      text-align:center;
-    }
+    .caption{ margin-top:.8rem; font-size:1.05rem; color:#ccc; text-align:center; }
 
-    /* controls */
     .controls{
       margin-top:14px;
       display:flex;
@@ -164,15 +149,7 @@
 
     .hint{ margin-top:8px; font-size:.85rem; color:#9aa0a6; text-align:center; }
 
-    .btn{
-      border:1px solid rgba(255,255,255,.18);
-      background:#111;
-      color:#fff;
-      border-radius:999px;
-      padding:.45rem .9rem;
-      cursor:pointer;
-      font-weight:600;
-    }
+    .btn{ border:1px solid rgba(255,255,255,.18); background:#111; color:#fff; border-radius:999px; padding:.45rem .9rem; cursor:pointer; font-weight:600; }
 
     .coming-soon {
       margin-top:18px;
@@ -189,17 +166,9 @@
     }
     .coming-soon.show { opacity:1; }
 
-    footer{
-      color:var(--muted);
-      text-align:center;
-      margin:28px 0 10px;
-      font-size:.9rem;
-    }
+    footer{ color:var(--muted); text-align:center; margin:28px 0 10px; font-size:.9rem; }
 
-    /* responsive tuning
-       - allow horizontal scroll on small narrow widths
-       - wrap pills on very small screens for accessibility */
-    @media (max-width:980px){
+    @media (max-width:840px){
       .sadie-sig{ font-size:56px; }
       .gallery-video{ height:56vh; border-radius:16px; }
     }
@@ -207,69 +176,26 @@
       .sadie-sig{ font-size:48px; }
       .gallery-video{ height:48vh; border-radius:12px; }
       .hero { padding-top: 12px; }
-      nav{ /* let pills wrap on tiny screens so they remain tappable */ flex-wrap:wrap; gap:10px; overflow-x:visible; justify-content:center; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div class="sadie-sig">
-        <a href="./index.html" aria-label="Sadie Winters">Sadie Winters</a>
-      </div>
+      <div class="sadie-sig"><a href="./index.html" aria-label="Sadie Winters">Sadie Winters</a></div>
 
+      <!-- single-back pill -->
       <nav aria-label="Primary navigation">
-        <!-- Home -->
-        <a href="./index.html" class="nav-pill" aria-label="Back to home">
+        <a href="./index.html" class="nav-pill" aria-label="Back to Home">
           <span class="nav-icon" aria-hidden="true">
+            <!-- home icon (18x18 inside 34px circle) -->
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.3 2 10v10.7A1 1 0 0 0 3 22h6v-7h4v7h6a1 1 0 0 0 1-1.3V10L12 3.3z"/></svg>
           </span>
-          <span>Home</span>
-        </a>
-
-        <!-- Shorts -->
-        <a href="./shorts.html" class="nav-pill" aria-label="YouTube Shorts">
-          <span class="nav-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 2.5v19a1 1 0 0 0 1.53.86L20.6 13a1 1 0 0 0 0-1.72L5.53 1.64A1 1 0 0 0 4 2.5z"/></svg>
-          </span>
-          <span>YouTube Shorts</span>
-        </a>
-
-        <!-- Videos -->
-        <a href="./videos.html" class="nav-pill" aria-label="Watch Sadie Music Videos">
-          <span class="nav-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5c0-1.1.9-2 2-2h2v2H5v14h2v2H5c-1.1 0-2-.9-2-2V5zm14 0h2c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2h-2v-2h2V5h-2V3zM9 8h6v8H9z"/></svg>
-          </span>
-          <span>Watch Sadie Music Videos</span>
-        </a>
-
-        <!-- Top AI -->
-        <a href="./top-ai.html" class="nav-pill" aria-label="Top AI Music Videos">
-          <span class="nav-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 3h-2V1H8v2H6a1 1 0 0 0-1 1v3c0 2.8 2.2 5 5 5h2v4H9v2h6v-2h-4v-4h2c2.8 0 5-2.2 5-5V4a1 1 0 0 0-1-1z"/></svg>
-          </span>
-          <span>Top AI Music Videos</span>
-        </a>
-
-        <!-- Gallery (current) -->
-        <a href="./gallery.html" class="nav-pill" aria-label="Living Gallery" aria-current="page">
-          <span class="nav-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14l4-4 3 3 5-5 4 4z"/></svg>
-          </span>
-          <span>Living Gallery</span>
-        </a>
-
-        <!-- Mission -->
-        <a href="./mission.html" class="nav-pill" aria-label="Our mission">
-          <span class="nav-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h14v2H6v12h12v2H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/></svg>
-          </span>
-          <span>Our Mission</span>
+          <span>Back to Home</span>
         </a>
       </nav>
     </header>
 
-    <!-- hero wrapper so header/nav can float visually above -->
     <figure class="hero" role="img" aria-label="Sadie Winters Living Gallery hero">
       <video id="galleryVideo" class="gallery-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="./hero.jpg">
         <source src="./sadie-beach.mp4" type="video/mp4" />
@@ -302,13 +228,11 @@
 
     <div class="coming-soon">Keep checking in. So much more to come...</div>
 
-    <footer>
-      © 2025 SadieWinters.net — <em>The Official Site of the Obsessed</em>
-    </footer>
+    <footer>© 2025 SadieWinters.net — <em>The Official Site of the Obsessed</em></footer>
   </div>
 
   <script>
-    // keep your existing behavior intact
+    // preserve existing behavior
     const v = document.getElementById('galleryVideo');
     const soundOn  = document.getElementById('sound-on');
     const soundOff = document.getElementById('sound-off');
@@ -348,26 +272,13 @@
     if (soundOn) soundOn.addEventListener('change', () => { v.muted=false; tryPlay(); });
     if (soundOff) soundOff.addEventListener('change', () => { v.muted=true; });
 
-    const enterFS = async () => {
+    if (viewFull) viewFull.addEventListener('change', async () => {
       if (document.fullscreenElement) return;
-      try {
-        if (v.requestFullscreen) await v.requestFullscreen();
-        else if (v.webkitRequestFullscreen) v.webkitRequestFullscreen();
-      } catch(e) {}
-    };
-    const exitFS = async () => {
+      try { if (v.requestFullscreen) await v.requestFullscreen(); else if (v.webkitRequestFullscreen) v.webkitRequestFullscreen(); } catch(e){}
+    });
+    if (viewWin) viewWin.addEventListener('change', async () => {
       if (!document.fullscreenElement) return;
-      try {
-        if (document.exitFullscreen) await document.exitFullscreen();
-        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-      } catch(e) {}
-    };
-    if (viewFull) viewFull.addEventListener('change', enterFS);
-    if (viewWin) viewWin.addEventListener('change', exitFS);
-
-    document.addEventListener('fullscreenchange', () => {
-      if (document.fullscreenElement) viewFull.checked = true;
-      else viewWin.checked = true;
+      try { if (document.exitFullscreen) await document.exitFullscreen(); else if (document.webkitExitFullscreen) document.webkitExitFullscreen(); } catch(e){}
     });
 
     if (playPauseBtn) playPauseBtn.addEventListener('click', async () => {
@@ -375,7 +286,7 @@
       else { v.pause(); playPauseBtn.textContent='Play'; playPauseBtn.setAttribute('aria-pressed','false'); }
     });
 
-    // Fade-in for "coming soon"
+    // Fade-in "coming soon"
     window.addEventListener('DOMContentLoaded', () => {
       const banner = document.querySelector('.coming-soon');
       if (!banner) return;
