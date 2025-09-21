@@ -1,23 +1,26 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"
-    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-ZD15GWTT54');
-</script>
+  <meta charset="utf-8">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZD15GWTT54');
+  </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Our Mission — Sadie Winters</title>
   <meta name="description" content="Our mission: Virtually born. Human touched. Celebrating music as humanity’s forever art.">
 
   <style>
-    :root{--bg:#0b0b0e;--text:#f6f6f8;--muted:#b6b6c5;--accent:#8bd3ff;}
+    :root{
+      --bg:#0b0b0e; --text:#f6f6f8; --muted:#b6b6c5; --accent:#8bd3ff;
+      --purple-1:#8a4fff; --purple-2:#6f2fe6;
+    }
 
     html,body{
       margin:0;
@@ -26,148 +29,74 @@
       font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
     }
 
-    .wrap{max-width:1000px;margin:0 auto;padding:20px}
+    .wrap{max-width:1000px; margin:0 auto; padding:20px; position:relative; z-index:1;}
+    .page-background{position:fixed; inset:0; background:#0b0b0e; z-index:0;}
 
-    /* ---- Side edge glow ---- */
-    .page-background{
-      position:fixed; inset:0;
-      background:#0b0b0e;
-      z-index:0;
+    /* Back to Home pill */
+    .back-home{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:.55rem .95rem;
+      border-radius:9999px;
+      background:linear-gradient(180deg,var(--purple-1),var(--purple-2));
+      color:#fff;
+      font-weight:700;
+      font-size:.95rem;
+      text-decoration:none;
+      box-shadow:0 6px 20px rgba(111,47,230,0.18);
+      transition:transform .12s ease, box-shadow .12s ease;
     }
-    .page-background::before,
-    .page-background::after{
-      content:"";
-      position:absolute; top:0; bottom:0;
-      width:15%;
-      background:radial-gradient(circle at center,
-                 rgba(139,211,255,0.30) 0%,
-                 rgba(139,211,255,0.00) 80%);
-      pointer-events:none;
-      animation:sidePulse 8s ease-in-out infinite alternate;
-    }
-    .page-background::before{ left:0; }
-    .page-background::after { right:0; }
-    @keyframes sidePulse{ from{opacity:.25} to{opacity:.55} }
+    .back-home:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(111,47,230,0.25);}
+    .back-home svg{width:18px; height:18px; fill:#fff;}
 
-    /* ---- Header (same as index) ---- */
-    header{
-      display:flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      text-align: center;
-      margin: 6px 0 16px;
-    }
-    a{color:var(--accent);text-decoration:none}
-    .btn-watch{
-      display:inline-block;padding:.55rem 1rem;border-radius:9999px;
-      background:#111;color:#fff;font-weight:600;
-      transition:transform .08s ease,opacity .2s ease
-    }
-    .btn-watch:hover{opacity:.9;transform:translateY(-1px)}
-    nav .btn-watch + .btn-watch { margin-left: 8px; }
+    header{display:flex; justify-content:flex-start; margin-bottom:12px;}
 
-    /* MOBILE header + nav */
-    @media (max-width:640px){
-      header{flex-direction:column;align-items:center;gap:8px;text-align:center}
-      .sadie-sig svg{width:200px;height:auto}
-      .logo{font-size:1.1rem}
-      .tag{font-size:.9rem}
-      nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:4px}
-      nav .btn-watch{width:auto;font-size:.95rem;padding:.45rem .8rem}
-    }
-
-    .page-background { z-index:-1; }
-    .wrap { position:relative; z-index:1; }
-
-    /* ---- HERO ---- */
+    /* Hero */
     .hero{
-      position:relative;
-      overflow:hidden;
-      border-radius:18px;
-      height:min(58vh,600px);
-      display:grid;
-      place-items:center;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 65%, rgba(0,0,0,.65) 100%),
+      position:relative; overflow:hidden; border-radius:18px;
+      height:min(58vh,600px); display:grid; place-items:center;
+      background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.35) 65%,rgba(0,0,0,.65) 100%),
         url("./hero.jpg") 50% 18% / cover no-repeat;
-      box-shadow:0 12px 30px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
-      animation:heroZoom 22s ease-in-out forwards;
+      box-shadow:0 12px 30px rgba(0,0,0,.45);
     }
-    @keyframes heroZoom{0%{transform:scale(1)}100%{transform:scale(1.03)}}
-    .hero::after{
-      content:""; position:absolute; inset:0;
-      background:radial-gradient(100% 60% at 50% 0%, rgba(0,0,0,.28), transparent 60%);
-      pointer-events:none;
-    }
-    .hero .title-row{display:flex;align-items:center;gap:10px;justify-content:center;padding:0 16px}
-    .hero h1{margin:0;font-size:clamp(28px,5vw,44px);letter-spacing:.2px;color:#fff}
-    .hero .sub{margin:.25rem 0 0;color:var(--muted);font-size:clamp(15px,2.6vw,17px);font-weight:500;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+    .hero h1{margin:0; font-size:clamp(28px,5vw,44px); color:#fff;}
+    .hero .sub{margin:.25rem 0 0; color:var(--muted); font-size:clamp(15px,2.6vw,17px); font-weight:500;}
 
-    @media (max-width:640px){
-      .hero{height:min(44vh,420px)}
-    }
-
-    /* ---- Mission content ---- */
+    /* Mission content */
     .panel{
-      background:#0f0f14;border:1px solid #1e1e26;border-radius:16px;
-      padding:22px;box-shadow:0 10px 28px rgba(0,0,0,.35);margin-top:20px
+      background:#0f0f14; border:1px solid #1e1e26; border-radius:16px;
+      padding:22px; box-shadow:0 10px 28px rgba(0,0,0,.35); margin-top:20px;
     }
-    .panel p{margin:0 0 14px;color:#e8e8f0;max-width:74ch}
-    .quote{
-      margin:14px 0 18px;padding:14px 16px;border-left:3px solid var(--accent);
-      background:rgba(139,211,255,.06);border-radius:10px;color:#eaf6ff
-    }
-    .sig-row{display:flex;align-items:center;gap:12px;margin-top:8px}
-    .sig-mark{font-family:'Great Vibes',cursive;font-size:36px;opacity:.9}
-    .sig-rule{height:1px;flex:1;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.4))}
+    .panel p{margin:0 0 14px; color:#e8e8f0; max-width:74ch;}
+    .quote{margin:14px 0; padding:14px 16px; border-left:3px solid var(--accent);
+      background:rgba(139,211,255,.06); border-radius:10px; color:#eaf6ff;}
 
-    footer{color:#8c8c9b;text-align:center;margin:28px 0 10px;font-size:.9rem}
+    footer{color:#8c8c9b; text-align:center; margin:28px 0 10px; font-size:.9rem;}
   </style>
 </head>
 <body>
-  <!-- background glow layer -->
   <div class="page-background"></div>
-
   <div class="wrap">
-    <header>
-      <!-- Signature header -->
-      <div class="sadie-sig">
-        <style>
-          @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-          .sadie-sig {
-            font-family: 'Great Vibes', cursive;
-            font-size: 64px;
-            color: #fff;
-            text-align: center;
-          }
-        </style>
-        <a href="/" aria-label="Sadie Winters">Sadie Winters</a>
-      </div>
 
-      <nav>
-        <a href="./index.html" class="btn-watch">🏠 Back to Home</a>
-        <a href="./shorts.html"  class="btn-watch">▶️ YouTube Shorts</a>
-        <a href="./videos.html"  class="btn-watch">🎬 Watch Music Videos</a>
-        <a href="./gallery.html" class="btn-watch">🖼️ Living Gallery</a>
-        <a href="./mission.html" class="btn-watch">📜 Our Mission</a>
-      </nav>
+    <header>
+      <!-- Back to Home button -->
+      <a href="./index.html" class="back-home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 10v10h7v-6h6v6h7V10L12 3z"/></svg>
+        Back to Home
+      </a>
     </header>
 
     <!-- HERO -->
     <section class="hero" role="img" aria-label="Sadie Winters mission background">
       <div>
-        <div class="title-row">
-          <h1>📜 Our Mission</h1>
-        </div>
+        <h1>📜 Our Mission</h1>
         <p class="sub">Virtually born. Human touched.</p>
       </div>
     </section>
 
     <main>
-      <section class="panel" aria-labelledby="mission-heading">
-        <h2 id="mission-heading" style="position:absolute;left:-9999px">Mission Statement</h2>
-
+      <section class="panel">
         <p><strong>We believe music will always belong to humanity.</strong> Artificial Intelligence is not here to replace the artists we love — it’s here to carry their echoes forward.</p>
 
         <div class="quote">
@@ -176,15 +105,10 @@
 
         <p><strong>The greatest AI songs are tributes.</strong> They celebrate the riffs, the lyrics, the soul, and the sweat of the artists who built the soundtrack of our lives.</p>
         <p><em>Sadie Winters</em> is our symbol of that celebration — virtually born, human touched, and forever connected to the music that made us who we are. This site exists to welcome you into that world — not to fear the future, but to embrace it, together.</p>
-
-        <div class="sig-row">
-          <div class="sig-mark">Sadie Winters</div>
-          <div class="sig-rule"></div>
-        </div>
       </section>
     </main>
 
-    <footer>© 2025 SadieWinters.net — The Official Site of the Obsessed</footer>
+    <footer>© 2025 SadieWinters.net — The Official AI Music HQ</footer>
   </div>
 </body>
 </html>
