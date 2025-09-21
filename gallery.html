@@ -48,15 +48,18 @@
       box-sizing:border-box;
     }
 
+    /* ===== header/nav spacing + stacking fix ===== */
     header{
       display:flex;
       flex-direction:column;
       align-items:center;
       gap:10px;
       text-align:center;
-      margin:6px 0 16px;
+      margin:6px 0 18px; /* extra bottom space so nav doesn't overlap hero */
       width:100%;
       max-width:1100px;
+      position:relative; /* allow z-index above hero */
+      z-index:30;
     }
 
     .sadie-sig{
@@ -76,6 +79,8 @@
       gap:12px;
       margin-top:4px;
       width:100%;
+      position:relative;
+      z-index:32; /* make sure nav sits above hero */
     }
     .nav-pill{
       display:inline-flex;
@@ -116,9 +121,18 @@
       .nav-icon svg{ width:16px; height:16px; }
     }
 
+    /* ===== hero container (keeps hero behind header/nav) ===== */
+    .hero {
+      margin-top: 8px;       /* clears header/nav */
+      padding-top: 6px;      /* extra clearance on small screens */
+      width: 100%;
+      max-width: 1100px;
+      z-index: 1;            /* behind header/nav */
+    }
+
     /* Gallery video */
     .gallery-video{
-      width:min(90vw,1100px);
+      width:100%;
       height:min(78vh,640px);
       border-radius:20px;
       box-shadow:0 8px 30px rgba(0,0,0,.6);
@@ -195,6 +209,7 @@
     @media (max-width:640px){
       .sadie-sig{ font-size:48px; }
       .gallery-video{ height:48vh; border-radius:12px; }
+      .hero { padding-top: 12px; }
     }
   </style>
 </head>
@@ -262,12 +277,14 @@
       </nav>
     </header>
 
-    <video id="galleryVideo" class="gallery-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="./hero.jpg">
-      <source src="./sadie-beach.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-
-    <div class="caption">Sadie — Ocean Dreams</div>
+    <!-- hero wrapper so header/nav can float visually above if needed -->
+    <figure class="hero" role="img" aria-label="Sadie Winters Living Gallery hero">
+      <video id="galleryVideo" class="gallery-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="./hero.jpg">
+        <source src="./sadie-beach.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <figcaption class="caption">Sadie — Ocean Dreams</figcaption>
+    </figure>
 
     <div class="controls" role="region" aria-label="Video controls">
       <fieldset>
