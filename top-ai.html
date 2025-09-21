@@ -1,35 +1,150 @@
-/* replace existing .hero-mini rules with this centered layout */
-.hero-mini{
-  margin:28px auto;
-  padding:36px 22px;
-  border-radius:12px;
-  max-width:920px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  box-shadow:0 18px 36px rgba(0,0,0,.6);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  gap:12px;
-}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date()); gtag('config', 'G-ZD15GWTT54');
+  </script>
 
-/* keep heading/lead sizing but ensure centered spacing */
-.hero-mini .page{
-  margin:0;
-  font-size:clamp(20px,3.6vw,30px);
-  color:#fff;
-}
-.hero-mini .lead{
-  margin:0;
-  color:#dfe7ee;
-  max-width:64ch;
-  line-height:1.4;
-  font-size:1.02rem;
-}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Top AI Music Videos — Sadie Winters</title>
+  <meta name="description" content="Top AI music videos — Sadie Winters and leading AI music creators. Highly watched AI music shorts and director's cuts.">
+  <meta property="og:title" content="Top AI Music Videos — Sadie Winters">
+  <meta property="og:description" content="Top AI music videos and shorts. Explore Sadie Winters and other standout AI music pieces.">
+  <meta property="og:type" content="website">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
-/* mobile tweak */
-@media (max-width:640px){
-  .hero-mini{ padding:26px 16px; border-radius:8px; }
-  .hero-mini .lead{ font-size:1rem; }
-}
+  <style>
+    :root{
+      --bg:#0b0b0e;
+      --text:#f6f6f8;
+      --muted:#b6b6c5;
+      --accent:#8bd3ff;
+      --purple-1:#8a4fff;
+      --purple-2:#6f2fe6;
+    }
+
+    html,body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .wrap{ max-width:1100px; margin:0 auto; padding:22px; }
+
+    .sadie-sig{ font-family:'Great Vibes',cursive; font-size:52px; color:var(--accent); text-shadow:0 6px 18px rgba(0,0,0,.6); text-align:center; margin:0; }
+    .ai-hq{ font-family:'Cinzel', serif; text-transform:uppercase; font-weight:700; color:#fff; text-align:center; margin:6px 0 14px; letter-spacing:.08em; font-size:14px; }
+
+    nav{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin:8px 0 20px; }
+    .btn-watch{ padding:.6rem .95rem; border-radius:9999px; background: linear-gradient(180deg,var(--purple-1),var(--purple-2)); color:#fff; font-weight:800; text-decoration:none; border:1px solid rgba(255,255,255,0.06); box-shadow:0 6px 20px rgba(111,47,230,.18); display:inline-flex; align-items:center; gap:8px; }
+    .btn-watch:focus{ outline:none; box-shadow: 0 12px 30px rgba(111,47,230,0.22), 0 0 0 4px rgba(138,79,255,0.08); }
+
+    /* replace existing .hero-mini rules with this centered layout */
+    .hero-mini{
+      margin:28px auto;
+      padding:36px 22px;
+      border-radius:12px;
+      max-width:920px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow:0 18px 36px rgba(0,0,0,.6);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      gap:12px;
+    }
+
+    /* keep heading/lead sizing but ensure centered spacing */
+    .hero-mini .page{
+      margin:0;
+      font-size:clamp(20px,3.6vw,30px);
+      color:#fff;
+    }
+    .hero-mini .lead{
+      margin:0;
+      color:#dfe7ee;
+      max-width:64ch;
+      line-height:1.4;
+      font-size:1.02rem;
+    }
+
+    .grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:18px; margin-top:18px; }
+    .card{ background:rgba(255,255,255,0.02); border-radius:8px; padding:8px; box-shadow: inset 0 -2px 0 rgba(0,0,0,.3); }
+    .video-embed{ width:100%; height:190px; background:#000; border-radius:6px; overflow:hidden; }
+    .card h3{ margin:10px 0 6px; font-size:1.05rem; }
+    .card p{ margin:0 0 6px; color:#d6dbe3; font-size:.95rem; }
+
+    footer{ color:var(--muted); text-align:center; margin:28px 0 12px; }
+
+    @media (max-width:980px){
+      .grid{ grid-template-columns:repeat(2,1fr); }
+      .video-embed{ height:160px; }
+      .sadie-sig{ font-size:56px; }
+    }
+    @media (max-width:640px){
+      .grid{ grid-template-columns:1fr; }
+      .video-embed{ height:220px; }
+      .sadie-sig{ font-size:46px; }
+      .ai-hq{ font-size:14px; }
+      nav{ gap:10px; }
+      .hero-mini{ padding:26px 16px; border-radius:8px; }
+      .hero-mini .lead{ font-size:1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="sadie-sig">Sadie Winters</div>
+      <div class="ai-hq">The Official AI Music HQ</div>
+
+      <nav aria-label="Main navigation">
+        <a href="./shorts.html" class="btn-watch">▶️ YouTube Shorts</a>
+        <a href="./videos.html" class="btn-watch">🎬 Watch Sadie Music Videos</a>
+        <a href="./top-ai.html" class="btn-watch">🔝 Top AI Music Videos</a>
+        <a href="./gallery.html" class="btn-watch">🖼️ Living Gallery</a>
+        <a href="./mission.html" class="btn-watch">📜 Our Mission</a>
+      </nav>
+    </header>
+
+    <section class="hero-mini" aria-labelledby="topai">
+      <h1 id="topai" class="page">Top AI Music Videos</h1>
+      <p class="lead">Here is our hand-picked collection of the most highly watched AI music videos from around the globe, featuring rising creators pushing generative vocals and cinematic visuals. Enjoy!</p>
+    </section>
+
+    <section class="grid" aria-live="polite">
+      <!-- Card 1 -->
+      <article class="card">
+        <div class="video-embed" aria-hidden="true"></div>
+        <h3>Resurrection — Sadie Winters (Halloween Special)</h3>
+        <p>AI music short with cinematic edits and high retention. Director's cut and behind-the-scenes are on the Living Gallery.</p>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card">
+        <div class="video-embed" aria-hidden="true"></div>
+        <h3>Beach Girl — Sadie Winters (Lip-Sync Short)</h3>
+        <p>Uplifting AI-pop short that boosted channel discoverability. Uses seedance + HeyGen motion pipeline.</p>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card">
+        <div class="video-embed" aria-hidden="true"></div>
+        <h3>Evolution — Sadie Winters (Cinematic Loop)</h3>
+        <p>Slow-pan cinematic loop combining AI vocals with a seaside motif — great watch-through and share rates.</p>
+      </article>
+    </section>
+
+    <p style="margin-top:18px; color:var(--muted); font-size:.95rem;">Tip: Replace the placeholder embeds with your YouTube IDs and add the per-video blurb (1–2 sentences) — those blurbs help search engines understand the video content (AI music, AI singer, director's cut).</p>
+
+    <footer>© 2025 SadieWinters.net — The Official AI Music HQ</footer>
+  </div>
+</body>
+</html>
