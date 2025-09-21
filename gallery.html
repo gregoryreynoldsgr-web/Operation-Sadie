@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
   <script>
@@ -16,28 +17,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
-    :root { --bg:#0b0b0e; --text:#f6f6f8; --accent:#8bd3ff; }
+    :root{ --bg:#0b0b0e; --text:#f6f6f8; --muted:#b6b6c5; --accent:#8bd3ff; --purple-1:#8a4fff; --purple-2:#6f2fe6; }
     html,body{
       margin:0; background:var(--bg); color:var(--text);
       font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;
     }
     .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px}
 
-    header{width:100%;max-width:1100px;display:flex;flex-direction:column;gap:8px;margin:6px 0 16px}
-    /* Back to Home stays FAR LEFT */
-    nav{display:flex;justify-content:flex-start}
-    nav a.btn{
-      display:inline-block;padding:.5rem 1rem;border-radius:9999px;background:#111;color:#fff;
-      font-weight:600;text-decoration:none;transition:transform .08s ease,opacity .2s ease;
+    /* Top bar: ONLY Back to Home, left-aligned */
+    .topbar{width:100%;max-width:1100px;display:flex;justify-content:flex-start;margin:6px 0 10px}
+    .back-home{
+      display:inline-flex;align-items:center;gap:6px;padding:.55rem .95rem;border-radius:9999px;
+      background:linear-gradient(180deg,var(--purple-1),var(--purple-2));
+      color:#fff;font-weight:700;font-size:.95rem;text-decoration:none;
+      box-shadow:0 6px 20px rgba(111,47,230,.18);
+      transition:transform .12s ease, box-shadow .12s ease;
     }
-    nav a.btn:hover{opacity:.9;transform:translateY(-1px)}
+    .back-home:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(111,47,230,.25)}
+    .back-home svg{width:18px;height:18px;fill:#fff}
 
-    .sadie-sig{
-      text-align:center;
-      font-family:'Great Vibes',cursive;font-size:64px;color:var(--accent);line-height:1;
-    }
+    /* Signature + Tagline (The Official AI Music HQ) */
+    header{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;margin:0 0 16px}
+    .sadie-sig{font-family:'Great Vibes',cursive;font-size:64px;color:var(--accent);line-height:1}
     .sadie-sig a{color:inherit;text-decoration:none}
+    .ai-hq{
+      font-family:'Cinzel',serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+      font-size:14px;color:#fff;
+    }
 
+    /* Video + controls */
     .gallery-video{max-width:90vw;max-height:78vh;border-radius:20px;box-shadow:0 8px 20px rgba(0,0,0,.6);display:block;background:#000}
     .caption{margin-top:.8rem;font-size:1.05rem;color:#ccc;text-align:center}
     .controls{margin-top:14px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:center;color:#ccc}
@@ -52,23 +61,32 @@
     .coming-soon{
       margin-top:18px;font-size:1.05rem;font-weight:500;color:#f0f0f5;text-align:center;
       padding:12px 20px;border-radius:14px;background:linear-gradient(135deg,#3a6073,#16222a);
-      box-shadow:0 4px 14px rgba(0,0,0,0.45);opacity:0;transition:opacity 90s ease;
+      box-shadow:0 4px 14px rgba(0,0,0,.45);opacity:0;transition:opacity 90s ease;
     }
     .coming-soon.show{opacity:1;}
 
     footer{color:#8c8c9b;text-align:center;margin:28px 0 10px;font-size:.9rem}
   </style>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="wrap">
+
+    <!-- ONLY Back to Home (left) -->
+    <div class="topbar">
+      <a href="./index.html" class="back-home" aria-label="Back to Home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 10v10h7v-6h6v6h7V10L12 3z"/></svg>
+        Back to Home
+      </a>
+    </div>
+
+    <!-- Signature + “The Official AI Music HQ” -->
     <header>
-      <nav>
-        <a href="./index.html" class="btn">🏠 Back to Home</a>
-      </nav>
-      <div class="sadie-sig">
-        <a href="./index.html" aria-label="Sadie Winters">Sadie Winters</a>
-      </div>
+      <div class="sadie-sig"><a href="./index.html">Sadie Winters</a></div>
+      <div class="ai-hq">The Official AI Music HQ</div>
     </header>
 
     <video id="galleryVideo" class="gallery-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
@@ -102,9 +120,7 @@
 
     <div class="coming-soon">Keep checking in. So much more to come...</div>
 
-    <footer>
-      © 2025 SadieWinters.net — <em>The Official Site of the Obsessed</em>
-    </footer>
+    <footer>© 2025 SadieWinters.net — The Official AI Music HQ</footer>
   </div>
 
   <script>
@@ -123,49 +139,4 @@
     v.muted = true; v.playsInline = true;
     const tryPlay = () => v.play().catch(()=>{});
     tryPlay();
-    document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) tryPlay(); });
-
-    const oneTimeEnableAudio = () => {
-      if (soundOn.checked) { v.muted = false; v.volume = 1.0; tryPlay(); }
-      window.removeEventListener('click', oneTimeEnableAudio);
-      window.removeEventListener('touchstart', oneTimeEnableAudio);
-    };
-    window.addEventListener('click', oneTimeEnableAudio, { once:true });
-    window.addEventListener('touchstart', oneTimeEnableAudio, { once:true, passive:true });
-
-    soundOn.addEventListener('change', () => { v.muted = false; tryPlay(); });
-    soundOff.addEventListener('change', () => { v.muted = true; });
-
-    const enterFS = async () => {
-      if (document.fullscreenElement) return;
-      try {
-        if (v.requestFullscreen) await v.requestFullscreen();
-        else if (v.webkitRequestFullscreen) v.webkitRequestFullscreen();
-      } catch(e) {}
-    };
-    const exitFS = async () => {
-      if (!document.fullscreenElement) return;
-      try {
-        if (document.exitFullscreen) await document.exitFullscreen();
-        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-      } catch(e) {}
-    };
-    viewFull.addEventListener('change', enterFS);
-    viewWin.addEventListener('change', exitFS);
-    document.addEventListener('fullscreenchange', () => {
-      if (document.fullscreenElement) viewFull.checked = true; else viewWin.checked = true;
-    });
-
-    playPauseBtn.addEventListener('click', async () => {
-      if (v.paused) { await v.play().catch(()=>{}); playPauseBtn.textContent = 'Pause'; }
-      else { v.pause(); playPauseBtn.textContent = 'Play'; }
-    });
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const banner = document.querySelector('.coming-soon');
-      if (!banner) return;
-      setTimeout(() => banner.classList.add('show'), 1000);
-    });
-  </script>
-</body>
-</html>
+    document.addEventListener('visibilitych
