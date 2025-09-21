@@ -19,7 +19,10 @@
   <style>
     :root{
       --bg:#0b0b0e; --text:#f6f6f8; --muted:#b6b6c5; --accent:#8bd3ff;
+      --ink:#111; --card:#0e0f12;
       --purple-1:#8a4fff; --purple-2:#6f2fe6;
+      --teal:#12e3b3; --mint:#ccfff2; --emerald:#13c48f;
+      --shadow:0 8px 22px rgba(0,0,0,.35);
     }
     html,body{
       margin:0; background:var(--bg); color:var(--text);
@@ -28,26 +31,27 @@
     }
     .wrap{max-width:1100px;margin:0 auto;padding:20px}
 
-    /* Top bar: ONLY Back to Home (left-aligned) */
+    /* Top bar: ONLY Back to Home (left) — pill with black icon badge */
     .topbar{display:flex;justify-content:flex-start;margin:6px 0 8px}
     .back-home{
-      display:inline-flex;align-items:center;gap:6px;padding:.55rem .95rem;border-radius:9999px;
-      background:linear-gradient(180deg,var(--purple-1),var(--purple-2));
-      color:#fff;font-weight:700;font-size:.95rem;text-decoration:none;
-      box-shadow:0 6px 20px rgba(111,47,230,.18);
-      transition:transform .12s ease, box-shadow .12s ease;
+      display:inline-flex;align-items:center;gap:.6rem;padding:.55rem .95rem;border-radius:9999px;
+      background:var(--ink); color:#fff; font-weight:700; font-size:.95rem; text-decoration:none;
+      border:1px solid rgba(255,255,255,0.06); box-shadow:var(--shadow);
+      transition:transform .12s ease, opacity .2s ease, box-shadow .12s ease;
     }
-    .back-home:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(111,47,230,.25);}
-    .back-home svg{width:18px;height:18px;fill:#fff}
+    .back-home:hover{ opacity:.95; transform:translateY(-1px); box-shadow:0 10px 26px rgba(0,0,0,.45); }
+
+    .home-badge{
+      width:26px; height:26px; border-radius:7px;
+      background:#000; display:grid; place-items:center; flex-shrink:0;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 0 0 1px rgba(0,0,0,.6);
+    }
+    .home-badge svg{ width:17px; height:17px; display:block; filter: drop-shadow(0 0 6px rgba(18,227,179,.35)); }
 
     /* Signature + Official HQ tagline */
-    header{
-      display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;margin:6px 0 16px;
-    }
-    .sadie-sig{
-      font-family:'Great Vibes',cursive;font-size:64px;color:var(--accent);line-height:1;
-    }
-    .sadie-sig a{color:inherit;text-decoration:none}
+    header{ display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;margin:6px 0 16px; }
+    .sadie-sig{ font-family:'Great Vibes',cursive;font-size:64px;color:var(--accent);line-height:1; }
+    .sadie-sig a{ color:inherit;text-decoration:none }
     .ai-hq{
       font-family:'Cinzel',serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
       font-size:14px;color:#fff;
@@ -58,7 +62,7 @@
     p.muted{margin:0 0 16px;color:#cfd0d8;line-height:1.6}
 
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-    .card{background:#0e0f12;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.35);overflow:hidden}
+    .card{background:var(--card);border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.35);overflow:hidden}
     .frame{position:relative;padding-top:56.25%;background:#000}
     .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
     .card .meta{padding:12px 14px}
@@ -72,10 +76,30 @@
 </head>
 <body>
   <div class="wrap">
-    <!-- ONLY Back to Home (left) -->
+    <!-- ONLY Back to Home (left) — black icon badge + poppy house -->
     <div class="topbar">
       <a href="./index.html" class="back-home" aria-label="Back to Home">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 10v10h7v-6h6v6h7V10L12 3z"/></svg>
+        <span class="home-badge" aria-hidden="true">
+          <!-- Inline SVG: teal→purple roof, mint windows, emerald door, colored wall stroke -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" aria-hidden="true">
+            <defs>
+              <linearGradient id="roofGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#12e3b3"/>
+                <stop offset="1" stop-color="#8a4fff"/>
+              </linearGradient>
+              <linearGradient id="wallStroke" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#8bd3ff" stop-opacity=".9"/>
+                <stop offset="1" stop-color="#12e3b3" stop-opacity=".9"/>
+              </linearGradient>
+            </defs>
+            <path d="M3 11L12 4l9 7" fill="url(#roofGrad)"/>
+            <path d="M6 10.8V19c0 .55.45 1 1 1h3v-5h4v5h3c.55 0 1-.45 1-1v-8.2L12 6.7 6 10.8z"
+                  fill="#ffffff" stroke="url(#wallStroke)" stroke-width=".9"/>
+            <rect x="11.25" y="14.5" width="1.5" height="4" rx=".35" fill="#13c48f"/>
+            <rect x="7.8" y="13.4" width="2" height="2" rx=".25" fill="#ccfff2"/>
+            <rect x="6" y="20.2" width="12" height=".8" rx=".4" fill="#12e3b3" opacity=".6"/>
+          </svg>
+        </span>
         Back to Home
       </a>
     </div>
