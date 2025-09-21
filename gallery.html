@@ -2,70 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-ZD15GWTT54');
-</script>
-
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZD15GWTT54');
+  </script>
 
   <title>Sadie Winters — Living Gallery</title>
   <meta name="description" content="Sadie Winters Living Gallery — immersive video moments." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
-    :root {
-      --bg:#0b0b0e;
-      --text:#f6f6f8;
-      --accent:#8bd3ff;
-    }
-    html,body {
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
+    :root { --bg:#0b0b0e; --text:#f6f6f8; --accent:#8bd3ff; }
+    html,body{
+      margin:0; background:var(--bg); color:var(--text);
       font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
     }
     .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px}
 
-    header{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:8px;
-      text-align:center;
-      margin:6px 0 16px;
-    }
-    .sadie-sig{
-      font-family:'Great Vibes',cursive;
-      font-size:64px;
-      color:var(--accent);
-      line-height:1;
-    }
-    .sadie-sig a{
-      color:inherit;
-      text-decoration:none;
-    }
-    nav{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:4px;
-    }
+    header{width:100%;max-width:1100px;display:flex;flex-direction:column;gap:8px;margin:6px 0 16px}
+    /* Back to Home stays FAR LEFT */
+    nav{display:flex;justify-content:flex-start}
     nav a.btn{
-      display:inline-block;
-      padding:.5rem 1rem;
-      border-radius:9999px;
-      background:#111;
-      color:#fff;
-      font-weight:600;
-      text-decoration:none;
-      transition:transform .08s ease,opacity .2s ease;
+      display:inline-block;padding:.5rem 1rem;border-radius:9999px;background:#111;color:#fff;
+      font-weight:600;text-decoration:none;transition:transform .08s ease,opacity .2s ease;
     }
     nav a.btn:hover{opacity:.9;transform:translateY(-1px)}
+
+    .sadie-sig{
+      text-align:center;
+      font-family:'Great Vibes',cursive;font-size:64px;color:var(--accent);line-height:1;
+    }
+    .sadie-sig a{color:inherit;text-decoration:none}
 
     .gallery-video{max-width:90vw;max-height:78vh;border-radius:20px;box-shadow:0 8px 20px rgba(0,0,0,.6);display:block;background:#000}
     .caption{margin-top:.8rem;font-size:1.05rem;color:#ccc;text-align:center}
@@ -78,39 +49,26 @@
     .btn{border:1px solid rgba(255,255,255,.18);background:#111;color:#fff;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
     .btn:hover{opacity:.95}
 
-    .coming-soon {
-      margin-top:18px;
-      font-size:1.05rem;
-      font-weight:500;
-      color:#f0f0f5;
-      text-align:center;
-      padding:12px 20px;
-      border-radius:14px;
-      background:linear-gradient(135deg,#3a6073,#16222a);
-      box-shadow:0 4px 14px rgba(0,0,0,0.45);
-      opacity:0;
-      transition:opacity 90s ease;
+    .coming-soon{
+      margin-top:18px;font-size:1.05rem;font-weight:500;color:#f0f0f5;text-align:center;
+      padding:12px 20px;border-radius:14px;background:linear-gradient(135deg,#3a6073,#16222a);
+      box-shadow:0 4px 14px rgba(0,0,0,0.45);opacity:0;transition:opacity 90s ease;
     }
-    .coming-soon.show {opacity:1;}
+    .coming-soon.show{opacity:1;}
 
     footer{color:#8c8c9b;text-align:center;margin:28px 0 10px;font-size:.9rem}
   </style>
-  <!-- Import Great Vibes font -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="wrap">
     <header>
+      <nav>
+        <a href="./index.html" class="btn">🏠 Back to Home</a>
+      </nav>
       <div class="sadie-sig">
         <a href="./index.html" aria-label="Sadie Winters">Sadie Winters</a>
       </div>
-      <nav>
-        <a href="./index.html" class="btn">🏠 Back to Home</a>
-        <a href="./shorts.html" class="btn">▶️ YouTube Shorts</a>
-        <a href="./videos.html" class="btn">🎬 Watch Music Videos</a>
-        <a href="./gallery.html" class="btn">🖼️ Living Gallery</a>
-        <a href="./mission.html" class="btn">📜 Our Mission</a>
-      </nav>
     </header>
 
     <video id="galleryVideo" class="gallery-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
@@ -158,13 +116,8 @@
     const playPauseBtn = document.getElementById('playPause');
 
     v.addEventListener('click', async () => {
-      if (v.paused) {
-        await v.play().catch(()=>{});
-        playPauseBtn.textContent = 'Pause';
-      } else {
-        v.pause();
-        playPauseBtn.textContent = 'Play';
-      }
+      if (v.paused) { await v.play().catch(()=>{}); playPauseBtn.textContent = 'Pause'; }
+      else { v.pause(); playPauseBtn.textContent = 'Play'; }
     });
 
     v.muted = true; v.playsInline = true;
@@ -173,21 +126,14 @@
     document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) tryPlay(); });
 
     const oneTimeEnableAudio = () => {
-      if (soundOn.checked) {
-        v.muted = false;
-        v.volume = 1.0;
-        tryPlay();
-      }
+      if (soundOn.checked) { v.muted = false; v.volume = 1.0; tryPlay(); }
       window.removeEventListener('click', oneTimeEnableAudio);
       window.removeEventListener('touchstart', oneTimeEnableAudio);
     };
     window.addEventListener('click', oneTimeEnableAudio, { once:true });
     window.addEventListener('touchstart', oneTimeEnableAudio, { once:true, passive:true });
 
-    soundOn.addEventListener('change', () => {
-      v.muted = false;
-      tryPlay();
-    });
+    soundOn.addEventListener('change', () => { v.muted = false; tryPlay(); });
     soundOff.addEventListener('change', () => { v.muted = true; });
 
     const enterFS = async () => {
@@ -206,23 +152,15 @@
     };
     viewFull.addEventListener('change', enterFS);
     viewWin.addEventListener('change', exitFS);
-
     document.addEventListener('fullscreenchange', () => {
-      if (document.fullscreenElement) viewFull.checked = true;
-      else viewWin.checked = true;
+      if (document.fullscreenElement) viewFull.checked = true; else viewWin.checked = true;
     });
 
     playPauseBtn.addEventListener('click', async () => {
-      if (v.paused) {
-        await v.play().catch(()=>{});
-        playPauseBtn.textContent = 'Pause';
-      } else {
-        v.pause();
-        playPauseBtn.textContent = 'Play';
-      }
+      if (v.paused) { await v.play().catch(()=>{}); playPauseBtn.textContent = 'Pause'; }
+      else { v.pause(); playPauseBtn.textContent = 'Play'; }
     });
 
-    // Fade-in for "coming soon"
     window.addEventListener('DOMContentLoaded', () => {
       const banner = document.querySelector('.coming-soon');
       if (!banner) return;
