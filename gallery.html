@@ -22,11 +22,11 @@
       --accent:#8bd3ff;
       --purple-1:#8a4fff;
       --purple-2:#6f2fe6;
-      --pill-height:48px;           /* uniform pill height */
-      --pill-padding-h:0.95rem;     /* horizontal padding */
-      --pill-padding-v:0.5rem;      /* vertical padding */
+      --pill-height:48px;
+      --pill-padding-h:0.95rem;
+      --pill-padding-v:0.5rem;
       --pill-gap:12px;
-      --chip-size:22px;            /* smaller icon chip */
+      --chip-size:22px;
       --chip-font-size:12px;
       --pill-font-size:0.98rem;
       --nav-max-width:980px;
@@ -46,34 +46,35 @@
     .sadie-sig{ font-family:'Great Vibes',cursive; font-size:52px; color:var(--accent); text-align:center; margin:4px 0; text-shadow:0 6px 18px rgba(0,0,0,.6); }
     .ai-hq{ font-family:'Cinzel',serif; text-transform:uppercase; font-weight:700; color:#fff; text-align:center; margin:6px 0 12px; letter-spacing:.08em; font-size:13px; }
 
-    /* NAV: force single row, centered, uniform pills */
+    /* NAV wrapper: add horizontal padding so pills never butt up against the viewport edge */
     .nav-outer{
       display:flex;
       justify-content:center;
       width:100%;
+      padding:0 20px; /* padding prevents visual clipping at the edges */
+      box-sizing:border-box;
       margin-bottom:14px;
     }
 
+    /* nav: single row, centered. allow horizontal scroll on tiny screens */
     nav{
       display:flex;
       gap:var(--pill-gap);
       align-items:center;
       justify-content:center;
-      max-width:var(--nav-max-width);
       width:100%;
-      padding:6px;
+      max-width:var(--nav-max-width);
+      padding:6px 8px;
       box-sizing:border-box;
 
-      /* important: keep pills in one horizontal row; allow scrolling on narrow screens */
       flex-wrap:nowrap;
       overflow-x:auto;
       -webkit-overflow-scrolling:touch;
-      scrollbar-width:none; /* firefox */
     }
-    /* hide native scrollbar visually (keeps scrolling) */
+
+    /* small, tasteful scrollbar */
     nav::-webkit-scrollbar{ height:8px; }
-    nav::-webkit-scrollbar-track{ background:transparent; }
-    nav::-webkit-scrollbar-thumb{ background: rgba(0,0,0,0.25); border-radius:8px; }
+    nav::-webkit-scrollbar-thumb{ background: rgba(0,0,0,0.22); border-radius:8px; }
 
     .nav-pill{
       display:inline-flex;
@@ -91,12 +92,11 @@
       box-shadow: 0 12px 30px rgba(111,47,230,0.16), inset 0 -2px 0 rgba(0,0,0,0.12);
       min-width:fit-content;
       white-space:nowrap;
-      flex:0 0 auto; /* never stretch; stay compact */
+      flex:0 0 auto;
       transition: transform .12s cubic-bezier(.2,.9,.2,1), box-shadow .12s ease;
     }
     .nav-pill:hover{ transform:translateY(-4px); box-shadow: 0 18px 36px rgba(111,47,230,0.22); }
 
-    /* small chip icon to the left — reduced size so it doesn't dominate text */
     .nav-chip{
       width:var(--chip-size);
       height:var(--chip-size);
@@ -104,18 +104,12 @@
       border-radius:6px;
       display:inline-grid;
       place-items:center;
-      background: #fff; /* emoji or svg inside */
+      background: #fff;
       box-shadow: 0 6px 16px rgba(111,47,230,0.12);
       font-size: var(--chip-font-size);
       line-height:1;
     }
     .nav-chip .emoji{ display:inline-block; transform:translateY(1px); }
-
-    /* make nav always centered visually even when scrolled on tiny screens */
-    nav:before, nav:after{
-      content:"";
-      flex:0 0 6px;
-    }
 
     /* HERO / content */
     .hero-mini{
@@ -135,7 +129,6 @@
     .hero-mini .page{ margin:0; font-size:clamp(20px,3.6vw,30px); color:#fff; }
     .hero-mini .lead{ margin:0; color:#dfe7ee; max-width:64ch; line-height:1.4; font-size:1.02rem; }
 
-    /* grid of cards (keeps same as before) */
     .grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:18px; margin-top:18px; }
     .card{ background:rgba(255,255,255,0.02); border-radius:8px; padding:8px; box-shadow: inset 0 -2px 0 rgba(0,0,0,.3); }
     .video-embed{ width:100%; height:190px; background:#000; border-radius:6px; overflow:hidden; }
@@ -144,7 +137,7 @@
 
     footer{ color:var(--muted); text-align:center; margin:28px 0 12px; }
 
-    /* RESPONSIVE: at small widths keep single-row nav but shrink pills — only allow stacking at very small screens */
+    /* responsive reductions */
     @media (max-width:680px){
       :root{
         --chip-size:20px;
@@ -154,12 +147,12 @@
         --pill-gap:10px;
       }
     }
+    /* only allow wrap at very small widths so readability isn't lost */
     @media (max-width:420px){
-      /* allow wrapping for extremely tiny devices if user prefers — but default is horizontally scrollable */
-      nav{ flex-wrap:wrap; gap:10px; justify-content:center; }
+      nav{ flex-wrap:wrap; gap:10px; justify-content:center; overflow-x:visible; }
     }
 
-    /* accessibility: focus style on pills */
+    /* keyboard focus */
     .nav-pill:focus{ outline:none; box-shadow: 0 18px 36px rgba(111,47,230,0.22), 0 0 0 4px rgba(138,79,255,0.08); border-color: rgba(255,255,255,0.12); }
   </style>
 </head>
