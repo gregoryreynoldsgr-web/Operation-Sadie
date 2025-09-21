@@ -20,52 +20,48 @@
   <style>
     :root{
       --bg:#0b0b0e; --text:#f6f6f8; --muted:#b6b6c5; --accent:#8bd3ff;
-      --purple-1:#8a4fff; --purple-2:#6f2fe6;
+      --ink:#111; --purple-1:#8a4fff; --purple-2:#6f2fe6;
+      --teal:#12e3b3; --mint:#ccfff2; --emerald:#13c48f;
+      --shadow:0 8px 22px rgba(0,0,0,.35);
     }
-    html,body{ margin:0; background:var(--bg); color:var(--text);
-      font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif; -webkit-font-smoothing:antialiased; }
+    html,body{
+      margin:0; background:var(--bg); color:var(--text);
+      font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
     .wrap{ max-width:1100px; margin:0 auto; padding:22px; box-sizing:border-box; }
-    .sadie-sig{ font-family:'Great Vibes',cursive; font-size:52px; color:var(--accent); text-shadow:0 6px 18px rgba(0,0,0,.6); text-align:center; margin:0; }
+
+    /* Back to Home pill (upper left, black badge + colorful house) */
+    .topbar{display:flex; justify-content:flex-start; margin:6px 0 12px;}
+    .back-home{
+      display:inline-flex; align-items:center; gap:.6rem; padding:.55rem .95rem;
+      border-radius:9999px; background:var(--ink); color:#fff; font-weight:700;
+      font-size:.95rem; letter-spacing:.01em; text-decoration:none;
+      border:1px solid rgba(255,255,255,0.06); box-shadow:var(--shadow);
+      transition:transform .12s ease, opacity .2s ease, box-shadow .12s ease;
+    }
+    .back-home:hover{ opacity:.95; transform:translateY(-1px); box-shadow:0 10px 26px rgba(0,0,0,.45); }
+
+    .home-badge{
+      width:26px; height:26px; border-radius:7px;
+      background:#000; display:grid; place-items:center; flex-shrink:0;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 0 0 1px rgba(0,0,0,.6);
+    }
+    .home-badge svg{ width:17px; height:17px; display:block; filter: drop-shadow(0 0 6px rgba(18,227,179,.35)); }
+
+    /* Signature + Official HQ tagline */
+    .sadie-sig{ font-family:'Great Vibes',cursive; font-size:52px; color:var(--accent);
+      text-shadow:0 6px 18px rgba(0,0,0,.6); text-align:center; margin:0; }
     .ai-hq{ font-family:'Cinzel',serif; text-transform:uppercase; font-weight:700; color:#fff;
       text-align:center; margin:6px 0 14px; letter-spacing:.08em; font-size:14px; }
 
-    /* Back to Home pill (matches homepage) */
-    nav{ display:flex; justify-content:center; margin:14px 0 20px; }
-    .btn-watch{
-      display:inline-flex; align-items:center; gap:8px; padding:.7rem 1.05rem; border-radius:9999px;
-      background:linear-gradient(180deg,var(--purple-1) 0%,var(--purple-2) 100%);
-      color:#fff; font-weight:800; font-size:1rem; letter-spacing:.01em; text-decoration:none;
-      border:1px solid rgba(255,255,255,0.06);
-      box-shadow:0 6px 22px rgba(111,47,230,0.18), inset 0 -2px 0 rgba(0,0,0,0.12);
-      transition:transform .12s cubic-bezier(.2,.9,.2,1), box-shadow .12s ease, opacity .12s ease;
-      cursor:pointer;
-    }
-    .btn-watch:hover{ transform:translateY(-3px); box-shadow:0 12px 30px rgba(111,47,230,0.22), inset 0 -2px 0 rgba(0,0,0,0.14); opacity:.99; }
-    .btn-watch:active{ transform:translateY(-1px); }
-    .btn-watch:focus{ outline:none; box-shadow:0 12px 30px rgba(111,47,230,0.22), 0 0 0 4px rgba(138,79,255,0.12);
-      border-color:rgba(255,255,255,0.14); }
-
-    /* Data-URI house icon (purple roof, white body) */
-    .home-ico{
-      width:20px; height:20px; display:inline-block; flex-shrink:0; background-repeat:no-repeat; background-size:contain;
-      background-image:url('data:image/svg+xml;utf8,\
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">\
-  <path d="M3 10.8L12 3l9 7.8h-2.3L12 6.2 5.3 10.8H3z" fill="%238a4fff"/>\
-  <path d="M5 11.2v7.6c0 .66.54 1.2 1.2 1.2H10v-5h4v5h3.8c.66 0 1.2-.54 1.2-1.2v-7.6L12 6.6 5 11.2z" fill="%23ffffff"/>\
-  <rect x="11.25" y="15" width="1.5" height="3.8" rx=".3" fill="%236f2fe6"/>\
-  <rect x="7.6" y="13.4" width="2" height="2" rx=".2" fill="%23eaf1ff"/>\
-</svg>');
-    }
-
-    .hero-mini{
-      margin:28px auto; padding:36px 22px; border-radius:12px; max-width:920px;
+    .hero-mini{ margin:28px auto; padding:36px 22px; border-radius:12px; max-width:920px;
       background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
-      box-shadow:0 18px 36px rgba(0,0,0,.6); text-align:center;
-    }
+      box-shadow:0 18px 36px rgba(0,0,0,.6); text-align:center; }
     .hero-mini h1{ margin:0; font-size:clamp(20px,3.6vw,30px); color:#fff; }
     .hero-mini p{ margin:12px auto 0; color:#dfe7ee; max-width:64ch; line-height:1.4; font-size:1.02rem; }
 
-    /* === Minimal embeds grid === */
+    /* Embeds grid */
     .grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:18px; margin-top:20px; }
     .card{ background:rgba(255,255,255,0.02); border-radius:8px; overflow:hidden; box-shadow: inset 0 -2px 0 rgba(0,0,0,.3); }
     .frame{ position:relative; padding-top:56.25%; background:#000; }
@@ -75,23 +71,43 @@
     footer{ color:var(--muted); text-align:center; margin:28px 0 12px; }
 
     @media (max-width:640px){
-      .sadie-sig{ font-size:46px; } .ai-hq{ font-size:13px; } .hero-mini{ padding:26px 16px; border-radius:8px; }
+      .sadie-sig{ font-size:46px; } .ai-hq{ font-size:13px; }
+      .hero-mini{ padding:26px 16px; border-radius:8px; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
+    <!-- Back to Home top-left -->
+    <div class="topbar">
+      <a href="./index.html" class="back-home" aria-label="Back to Home">
+        <span class="home-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" aria-hidden="true">
+            <defs>
+              <linearGradient id="roofGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#12e3b3"/>
+                <stop offset="1" stop-color="#8a4fff"/>
+              </linearGradient>
+              <linearGradient id="wallStroke" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#8bd3ff" stop-opacity=".9"/>
+                <stop offset="1" stop-color="#12e3b3" stop-opacity=".9"/>
+              </linearGradient>
+            </defs>
+            <path d="M3 11L12 4l9 7" fill="url(#roofGrad)"/>
+            <path d="M6 10.8V19c0 .55.45 1 1 1h3v-5h4v5h3c.55 0 1-.45 1-1v-8.2L12 6.7 6 10.8z"
+                  fill="#ffffff" stroke="url(#wallStroke)" stroke-width=".9"/>
+            <rect x="11.25" y="14.5" width="1.5" height="4" rx=".35" fill="#13c48f"/>
+            <rect x="7.8" y="13.4" width="2" height="2" rx=".25" fill="#ccfff2"/>
+            <rect x="6" y="20.2" width="12" height=".8" rx=".4" fill="#12e3b3" opacity=".6"/>
+          </svg>
+        </span>
+        Back to Home
+      </a>
+    </div>
+
     <header>
       <div class="sadie-sig">Sadie Winters</div>
       <div class="ai-hq">The Official AI Music HQ</div>
-
-      <!-- Back to Home button -->
-      <nav aria-label="Main navigation">
-        <a href="./index.html" class="btn-watch">
-          <span class="home-ico" aria-hidden="true"></span>
-          Back to Home
-        </a>
-      </nav>
     </header>
 
     <section class="hero-mini" aria-labelledby="topai">
@@ -99,72 +115,16 @@
       <p>Here is our hand-picked collection of some of the most highly watched AI music videos from around the globe, featuring rising creators pushing generative vocals and cinematic visuals. Enjoy!</p>
     </section>
 
-    <!-- === Your embeds (order mixed; last is the “pretty wild” one) === -->
     <section class="grid" aria-live="polite">
-      <article class="card">
-        <div class="frame">
-          <iframe src="https://www.youtube.com/embed/2c8KuC9CbdI?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe>
-        </div>
-        <div class="meta"><strong>AI Music Video</strong></div>
-      </article>
-
-      <article class="card">
-        <div class="frame">
-          <iframe src="https://www.youtube.com/embed/fh-68elOpqI?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe>
-        </div>
-        <div class="meta"><strong>AI Music Video</strong></div>
-      </article>
-
-      <article class="card">
-        <div class="frame">
-          <iframe src="https://www.youtube.com/embed/eQJ9IWoclhk?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe>
-        </div>
-        <div class="meta"><strong>AI Music Video</strong></div>
-      </article>
-
-      <article class="card">
-        <div class="frame">
-          <iframe src="https://www.youtube.com/embed/KHSr80Rnm9k?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe>
-        </div>
-        <div class="meta"><strong>AI Music Video</strong></div>
-      </article>
-
-      <article class="card">
-        <div class="frame">
-          <iframe src="https://www.youtube.com/embed/9CLMy_hE-3w?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe>
-        </div>
-        <div class="meta"><strong>AI Music Video</strong></div>
-      </article>
-
-      <article class="card">
-        <div class="frame">
-          <iframe src="https://www.youtube.com/embed/jPg8YR5-G8I?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe>
-        </div>
-        <div class="meta"><strong>AI Music Video</strong></div>
-      </article>
-
-      <article class="card">
-        <div class="frame">
-          <iframe src="https://www.youtube.com/embed/5TDrHffbRYw?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe>
-        </div>
-        <div class="meta"><strong>AI Music Video</strong></div>
-      </article>
-
-      <article class="card">
-        <div class="frame">
-          <!-- Shorts work fine with the standard /embed/{id} path -->
-          <iframe src="https://www.youtube.com/embed/O5vAUMAsZDQ?rel=0&modestbranding=1&playsinline=1" title="AI Short" allowfullscreen></iframe>
-        </div>
-        <div class="meta"><strong>AI Short</strong></div>
-      </article>
-
-      <!-- LAST: the “pretty wild” one -->
-      <article class="card">
-        <div class="frame">
-          <iframe src="https://www.youtube.com/embed/-WrYX9hv1q8?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe>
-        </div>
-        <div class="meta"><strong>AI Music Video</strong></div>
-      </article>
+      <article class="card"><div class="frame"><iframe src="https://www.youtube.com/embed/2c8KuC9CbdI?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe></div><div class="meta"><strong>AI Music Video</strong></div></article>
+      <article class="card"><div class="frame"><iframe src="https://www.youtube.com/embed/fh-68elOpqI?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe></div><div class="meta"><strong>AI Music Video</strong></div></article>
+      <article class="card"><div class="frame"><iframe src="https://www.youtube.com/embed/eQJ9IWoclhk?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe></div><div class="meta"><strong>AI Music Video</strong></div></article>
+      <article class="card"><div class="frame"><iframe src="https://www.youtube.com/embed/KHSr80Rnm9k?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe></div><div class="meta"><strong>AI Music Video</strong></div></article>
+      <article class="card"><div class="frame"><iframe src="https://www.youtube.com/embed/9CLMy_hE-3w?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe></div><div class="meta"><strong>AI Music Video</strong></div></article>
+      <article class="card"><div class="frame"><iframe src="https://www.youtube.com/embed/jPg8YR5-G8I?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe></div><div class="meta"><strong>AI Music Video</strong></div></article>
+      <article class="card"><div class="frame"><iframe src="https://www.youtube.com/embed/5TDrHffbRYw?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe></div><div class="meta"><strong>AI Music Video</strong></div></article>
+      <article class="card"><div class="frame"><iframe src="https://www.youtube.com/embed/O5vAUMAsZDQ?rel=0&modestbranding=1&playsinline=1" title="AI Short" allowfullscreen></iframe></div><div class="meta"><strong>AI Short</strong></div></article>
+      <article class="card"><div class="frame"><iframe src="https://www.youtube.com/embed/-WrYX9hv1q8?rel=0&modestbranding=1&playsinline=1" title="AI Music Video" allowfullscreen></iframe></div><div class="meta"><strong>AI Music Video</strong></div></article>
     </section>
 
     <footer>© 2025 SadieWinters.net — The Official AI Music HQ</footer>
