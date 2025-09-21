@@ -19,6 +19,7 @@
     :root{
       --bg:#0b0b0e; --text:#f6f6f8; --accent:#8bd3ff; --muted:#b6b6c2; --card:#111318;
       --purple-1:#8a4fff; --purple-2:#6f2fe6; --ink:#111;
+      --teal:#12e3b3; --mint:#ccfff2; --emerald:#13c48f;
       --shadow:0 8px 22px rgba(0,0,0,.35);
     }
     html,body{
@@ -37,15 +38,21 @@
       border:1px solid rgba(255,255,255,0.06); box-shadow:var(--shadow);
       transition:transform .12s ease, opacity .2s ease, box-shadow .12s ease;
     }
-    .back-home:hover{ opacity:.94; transform:translateY(-1px); box-shadow:0 10px 26px rgba(0,0,0,.45); }
+    .back-home:hover{ opacity:.95; transform:translateY(-1px); box-shadow:0 10px 26px rgba(0,0,0,.45); }
 
-    /* Black background icon badge + colorized house */
+    /* Black icon badge + POP house */
     .home-badge{
-      width:24px; height:24px; border-radius:6px;
+      width:26px; height:26px; border-radius:7px;
       background:#000; display:grid; place-items:center; flex-shrink:0;
-      box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.08),
+        0 0 0 1px rgba(0,0,0,.6);
     }
-    .home-badge svg{ width:16px; height:16px; display:block }
+    .home-badge svg{
+      width:17px; height:17px; display:block;
+      /* subtle neon glow around the colored parts so it “reads” on black */
+      filter: drop-shadow(0 0 6px rgba(18,227,179,.35));
+    }
 
     /* Signature + Official HQ tagline */
     header{ display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center; margin:6px 0 8px; }
@@ -99,26 +106,38 @@
 <body>
   <div class="wrap">
 
-    <!-- ONLY Back to Home (left-aligned) — black icon badge + colorized house -->
+    <!-- ONLY Back to Home — black icon badge + POP house -->
     <div class="topbar">
       <a href="./index.html" class="back-home" aria-label="Back to Home">
         <span class="home-badge" aria-hidden="true">
-          <!-- Inline SVG with gradient roof + tinted door; reads well on black -->
+          <!-- Inline SVG: teal→purple roof, mint windows, emerald door, soft accent stroke on walls -->
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" aria-hidden="true">
             <defs>
               <linearGradient id="roofGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#8bd3ff"/>
+                <stop offset="0" stop-color="#12e3b3"/>
                 <stop offset="1" stop-color="#8a4fff"/>
               </linearGradient>
+              <linearGradient id="wallStroke" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#8bd3ff" stop-opacity=".85"/>
+                <stop offset="1" stop-color="#12e3b3" stop-opacity=".85"/>
+              </linearGradient>
             </defs>
-            <!-- Roof -->
+
+            <!-- Roof (gradient) -->
             <path d="M3 11L12 4l9 7" fill="url(#roofGrad)"/>
-            <!-- House body -->
-            <path d="M6 10.8V19c0 .55.45 1 1 1h3v-5h4v5h3c.55 0 1-.45 1-1v-8.2L12 6.7 6 10.8z" fill="#ffffff"/>
-            <!-- Door -->
-            <rect x="11.25" y="14.6" width="1.5" height="3.9" rx=".3" fill="#6f2fe6"/>
-            <!-- Window -->
-            <rect x="7.8" y="13.4" width="2" height="2" rx=".2" fill="#eaf1ff"/>
+
+            <!-- House body (off-white) with thin colored stroke so it isn't flat white -->
+            <path d="M6 10.8V19c0 .55.45 1 1 1h3v-5h4v5h3c.55 0 1-.45 1-1v-8.2L12 6.7 6 10.8z"
+                  fill="#ffffff" stroke="url(#wallStroke)" stroke-width=".9" />
+
+            <!-- Door (emerald) -->
+            <rect x="11.25" y="14.5" width="1.5" height="4" rx=".35" fill="#13c48f"/>
+
+            <!-- Window (mint) -->
+            <rect x="7.8" y="13.4" width="2" height="2" rx=".25" fill="#ccfff2"/>
+
+            <!-- Tiny sill/ground hint (teal) to add one more color note without clutter -->
+            <rect x="6" y="20.2" width="12" height=".8" rx=".4" fill="#12e3b3" opacity=".6"/>
           </svg>
         </span>
         Back to Home
