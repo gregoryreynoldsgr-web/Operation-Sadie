@@ -34,7 +34,9 @@
       --text:#f6f6f8;
       --muted:#b6b6c5;
       --accent:#8bd3ff;
-      --accent-dark: #5eaed6;
+      --accent-dark:#5eaed6;
+      --purple-1:#8a4fff;
+      --purple-2:#6f2fe6;
     }
 
     html,body{
@@ -62,54 +64,115 @@
     .sadie-sig{ font-family:'Great Vibes',cursive; font-size:68px; color:var(--accent); line-height:1; text-shadow:0 6px 24px rgba(0,0,0,.6); }
     .sadie-sig a{ color:inherit; text-decoration:none; }
 
-  /* replace your existing .ai-hq rules with this */
-.ai-hq{
-  font-family:'Cinzel', serif;
-  font-weight:700;
-  /* a touch larger but responsive */
-  font-size: clamp(15px, 1.8vw, 24px);
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  margin-top: -2px;
+    /* The Official AI Music HQ (updated, more legible) */
+    .ai-hq{
+      font-family:'Cinzel', serif;
+      font-weight:700;
+      /* a touch larger but responsive */
+      font-size: clamp(15px, 1.8vw, 24px);
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-top: -2px;
 
-  /* high-contrast primary color for legibility */
-  color: #ffffff;
+      /* high-contrast primary color for legibility */
+      color: #ffffff;
 
-  /* subtle accent glow + depth so the light blue accent still reads */
-  text-shadow:
-    0 1px 0 rgba(255,255,255,0.05),
-    0 6px 18px rgba(0,0,0,0.65),
-    0 2px 8px rgba(139,211,255,0.12);
+      /* subtle accent glow + depth so the light blue accent still reads */
+      text-shadow:
+        0 1px 0 rgba(255,255,255,0.05),
+        0 6px 18px rgba(0,0,0,0.65),
+        0 2px 8px rgba(139,211,255,0.12);
 
-  /* small highlight line under the text for visual interest */
-  display:inline-block;
-  position:relative;
-  padding-bottom:4px;
-}
-.ai-hq::after{
-  content: "";
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  bottom:0;
-  height:3px;
-  width:56%;
-  border-radius:3px;
-  background: linear-gradient(90deg, #8bd3ff 0%, #5eaed6 100%);
-  box-shadow: 0 6px 16px rgba(94,174,214,0.12);
-  opacity:0.95;
-}
-@media (max-width:640px){
-  .ai-hq{ font-size: clamp(13px, 2.7vw, 18px); letter-spacing:0.06em; }
-  .ai-hq::after{ width:70%; height:2.8px; }
-}
+      /* small highlight line under the text for visual interest */
+      display:inline-block;
+      position:relative;
+      padding-bottom:4px;
+    }
+    .ai-hq::after{
+      content: "";
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:0;
+      height:3px;
+      width:56%;
+      border-radius:3px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-dark) 100%);
+      box-shadow: 0 6px 16px rgba(94,174,214,0.12);
+      opacity:0.95;
+    }
+    @media (max-width:640px){
+      .ai-hq{ font-size: clamp(13px, 2.7vw, 18px); letter-spacing:0.06em; }
+      .ai-hq::after{ width:70%; height:2.8px; }
+    }
 
+    /* Prominent purple nav pills (replacement) */
+    nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:14px;
+      margin-top:12px;
+      z-index:10;
+    }
 
-    /* Marquee (thank you banner) */
+    .btn-watch{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:.7rem 1.05rem;
+      border-radius:9999px;
+      background: linear-gradient(180deg, var(--purple-1) 0%, var(--purple-2) 100%);
+      color:#ffffff;
+      font-weight:800;
+      font-size:1rem;
+      letter-spacing:0.01em;
+      text-decoration:none;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow:
+        0 6px 22px rgba(111,47,230,0.18),
+        inset 0 -2px 0 rgba(0,0,0,0.12);
+      transition: transform .12s cubic-bezier(.2,.9,.2,1), box-shadow .12s ease, opacity .12s ease;
+      cursor:pointer;
+    }
+    .btn-watch > svg, .btn-watch > img { width:18px; height:18px; flex-shrink:0; }
+    .btn-watch:hover{
+      transform:translateY(-3px);
+      box-shadow:
+        0 12px 30px rgba(111,47,230,0.22),
+        inset 0 -2px 0 rgba(0,0,0,0.14);
+      opacity:0.99;
+    }
+    .btn-watch:active{ transform:translateY(-1px); }
+    .btn-watch:focus{
+      outline: none;
+      box-shadow:
+        0 12px 30px rgba(111,47,230,0.22),
+        0 0 0 4px rgba(138,79,255,0.12);
+      border-color: rgba(255,255,255,0.14);
+    }
+    @media (max-width:640px){
+      nav{ gap:10px; margin-top:10px; }
+      .btn-watch{ padding:.65rem .9rem; font-size:1.02rem; }
+    }
+    /* Optional ghost variant if you want a softer Mission link */
+    .btn-watch.btn-ghost{
+      background:transparent;
+      color:#d9c7ff;
+      border:1px solid rgba(138,79,255,0.12);
+      box-shadow:none;
+    }
+    .btn-watch.btn-ghost:hover{
+      transform:translateY(-2px);
+      color:#fff;
+      background: linear-gradient(180deg, rgba(138,79,255,0.06), rgba(138,79,255,0.02));
+    }
+
+    /* Marquee (thank you banner) — keep script font but slightly purple-tinged */
     .marquee-wrap{ position:relative; width:100%; overflow:hidden; margin:12px 0; filter:drop-shadow(0 2px 12px rgba(0,0,0,.5)); }
     .marquee-line{
       display:inline-block; white-space:nowrap; font-family:'Great Vibes',cursive;
-      color:var(--accent); font-size:clamp(20px,3.2vw,34px); line-height:1.05; padding:6px 0;
+      color:var(--purple-1); font-size:clamp(20px,3.2vw,34px); line-height:1.05; padding:6px 0;
       will-change:transform; animation:slideLeft 20s linear infinite; transform:translateX(100%);
     }
     @keyframes slideLeft{ 0%{transform:translateX(100%);} 100%{transform:translateX(-100%);} }
@@ -173,7 +236,7 @@
         <a href="./shorts.html" class="btn-watch">▶️ YouTube Shorts</a>
         <a href="./videos.html" class="btn-watch">🎬 Watch Music Videos</a>
         <a href="./gallery.html" class="btn-watch">🖼️ Living Gallery</a>
-        <a href="./mission.html" class="btn-watch">📜 Our Mission</a>
+        <a href="./mission.html" class="btn-watch btn-ghost">📜 Our Mission</a>
       </nav>
     </header>
 
