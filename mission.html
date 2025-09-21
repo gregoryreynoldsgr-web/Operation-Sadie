@@ -14,18 +14,19 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Our Mission — Sadie Winters</title>
-  <meta name="description" content="Our mission: Virtually born. Human touched. Celebrating music as humanity’s forever art.">
+  <meta name="description" content="Our mission at SadieWinters.net: championing AI music and generative music—virtually born, human touched. We celebrate authentic vocals, cinematic visuals, and ethical, human-centered creativity.">
 
   <style>
     :root{
       --bg:#0b0b0e; --text:#f6f6f8; --muted:#b6b6c5; --accent:#8bd3ff;
+      --ink:#111; --card:#0f0f14;
       --purple-1:#8a4fff; --purple-2:#6f2fe6;
+      --teal:#12e3b3; --mint:#ccfff2; --emerald:#13c48f;
+      --shadow:0 8px 22px rgba(0,0,0,.35);
     }
 
     html,body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
+      margin:0; background:var(--bg); color:var(--text);
       font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
       -webkit-font-smoothing:antialiased;
     }
@@ -33,18 +34,21 @@
     .wrap{max-width:1000px; margin:0 auto; padding:20px; position:relative; z-index:1;}
     .page-background{position:fixed; inset:0; background:#0b0b0e; z-index:0;}
 
-    /* Back to Home pill (only nav, left-aligned) */
+    /* Back to Home (upper-left) — black badge + colorful house */
     .topbar{display:flex; justify-content:flex-start; margin-bottom:10px;}
     .back-home{
-      display:inline-flex; align-items:center; gap:6px;
-      padding:.55rem .95rem; border-radius:9999px;
-      background:linear-gradient(180deg,var(--purple-1),var(--purple-2));
-      color:#fff; font-weight:700; font-size:.95rem; text-decoration:none;
-      box-shadow:0 6px 20px rgba(111,47,230,0.18);
-      transition:transform .12s ease, box-shadow .12s ease;
+      display:inline-flex; align-items:center; gap:.6rem;
+      padding:.55rem .95rem; border-radius:9999px; background:var(--ink); color:#fff;
+      font-weight:700; font-size:.95rem; text-decoration:none;
+      border:1px solid rgba(255,255,255,0.06); box-shadow:var(--shadow);
+      transition:transform .12s ease, opacity .2s ease, box-shadow .12s ease;
     }
-    .back-home:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(111,47,230,0.25);}
-    .back-home svg{width:18px; height:18px; fill:#fff;}
+    .back-home:hover{ opacity:.95; transform:translateY(-1px); box-shadow:0 10px 26px rgba(0,0,0,.45); }
+    .home-badge{
+      width:26px; height:26px; border-radius:7px; background:#000; display:grid; place-items:center; flex-shrink:0;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 0 0 1px rgba(0,0,0,.6);
+    }
+    .home-badge svg{ width:17px; height:17px; display:block; filter: drop-shadow(0 0 6px rgba(18,227,179,.35)); }
 
     /* Signature header (centered) */
     header{
@@ -53,7 +57,7 @@
     }
     .sadie-sig{
       font-family:'Great Vibes',cursive;
-      font-size:64px; color:#fff;
+      font-size:64px; color:var(--accent);
       text-shadow:0 6px 18px rgba(0,0,0,.6);
       line-height:1;
     }
@@ -72,15 +76,17 @@
         linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.35) 65%,rgba(0,0,0,.65) 100%),
         url("./hero.jpg") 50% 18% / cover no-repeat;
       box-shadow:0 12px 30px rgba(0,0,0,.45);
+      text-align:center;
     }
     .hero h1{margin:0; font-size:clamp(28px,5vw,44px); color:#fff;}
     .hero .sub{margin:.25rem 0 0; color:var(--muted); font-size:clamp(15px,2.6vw,17px); font-weight:500;}
 
     /* Mission content */
     .panel{
-      background:#0f0f14; border:1px solid #1e1e26; border-radius:16px;
+      background:var(--card); border:1px solid #1e1e26; border-radius:16px;
       padding:22px; box-shadow:0 10px 28px rgba(0,0,0,.35); margin-top:20px;
     }
+    .panel h2{margin:0 0 10px; font-size:clamp(20px,3.6vw,28px);}
     .panel p{margin:0 0 14px; color:#e8e8f0; max-width:74ch;}
     .quote{
       margin:14px 0; padding:14px 16px; border-left:3px solid var(--accent);
@@ -98,10 +104,30 @@
   <div class="page-background"></div>
   <div class="wrap">
 
-    <!-- Only Back to Home (left) -->
+    <!-- Back to Home (upper-left) -->
     <div class="topbar">
       <a href="./index.html" class="back-home" aria-label="Back to Home">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 10v10h7v-6h6v6h7V10L12 3z"/></svg>
+        <span class="home-badge" aria-hidden="true">
+          <!-- Inline SVG: teal→purple roof, mint window, emerald door, subtle glow -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" aria-hidden="true">
+            <defs>
+              <linearGradient id="roofGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#12e3b3"/>
+                <stop offset="1" stop-color="#8a4fff"/>
+              </linearGradient>
+              <linearGradient id="wallStroke" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#8bd3ff" stop-opacity=".9"/>
+                <stop offset="1" stop-color="#12e3b3" stop-opacity=".9"/>
+              </linearGradient>
+            </defs>
+            <path d="M3 11L12 4l9 7" fill="url(#roofGrad)"/>
+            <path d="M6 10.8V19c0 .55.45 1 1 1h3v-5h4v5h3c.55 0 1-.45 1-1v-8.2L12 6.7 6 10.8z"
+                  fill="#ffffff" stroke="url(#wallStroke)" stroke-width=".9"/>
+            <rect x="11.25" y="14.5" width="1.5" height="4" rx=".35" fill="#13c48f"/>
+            <rect x="7.8" y="13.4" width="2" height="2" rx=".25" fill="#ccfff2"/>
+            <rect x="6" y="20.2" width="12" height=".8" rx=".4" fill="#12e3b3" opacity=".6"/>
+          </svg>
+        </span>
         Back to Home
       </a>
     </div>
@@ -116,20 +142,24 @@
     <section class="hero" role="img" aria-label="Sadie Winters mission background">
       <div>
         <h1>📜 Our Mission</h1>
-        <p class="sub">Virtually born. Human touched.</p>
+        <p class="sub">Virtually born. Human touched. Made for fans of AI music.</p>
       </div>
     </section>
 
     <main>
-      <section class="panel">
-        <p><strong>We believe music will always belong to humanity.</strong> Artificial Intelligence is not here to replace the artists we love — it’s here to carry their echoes forward.</p>
+      <section class="panel" aria-labelledby="mission">
+        <h2 id="mission">Why We Champion AI Music</h2>
+        <p><strong>We believe music will always belong to humanity.</strong> <em>AI music</em> and modern <em>generative music</em> tools don’t replace artists — they amplify human ideas and carry their echoes forward.</p>
 
         <div class="quote">
-          When an AI-born song makes your heart ache, or lifts you up the way an anthem from the 80s did, that’s not a machine taking over. That’s the voice of every musician who has ever moved us — from the classics of our childhood to the legends of today — living on through new technology.
+          When an AI-born song makes your heart ache, or lifts you like an ‘80s anthem, that isn’t a machine taking over — it’s the voice of every musician who ever moved us, living on through new technology.
         </div>
 
-        <p><strong>The greatest AI songs are tributes.</strong> They celebrate the riffs, the lyrics, the soul, and the sweat of the artists who built the soundtrack of our lives.</p>
-        <p><em>Sadie Winters</em> is our symbol of that celebration — virtually born, human touched, and forever connected to the music that made us who we are. This site exists to welcome you into that world — not to fear the future, but to embrace it, together.</p>
+        <p><strong>The best AI music is a tribute.</strong> It honors the riffs, lyrics, stories and sweat that built the soundtrack of our lives. We celebrate <em>AI vocals</em>, <em>AI-generated music videos</em>, and cinematic shorts that keep the soul of music front and center.</p>
+
+        <p><em>Sadie Winters</em> is our symbol of that celebration — virtually born, human touched, and forever connected to the songs that made us who we are. This site curates standout <strong>AI music videos</strong>, director’s cuts, and creative experiments so fans can discover what’s possible when human creativity meets responsible AI.</p>
+
+        <p>We’re committed to a human-first, ethical approach: credit inspiration, support creators, and use AI as an instrument — not a replacement. If you love great songs and bold visuals, welcome to your home for <strong>AI music</strong>.</p>
       </section>
     </main>
 
