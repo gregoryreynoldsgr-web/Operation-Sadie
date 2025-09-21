@@ -107,13 +107,9 @@
       background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
       box-shadow: inset 0 -2px 0 rgba(0,0,0,0.12);
     }
-    /* actual svg fills use white so the circle reads purple via pill bg behind it */
     .nav-icon svg{ width:18px; height:18px; display:block; fill: #fff; opacity:0.98; }
-
-    /* make the icon appear purple by adding a subtle halo behind the circle */
     .nav-pill .nav-icon{ box-shadow:0 6px 18px rgba(111,47,230,0.16); background: linear-gradient(180deg, rgba(138,79,255,0.18), rgba(94,46,214,0.08)); }
 
-    /* fallback smaller pills on very small widths */
     @media (max-width:440px){
       .nav-pill{ padding:.45rem .7rem; gap:8px; font-size:.95rem; }
       .nav-icon{ width:28px; height:28px; min-width:28px; }
