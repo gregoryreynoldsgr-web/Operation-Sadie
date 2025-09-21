@@ -26,7 +26,8 @@
       --muted: #b6b6c5;
       --purple-1: #8a4fff;
       --purple-2: #6f2fe6;
-      --nav-height: 46px;
+      --nav-height: 48px;
+      --site-max: 1100px;
     }
 
     html,body{
@@ -39,7 +40,10 @@
       -moz-osx-font-smoothing:grayscale;
     }
 
+    /* Match other pages: limit the site width and center it */
     .wrap{
+      max-width:var(--site-max);
+      margin:0 auto;
       min-height:100vh;
       display:flex;
       flex-direction:column;
@@ -48,92 +52,82 @@
       box-sizing:border-box;
     }
 
-    /* header + spacing */
+    /* header spacing and stacking */
     header{
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:10px;
+      gap:8px;
       text-align:center;
-      margin:6px 0 18px; /* keep space so nav doesn't overlap hero */
+      margin:6px 0 18px;
       width:100%;
-      max-width:1100px;
       position:relative;
       z-index:30;
     }
 
     .sadie-sig{
       font-family:'Great Vibes',cursive;
-      font-size:64px;
+      font-size:68px;
       color:var(--accent);
       line-height:1;
       text-shadow:0 6px 24px rgba(0,0,0,.6);
+      margin:0;
     }
     .sadie-sig a{ color:inherit; text-decoration:none; }
 
-    /* NAV: compact, single-row style matching index (smaller icons/pills) */
+    /* ===== NAV: replicate index compact look ===== */
     nav{
       display:flex;
-      gap:12px;
-      justify-content:center;
-      align-items:center;
+      flex-wrap:wrap;               /* allow wrap on smaller screens */
+      justify-content:center;       /* center the row */
+      gap:14px;                     /* same gap as index */
+      margin-top:12px;
       width:100%;
-      max-width:1100px;
-
-      /* keep pills on one line; allow horizontal scroll on very narrow screens */
-      flex-wrap:nowrap;
-      overflow-x:auto;
-      padding:6px 12px;
-      -webkit-overflow-scrolling:touch;
+      max-width:var(--site-max);
+      z-index:32;
     }
 
-    /* compact pill */
     .nav-pill{
       display:inline-flex;
       align-items:center;
-      gap:8px;
-      padding:.45rem .85rem;
+      gap:10px;
+      padding:.55rem .95rem; /* equal to index pill size */
       border-radius:9999px;
       background: linear-gradient(180deg,var(--purple-1),var(--purple-2));
       color:#fff;
-      font-weight:700;
-      font-size:0.96rem;
+      font-weight:800;
+      font-size:1rem;
       text-decoration:none;
       border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 8px 22px rgba(111,47,230,0.16), inset 0 -2px 0 rgba(0,0,0,0.12);
+      box-shadow: 0 6px 20px rgba(111,47,230,0.18);
       min-height: var(--nav-height);
       line-height:1;
-      white-space:nowrap;
       cursor:pointer;
       transition: transform .12s cubic-bezier(.2,.9,.2,1), box-shadow .12s ease, opacity .12s ease;
+      white-space:nowrap;
     }
-    .nav-pill:hover{ transform:translateY(-3px); box-shadow: 0 14px 36px rgba(111,47,230,0.22); opacity:0.99; }
+    .nav-pill:hover{ transform:translateY(-3px); box-shadow:0 12px 30px rgba(111,47,230,0.22); opacity:0.99; }
+    .nav-pill:focus{ outline:none; box-shadow: 0 12px 30px rgba(111,47,230,0.22), 0 0 0 4px rgba(138,79,255,0.12); }
 
-    /* small circular icon inside pill (smaller than the 'big' variant) */
+    /* icon circle sizing to match index: 34x34, svg 18x18 */
     .nav-icon{
-      width:28px;
-      height:28px;
-      min-width:28px;
+      width:34px;
+      height:34px;
+      min-width:34px;
       border-radius:50%;
       display:inline-grid;
       place-items:center;
       background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.12), 0 6px 12px rgba(111,47,230,0.12);
+      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.12), 0 6px 16px rgba(111,47,230,0.12);
     }
-    .nav-icon svg{ width:14px; height:14px; display:block; fill: #fff; opacity:0.98; }
+    .nav-icon svg{ width:18px; height:18px; display:block; fill:#fff; opacity:0.98; }
 
-    /* allow wrapping on small screens if the user wants stacked layout */
-    @media (max-width:720px){
-      nav{ flex-wrap:wrap; justify-content:center; gap:10px; padding:6px 6px; }
-    }
-
-    /* hero wrapper — keep hero visually behind header/nav */
+    /* hero wrapper keeps hero visually under header */
     .hero {
-      margin-top: 8px;       /* clears header/nav */
-      padding-top: 6px;      /* extra clearance on small screens */
-      width: 100%;
-      max-width: 1100px;
-      z-index: 1;
+      margin-top:8px;
+      width:100%;
+      max-width:var(--site-max);
+      z-index:1;
     }
 
     /* Gallery video */
@@ -153,7 +147,7 @@
       text-align:center;
     }
 
-    /* Controls row */
+    /* Controls */
     .controls{
       margin-top:14px;
       display:flex;
@@ -163,11 +157,7 @@
       justify-content:center;
       color:#ccc;
     }
-    fieldset{
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:999px;
-      padding:6px 10px;
-    }
+    fieldset{ border:1px solid rgba(255,255,255,.12); border-radius:999px; padding:6px 10px; }
     legend{ padding:0 6px; color:#ddd; font-size:.9rem; }
     label{ margin:0 10px 0 4px; cursor:pointer; }
     input[type="radio"]{ accent-color:var(--accent); transform:translateY(1px); }
@@ -183,7 +173,6 @@
       cursor:pointer;
       font-weight:600;
     }
-    .btn:hover{ opacity:.95; transform:none; }
 
     .coming-soon {
       margin-top:18px;
@@ -216,6 +205,8 @@
       .sadie-sig{ font-size:48px; }
       .gallery-video{ height:48vh; border-radius:12px; }
       .hero { padding-top: 12px; }
+      /* allow pills to wrap when space is tight */
+      nav{ gap:10px; }
     }
   </style>
 </head>
@@ -230,7 +221,6 @@
         <!-- Home -->
         <a href="./index.html" class="nav-pill" aria-label="Back to home">
           <span class="nav-icon" aria-hidden="true">
-            <!-- Home icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.3 2 10v10.7A1 1 0 0 0 3 22h6v-7h4v7h6a1 1 0 0 0 1-1.3V10L12 3.3z"/></svg>
           </span>
           <span>Home</span>
@@ -239,16 +229,14 @@
         <!-- Shorts -->
         <a href="./shorts.html" class="nav-pill" aria-label="YouTube Shorts">
           <span class="nav-icon" aria-hidden="true">
-            <!-- Play / shorts icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 2.5v19a1 1 0 0 0 1.53.86L20.6 13a1 1 0 0 0 0-1.72L5.53 1.64A1 1 0 0 0 4 2.5z"/></svg>
           </span>
-          <span>Shorts</span>
+          <span>YouTube Shorts</span>
         </a>
 
         <!-- Videos -->
         <a href="./videos.html" class="nav-pill" aria-label="Watch Sadie Music Videos">
           <span class="nav-icon" aria-hidden="true">
-            <!-- Film / video icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5c0-1.1.9-2 2-2h2v2H5v14h2v2H5c-1.1 0-2-.9-2-2V5zm14 0h2c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2h-2v-2h2V5h-2V3zM9 8h6v8H9z"/></svg>
           </span>
           <span>Watch Sadie Music Videos</span>
@@ -257,33 +245,29 @@
         <!-- Top AI -->
         <a href="./top-ai.html" class="nav-pill" aria-label="Top AI Music Videos">
           <span class="nav-icon" aria-hidden="true">
-            <!-- Trophy / top icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 3h-2V1H8v2H6a1 1 0 0 0-1 1v3c0 2.8 2.2 5 5 5h2v4H9v2h6v-2h-4v-4h2c2.8 0 5-2.2 5-5V4a1 1 0 0 0-1-1z"/></svg>
           </span>
-          <span>Top AI</span>
+          <span>Top AI Music Videos</span>
         </a>
 
         <!-- Gallery -->
         <a href="./gallery.html" class="nav-pill" aria-label="Living Gallery">
           <span class="nav-icon" aria-hidden="true">
-            <!-- Image icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14l4-4 3 3 5-5 4 4z"/></svg>
           </span>
-          <span>Gallery</span>
+          <span>Living Gallery</span>
         </a>
 
         <!-- Mission -->
         <a href="./mission.html" class="nav-pill" aria-label="Our mission">
           <span class="nav-icon" aria-hidden="true">
-            <!-- Scroll / mission icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h14v2H6v12h12v2H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/></svg>
           </span>
-          <span>Mission</span>
+          <span>Our Mission</span>
         </a>
       </nav>
     </header>
 
-    <!-- hero wrapper so header/nav can float visually above if needed -->
     <figure class="hero" role="img" aria-label="Sadie Winters Living Gallery hero">
       <video id="galleryVideo" class="gallery-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="./hero.jpg">
         <source src="./sadie-beach.mp4" type="video/mp4" />
@@ -322,7 +306,7 @@
   </div>
 
   <script>
-    // existing behavior preserved
+    // keep your existing behavior intact
     const v = document.getElementById('galleryVideo');
     const soundOn  = document.getElementById('sound-on');
     const soundOff = document.getElementById('sound-off');
@@ -359,11 +343,8 @@
     window.addEventListener('click', oneTimeEnableAudio, { once:true });
     window.addEventListener('touchstart', oneTimeEnableAudio, { once:true, passive:true });
 
-    soundOn.addEventListener('change', () => {
-      v.muted = false;
-      tryPlay();
-    });
-    soundOff.addEventListener('change', () => { v.muted = true; });
+    soundOn.addEventListener('change', () => { v.muted=false; tryPlay(); });
+    soundOff.addEventListener('change', () => { v.muted=true; });
 
     const enterFS = async () => {
       if (document.fullscreenElement) return;
@@ -388,15 +369,8 @@
     });
 
     playPauseBtn.addEventListener('click', async () => {
-      if (v.paused) {
-        await v.play().catch(()=>{});
-        playPauseBtn.textContent = 'Pause';
-        playPauseBtn.setAttribute('aria-pressed','true');
-      } else {
-        v.pause();
-        playPauseBtn.textContent = 'Play';
-        playPauseBtn.setAttribute('aria-pressed','false');
-      }
+      if (v.paused) { await v.play().catch(()=>{}); playPauseBtn.textContent='Pause'; playPauseBtn.setAttribute('aria-pressed','true'); }
+      else { v.pause(); playPauseBtn.textContent='Play'; playPauseBtn.setAttribute('aria-pressed','false'); }
     });
 
     // Fade-in for "coming soon"
