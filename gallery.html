@@ -15,7 +15,7 @@
   <meta name="description" content="Sadie Winters Living Gallery — immersive video moments." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Import Great Vibes font + Cinzel for tagline -->
+  <!-- Import Great Vibes font + Cinzel -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
@@ -26,7 +26,16 @@
       --muted: #b6b6c5;
       --purple-1: #8a4fff;
       --purple-2: #6f2fe6;
-      --nav-height: 54px; /* slightly taller for second-look */
+
+      /* compact pill sizing that matches the "first" screenshot */
+      --nav-height: 48px;
+      --pill-padding-vertical: .50rem;
+      --pill-padding-horizontal: .95rem;
+      --pill-gap: 12px;
+      --chip-size: 22px;
+      --chip-font-size: 12px;
+      --pill-font-size: 0.98rem;
+      --pill-gap-between: 12px;
     }
 
     html,body{
@@ -56,14 +65,14 @@
       flex-direction:column;
       align-items:center;
       gap:6px;
-      margin-bottom:22px; /* extra spacing so nav doesn't crowd hero */
+      margin-bottom:18px; /* spacing so nav doesn't crowd hero */
       position:relative;
       z-index:40;
     }
 
     .sadie-sig{
       font-family:'Great Vibes',cursive;
-      font-size:72px;         /* slightly larger */
+      font-size:72px;
       color:var(--accent);
       line-height:1;
       text-shadow:0 6px 24px rgba(0,0,0,.6);
@@ -71,20 +80,20 @@
     }
     .sadie-sig a{ color:inherit; text-decoration:none; }
 
-    /* authoritative centered tagline under signature (small-caps) */
+    /* small uppercase tagline */
     .ai-hq {
       font-family: 'Cinzel', serif;
       font-weight:700;
-      font-size:14px;
+      font-size:13px;
       letter-spacing:0.18em;
       text-transform:uppercase;
       color:#ffffff;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
       margin-top:2px;
-      margin-bottom:10px;
+      margin-bottom:8px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
 
-    /* nav wrap visually centered and spaced (matches your second screenshot) */
+    /* nav wrap & container */
     .nav-wrap{
       width:100%;
       display:flex;
@@ -95,63 +104,65 @@
 
     nav{
       display:flex;
-      gap:18px;
+      gap:var(--pill-gap-between);
       flex-wrap:wrap;
       justify-content:center;
       align-items:center;
       max-width:980px;
-      padding:6px 10px;
+      padding:6px 8px;
     }
 
-    /* pill style tuned for the second screenshot */
+    /* compact pill style (uniform height like first screenshot) */
     .nav-pill{
       display:inline-flex;
       align-items:center;
-      gap:12px;
-      padding:.7rem 1.25rem;
+      gap:var(--pill-gap);
+      padding: var(--pill-padding-vertical) var(--pill-padding-horizontal);
       border-radius:9999px;
       background: linear-gradient(180deg,var(--purple-1),var(--purple-2));
       color:#fff;
       font-weight:800;
-      font-size:1rem;
+      font-size: var(--pill-font-size);
       text-decoration:none;
       border: 1px solid rgba(255,255,255,0.06);
-      box-shadow:
-        0 18px 44px rgba(111,47,230,0.20),
-        inset 0 -4px 0 rgba(0,0,0,0.14);
+      box-shadow: 0 12px 30px rgba(111,47,230,0.16), inset 0 -3px 0 rgba(0,0,0,0.12);
       min-height: var(--nav-height);
       line-height:1;
       cursor:pointer;
-      transform:translateZ(0);
-      transition: transform .14s cubic-bezier(.2,.9,.2,1), box-shadow .14s ease;
+      transition: transform .12s cubic-bezier(.2,.9,.2,1), box-shadow .12s ease;
+      white-space:nowrap;
     }
     .nav-pill:hover{
-      transform:translateY(-5px);
-      box-shadow:
-        0 26px 60px rgba(111,47,230,0.26),
-        inset 0 -4px 0 rgba(0,0,0,0.14);
+      transform:translateY(-4px);
+      box-shadow: 0 18px 40px rgba(111,47,230,0.22), inset 0 -3px 0 rgba(0,0,0,0.14);
     }
 
-    /* small colored "chip" icon (square) like your second screenshot */
+    /* small squared chip icon (reduced size) */
     .nav-chip{
-      width:28px;
-      height:28px;
-      min-width:28px;
+      width:var(--chip-size);
+      height:var(--chip-size);
+      min-width:var(--chip-size);
       border-radius:6px;
       display:inline-grid;
       place-items:center;
-      background: linear-gradient(180deg,#fff,#f3f3f3);
-      box-shadow: 0 6px 18px rgba(111,47,230,0.12);
-      font-size:14px;
+      background:#fff; /* emoji or svg will render inside */
+      box-shadow: 0 6px 16px rgba(111,47,230,0.12);
+      font-size: var(--chip-font-size);
       line-height:1;
     }
-    /* Let emoji render inside the chip — keeps color and personality */
-    .nav-chip .emoji { font-size:14px; display:inline-block; transform:translateY(1px); }
+    .nav-chip .emoji { font-size: var(--chip-font-size); display:inline-block; transform:translateY(1px); }
 
-    /* fallback smaller pills on very small widths */
+    /* responsive tweaks */
     @media (max-width:520px){
-      .nav-pill{ padding:.52rem .75rem; gap:8px; font-size:.95rem; min-height:44px; }
-      .nav-chip{ width:24px; height:24px; min-width:24px; font-size:12px; border-radius:6px; }
+      :root{
+        --nav-height:44px;
+        --chip-size:20px;
+        --chip-font-size:11px;
+        --pill-padding-vertical: .42rem;
+        --pill-padding-horizontal: .8rem;
+        --pill-font-size: .95rem;
+      }
+      nav{ gap:10px; }
     }
 
     /* hero wrapper sits behind header/nav */
@@ -240,7 +251,6 @@
     @media (max-width:640px){
       .sadie-sig{ font-size:48px; }
       .gallery-video{ height:48vh; border-radius:12px; }
-      .ai-hq{ font-size:13px; letter-spacing:0.14em; }
     }
   </style>
 </head>
@@ -248,44 +258,35 @@
   <div class="wrap">
     <header>
       <div class="sadie-sig"><a href="./index.html" aria-label="Sadie Winters">Sadie Winters</a></div>
-
-      <!-- centered authoritative tagline -->
       <div class="ai-hq" aria-hidden="false">THE OFFICIAL AI MUSIC HQ</div>
 
-      <!-- nav area wrapped for easy centering -->
       <div class="nav-wrap">
         <nav aria-label="Primary navigation">
-          <!-- Home -->
           <a href="./index.html" class="nav-pill" aria-label="Back to Home">
             <span class="nav-chip" aria-hidden="true"><span class="emoji">🏠</span></span>
             <span>Home</span>
           </a>
 
-          <!-- Shorts -->
           <a href="./shorts.html" class="nav-pill" aria-label="YouTube Shorts">
             <span class="nav-chip" aria-hidden="true"><span class="emoji">▶️</span></span>
             <span>YouTube Shorts</span>
           </a>
 
-          <!-- Watch Sadie Music Videos -->
           <a href="./videos.html" class="nav-pill" aria-label="Watch Sadie Music Videos">
             <span class="nav-chip" aria-hidden="true"><span class="emoji">🎬</span></span>
             <span>Watch Sadie Music Videos</span>
           </a>
 
-          <!-- Top AI -->
           <a href="./top-ai.html" class="nav-pill" aria-label="Top AI Music Videos">
             <span class="nav-chip" aria-hidden="true"><span class="emoji">🏆</span></span>
             <span>Top AI Music Videos</span>
           </a>
 
-          <!-- Living Gallery -->
           <a href="./gallery.html" class="nav-pill" aria-label="Living Gallery">
             <span class="nav-chip" aria-hidden="true"><span class="emoji">🖼️</span></span>
             <span>Living Gallery</span>
           </a>
 
-          <!-- Mission -->
           <a href="./mission.html" class="nav-pill" aria-label="Our Mission">
             <span class="nav-chip" aria-hidden="true"><span class="emoji">📜</span></span>
             <span>Our Mission</span>
