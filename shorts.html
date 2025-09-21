@@ -18,7 +18,8 @@
   <style>
     :root{
       --bg:#0b0b0e; --text:#f6f6f8; --accent:#8bd3ff; --muted:#b6b6c2; --card:#111318;
-      --purple-1:#8a4fff; --purple-2:#6f2fe6; --hotpink:#ff4fa3;
+      --purple-1:#8a4fff; --purple-2:#6f2fe6; --ink:#111;
+      --shadow:0 8px 22px rgba(0,0,0,.35);
     }
     html,body{
       margin:0; background:var(--bg); color:var(--text);
@@ -27,17 +28,28 @@
     }
     .wrap{ max-width:1000px; margin:0 auto; padding:20px; position:relative; z-index:1; }
 
-    /* Top bar: ONLY Back to Home (left-aligned) */
+    /* Top bar: ONLY Back to Home (left-aligned) — dark pill to match index */
     .topbar{display:flex; justify-content:flex-start; margin:6px 0 8px;}
     .back-home{
-      display:inline-flex; align-items:center; gap:6px; padding:.55rem .95rem; border-radius:9999px;
-      background:linear-gradient(180deg,var(--purple-1),var(--purple-2));
-      color:#fff; font-weight:700; font-size:.95rem; text-decoration:none;
-      box-shadow:0 6px 20px rgba(111,47,230,.18);
-      transition:transform .12s ease, box-shadow .12s ease;
+      display:inline-flex; align-items:center; gap:8px; padding:.55rem .95rem;
+      border-radius:9999px; background:var(--ink); color:#fff; font-weight:700;
+      font-size:.95rem; letter-spacing:.01em; text-decoration:none;
+      border:1px solid rgba(255,255,255,0.06); box-shadow:var(--shadow);
+      transition:transform .12s ease, opacity .2s ease, box-shadow .12s ease;
     }
-    .back-home:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(111,47,230,.25);}
-    .back-home svg{width:18px; height:18px; fill:#fff;}
+    .back-home:hover{ opacity:.92; transform:translateY(-1px); box-shadow:0 10px 26px rgba(0,0,0,.45); }
+
+    /* Colorized house icon (purple roof, white body) */
+    .home-ico{
+      width:18px; height:18px; display:inline-block; flex-shrink:0; background-repeat:no-repeat; background-size:contain;
+      background-image:url('data:image/svg+xml;utf8,\
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">\
+  <path d="M3 10.8L12 3l9 7.8h-2.3L12 6.2 5.3 10.8H3z" fill="%238a4fff"/>\
+  <path d="M5 11.2v7.6c0 .66.54 1.2 1.2 1.2H10v-5h4v5h3.8c.66 0 1.2-.54 1.2-1.2v-7.6L12 6.6 5 11.2z" fill="%23ffffff"/>\
+  <rect x="11.25" y="15" width="1.5" height="3.8" rx=".3" fill="%236f2fe6"/>\
+  <rect x="7.6" y="13.4" width="2" height="2" rx=".2" fill="%23eaf1ff"/>\
+</svg>');
+    }
 
     /* Signature + Official HQ tagline */
     header{ display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center; margin:6px 0 8px; }
@@ -71,7 +83,7 @@
     .counter-line{ font-size:1.05rem; color:var(--text); opacity:.95; }
     .counter-number{
       font-weight:900; font-size:clamp(2rem,5vw,3.2rem); line-height:1.1; margin:6px 0 4px; letter-spacing:.02em;
-      color:var(--hotpink); text-shadow:0 2px 18px rgba(255,79,163,.35);
+      color:#ff4fa3; text-shadow:0 2px 18px rgba(255,79,163,.35);
     }
     @keyframes pop{
       0%{transform:scale(1);text-shadow:0 2px 18px rgba(255,79,163,.35);}
@@ -91,10 +103,10 @@
 <body>
   <div class="wrap">
 
-    <!-- ONLY Back to Home (left-aligned) -->
+    <!-- ONLY Back to Home (left-aligned) — dark pill + colorized house -->
     <div class="topbar">
       <a href="./index.html" class="back-home" aria-label="Back to Home">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 10v10h7v-6h6v6h7V10L12 3z"/></svg>
+        <span class="home-ico" aria-hidden="true"></span>
         Back to Home
       </a>
     </div>
