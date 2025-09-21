@@ -2,72 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-ZD15GWTT54');
-</script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZD15GWTT54');
+  </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sadie Winters — Videos</title>
   <meta name="description" content="Watch Sadie Winters Music Videos!">
+
   <style>
-    :root {
-      --bg:#0b0b0e;
-      --text:#f6f6f8;
-      --muted:#b6b6c5;
-      --accent:#8bd3ff;
+    :root{
+      --bg:#0b0b0e; --text:#f6f6f8; --muted:#b6b6c5; --accent:#8bd3ff;
+      --purple-1:#8a4fff; --purple-2:#6f2fe6;
     }
     html,body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif
+      margin:0; background:var(--bg); color:var(--text);
+      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
     .wrap{max-width:1100px;margin:0 auto;padding:20px}
 
+    /* Top bar: ONLY Back to Home (left-aligned) */
+    .topbar{display:flex;justify-content:flex-start;margin:6px 0 8px}
+    .back-home{
+      display:inline-flex;align-items:center;gap:6px;padding:.55rem .95rem;border-radius:9999px;
+      background:linear-gradient(180deg,var(--purple-1),var(--purple-2));
+      color:#fff;font-weight:700;font-size:.95rem;text-decoration:none;
+      box-shadow:0 6px 20px rgba(111,47,230,.18);
+      transition:transform .12s ease, box-shadow .12s ease;
+    }
+    .back-home:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(111,47,230,.25);}
+    .back-home svg{width:18px;height:18px;fill:#fff}
+
+    /* Signature + Official HQ tagline */
     header{
-      display:flex;
-      flex-direction:column;   /* sig + nav stack */
-      align-items:center;
-      gap:8px;
-      text-align:center;
-      margin:6px 0 16px;
+      display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;margin:6px 0 16px;
     }
-
-    /* Sadie signature */
     .sadie-sig{
-      font-family:'Great Vibes',cursive;
-      font-size:64px;
-      color:var(--accent);
-      line-height:1;
+      font-family:'Great Vibes',cursive;font-size:64px;color:var(--accent);line-height:1;
     }
-    .sadie-sig a{
-      color:inherit;
-      text-decoration:none;
+    .sadie-sig a{color:inherit;text-decoration:none}
+    .ai-hq{
+      font-family:'Cinzel',serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+      font-size:14px;color:#fff;
     }
-
-    nav{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:4px;
-    }
-    nav a.btn{
-      display:inline-block;
-      padding:.5rem 1rem;
-      border-radius:9999px;
-      background:#111;
-      color:#fff;
-      font-weight:600;
-      text-decoration:none;
-      transition:transform .08s ease,opacity .2s ease;
-    }
-    nav a.btn:hover{opacity:.9;transform:translateY(-1px)}
 
     a{color:var(--accent);text-decoration:none}
     h1{margin:12px 0 10px;font-size:clamp(22px,4vw,34px)}
@@ -81,30 +65,34 @@
 
     footer{color:#8c8c9b;text-align:center;margin:28px 0 10px;font-size:.9rem}
   </style>
-  <!-- Import Great Vibes font -->
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="wrap">
+    <!-- ONLY Back to Home (left) -->
+    <div class="topbar">
+      <a href="./index.html" class="back-home" aria-label="Back to Home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 10v10h7v-6h6v6h7V10L12 3z"/></svg>
+        Back to Home
+      </a>
+    </div>
+
     <header>
       <div class="sadie-sig">
         <a href="./index.html" aria-label="Sadie Winters">Sadie Winters</a>
       </div>
-      <nav>
-        <a href="./index.html" class="btn">🏠 Back to Home</a>
-        <a href="./shorts.html" class="btn">▶️ YouTube Shorts</a>
-        <a href="./videos.html" class="btn">🎬 Watch Music Videos</a>
-        <a href="./gallery.html" class="btn">🖼️ Living Gallery</a>
-        <a href="./mission.html" class="btn">📜 Our Mission</a>
-      </nav>
+      <div class="ai-hq">The Official AI Music HQ</div>
     </header>
 
     <h1 id="top">Watch Sadie Videos</h1>
     <p class="muted">
-      There are countless Sadie Winters clips out there—but only some earn the mark of 
-      <strong><em>Sadie Obsessed</em></strong> Approved. These are the ones that keep the spark alive, 
-      first lit in <em>Walking Away</em>—when Sadie’s voice first touched our hearts. 
-      From raw and unrefined beginnings to the rising star we celebrate today, 
+      There are countless Sadie Winters clips out there—but only some earn the mark of
+      <strong><em>Sadie Obsessed</em></strong> Approved. These are the ones that keep the spark alive,
+      first lit in <em>Walking Away</em>—when Sadie’s voice first touched our hearts.
+      From raw and unrefined beginnings to the rising star we celebrate today,
       this is the Sadie we love. And her story — our story — is only just beginning…
     </p>
 
@@ -112,7 +100,7 @@
       <!-- Video 1 -->
       <article class="card">
         <div class="frame">
-          <iframe src="https://www.youtube.com/embed/kIbWNXcYG0k" title="Walking Away (Static Version) — Sadie Winters" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/kIbWNXcYG0k?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Walking Away (Static Version) — Sadie Winters" allowfullscreen></iframe>
         </div>
         <div class="meta"><strong>Walking Away — Sadie Winters</strong></div>
       </article>
@@ -120,7 +108,7 @@
       <!-- Video 2 -->
       <article class="card">
         <div class="frame">
-          <iframe src="https://www.youtube.com/embed/ECN9ir3Cu3o" title="Meltdown (Ft. Sadie Winters) [AI Music | Human Lyric]" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/ECN9ir3Cu3o?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Meltdown (Ft. Sadie Winters) [AI Music | Human Lyric]" allowfullscreen></iframe>
         </div>
         <div class="meta"><strong>Meltdown — Sadie Winters</strong></div>
       </article>
@@ -128,7 +116,7 @@
       <!-- Video 3 -->
       <article class="card">
         <div class="frame">
-          <iframe src="https://www.youtube.com/embed/GUdudLA56NA" title="Thunder in My Veins (Official Music Video) — Sadie Winters" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/GUdudLA56NA?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Thunder in My Veins (Official Music Video) — Sadie Winters" allowfullscreen></iframe>
         </div>
         <div class="meta"><strong>Thunder in My Veins — Sadie Winters [and Pragmatic Assassin]</strong></div>
       </article>
@@ -136,7 +124,7 @@
       <!-- Video 4 -->
       <article class="card">
         <div class="frame">
-          <iframe src="https://www.youtube.com/embed/a8HrCgKoNR0" title="Too Late | Sadie Winters (AI Music | Human Lyric)" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/a8HrCgKoNR0?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Too Late | Sadie Winters (AI Music | Human Lyric)" allowfullscreen></iframe>
         </div>
         <div class="meta"><strong>Too Late — Sadie Winters</strong></div>
       </article>
@@ -144,7 +132,7 @@
       <!-- Video 5 -->
       <article class="card">
         <div class="frame">
-          <iframe src="https://www.youtube.com/embed/afG4-uPqtkc" title="More or Less | Sadie Winters (Ai Music | Human Lyric)" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/afG4-uPqtkc?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="More or Less | Sadie Winters (Ai Music | Human Lyric)" allowfullscreen></iframe>
         </div>
         <div class="meta"><strong>More or Less — Sadie Winters</strong></div>
       </article>
@@ -152,7 +140,7 @@
       <!-- Video 6 -->
       <article class="card">
         <div class="frame">
-          <iframe src="https://www.youtube.com/embed/PVJuvWkrT2I" title="Sadie Winters — Video 6" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/PVJuvWkrT2I?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Sadie Winters — Video 6" allowfullscreen></iframe>
         </div>
         <div class="meta"><strong>Ghosts and Stones — Sadie Winters</strong></div>
       </article>
@@ -160,7 +148,7 @@
       <!-- Video 7 -->
       <article class="card">
         <div class="frame">
-          <iframe src="https://www.youtube.com/embed/4JWh_U3Lye8" title="Sadie Winters — Video 7" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/4JWh_U3Lye8?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Sadie Winters — Video 7" allowfullscreen></iframe>
         </div>
         <div class="meta"><strong>Glass Horizons — Sadie Winters</strong></div>
       </article>
@@ -168,7 +156,7 @@
       <!-- Video 8 -->
       <article class="card">
         <div class="frame">
-          <iframe src="https://www.youtube.com/embed/jxgiblwO5hY" title="Sadie Winters — Video 8" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/jxgiblwO5hY?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Sadie Winters — Video 8" allowfullscreen></iframe>
         </div>
         <div class="meta"><strong>Silent Echoes — Sadie Winters</strong></div>
       </article>
@@ -176,57 +164,55 @@
       <!-- Video 9 -->
       <article class="card">
         <div class="frame">
-          <iframe src="https://www.youtube.com/embed/1_m-tuI9Oj0" title="Sadie Winters — Video 9" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/1_m-tuI9Oj0?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Sadie Winters — Video 9" allowfullscreen></iframe>
         </div>
         <div class="meta"><strong>Fading Colors — Sadie Winters</strong></div>
       </article>
     </section>
 
-    <footer>
-      © 2025 SadieWinters.net — <em>The Official Site of the Obsessed</em>
-    </footer>
+    <footer>© 2025 SadieWinters.net — The Official AI Music HQ</footer>
   </div>
 
   <script>
-  // Normalize YT embeds so we can catch "ended"
-  document.querySelectorAll('.frame iframe').forEach(el => {
-    try {
-      const u = new URL(el.src, location.href);
-      if (u.hostname.includes('youtube.com')) {
-        u.searchParams.set('rel', '0');
-        u.searchParams.set('modestbranding', '1');
-        u.searchParams.set('playsinline', '1');
-        u.searchParams.set('enablejsapi', '1');
-        u.searchParams.set('origin', location.origin);
-        el.src = u.toString();
-        el.classList.add('yt-embed');
-      }
-    } catch(_) {}
-  });
+    // Normalize YT embeds so we can catch "ended" and keep consistent params
+    document.querySelectorAll('.frame iframe').forEach(el => {
+      try {
+        const u = new URL(el.src, location.href);
+        if (u.hostname.includes('youtube.com')) {
+          u.searchParams.set('rel', '0');
+          u.searchParams.set('modestbranding', '1');
+          u.searchParams.set('playsinline', '1');
+          u.searchParams.set('enablejsapi', '1');
+          u.searchParams.set('origin', location.origin);
+          el.src = u.toString();
+          el.classList.add('yt-embed');
+        }
+      } catch(_) {}
+    });
 
-  // Load the YouTube Iframe API
-  (function () {
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    document.head.appendChild(tag);
-  })();
+    // Load the YouTube Iframe API
+    (function () {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(tag);
+    })();
 
-  // When API is ready, attach players and watch for "ended"
-  let ytPlayers = [];
-  window.onYouTubeIframeAPIReady = function () {
-    document.querySelectorAll('iframe.yt-embed').forEach((el, i) => {
-      ytPlayers[i] = new YT.Player(el, {
-        events: {
-          onStateChange: function (e) {
-            if (e.data === YT.PlayerState.ENDED) {
-              try { e.target.stopVideo(); } catch(_) {}
-              document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
+    // When API is ready, attach players and stop on "ended"
+    let ytPlayers = [];
+    window.onYouTubeIframeAPIReady = function () {
+      document.querySelectorAll('iframe.yt-embed').forEach((el, i) => {
+        ytPlayers[i] = new YT.Player(el, {
+          events: {
+            onStateChange: function (e) {
+              if (e.data === YT.PlayerState.ENDED) {
+                try { e.target.stopVideo(); } catch(_) {}
+                document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
+              }
             }
           }
-        }
+        });
       });
-    });
-  };
+    };
   </script>
 </body>
 </html>
