@@ -2,227 +2,140 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD15GWTT54"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date()); gtag('config', 'G-ZD15GWTT54');
   </script>
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sadie Winters — Official AI Music Hub</title>
-  <meta name="description" content="Sadie Winters — AI music videos, cinematic shorts and director's cuts. Explore original AI-generated music and visuals at SadieWinters.net.">
-  <meta property="og:title" content="Sadie Winters — The Official AI Music HQ">
-  <meta property="og:description" content="AI music videos, cinematic shorts and director's cuts from Sadie Winters.">
-  <meta property="og:type" content="website">
+  <title>Sadie Winters — The Official Site of the Obsessed</title>
+  <meta name="description" content="One small step for AI...one giant leap for mankind.">
   <link rel="preload" as="video" href="./landing.mp4" type="video/mp4">
-
-  <!-- Fonts: signature + display serif for the HQ tagline -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <!-- Added for The Official AI Music HQ styling (same as other pages) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
 
   <style>
-    /* Accessibility helper (visually-hidden) */
     .input-visually-hidden{
       position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;
       padding:0!important;border:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;
       clip-path:inset(50%)!important;white-space:nowrap!important;opacity:0!important;pointer-events:none;
     }
+    :root{ --bg:#0b0b0e; --text:#f6f6f8; --muted:#b6b6c5; --accent:#8bd3ff; }
+    html,body{ margin:0; background:var(--bg); color:var(--text);
+      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif; }
+    .wrap{ max-width:1000px; margin:0 auto; padding:20px; position:relative; z-index:1; }
 
-    :root{
-      --bg:#0b0b0e;
-      --text:#f6f6f8;
-      --muted:#b6b6c5;
-      --accent:#8bd3ff;
-      --accent-dark:#5eaed6;
-      --purple-1:#8a4fff;
-      --purple-2:#6f2fe6;
-    }
-
-    html,body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
-
-    .wrap{ max-width:1100px; margin:0 auto; padding:22px; position:relative; z-index:1; }
-
-    .page-background{ position:fixed; inset:0; background:linear-gradient(180deg,#050507 0%, #0b0b0e 40%); z-index:0; }
+    .page-background{ position:fixed; inset:0; background:#0b0b0e; z-index:0; }
     .page-background::before,.page-background::after{
-      content:""; position:absolute; top:0; bottom:0; width:18%;
-      background:radial-gradient(circle at center, rgba(139,211,255,.26) 0%, rgba(139,211,255,0) 75%);
-      pointer-events:none; animation:sidePulse 10s ease-in-out infinite alternate;
+      content:""; position:absolute; top:0; bottom:0; width:15%;
+      background:radial-gradient(circle at center, rgba(139,211,255,.30) 0%, rgba(139,211,255,0) 80%);
+      pointer-events:none; animation:sidePulse 8s ease-in-out infinite alternate;
     }
     .page-background::before{ left:0; } .page-background::after{ right:0; }
-    @keyframes sidePulse{ from{opacity:.22} to{opacity:.6} }
+    @keyframes sidePulse{ from{opacity:.25} to{opacity:.55} }
 
-    header{ display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center; margin:10px 0 16px; }
-    /* Sadie signature (script) */
-    .sadie-sig{ font-family:'Great Vibes',cursive; font-size:68px; color:var(--accent); line-height:1; text-shadow:0 6px 24px rgba(0,0,0,.6); }
+    header{ display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; margin:6px 0 16px; }
+    .sadie-sig{ font-family:'Great Vibes',cursive; font-size:64px; color:var(--accent); line-height:1; }
     .sadie-sig a{ color:inherit; text-decoration:none; }
-
-    /* The Official AI Music HQ (updated, more legible) */
+    /* Added: Official AI HQ tagline style (matches other updated pages) */
     .ai-hq{
-      font-family:'Cinzel', serif;
+      font-family:'Cinzel',serif;
       font-weight:700;
-      /* a touch larger but responsive */
-      font-size: clamp(15px, 1.8vw, 24px);
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      margin-top: -2px;
-
-      /* high-contrast primary color for legibility */
-      color: #ffffff;
-
-      /* subtle accent glow + depth so the light blue accent still reads */
-      text-shadow:
-        0 1px 0 rgba(255,255,255,0.05),
-        0 6px 18px rgba(0,0,0,0.65),
-        0 2px 8px rgba(139,211,255,0.12);
-
-      /* small highlight line under the text for visual interest */
-      display:inline-block;
-      position:relative;
-      padding-bottom:4px;
-    }
-    .ai-hq::after{
-      content: "";
-      position:absolute;
-      left:50%;
-      transform:translateX(-50%);
-      bottom:0;
-      height:3px;
-      width:56%;
-      border-radius:3px;
-      background: linear-gradient(90deg, var(--purple-1) 0%, var(--purple-2) 100%);
-      box-shadow: 0 6px 16px rgba(94,174,214,0.12);
-      opacity:0.95;
-    }
-    @media (max-width:640px){
-      .ai-hq{ font-size: clamp(13px, 2.7vw, 18px); letter-spacing:0.06em; }
-      .ai-hq::after{ width:70%; height:2.8px; }
+      text-transform:uppercase;
+      font-size:14px;
+      letter-spacing:.08em;
+      color:#fff;
     }
 
-    /* Prominent purple nav pills (replacement) */
-    nav{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
-      gap:14px;
-      margin-top:12px;
-      z-index:10;
-    }
+    nav{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:4px; }
+    .btn-watch{ display:inline-block; padding:.55rem 1rem; border-radius:9999px; background:#111; color:#fff;
+      font-weight:600; text-decoration:none; transition:transform .08s ease, opacity .2s ease; }
+    .btn-watch:hover{ opacity:.9; transform:translateY(-1px); }
 
-    .btn-watch{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:.7rem 1.05rem;
-      border-radius:9999px;
-      background: linear-gradient(180deg, var(--purple-1) 0%, var(--purple-2) 100%);
-      color:#ffffff;
-      font-weight:800;
-      font-size:1rem;
-      letter-spacing:0.01em;
-      text-decoration:none;
-      border: 1px solid rgba(255,255,255,0.06);
-      box-shadow:
-        0 6px 22px rgba(111,47,230,0.18),
-        inset 0 -2px 0 rgba(0,0,0,0.12);
-      transition: transform .12s cubic-bezier(.2,.9,.2,1), box-shadow .12s ease, opacity .12s ease;
-      cursor:pointer;
-    }
-    .btn-watch > svg, .btn-watch > img { width:18px; height:18px; flex-shrink:0; }
-    .btn-watch:hover{
-      transform:translateY(-3px);
-      box-shadow:
-        0 12px 30px rgba(111,47,230,0.22),
-        inset 0 -2px 0 rgba(0,0,0,0.14);
-      opacity:0.99;
-    }
-    .btn-watch:active{ transform:translateY(-1px); }
-    .btn-watch:focus{
-      outline: none;
-      box-shadow:
-        0 12px 30px rgba(111,47,230,0.22),
-        0 0 0 4px rgba(138,79,255,0.12);
-      border-color: rgba(255,255,255,0.14);
-    }
-    @media (max-width:640px){
-      nav{ gap:10px; margin-top:10px; }
-      .btn-watch{ padding:.65rem .9rem; font-size:1.02rem; }
-    }
-
-    /* Marquee (thank you banner) — keep script font but slightly purple-tinged */
-    .marquee-wrap{ position:relative; width:100%; overflow:hidden; margin:12px 0; filter:drop-shadow(0 2px 12px rgba(0,0,0,.5)); }
+    /* ----- Scrolling Thank-You Banner (no mid-loop snap) ----- */
+    .marquee-wrap{ position:relative; width:100%; overflow:hidden; margin:8px 0 6px;
+      filter:drop-shadow(0 2px 8px rgba(0,0,0,.45)); }
     .marquee-line{
       display:inline-block; white-space:nowrap; font-family:'Great Vibes',cursive;
-      color:var(--purple-1); font-size:clamp(20px,3.2vw,34px); line-height:1.05; padding:6px 0;
-      will-change:transform; animation:slideLeft 20s linear infinite; transform:translateX(100%);
+      color:var(--accent); font-size:clamp(22px,3.2vw,34px); line-height:1.1; padding:6px 0;
+      will-change:transform; animation:slideLeft 18s linear infinite;
+      transform:translateX(100%);
     }
-    @keyframes slideLeft{ 0%{transform:translateX(100%);} 100%{transform:translateX(-100%);} }
+    @keyframes slideLeft{ 0%{transform:translateX(100%)} 100%{transform:translateX(-100%)} }
     @media (prefers-reduced-motion:reduce){ .marquee-line{ animation:none; transform:none; } }
 
-    /* Hero */
     figure{ margin:0; }
-    .hero{ position:relative; height:86vh; overflow:hidden; box-shadow:0 18px 40px rgba(0,0,0,.55); z-index:1; background:#000; border-radius:10px; }
+    .hero{ position:relative; height:100vh; overflow:hidden; box-shadow:0 12px 30px rgba(0,0,0,.45); z-index:1; background:#000; }
     .hero::before{
       content:""; position:absolute; inset:0; pointer-events:none; z-index:2;
       background:
-        radial-gradient(200px 160px at 5% 10%, rgba(0,0,0,.45), transparent 70%),
-        radial-gradient(200px 160px at 95% 10%, rgba(0,0,0,.18), transparent 70%),
-        linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 90%);
+        radial-gradient(200px 160px at 0 0, rgba(0,0,0,.45), transparent 70%),
+        radial-gradient(200px 160px at 100% 0, rgba(0,0,0,.18), transparent 70%),
+        radial-gradient(220px 180px at 0 100%, rgba(0,0,0,.18), transparent 70%),
+        radial-gradient(220px 180px at 100% 100%, rgba(0,0,0,.25), transparent 70%);
     }
-    .hero video{ position:relative; z-index:1; width:100%; height:100%; object-fit:cover; object-position:center top; transform-origin:center; animation:slowZoom 22s ease-in-out forwards; }
-    @keyframes slowZoom{ 0%{transform:scale(1)} 100%{transform:scale(1.12)} }
+    @media (min-width:1025px){
+      .hero::before{ background:
+        radial-gradient(260px 200px at 0 0, rgba(0,0,0,.45), transparent 70%),
+        radial-gradient(260px 200px at 100% 0, rgba(0,0,0,.18), transparent 70%),
+        radial-gradient(300px 220px at 0 100%, rgba(0,0,0,.18), transparent 70%),
+        radial-gradient(300px 220px at 100% 100%, rgba(0,0,0,.25), transparent 70%); }
+    }
+    .hero video{ position:relative; z-index:1; width:100%; height:100%;
+      object-fit:cover; object-position:center top; transform-origin:center; animation:slowZoom 20s ease-in-out forwards; }
+    @keyframes slowZoom{ 0%{transform:scale(1)} 100%{transform:scale(1.15)} }
+    @media (max-width:640px){
+      .hero{ height:100svh; }
+      .hero video{ object-fit:cover; object-position:center 40%; animation:none; transform:none; }
+    }
+    @media (hover:none) and (pointer:coarse) and (min-width:641px) and (max-width:1024px){
+      .hero{ height:88svh; }
+      .hero video{ object-fit:cover; object-position:center 32%; animation:none!important; transform:none!important; }
+    }
+    @media (hover:none) and (pointer:coarse) and (min-width:1025px) and (max-width:1366px) and (orientation:landscape){
+      .hero{ height:82svh; }
+      .hero video{ object-fit:cover; object-position:center 38%; animation:none!important; transform:none!important; }
+    }
+    @media (min-width:1025px){
+      .hero{ height:88vh; }
+      .hero video{ object-fit:contain; object-position:center center; animation:none!important; transform:none!important; }
+    }
 
     .caption{ position:absolute; left:0; right:0; bottom:0; z-index:3;
-      background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 60%,rgba(0,0,0,.78) 100%);
-      padding:20px 26px; }
-    .caption h1{ margin:0; font-size:clamp(22px,4vw,36px); text-transform:none; font-weight:700; letter-spacing:0.01em; color:#fff; }
-    .caption p{ margin:.5rem 0 0; color:#e6e6ee; max-width:70ch; }
+      background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 60%,rgba(0,0,0,.7) 100%);
+      padding:18px 20px; }
+    h1{ margin:0; font-size:clamp(22px,4vw,38px); }
+    p{ margin:.4rem 0 0; color:#e6e6ee; max-width:70ch; }
 
-    footer{ color:var(--muted); text-align:center; margin:28px 0 12px; font-size:.95rem; }
+    footer{ color:#8c8c9b; text-align:center; margin:28px 0 10px; font-size:.9rem; }
 
-    /* responsive tweaks */
+    .page-background{ z-index:-1; }
+    .wrap,.hero,.caption{ z-index:1; }
+    .caption{ z-index:3; }
+
     @media (max-width:640px){
+      nav{ justify-content:center; gap:8px; }
+      .btn-watch{ font-size:.95rem; padding:.45rem .8rem; }
       .sadie-sig{ font-size:52px; }
-      .ai-hq{ font-size:13px; letter-spacing:0.06em; }
-      .hero{ height:100svh; border-radius:0; }
     }
   </style>
-
-  <!-- Minimal JSON-LD for site/brand (helps search engines) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Sadie Winters — Official AI Music Hub",
-    "url": "https://sadiewinters.net",
-    "description": "Sadie Winters — AI music videos, cinematic shorts, and director's cuts."
-  }
-  </script>
 </head>
 <body>
-  <div class="page-background" aria-hidden="true"></div>
+  <div class="page-background"></div>
 
-  <div class="wrap" role="document">
+  <div class="wrap">
     <header>
-      <!-- Visual brand: script signature -->
       <div class="sadie-sig"><a href="/" aria-label="Sadie Winters">Sadie Winters</a></div>
+      <!-- Added: Official AI HQ tagline (top) -->
+      <div class="ai-hq">The Official AI Music HQ</div>
 
-      <!-- SEO-friendly H1 (screen-reader visible) -->
-      <h1 class="input-visually-hidden">Sadie Winters — The Official AI Music HQ</h1>
-
-      <!-- Visible authoritative tagline beneath the script -->
-      <div class="ai-hq" aria-hidden="false">The Official AI Music HQ</div>
-
-      <nav aria-label="Main navigation">
+      <nav>
         <a href="./shorts.html" class="btn-watch">▶️ YouTube Shorts</a>
+        <!-- Renamed per request -->
         <a href="./videos.html" class="btn-watch">🎬 Watch Sadie Music Videos</a>
+        <!-- Added per request, links to top-ai.html -->
         <a href="./top-ai.html" class="btn-watch">🔝 Top AI Music Videos</a>
         <a href="./gallery.html" class="btn-watch">🖼️ Living Gallery</a>
         <a href="./mission.html" class="btn-watch">📜 Our Mission</a>
@@ -230,27 +143,27 @@
     </header>
 
     <!-- Scrolling banner JUST ABOVE the hero -->
-    <div class="marquee-wrap" aria-hidden="false" aria-label="International visitors announcement">
-      <div class="marquee-line" role="note">
-        ❤️ Thank you to everyone visiting from 34 countries — Sadie sends love across the globe! ❤️
+    <div class="marquee-wrap" aria-label="International visitors announcement">
+      <div class="marquee-line">
+        ❤️   Thank you so much to all of you who have visited me from 34 countries around the world!!   ❤️
       </div>
     </div>
 
-    <figure class="hero" role="img" aria-label="Sadie Winters cinematic hero">
-      <video id="landingVideo" autoplay muted playsinline webkit-playsinline loop preload="auto" poster="./hero.jpg">
+    <figure class="hero">
+      <video id="landingVideo" autoplay muted playsinline webkit-playsinline loop preload="auto">
         <source src="./landing.mp4" type="video/mp4" />
       </video>
       <figcaption class="caption">
         <h1>the voice you can’t forget.</h1>
-        <p>Virtually born. Human-touched. Original AI music and cinematic shorts from Sadie Winters — explore exclusive director’s cuts and behind-the-scenes in the Living Gallery.</p>
+        <p>Virtually born. Human touched. One small step for AI…one giant leap for mankind.</p>
       </figcaption>
     </figure>
 
+    <!-- Changed bottom line to match other pages -->
     <footer>© 2025 SadieWinters.net — The Official AI Music HQ</footer>
   </div>
 
   <script>
-    // ensure autoplay where allowed and graceful fallback
     document.addEventListener('DOMContentLoaded', function () {
       const v = document.getElementById('landingVideo');
       if (!v) return;
