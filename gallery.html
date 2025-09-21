@@ -11,29 +11,27 @@
     gtag('config', 'G-ZD15GWTT54');
   </script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Top AI Music Videos — Sadie Winters</title>
+  <title>Sadie Winters — Living Gallery</title>
+  <meta name="description" content="Sadie Winters Living Gallery — immersive video moments." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Import Great Vibes font + Cinzel for tagline -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    :root{
-      --bg:#0b0b0e;
-      --text:#f6f6f8;
-      --muted:#b6b6c5;
-      --accent:#8bd3ff;
-      --purple-1:#8a4fff;
-      --purple-2:#6f2fe6;
-      --pill-height:48px;
-      --pill-padding-h:0.95rem;
-      --pill-padding-v:0.5rem;
-      --pill-gap:12px;
-      --chip-size:22px;
-      --chip-font-size:12px;
-      --pill-font-size:0.98rem;
-      --nav-max-width:980px;
+    :root {
+      --bg: #0b0b0e;
+      --text: #f6f6f8;
+      --accent: #8bd3ff;
+      --muted: #b6b6c5;
+      --purple-1: #8a4fff;
+      --purple-2: #6f2fe6;
+      --nav-height: 54px; /* slightly taller for second-look */
     }
 
     html,body{
-      margin:0; padding:0;
+      margin:0;
+      height:100%;
       background:linear-gradient(180deg,#050507 0%, #0b0b0e 40%);
       color:var(--text);
       font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;
@@ -41,154 +39,253 @@
       -moz-osx-font-smoothing:grayscale;
     }
 
-    .wrap{ max-width:1100px; margin:0 auto; padding:22px; box-sizing:border-box; }
-
-    .sadie-sig{ font-family:'Great Vibes',cursive; font-size:52px; color:var(--accent); text-align:center; margin:4px 0; text-shadow:0 6px 18px rgba(0,0,0,.6); }
-    .ai-hq{ font-family:'Cinzel',serif; text-transform:uppercase; font-weight:700; color:#fff; text-align:center; margin:6px 0 12px; letter-spacing:.08em; font-size:13px; }
-
-    /* NAV wrapper: add horizontal padding so pills never butt up against the viewport edge */
-    .nav-outer{
+    .wrap{
+      min-height:100vh;
       display:flex;
-      justify-content:center;
-      width:100%;
-      padding:0 20px; /* padding prevents visual clipping at the edges */
+      flex-direction:column;
+      align-items:center;
+      padding:28px;
       box-sizing:border-box;
-      margin-bottom:14px;
     }
 
-    /* nav: single row, centered. allow horizontal scroll on tiny screens */
+    /* header + signature */
+    header{
+      width:100%;
+      max-width:1100px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+      margin-bottom:22px; /* extra spacing so nav doesn't crowd hero */
+      position:relative;
+      z-index:40;
+    }
+
+    .sadie-sig{
+      font-family:'Great Vibes',cursive;
+      font-size:72px;         /* slightly larger */
+      color:var(--accent);
+      line-height:1;
+      text-shadow:0 6px 24px rgba(0,0,0,.6);
+      margin-top:6px;
+    }
+    .sadie-sig a{ color:inherit; text-decoration:none; }
+
+    /* authoritative centered tagline under signature (small-caps) */
+    .ai-hq {
+      font-family: 'Cinzel', serif;
+      font-weight:700;
+      font-size:14px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      color:#ffffff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      margin-top:2px;
+      margin-bottom:10px;
+    }
+
+    /* nav wrap visually centered and spaced (matches your second screenshot) */
+    .nav-wrap{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      margin-top:6px;
+      margin-bottom:6px;
+    }
+
     nav{
       display:flex;
-      gap:var(--pill-gap);
-      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
       justify-content:center;
-      width:100%;
-      max-width:var(--nav-max-width);
-      padding:6px 8px;
-      box-sizing:border-box;
-
-      flex-wrap:nowrap;
-      overflow-x:auto;
-      -webkit-overflow-scrolling:touch;
+      align-items:center;
+      max-width:980px;
+      padding:6px 10px;
     }
 
-    /* small, tasteful scrollbar */
-    nav::-webkit-scrollbar{ height:8px; }
-    nav::-webkit-scrollbar-thumb{ background: rgba(0,0,0,0.22); border-radius:8px; }
-
+    /* pill style tuned for the second screenshot */
     .nav-pill{
       display:inline-flex;
-      gap:10px;
       align-items:center;
-      height:var(--pill-height);
-      padding:var(--pill-padding-v) var(--pill-padding-h);
+      gap:12px;
+      padding:.7rem 1.25rem;
       border-radius:9999px;
       background: linear-gradient(180deg,var(--purple-1),var(--purple-2));
       color:#fff;
       font-weight:800;
-      font-size:var(--pill-font-size);
+      font-size:1rem;
       text-decoration:none;
       border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 12px 30px rgba(111,47,230,0.16), inset 0 -2px 0 rgba(0,0,0,0.12);
-      min-width:fit-content;
-      white-space:nowrap;
-      flex:0 0 auto;
-      transition: transform .12s cubic-bezier(.2,.9,.2,1), box-shadow .12s ease;
+      box-shadow:
+        0 18px 44px rgba(111,47,230,0.20),
+        inset 0 -4px 0 rgba(0,0,0,0.14);
+      min-height: var(--nav-height);
+      line-height:1;
+      cursor:pointer;
+      transform:translateZ(0);
+      transition: transform .14s cubic-bezier(.2,.9,.2,1), box-shadow .14s ease;
     }
-    .nav-pill:hover{ transform:translateY(-4px); box-shadow: 0 18px 36px rgba(111,47,230,0.22); }
+    .nav-pill:hover{
+      transform:translateY(-5px);
+      box-shadow:
+        0 26px 60px rgba(111,47,230,0.26),
+        inset 0 -4px 0 rgba(0,0,0,0.14);
+    }
 
+    /* small colored "chip" icon (square) like your second screenshot */
     .nav-chip{
-      width:var(--chip-size);
-      height:var(--chip-size);
-      min-width:var(--chip-size);
+      width:28px;
+      height:28px;
+      min-width:28px;
       border-radius:6px;
       display:inline-grid;
       place-items:center;
-      background: #fff;
-      box-shadow: 0 6px 16px rgba(111,47,230,0.12);
-      font-size: var(--chip-font-size);
+      background: linear-gradient(180deg,#fff,#f3f3f3);
+      box-shadow: 0 6px 18px rgba(111,47,230,0.12);
+      font-size:14px;
       line-height:1;
     }
-    .nav-chip .emoji{ display:inline-block; transform:translateY(1px); }
+    /* Let emoji render inside the chip — keeps color and personality */
+    .nav-chip .emoji { font-size:14px; display:inline-block; transform:translateY(1px); }
 
-    /* HERO / content */
-    .hero-mini{
-      margin:28px auto;
-      padding:36px 22px;
-      border-radius:12px;
-      max-width:920px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      box-shadow:0 18px 36px rgba(0,0,0,.6);
+    /* fallback smaller pills on very small widths */
+    @media (max-width:520px){
+      .nav-pill{ padding:.52rem .75rem; gap:8px; font-size:.95rem; min-height:44px; }
+      .nav-chip{ width:24px; height:24px; min-width:24px; font-size:12px; border-radius:6px; }
+    }
+
+    /* hero wrapper sits behind header/nav */
+    .hero {
+      width:100%;
+      max-width:1100px;
+      margin-top:8px;
+      z-index:1;
+    }
+
+    .gallery-video{
+      width:100%;
+      height:min(78vh,640px);
+      border-radius:20px;
+      box-shadow:0 12px 36px rgba(0,0,0,.6);
+      display:block;
+      background:#000;
+      object-fit:cover;
+    }
+    figcaption.caption{
+      margin-top:.9rem;
+      font-size:1.05rem;
+      color:#dcdfe6;
+      text-align:center;
+    }
+
+    /* Controls row */
+    .controls{
+      margin-top:14px;
       display:flex;
-      flex-direction:column;
+      gap:18px;
+      flex-wrap:wrap;
       align-items:center;
       justify-content:center;
+      color:#ccc;
+    }
+    fieldset{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      padding:6px 10px;
+    }
+    legend{ padding:0 6px; color:#ddd; font-size:.9rem; }
+    label{ margin:0 10px 0 4px; cursor:pointer; }
+    input[type="radio"]{ accent-color:var(--accent); transform:translateY(1px); }
+
+    .hint{ margin-top:8px; font-size:.85rem; color:#9aa0a6; text-align:center; }
+
+    .btn{
+      border:1px solid rgba(255,255,255,.18);
+      background:#111;
+      color:#fff;
+      border-radius:999px;
+      padding:.45rem .9rem;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .btn:hover{ opacity:.95; transform:none; }
+
+    .coming-soon {
+      margin-top:18px;
+      font-size:1.05rem;
+      font-weight:500;
+      color:#f0f0f5;
       text-align:center;
-      gap:12px;
+      padding:12px 20px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#3a6073,#16222a);
+      box-shadow:0 4px 14px rgba(0,0,0,0.45);
+      opacity:0;
+      transition:opacity 90s ease;
     }
-    .hero-mini .page{ margin:0; font-size:clamp(20px,3.6vw,30px); color:#fff; }
-    .hero-mini .lead{ margin:0; color:#dfe7ee; max-width:64ch; line-height:1.4; font-size:1.02rem; }
+    .coming-soon.show { opacity:1; }
 
-    .grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:18px; margin-top:18px; }
-    .card{ background:rgba(255,255,255,0.02); border-radius:8px; padding:8px; box-shadow: inset 0 -2px 0 rgba(0,0,0,.3); }
-    .video-embed{ width:100%; height:190px; background:#000; border-radius:6px; overflow:hidden; }
-    .card h3{ margin:10px 0 6px; font-size:1.05rem; }
-    .card p{ margin:0 0 6px; color:#d6dbe3; font-size:.95rem; }
-
-    footer{ color:var(--muted); text-align:center; margin:28px 0 12px; }
-
-    /* responsive reductions */
-    @media (max-width:680px){
-      :root{
-        --chip-size:20px;
-        --chip-font-size:11px;
-        --pill-padding-h:0.7rem;
-        --pill-font-size:0.92rem;
-        --pill-gap:10px;
-      }
-    }
-    /* only allow wrap at very small widths so readability isn't lost */
-    @media (max-width:420px){
-      nav{ flex-wrap:wrap; gap:10px; justify-content:center; overflow-x:visible; }
+    footer{
+      color:var(--muted);
+      text-align:center;
+      margin:28px 0 10px;
+      font-size:.9rem;
     }
 
-    /* keyboard focus */
-    .nav-pill:focus{ outline:none; box-shadow: 0 18px 36px rgba(111,47,230,0.22), 0 0 0 4px rgba(138,79,255,0.08); border-color: rgba(255,255,255,0.12); }
+    /* small-screen tuning */
+    @media (max-width:840px){
+      .sadie-sig{ font-size:56px; }
+      .gallery-video{ height:56vh; border-radius:16px; }
+    }
+    @media (max-width:640px){
+      .sadie-sig{ font-size:48px; }
+      .gallery-video{ height:48vh; border-radius:12px; }
+      .ai-hq{ font-size:13px; letter-spacing:0.14em; }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div class="sadie-sig">Sadie Winters</div>
-      <div class="ai-hq">THE OFFICIAL AI MUSIC HQ</div>
+      <div class="sadie-sig"><a href="./index.html" aria-label="Sadie Winters">Sadie Winters</a></div>
 
-      <div class="nav-outer">
-        <nav aria-label="Main navigation">
-          <a href="./index.html" class="nav-pill" aria-label="Home">
+      <!-- centered authoritative tagline -->
+      <div class="ai-hq" aria-hidden="false">THE OFFICIAL AI MUSIC HQ</div>
+
+      <!-- nav area wrapped for easy centering -->
+      <div class="nav-wrap">
+        <nav aria-label="Primary navigation">
+          <!-- Home -->
+          <a href="./index.html" class="nav-pill" aria-label="Back to Home">
             <span class="nav-chip" aria-hidden="true"><span class="emoji">🏠</span></span>
             <span>Home</span>
           </a>
 
+          <!-- Shorts -->
           <a href="./shorts.html" class="nav-pill" aria-label="YouTube Shorts">
             <span class="nav-chip" aria-hidden="true"><span class="emoji">▶️</span></span>
             <span>YouTube Shorts</span>
           </a>
 
+          <!-- Watch Sadie Music Videos -->
           <a href="./videos.html" class="nav-pill" aria-label="Watch Sadie Music Videos">
             <span class="nav-chip" aria-hidden="true"><span class="emoji">🎬</span></span>
             <span>Watch Sadie Music Videos</span>
           </a>
 
+          <!-- Top AI -->
           <a href="./top-ai.html" class="nav-pill" aria-label="Top AI Music Videos">
             <span class="nav-chip" aria-hidden="true"><span class="emoji">🏆</span></span>
             <span>Top AI Music Videos</span>
           </a>
 
+          <!-- Living Gallery -->
           <a href="./gallery.html" class="nav-pill" aria-label="Living Gallery">
             <span class="nav-chip" aria-hidden="true"><span class="emoji">🖼️</span></span>
             <span>Living Gallery</span>
           </a>
 
+          <!-- Mission -->
           <a href="./mission.html" class="nav-pill" aria-label="Our Mission">
             <span class="nav-chip" aria-hidden="true"><span class="emoji">📜</span></span>
             <span>Our Mission</span>
@@ -197,32 +294,124 @@
       </div>
     </header>
 
-    <section class="hero-mini" aria-labelledby="topai">
-      <h1 id="topai" class="page">Top AI Music Videos</h1>
-      <p class="lead">Here is our hand-picked collection of the most highly watched AI music videos from around the globe, featuring rising creators pushing generative vocals and cinematic visuals. Enjoy!</p>
-    </section>
+    <figure class="hero" role="img" aria-label="Sadie Winters Living Gallery hero">
+      <video id="galleryVideo" class="gallery-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="./hero.jpg">
+        <source src="./sadie-beach.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <figcaption class="caption">Sadie — Ocean Dreams</figcaption>
+    </figure>
 
-    <section class="grid" aria-live="polite">
-      <article class="card">
-        <div class="video-embed" aria-hidden="true"></div>
-        <h3>Resurrection — Sadie Winters (Halloween Special)</h3>
-        <p>AI music short with cinematic edits and high retention. Director's cut and behind-the-scenes are on the Living Gallery.</p>
-      </article>
-      <article class="card">
-        <div class="video-embed" aria-hidden="true"></div>
-        <h3>Beach Girl — Sadie Winters (Lip-Sync Short)</h3>
-        <p>Uplifting AI-pop short that boosted channel discoverability. Uses seedance + HeyGen motion pipeline.</p>
-      </article>
-      <article class="card">
-        <div class="video-embed" aria-hidden="true"></div>
-        <h3>Evolution — Sadie Winters (Cinematic Loop)</h3>
-        <p>Slow-pan cinematic loop combining AI vocals with a seaside motif — great watch-through and share rates.</p>
-      </article>
-    </section>
+    <div class="controls" role="region" aria-label="Video controls">
+      <fieldset>
+        <legend>Sound</legend>
+        <input type="radio" name="sound" id="sound-off" value="off" checked>
+        <label for="sound-off">Off</label>
+        <input type="radio" name="sound" id="sound-on" value="on">
+        <label for="sound-on">On</label>
+      </fieldset>
 
-    <p style="margin-top:18px; color:var(--muted); font-size:.95rem;">Tip: Replace the placeholder embeds with your YouTube IDs and add the per-video blurb (1–2 sentences) — those blurbs help search engines understand the video content (AI music, AI singer, director's cut).</p>
+      <fieldset>
+        <legend>View</legend>
+        <input type="radio" name="view" id="view-window" value="window" checked>
+        <label for="view-window">Window</label>
+        <input type="radio" name="view" id="view-full" value="full">
+        <label for="view-full">Fullscreen</label>
+      </fieldset>
 
-    <footer>© 2025 SadieWinters.net — The Official AI Music HQ</footer>
+      <button id="playPause" class="btn" type="button" aria-pressed="false">Pause</button>
+    </div>
+
+    <div class="hint">Tip: browsers require an interaction to enable audio. Choose “Sound: On” and tap/click once.</div>
+
+    <div class="coming-soon">Keep checking in. So much more to come...</div>
+
+    <footer>
+      © 2025 SadieWinters.net — <em>The Official Site of the Obsessed</em>
+    </footer>
   </div>
+
+  <script>
+    // existing behavior preserved
+    const v = document.getElementById('galleryVideo');
+    const soundOn  = document.getElementById('sound-on');
+    const soundOff = document.getElementById('sound-off');
+    const viewWin  = document.getElementById('view-window');
+    const viewFull = document.getElementById('view-full');
+    const playPauseBtn = document.getElementById('playPause');
+
+    v.addEventListener('click', async () => {
+      if (v.paused) {
+        await v.play().catch(()=>{});
+        playPauseBtn.textContent = 'Pause';
+        playPauseBtn.setAttribute('aria-pressed','true');
+      } else {
+        v.pause();
+        playPauseBtn.textContent = 'Play';
+        playPauseBtn.setAttribute('aria-pressed','false');
+      }
+    });
+
+    v.muted = true; v.playsInline = true;
+    const tryPlay = () => v.play().catch(()=>{});
+    tryPlay();
+    document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) tryPlay(); });
+
+    const oneTimeEnableAudio = () => {
+      if (soundOn && soundOn.checked) {
+        v.muted = false;
+        v.volume = 1.0;
+        tryPlay();
+      }
+      window.removeEventListener('click', oneTimeEnableAudio);
+      window.removeEventListener('touchstart', oneTimeEnableAudio);
+    };
+    window.addEventListener('click', oneTimeEnableAudio, { once:true });
+    window.addEventListener('touchstart', oneTimeEnableAudio, { once:true, passive:true });
+
+    if (soundOn) soundOn.addEventListener('change', () => { v.muted = false; tryPlay(); });
+    if (soundOff) soundOff.addEventListener('change', () => { v.muted = true; });
+
+    const enterFS = async () => {
+      if (document.fullscreenElement) return;
+      try {
+        if (v.requestFullscreen) await v.requestFullscreen();
+        else if (v.webkitRequestFullscreen) v.webkitRequestFullscreen();
+      } catch(e) {}
+    };
+    const exitFS = async () => {
+      if (!document.fullscreenElement) return;
+      try {
+        if (document.exitFullscreen) await document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      } catch(e) {}
+    };
+    if (viewFull) viewFull.addEventListener('change', enterFS);
+    if (viewWin) viewWin.addEventListener('change', exitFS);
+
+    document.addEventListener('fullscreenchange', () => {
+      if (document.fullscreenElement && viewFull) viewFull.checked = true;
+      else if (viewWin) viewWin.checked = true;
+    });
+
+    playPauseBtn.addEventListener('click', async () => {
+      if (v.paused) {
+        await v.play().catch(()=>{});
+        playPauseBtn.textContent = 'Pause';
+        playPauseBtn.setAttribute('aria-pressed','true');
+      } else {
+        v.pause();
+        playPauseBtn.textContent = 'Play';
+        playPauseBtn.setAttribute('aria-pressed','false');
+      }
+    });
+
+    // Fade-in for "coming soon"
+    window.addEventListener('DOMContentLoaded', () => {
+      const banner = document.querySelector('.coming-soon');
+      if (!banner) return;
+      setTimeout(() => banner.classList.add('show'), 1000);
+    });
+  </script>
 </body>
 </html>
