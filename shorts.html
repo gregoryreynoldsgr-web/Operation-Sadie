@@ -28,28 +28,24 @@
     }
     .wrap{ max-width:1000px; margin:0 auto; padding:20px; position:relative; z-index:1; }
 
-    /* Top bar: ONLY Back to Home (left-aligned) — dark pill to match index */
+    /* Top bar: ONLY Back to Home (left-aligned) — pill with black icon badge */
     .topbar{display:flex; justify-content:flex-start; margin:6px 0 8px;}
     .back-home{
-      display:inline-flex; align-items:center; gap:8px; padding:.55rem .95rem;
+      display:inline-flex; align-items:center; gap:.6rem; padding:.55rem .95rem;
       border-radius:9999px; background:var(--ink); color:#fff; font-weight:700;
       font-size:.95rem; letter-spacing:.01em; text-decoration:none;
       border:1px solid rgba(255,255,255,0.06); box-shadow:var(--shadow);
       transition:transform .12s ease, opacity .2s ease, box-shadow .12s ease;
     }
-    .back-home:hover{ opacity:.92; transform:translateY(-1px); box-shadow:0 10px 26px rgba(0,0,0,.45); }
+    .back-home:hover{ opacity:.94; transform:translateY(-1px); box-shadow:0 10px 26px rgba(0,0,0,.45); }
 
-    /* Colorized house icon (purple roof, white body) */
-    .home-ico{
-      width:18px; height:18px; display:inline-block; flex-shrink:0; background-repeat:no-repeat; background-size:contain;
-      background-image:url('data:image/svg+xml;utf8,\
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">\
-  <path d="M3 10.8L12 3l9 7.8h-2.3L12 6.2 5.3 10.8H3z" fill="%238a4fff"/>\
-  <path d="M5 11.2v7.6c0 .66.54 1.2 1.2 1.2H10v-5h4v5h3.8c.66 0 1.2-.54 1.2-1.2v-7.6L12 6.6 5 11.2z" fill="%23ffffff"/>\
-  <rect x="11.25" y="15" width="1.5" height="3.8" rx=".3" fill="%236f2fe6"/>\
-  <rect x="7.6" y="13.4" width="2" height="2" rx=".2" fill="%23eaf1ff"/>\
-</svg>');
+    /* Black background icon badge + colorized house */
+    .home-badge{
+      width:24px; height:24px; border-radius:6px;
+      background:#000; display:grid; place-items:center; flex-shrink:0;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
     }
+    .home-badge svg{ width:16px; height:16px; display:block }
 
     /* Signature + Official HQ tagline */
     header{ display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center; margin:6px 0 8px; }
@@ -103,10 +99,28 @@
 <body>
   <div class="wrap">
 
-    <!-- ONLY Back to Home (left-aligned) — dark pill + colorized house -->
+    <!-- ONLY Back to Home (left-aligned) — black icon badge + colorized house -->
     <div class="topbar">
       <a href="./index.html" class="back-home" aria-label="Back to Home">
-        <span class="home-ico" aria-hidden="true"></span>
+        <span class="home-badge" aria-hidden="true">
+          <!-- Inline SVG with gradient roof + tinted door; reads well on black -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" aria-hidden="true">
+            <defs>
+              <linearGradient id="roofGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#8bd3ff"/>
+                <stop offset="1" stop-color="#8a4fff"/>
+              </linearGradient>
+            </defs>
+            <!-- Roof -->
+            <path d="M3 11L12 4l9 7" fill="url(#roofGrad)"/>
+            <!-- House body -->
+            <path d="M6 10.8V19c0 .55.45 1 1 1h3v-5h4v5h3c.55 0 1-.45 1-1v-8.2L12 6.7 6 10.8z" fill="#ffffff"/>
+            <!-- Door -->
+            <rect x="11.25" y="14.6" width="1.5" height="3.9" rx=".3" fill="#6f2fe6"/>
+            <!-- Window -->
+            <rect x="7.8" y="13.4" width="2" height="2" rx=".2" fill="#eaf1ff"/>
+          </svg>
+        </span>
         Back to Home
       </a>
     </div>
