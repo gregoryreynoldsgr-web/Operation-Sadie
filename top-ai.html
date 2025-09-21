@@ -7,7 +7,8 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date()); gtag('config', 'G-ZD15GWTT54');
+    gtag('js', new Date());
+    gtag('config', 'G-ZD15GWTT54');
   </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,6 +27,8 @@
       --accent:#8bd3ff;
       --purple-1:#8a4fff;
       --purple-2:#6f2fe6;
+      --site-max:1100px;
+      --nav-height:44px;
     }
 
     html,body{
@@ -36,16 +39,50 @@
       -webkit-font-smoothing:antialiased;
     }
 
-    .wrap{ max-width:1100px; margin:0 auto; padding:22px; }
+    .wrap{ max-width:var(--site-max); margin:0 auto; padding:22px; box-sizing:border-box; }
 
     .sadie-sig{ font-family:'Great Vibes',cursive; font-size:52px; color:var(--accent); text-shadow:0 6px 18px rgba(0,0,0,.6); text-align:center; margin:0; }
     .ai-hq{ font-family:'Cinzel', serif; text-transform:uppercase; font-weight:700; color:#fff; text-align:center; margin:6px 0 14px; letter-spacing:.08em; font-size:14px; }
 
-    nav{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin:8px 0 20px; }
-    .btn-watch{ padding:.6rem .95rem; border-radius:9999px; background: linear-gradient(180deg,var(--purple-1),var(--purple-2)); color:#fff; font-weight:800; text-decoration:none; border:1px solid rgba(255,255,255,0.06); box-shadow:0 6px 20px rgba(111,47,230,.18); display:inline-flex; align-items:center; gap:8px; }
-    .btn-watch:focus{ outline:none; box-shadow: 0 12px 30px rgba(111,47,230,0.22), 0 0 0 4px rgba(138,79,255,0.08); }
+    /* single compact nav pill centered (matches index/top-ai style) */
+    nav{ display:flex; justify-content:center; gap:12px; margin:8px 0 20px; width:100%; }
+    .nav-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:.55rem .95rem;
+      border-radius:9999px;
+      background: linear-gradient(180deg,var(--purple-1),var(--purple-2));
+      color:#fff;
+      font-weight:800;
+      font-size:1rem;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 6px 20px rgba(111,47,230,0.18), inset 0 -2px 0 rgba(0,0,0,0.08);
+      min-height: var(--nav-height);
+      line-height:1;
+      cursor:pointer;
+      white-space:nowrap;
+      transition: transform .12s cubic-bezier(.2,.9,.2,1), box-shadow .12s ease, opacity .12s ease;
+    }
+    .nav-pill:hover{ transform:translateY(-3px); box-shadow:0 12px 30px rgba(111,47,230,0.22); opacity:0.99; }
+    .nav-pill:focus{ outline:none; box-shadow:0 12px 30px rgba(111,47,230,0.22), 0 0 0 4px rgba(138,79,255,0.08); }
 
-    /* replace existing .hero-mini rules with this centered layout */
+    /* circular icon exactly as used on the other pages */
+    .nav-icon{
+      width:34px;
+      height:34px;
+      min-width:34px;
+      border-radius:50%;
+      display:inline-grid;
+      place-items:center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.12), 0 6px 16px rgba(111,47,230,0.12);
+      flex-shrink:0;
+    }
+    .nav-icon svg{ width:18px; height:18px; display:block; fill:#fff; opacity:0.98; }
+
+    /* hero / centered card */
     .hero-mini{
       margin:28px auto;
       padding:36px 22px;
@@ -60,20 +97,8 @@
       text-align:center;
       gap:12px;
     }
-
-    /* keep heading/lead sizing but ensure centered spacing */
-    .hero-mini .page{
-      margin:0;
-      font-size:clamp(20px,3.6vw,30px);
-      color:#fff;
-    }
-    .hero-mini .lead{
-      margin:0;
-      color:#dfe7ee;
-      max-width:64ch;
-      line-height:1.4;
-      font-size:1.02rem;
-    }
+    .hero-mini .page{ margin:0; font-size:clamp(20px,3.6vw,30px); color:#fff; }
+    .hero-mini .lead{ margin:0; color:#dfe7ee; max-width:64ch; line-height:1.4; font-size:1.02rem; }
 
     .grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:18px; margin-top:18px; }
     .card{ background:rgba(255,255,255,0.02); border-radius:8px; padding:8px; box-shadow: inset 0 -2px 0 rgba(0,0,0,.3); }
@@ -105,12 +130,15 @@
       <div class="sadie-sig">Sadie Winters</div>
       <div class="ai-hq">The Official AI Music HQ</div>
 
-      <nav aria-label="Main navigation">
-        <a href="./shorts.html" class="btn-watch">▶️ YouTube Shorts</a>
-        <a href="./videos.html" class="btn-watch">🎬 Watch Sadie Music Videos</a>
-        <a href="./top-ai.html" class="btn-watch">🔝 Top AI Music Videos</a>
-        <a href="./gallery.html" class="btn-watch">🖼️ Living Gallery</a>
-        <a href="./mission.html" class="btn-watch">📜 Our Mission</a>
+      <!-- only BACK TO HOME pill (compact icon + label) -->
+      <nav aria-label="Primary navigation">
+        <a href="./index.html" class="nav-pill" aria-label="Back to Home">
+          <span class="nav-icon" aria-hidden="true">
+            <!-- home icon sized for 18x18 inside 34px circle -->
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.3 2 10v10.7A1 1 0 0 0 3 22h6v-7h4v7h6a1 1 0 0 0 1-1.3V10L12 3.3z"/></svg>
+          </span>
+          <span>Back to Home</span>
+        </a>
       </nav>
     </header>
 
