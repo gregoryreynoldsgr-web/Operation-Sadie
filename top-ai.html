@@ -27,8 +27,6 @@
       --accent:#8bd3ff;
       --purple-1:#8a4fff;
       --purple-2:#6f2fe6;
-      --site-max:1100px;
-      --nav-height:44px;
     }
 
     html,body{
@@ -39,50 +37,50 @@
       -webkit-font-smoothing:antialiased;
     }
 
-    .wrap{ max-width:var(--site-max); margin:0 auto; padding:22px; box-sizing:border-box; }
+    .wrap{ max-width:1100px; margin:0 auto; padding:22px; box-sizing:border-box; }
 
     .sadie-sig{ font-family:'Great Vibes',cursive; font-size:52px; color:var(--accent); text-shadow:0 6px 18px rgba(0,0,0,.6); text-align:center; margin:0; }
     .ai-hq{ font-family:'Cinzel', serif; text-transform:uppercase; font-weight:700; color:#fff; text-align:center; margin:6px 0 14px; letter-spacing:.08em; font-size:14px; }
 
-    /* single compact nav pill centered (matches index/top-ai style) */
-    nav{ display:flex; justify-content:center; gap:12px; margin:8px 0 20px; width:100%; }
-    .nav-pill{
+    /* Back to Home button styled like homepage nav pills */
+    nav{ display:flex; justify-content:center; margin:14px 0 20px; }
+    .btn-watch{
       display:inline-flex;
       align-items:center;
-      gap:10px;
-      padding:.55rem .95rem;
+      gap:8px;
+      padding:.7rem 1.05rem;
       border-radius:9999px;
-      background: linear-gradient(180deg,var(--purple-1),var(--purple-2));
-      color:#fff;
+      background: linear-gradient(180deg, var(--purple-1) 0%, var(--purple-2) 100%);
+      color:#ffffff;
       font-weight:800;
       font-size:1rem;
+      letter-spacing:0.01em;
       text-decoration:none;
-      border:1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 6px 20px rgba(111,47,230,0.18), inset 0 -2px 0 rgba(0,0,0,0.08);
-      min-height: var(--nav-height);
-      line-height:1;
-      cursor:pointer;
-      white-space:nowrap;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow:
+        0 6px 22px rgba(111,47,230,0.18),
+        inset 0 -2px 0 rgba(0,0,0,0.12);
       transition: transform .12s cubic-bezier(.2,.9,.2,1), box-shadow .12s ease, opacity .12s ease;
+      cursor:pointer;
     }
-    .nav-pill:hover{ transform:translateY(-3px); box-shadow:0 12px 30px rgba(111,47,230,0.22); opacity:0.99; }
-    .nav-pill:focus{ outline:none; box-shadow:0 12px 30px rgba(111,47,230,0.22), 0 0 0 4px rgba(138,79,255,0.08); }
-
-    /* circular icon exactly as used on the other pages */
-    .nav-icon{
-      width:34px;
-      height:34px;
-      min-width:34px;
-      border-radius:50%;
-      display:inline-grid;
-      place-items:center;
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.12), 0 6px 16px rgba(111,47,230,0.12);
-      flex-shrink:0;
+    .btn-watch > svg{ width:18px; height:18px; flex-shrink:0; fill:#fff; }
+    .btn-watch:hover{
+      transform:translateY(-3px);
+      box-shadow:
+        0 12px 30px rgba(111,47,230,0.22),
+        inset 0 -2px 0 rgba(0,0,0,0.14);
+      opacity:0.99;
     }
-    .nav-icon svg{ width:18px; height:18px; display:block; fill:#fff; opacity:0.98; }
+    .btn-watch:active{ transform:translateY(-1px); }
+    .btn-watch:focus{
+      outline: none;
+      box-shadow:
+        0 12px 30px rgba(111,47,230,0.22),
+        0 0 0 4px rgba(138,79,255,0.12);
+      border-color: rgba(255,255,255,0.14);
+    }
 
-    /* hero / centered card */
+    /* hero */
     .hero-mini{
       margin:28px auto;
       padding:36px 22px;
@@ -90,37 +88,17 @@
       max-width:920px;
       background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       box-shadow:0 18px 36px rgba(0,0,0,.6);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
       text-align:center;
-      gap:12px;
     }
-    .hero-mini .page{ margin:0; font-size:clamp(20px,3.6vw,30px); color:#fff; }
-    .hero-mini .lead{ margin:0; color:#dfe7ee; max-width:64ch; line-height:1.4; font-size:1.02rem; }
-
-    .grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:18px; margin-top:18px; }
-    .card{ background:rgba(255,255,255,0.02); border-radius:8px; padding:8px; box-shadow: inset 0 -2px 0 rgba(0,0,0,.3); }
-    .video-embed{ width:100%; height:190px; background:#000; border-radius:6px; overflow:hidden; }
-    .card h3{ margin:10px 0 6px; font-size:1.05rem; }
-    .card p{ margin:0 0 6px; color:#d6dbe3; font-size:.95rem; }
+    .hero-mini h1{ margin:0; font-size:clamp(20px,3.6vw,30px); color:#fff; }
+    .hero-mini p{ margin:12px auto 0; color:#dfe7ee; max-width:64ch; line-height:1.4; font-size:1.02rem; }
 
     footer{ color:var(--muted); text-align:center; margin:28px 0 12px; }
 
-    @media (max-width:980px){
-      .grid{ grid-template-columns:repeat(2,1fr); }
-      .video-embed{ height:160px; }
-      .sadie-sig{ font-size:56px; }
-    }
     @media (max-width:640px){
-      .grid{ grid-template-columns:1fr; }
-      .video-embed{ height:220px; }
       .sadie-sig{ font-size:46px; }
-      .ai-hq{ font-size:14px; }
-      nav{ gap:10px; }
+      .ai-hq{ font-size:13px; }
       .hero-mini{ padding:26px 16px; border-radius:8px; }
-      .hero-mini .lead{ font-size:1rem; }
     }
   </style>
 </head>
@@ -130,47 +108,19 @@
       <div class="sadie-sig">Sadie Winters</div>
       <div class="ai-hq">The Official AI Music HQ</div>
 
-      <!-- only BACK TO HOME pill (compact icon + label) -->
-      <nav aria-label="Primary navigation">
-        <a href="./index.html" class="nav-pill" aria-label="Back to Home">
-          <span class="nav-icon" aria-hidden="true">
-            <!-- home icon sized for 18x18 inside 34px circle -->
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.3 2 10v10.7A1 1 0 0 0 3 22h6v-7h4v7h6a1 1 0 0 0 1-1.3V10L12 3.3z"/></svg>
-          </span>
-          <span>Back to Home</span>
+      <!-- Back to Home button -->
+      <nav aria-label="Main navigation">
+        <a href="./index.html" class="btn-watch">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.3 2 10v10.7A1 1 0 0 0 3 22h6v-7h4v7h6a1 1 0 0 0 1-1.3V10L12 3.3z"/></svg>
+          Back to Home
         </a>
       </nav>
     </header>
 
     <section class="hero-mini" aria-labelledby="topai">
-      <h1 id="topai" class="page">Top AI Music Videos</h1>
-      <p class="lead">Here is our hand-picked collection of the most highly watched AI music videos from around the globe, featuring rising creators pushing generative vocals and cinematic visuals. Enjoy!</p>
+      <h1 id="topai">Top AI Music Videos</h1>
+      <p>Here is our hand-picked collection of the most highly watched AI music videos from around the globe, featuring rising creators pushing generative vocals and cinematic visuals. Enjoy!</p>
     </section>
-
-    <section class="grid" aria-live="polite">
-      <!-- Card 1 -->
-      <article class="card">
-        <div class="video-embed" aria-hidden="true"></div>
-        <h3>Resurrection — Sadie Winters (Halloween Special)</h3>
-        <p>AI music short with cinematic edits and high retention. Director's cut and behind-the-scenes are on the Living Gallery.</p>
-      </article>
-
-      <!-- Card 2 -->
-      <article class="card">
-        <div class="video-embed" aria-hidden="true"></div>
-        <h3>Beach Girl — Sadie Winters (Lip-Sync Short)</h3>
-        <p>Uplifting AI-pop short that boosted channel discoverability. Uses seedance + HeyGen motion pipeline.</p>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="card">
-        <div class="video-embed" aria-hidden="true"></div>
-        <h3>Evolution — Sadie Winters (Cinematic Loop)</h3>
-        <p>Slow-pan cinematic loop combining AI vocals with a seaside motif — great watch-through and share rates.</p>
-      </article>
-    </section>
-
-    <p style="margin-top:18px; color:var(--muted); font-size:.95rem;">Tip: Replace the placeholder embeds with your YouTube IDs and add the per-video blurb (1–2 sentences) — those blurbs help search engines understand the video content (AI music, AI singer, director's cut).</p>
 
     <footer>© 2025 SadieWinters.net — The Official AI Music HQ</footer>
   </div>
