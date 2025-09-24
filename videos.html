@@ -14,12 +14,12 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sadie Winters — Videos</title>
-  <meta name="description" content="Watch Sadie Winters Music Videos!">
+  <meta name="description" content="Watch the full-length 'Walking Away (Remastered)' music video plus more Sadie Winters videos.">
 
   <style>
     :root{
       --bg:#0b0b0e; --text:#f6f6f8; --muted:#b6b6c5; --accent:#8bd3ff;
-      --ink:#111; --card:#0e0f12;
+      --ink:#111; --card:#0e0f12; --chip:#161922;
       --purple-1:#8a4fff; --purple-2:#6f2fe6;
       --teal:#12e3b3; --mint:#ccfff2; --emerald:#13c48f;
       --shadow:0 8px 22px rgba(0,0,0,.35);
@@ -31,7 +31,7 @@
     }
     .wrap{max-width:1100px;margin:0 auto;padding:20px}
 
-    /* Top bar: ONLY Back to Home (left) — pill with black icon badge */
+    /* Top bar: ONLY Back to Home (left) */
     .topbar{display:flex;justify-content:flex-start;margin:6px 0 8px}
     .back-home{
       display:inline-flex;align-items:center;gap:.6rem;padding:.55rem .95rem;border-radius:9999px;
@@ -48,7 +48,6 @@
     }
     .home-badge svg{ width:17px; height:17px; display:block; filter: drop-shadow(0 0 6px rgba(18,227,179,.35)); }
 
-    /* Signature + Official HQ tagline */
     header{ display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;margin:6px 0 16px; }
     .sadie-sig{ font-family:'Great Vibes',cursive;font-size:64px;color:var(--accent);line-height:1; }
     .sadie-sig a{ color:inherit;text-decoration:none }
@@ -61,6 +60,35 @@
     h1{margin:12px 0 10px;font-size:clamp(22px,4vw,34px)}
     p.muted{margin:0 0 16px;color:#cfd0d8;line-height:1.6}
 
+    /* Featured hero card */
+    .feature{
+      background:linear-gradient(180deg,rgba(18,22,32,.9),rgba(14,15,18,.9));
+      border:1px solid #1f2430;
+      border-radius:18px;
+      box-shadow:0 16px 40px rgba(0,0,0,.45);
+      overflow:hidden;
+      margin:10px 0 22px;
+    }
+    .feature .frame{position:relative;padding-top:56.25%;background:#000}
+    .feature iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .feature .meta{
+      display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+      gap:10px;padding:12px 14px;border-top:1px solid #1f2430
+    }
+    .title-group{display:flex;flex-direction:column}
+    .kicker{font-size:.8rem;color:#a7aec0;letter-spacing:.08em;text-transform:uppercase}
+    .ftitle{font-weight:800;letter-spacing:.02em}
+
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{
+      display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .85rem;
+      background:var(--chip);border:1px solid #2a3140;border-radius:999px;
+      font-weight:700;color:#e9ebf5;text-decoration:none;
+      transition:transform .08s ease,opacity .2s ease;
+    }
+    .chip:hover{opacity:.92;transform:translateY(-1px)}
+
+    /* Grid of the rest */
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
     .card{background:var(--card);border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.35);overflow:hidden}
     .frame{position:relative;padding-top:56.25%;background:#000}
@@ -68,6 +96,10 @@
     .card .meta{padding:12px 14px}
 
     footer{color:#8c8c9b;text-align:center;margin:28px 0 10px;font-size:.9rem}
+
+    /* Fonts fallback if CDN blocked */
+    @font-face{font-family:'Great Vibes';src:local('Great Vibes');}
+    @font-face{font-family:'Cinzel';src:local('Cinzel');}
   </style>
 
   <!-- Fonts -->
@@ -76,11 +108,11 @@
 </head>
 <body>
   <div class="wrap">
-    <!-- ONLY Back to Home (left) — black icon badge + poppy house -->
+    <!-- ONLY Back to Home -->
     <div class="topbar">
       <a href="./index.html" class="back-home" aria-label="Back to Home">
         <span class="home-badge" aria-hidden="true">
-          <!-- Inline SVG: teal→purple roof, mint windows, emerald door, colored wall stroke -->
+          <!-- Inline SVG home -->
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" aria-hidden="true">
             <defs>
               <linearGradient id="roofGrad" x1="0" y1="0" x2="1" y2="1">
@@ -113,13 +145,32 @@
 
     <h1 id="top">Watch Sadie Videos</h1>
     <p class="muted">
-      There are countless Sadie Winters clips out there—but only some earn the mark of
-      <strong><em>Sadie Obsessed</em></strong> Approved. These are the ones that keep the spark alive,
-      first lit in <em>Walking Away</em>—when Sadie’s voice first touched our hearts.
-      From raw and unrefined beginnings to the rising star we celebrate today,
-      this is the Sadie we love. And her story — our story — is only just beginning…
+      Start with the **full-length cut** below, then explore more Sadie videos.
     </p>
 
+    <!-- FEATURED: YOUR FULL VIDEO FIRST -->
+    <section class="feature" aria-label="Featured full-length video">
+      <div class="frame">
+        <!-- Remastered full video embed -->
+        <iframe
+          src="https://www.youtube.com/embed/teRwZjYbV-Y?rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+          title="Walking Away (Remastered) — Full Music Video | Sadie Winters"
+          allowfullscreen></iframe>
+      </div>
+      <div class="meta">
+        <div class="title-group">
+          <div class="kicker">Featured Premiere</div>
+          <div class="ftitle">Walking Away (Remastered) — Full Music Video</div>
+        </div>
+        <div class="chips">
+          <a class="chip" href="https://youtu.be/teRwZjYbV-Y?si=MNWLof3mXn-Rugxi" target="_blank" rel="noopener noreferrer">▶️ Watch on YouTube</a>
+          <a class="chip" href="#more">↓ More Videos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- REST OF THE VIDEOS -->
+    <h2 id="more" style="margin:16px 0 10px;font-size:clamp(18px,3.6vw,28px)">More Sadie Videos</h2>
     <section class="grid">
       <!-- Video 1 -->
       <article class="card">
@@ -164,7 +215,7 @@
       <!-- Video 6 -->
       <article class="card">
         <div class="frame">
-          <iframe src="https://www.youtube.com/embed/PVJuvWkrT2I?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Sadie Winters — Video 6" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/PVJuvWkrT2I?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Ghosts and Stones — Sadie Winters" allowfullscreen></iframe>
         </div>
         <div class="meta"><strong>Ghosts and Stones — Sadie Winters</strong></div>
       </article>
@@ -172,7 +223,7 @@
       <!-- Video 7 -->
       <article class="card">
         <div class="frame">
-          <iframe src="https://www.youtube.com/embed/4JWh_U3Lye8?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Sadie Winters — Video 7" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/4JWh_U3Lye8?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Glass Horizons — Sadie Winters" allowfullscreen></iframe>
         </div>
         <div class="meta"><strong>Glass Horizons — Sadie Winters</strong></div>
       </article>
@@ -180,7 +231,7 @@
       <!-- Video 8 -->
       <article class="card">
         <div class="frame">
-          <iframe src="https://www.youtube.com/embed/jxgiblwO5hY?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Sadie Winters — Video 8" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/jxgiblwO5hY?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Silent Echoes — Sadie Winters" allowfullscreen></iframe>
         </div>
         <div class="meta"><strong>Silent Echoes — Sadie Winters</strong></div>
       </article>
@@ -188,7 +239,7 @@
       <!-- Video 9 -->
       <article class="card">
         <div class="frame">
-          <iframe src="https://www.youtube.com/embed/1_m-tuI9Oj0?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Sadie Winters — Video 9" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/1_m-tuI9Oj0?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="Fading Colors — Sadie Winters" allowfullscreen></iframe>
         </div>
         <div class="meta"><strong>Fading Colors — Sadie Winters</strong></div>
       </article>
@@ -199,7 +250,7 @@
 
   <script>
     // Normalize YT embeds so we can catch "ended" and keep consistent params
-    document.querySelectorAll('.frame iframe').forEach(el => {
+    document.querySelectorAll('iframe').forEach(el => {
       try {
         const u = new URL(el.src, location.href);
         if (u.hostname.includes('youtube.com')) {
@@ -221,7 +272,7 @@
       document.head.appendChild(tag);
     })();
 
-    // When API is ready, attach players and stop on "ended"
+    // On API ready, stop on "ended" and scroll up
     let ytPlayers = [];
     window.onYouTubeIframeAPIReady = function () {
       document.querySelectorAll('iframe.yt-embed').forEach((el, i) => {
