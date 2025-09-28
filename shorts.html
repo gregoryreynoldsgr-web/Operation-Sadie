@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html> 
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -29,7 +29,6 @@
     }
     .wrap{ max-width:1000px; margin:0 auto; padding:20px; position:relative; z-index:1; }
 
-    /* Top bar: ONLY Back to Home (left-aligned) — pill with black icon badge */
     .topbar{display:flex; justify-content:flex-start; margin:6px 0 8px;}
     .back-home{
       display:inline-flex; align-items:center; gap:.6rem; padding:.55rem .95rem;
@@ -40,7 +39,6 @@
     }
     .back-home:hover{ opacity:.95; transform:translateY(-1px); box-shadow:0 10px 26px rgba(0,0,0,.45); }
 
-    /* Black icon badge + POP house */
     .home-badge{
       width:26px; height:26px; border-radius:7px;
       background:#000; display:grid; place-items:center; flex-shrink:0;
@@ -48,34 +46,23 @@
         inset 0 0 0 1px rgba(255,255,255,.08),
         0 0 0 1px rgba(0,0,0,.6);
     }
-    .home-badge svg{
-      width:17px; height:17px; display:block;
-      /* subtle neon glow around the colored parts so it “reads” on black */
-      filter: drop-shadow(0 0 6px rgba(18,227,179,.35));
-    }
+    .home-badge svg{ width:17px; height:17px; display:block; filter: drop-shadow(0 0 6px rgba(18,227,179,.35)); }
 
-    /* Signature + Official HQ tagline */
     header{ display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center; margin:6px 0 8px; }
     .sadie-sig{ font-family:'Great Vibes',cursive; font-size:64px; color:var(--accent); line-height:1; margin-top:2px; }
     .sadie-sig a{ color:inherit; text-decoration:none; }
-    .ai-hq{
-      font-family:'Cinzel',serif; font-weight:700; text-transform:uppercase;
-      letter-spacing:.08em; font-size:14px; color:#fff;
-    }
+    .ai-hq{ font-family:'Cinzel',serif; font-weight:700; text-transform:uppercase; letter-spacing:.08em; font-size:14px; color:#fff; }
 
-    /* Grid for vertical 9:16 cards */
     .shorts-grid{ display:grid; gap:14px; justify-items:center; margin-top:18px; }
     @media (max-width:640px){ .shorts-grid{ grid-template-columns:repeat(2,1fr); } }
     @media (min-width:641px){ .shorts-grid{ grid-template-columns:repeat(4,1fr); } }
 
-    /* 9:16 card */
     .short{
       position:relative; width:100%; max-width:240px; aspect-ratio:9/16;
       border-radius:10px; overflow:hidden; background:#111; box-shadow:0 2px 14px rgba(0,0,0,.35);
     }
     .short iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
 
-    /* Counter */
     .counter-wrap{ margin:28px auto 6px; display:grid; place-items:center; }
     .counter-card{
       width:100%; max-width:920px; background:linear-gradient(180deg, rgba(139,211,255,.10), rgba(139,211,255,.02));
@@ -84,15 +71,8 @@
     }
     .counter-kicker{ text-transform:uppercase; letter-spacing:.16em; font-size:.78rem; color:var(--muted); margin-bottom:2px; }
     .counter-line{ font-size:1.05rem; color:var(--text); opacity:.95; }
-    .counter-number{
-      font-weight:900; font-size:clamp(2rem,5vw,3.2rem); line-height:1.1; margin:6px 0 4px; letter-spacing:.02em;
-      color:#ff4fa3; text-shadow:0 2px 18px rgba(255,79,163,.35);
-    }
-    @keyframes pop{
-      0%{transform:scale(1);text-shadow:0 2px 18px rgba(255,79,163,.35);}
-      60%{transform:scale(1.25);text-shadow:0 6px 32px rgba(255,79,163,.60);}
-      100%{transform:scale(1);text-shadow:0 2px 18px rgba(255,79,163,.35);}
-    }
+    .counter-number{ font-weight:900; font-size:clamp(2rem,5vw,3.2rem); line-height:1.1; margin:6px 0 4px; letter-spacing:.02em; color:#ff4fa3; text-shadow:0 2px 18px rgba(255,79,163,.35);}
+    @keyframes pop{ 0%{transform:scale(1);text-shadow:0 2px 18px rgba(255,79,163,.35);} 60%{transform:scale(1.25);text-shadow:0 6px 32px rgba(255,79,163,.60);} 100%{transform:scale(1);text-shadow:0 2px 18px rgba(255,79,163,.35);} }
     .counter-number.pop{ animation:pop .45s ease-out 1; }
     .counter-updated{ margin-top:2px; font-size:.9rem; color:var(--muted); }
 
@@ -106,90 +86,73 @@
 <body>
   <div class="wrap">
 
-    <!-- ONLY Back to Home — black icon badge + POP house -->
     <div class="topbar">
       <a href="./index.html" class="back-home" aria-label="Back to Home">
         <span class="home-badge" aria-hidden="true">
-          <!-- Inline SVG: teal→purple roof, mint windows, emerald door, soft accent stroke on walls -->
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" aria-hidden="true">
-            <defs>
-              <linearGradient id="roofGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#12e3b3"/>
-                <stop offset="1" stop-color="#8a4fff"/>
-              </linearGradient>
-              <linearGradient id="wallStroke" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#8bd3ff" stop-opacity=".85"/>
-                <stop offset="1" stop-color="#12e3b3" stop-opacity=".85"/>
-              </linearGradient>
-            </defs>
-
-            <!-- Roof (gradient) -->
-            <path d="M3 11L12 4l9 7" fill="url(#roofGrad)"/>
-
-            <!-- House body (off-white) with thin colored stroke so it isn't flat white -->
-            <path d="M6 10.8V19c0 .55.45 1 1 1h3v-5h4v5h3c.55 0 1-.45 1-1v-8.2L12 6.7 6 10.8z"
-                  fill="#ffffff" stroke="url(#wallStroke)" stroke-width=".9" />
-
-            <!-- Door (emerald) -->
-            <rect x="11.25" y="14.5" width="1.5" height="4" rx=".35" fill="#13c48f"/>
-
-            <!-- Window (mint) -->
-            <rect x="7.8" y="13.4" width="2" height="2" rx=".25" fill="#ccfff2"/>
-
-            <!-- Tiny sill/ground hint (teal) to add one more color note without clutter -->
-            <rect x="6" y="20.2" width="12" height=".8" rx=".4" fill="#12e3b3" opacity=".6"/>
-          </svg>
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><defs>
+            <linearGradient id="roofGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#12e3b3"/><stop offset="1" stop-color="#8a4fff"/></linearGradient>
+            <linearGradient id="wallStroke" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8bd3ff" stop-opacity=".85"/><stop offset="1" stop-color="#12e3b3" stop-opacity=".85"/></linearGradient>
+          </defs>
+          <path d="M3 11L12 4l9 7" fill="url(#roofGrad)"/>
+          <path d="M6 10.8V19c0 .55.45 1 1 1h3v-5h4v5h3c.55 0 1-.45 1-1v-8.2L12 6.7 6 10.8z" fill="#ffffff" stroke="url(#wallStroke)" stroke-width=".9"/>
+          <rect x="11.25" y="14.5" width="1.5" height="4" rx=".35" fill="#13c48f"/>
+          <rect x="7.8" y="13.4" width="2" height="2" rx=".25" fill="#ccfff2"/>
+          <rect x="6" y="20.2" width="12" height=".8" rx=".4" fill="#12e3b3" opacity=".6"/>
+        </svg>
         </span>
         Back to Home
       </a>
     </div>
 
-    <!-- Signature + Official AI Music HQ -->
     <header>
       <div class="sadie-sig"><a href="./index.html" aria-label="Sadie Winters">Sadie Winters</a></div>
       <div class="ai-hq">The Official AI Music HQ</div>
     </header>
 
     <div class="shorts-grid">
-      <!-- Short #1 -->
+      <!-- New First Short -->
       <div class="short">
         <iframe
-          src="https://www.youtube.com/embed/jtSWSB4qM9o?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1"
+          src="https://www.youtube.com/embed/5J6lbF1QmAQ?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1"
+          title="Sadie Winters — Featured Short"
+          allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write"
+          allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+
+      <!-- Old #1 -->
+      <div class="short">
+        <iframe src="https://www.youtube.com/embed/jtSWSB4qM9o?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1"
           title="Sadie Winters — Latest Short"
           allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write"
-          allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          allowfullscreen loading="lazy"></iframe>
       </div>
 
-      <!-- Short #2 -->
+      <!-- Old #2 -->
       <div class="short">
-        <iframe
-          src="https://www.youtube.com/embed/g7n78tIQh_w?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1"
+        <iframe src="https://www.youtube.com/embed/g7n78tIQh_w?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1"
           title="Sadie Winters — (Prev) Latest Short"
           allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write"
-          allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          allowfullscreen loading="lazy"></iframe>
       </div>
 
-      <!-- Short #3 -->
+      <!-- Old #3 -->
       <div class="short">
-        <iframe
-          src="https://www.youtube.com/embed/eXUtAzRyzmY?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1"
+        <iframe src="https://www.youtube.com/embed/eXUtAzRyzmY?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1"
           title="Sadie Winters — Evolution"
           allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write"
-          allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          allowfullscreen loading="lazy"></iframe>
       </div>
 
-      <!-- Short #4 -->
+      <!-- Old #4 -->
       <div class="short">
-        <iframe
-          src="https://www.youtube.com/embed/WGYO_E0JZaQ?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1"
+        <iframe src="https://www.youtube.com/embed/WGYO_E0JZaQ?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1"
           title="Sadie Winters — Walking Away"
           allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write"
-          allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
 
-    <!-- Shorts View Counter -->
-    <section class="counter-wrap" aria-label="YouTube Shorts View Count">
+    <section class="counter-wrap">
       <div class="counter-card">
         <div class="counter-kicker">SadieWinters.net</div>
         <div class="counter-line">Our homegrown YouTube Shorts and Videos have already received over</div>
@@ -203,13 +166,9 @@
   </div>
 
   <script>
-    // iOS detection
     const isiOS = /iP(hone|ad|od)/i.test(navigator.userAgent);
-
-    // Normalize YouTube iframes
     document.querySelectorAll('.short iframe').forEach(el => {
-      try {
-        const u = new URL(el.src, location.href);
+      try { const u = new URL(el.src, location.href);
         if (u.hostname.includes('youtube.com')) {
           u.searchParams.set('rel', '0');
           u.searchParams.set('modestbranding', '1');
@@ -219,52 +178,27 @@
           u.searchParams.set('fs', '1');
           el.src = u.toString();
           el.classList.add('yt-embed');
-        }
-      } catch(_) {}
+        }} catch(_) {}
     });
-
-    // Load the YouTube Iframe API once
-    (function () {
-      const tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-      document.head.appendChild(tag);
-    })();
-
-    // Stop video on end
+    (function () { const tag = document.createElement('script'); tag.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(tag); })();
     let ytPlayers = [];
     window.onYouTubeIframeAPIReady = function () {
       document.querySelectorAll('iframe.yt-embed').forEach((el, i) => {
         ytPlayers[i] = new YT.Player(el, {
-          events: {
-            onStateChange: function (e) {
-              if (e.data === YT.PlayerState.ENDED) {
-                try { e.target.stopVideo(); } catch(_) {}
-              }
-            }
-          }
+          events: { onStateChange: function (e) { if (e.data === YT.PlayerState.ENDED) { try { e.target.stopVideo(); } catch(_) {} } } }
         });
       });
     };
-
-    // Counter animation
-    (function(){
-      const el = document.getElementById('viewsCounter'); if(!el) return;
+    (function(){ const el = document.getElementById('viewsCounter'); if(!el) return;
       const target = parseInt(el.getAttribute('data-target'),10)||0;
       const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
       const fmt = n => n.toLocaleString();
-
-      function animate(){
-        const dur=1200, start=performance.now(), from=0, change=target-from;
-        function tick(now){
-          const t=Math.min(1,(now-start)/dur);
-          const eased=1-Math.pow(1-t,5);
-          const val=Math.round(from+change*eased);
-          el.textContent=fmt(val);
+      function animate(){ const dur=1200, start=performance.now(), from=0, change=target-from;
+        function tick(now){ const t=Math.min(1,(now-start)/dur); const eased=1-Math.pow(1-t,5);
+          const val=Math.round(from+change*eased); el.textContent=fmt(val);
           if(t<1) requestAnimationFrame(tick);
           else { el.textContent=fmt(target); el.classList.add('pop'); setTimeout(()=>el.classList.remove('pop'),500); }
-        }
-        requestAnimationFrame(tick);
-      }
+        } requestAnimationFrame(tick); }
       if(reduce){ el.textContent=fmt(target); return; }
       const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ animate(); io.disconnect(); } }); },{threshold:.35});
       io.observe(el);
