@@ -72,11 +72,25 @@
     .close{position:fixed;top:14px;right:14px;background:#111;color:#eee;border:1px solid #333;border-radius:999px;padding:.5rem .7rem;cursor:pointer}
 
     /* Info card */
-    .bio{margin:10px 0 18px;background:linear-gradient(180deg,var(--accent-soft),rgba(255,79,163,.04));border:1px solid rgba(255,79,163,.28);border-radius:14px;padding:12px 14px}
+    .bio{margin:10px 0 12px;background:linear-gradient(180deg,var(--accent-soft),rgba(255,79,163,.04));border:1px solid rgba(255,79,163,.28);border-radius:14px;padding:12px 14px}
     .bio p{margin:.2rem 0;color:#f1e9ef}
+
+    /* CTA under About */
+    .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;background:#151821;border:1px solid #2a2f3a;color:#fff;text-decoration:none;padding:.5rem .8rem;border-radius:9999px;font-weight:700}
+    .btn:hover{opacity:.95;transform:translateY(-1px)}
 
     /* Prevent background scroll when lightbox open */
     body.noscroll{overflow:hidden}
+
+    /* Fullscreen hint */
+    .fs-hint{
+      position:fixed;left:50%;top:14px;transform:translateX(-50%);
+      background:rgba(0,0,0,.7);color:#fff;border:1px solid #333;
+      border-radius:999px;padding:.4rem .7rem;font-size:.85rem;
+      z-index:10000;display:none
+    }
+    .fs-hint.show{display:inline-flex}
   </style>
 </head>
 <body>
@@ -109,7 +123,11 @@
 
     <section class="bio" aria-label="About Tilly">
       <div class="kicker">About</div>
-      <p>Meet Tilly Norwood — a virtual actress delivering cinematic scenes across Western drama, newsroom satire, and fashion spots. Long films below, then Shorts.</p>
+      <p><strong>Tilly Norwood</strong> is where cinema meets code. She’s a virtual actress with a pulse — riding into dusty frontier towns, reading the news with a wink, and turning a lens into a stage. Every scene here is handcrafted from stills to sound, then pushed to the edge of what an AI performance can feel like: expressive, cinematic, a little dangerous.</p>
+      <p>Start with the long clips below, then dive into the Shorts — quick hits of Western grit, newsroom chaos, and fashion heat. If a moment grabs you, it’s by design.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://www.youtube.com/@TillyNorwoodTV" target="_blank" rel="noopener">▶ Watch on YouTube: @TillyNorwoodTV</a>
+      </div>
     </section>
 
     <!-- LONGS FIRST -->
@@ -215,8 +233,11 @@
   <!-- Lightbox for Longs -->
   <div class="lightbox" id="lightbox" aria-modal="true" role="dialog">
     <button class="close" id="closeBtn" aria-label="Close video">✕</button>
-    <div class="frame"><div id="ytPlayer"></div></div>
+    <div class="frame" tabindex="-1"><div id="ytPlayer"></div></div>
   </div>
+
+  <!-- Fullscreen hint -->
+  <div class="fs-hint" id="fsHint">Press Esc to exit fullscreen</div>
 
   <!-- YouTube Iframe API -->
   <script src="https://www.youtube.com/iframe_api"></script>
@@ -285,6 +306,33 @@
     closeBtn.addEventListener('click', closeVideo);
     lightbox.addEventListener('click', (e)=>{ if (e.target === lightbox) closeVideo(); });
     document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeVideo(); });
+
+    // Fullscreen UX helper: brief hint + refocus after exit
+    (function fullscreenHelper(){
+      const fsHint = document.getElementById('fsHint');
+      const frameEl = document.querySelector('.frame');
+      let hintTimer=null;
+
+      function isFS(){
+        return document.fullscreenElement || document.webkitFullscreenElement ||
+               document.mozFullScreenElement || document.msFullscreenElement;
+      }
+      function showHint(){
+        clearTimeout(hintTimer);
+        if (!fsHint) return;
+        fsHint.classList.add('show');
+        hintTimer = setTimeout(()=> fsHint.classList.remove('show'), 2200);
+      }
+      function onFSChange(){
+        if (isFS()){
+          showHint();
+        } else {
+          try { frameEl && frameEl.focus({preventScroll:true}); } catch(_){}
+        }
+      }
+      ['fullscreenchange','webkitfullscreenchange','mozfullscreenchange','MSFullscreenChange']
+        .forEach(ev=> document.addEventListener(ev, onFSChange));
+    })();
   </script>
 </body>
 </html>
