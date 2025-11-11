@@ -41,6 +41,17 @@
     .btn-watch:hover{opacity:.9;transform:translateY(-1px)}
     .btn-new{background:linear-gradient(90deg,#1d2633,#222a38);border:1px solid #2c3647}
 
+    /* BIG TILLY CTA */
+    .btn-tilly{
+      background:linear-gradient(90deg,#1b2b3f,#263245 30%,#2c3a52);
+      border:1px solid #33435a;
+      font-size:1.05rem;
+      padding:.7rem 1.2rem;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+
     /* Scrolling Thank-You Banner */
     .marquee-wrap{position:relative;width:100%;overflow:hidden;margin:8px 0 6px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.45))}
     .marquee-line{display:inline-block;white-space:nowrap;font-family:'Great Vibes',cursive;color:var(--accent);font-size:clamp(22px,3.2vw,34px);line-height:1.1;padding:6px 0;will-change:transform;animation:slideLeft 18s linear infinite;transform:translateX(100%)}
@@ -98,14 +109,16 @@
         <a href="./top-ai.html" class="btn-watch">🔝 Top AI Music Videos</a>
         <a href="./gallery.html" class="btn-watch">🖼️ Living Gallery</a>
         <a href="./mission.html" class="btn-watch">📜 Our Mission</a>
-        <!-- NEW: direct link to the full YouTube video (opens in new tab) -->
-        <a href="https://youtu.be/teRwZjYbV-Y?si=MNWLof3mXn-Rugxi" class="btn-watch btn-new" target="_blank" rel="noopener noreferrer">✨ NEW: Full Video on YouTube</a>
+        <!-- REPLACED: big internal CTA to Tilly page -->
+        <a href="./tilly.html" class="btn-watch btn-tilly" aria-label="Meet Tilly Norwood">
+          ✨ MEET TILLY NORWOOD — The World’s First AI Actress
+        </a>
       </nav>
     </header>
 
     <!-- Scrolling banner above the hero -->
     <div class="marquee-wrap" aria-label="International visitors announcement">
-      <div class="marquee-line">❤️ Thank you to everyone visiting from 37 countries — I love you all across the globe! ❤️</div>
+      <div class="marquee-line">❤️ Thank you to everyone visiting from 42 countries — I love you all across the globe! ❤️</div>
     </div>
 
     <figure class="hero">
@@ -118,7 +131,7 @@
       </figcaption>
     </figure>
 
-    <!-- Feature card: lightweight promo for the new YouTube link -->
+    <!-- Feature card: keep as-is (can repoint later if you want) -->
     <section class="feature" aria-label="Featured video">
       <div class="card">
         <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:space-between">
