@@ -108,15 +108,15 @@
       <p>Meet Tilly Norwood — a virtual actress delivering cinematic scenes across Western drama, newsroom satire, and fashion spots. Long films below, then Shorts.</p>
     </section>
 
-    <!-- LONGS FIRST (open on YouTube directly — no overlay, no lock) -->
+    <!-- LONGS FIRST (opens a local /watch.html that auto-returns on video end) -->
     <section aria-labelledby="longs-title">
       <h2 id="longs-title">Feature Clips & Long-Form</h2>
       <div class="grid" id="longGrid">
 
-        <article class="card" data-url="https://www.youtube.com/watch?v=onDOOl2yFoY" title="Fake Bomb Scare! Tilly Norwood - Anchorwoman [End is Hilarious]">
+        <article class="card" data-vid="onDOOl2yFoY" data-title="Fake Bomb Scare! Tilly Norwood - Anchorwoman [End is Hilarious]">
           <div class="thumb">
             <img src="https://img.youtube.com/vi/onDOOl2yFoY/hqdefault.jpg" alt="Fake Bomb Scare — Tilly Anchorwoman">
-            <span class="play">Watch on YouTube</span>
+            <span class="play">Watch</span>
           </div>
           <div class="meta">
             <p class="title">🌹 Fake Bomb Scare! (Anchorwoman)</p>
@@ -124,10 +124,10 @@
           </div>
         </article>
 
-        <article class="card" data-url="https://www.youtube.com/watch?v=Vo_PByL6iMQ" title="Tilly Norwood | Sizzling Fashion Spot 🔥">
+        <article class="card" data-vid="Vo_PByL6iMQ" data-title="Tilly Norwood | Sizzling Fashion Spot 🔥">
           <div class="thumb">
             <img src="https://img.youtube.com/vi/Vo_PByL6iMQ/hqdefault.jpg" alt="Sizzling Fashion Spot">
-            <span class="play">Watch on YouTube</span>
+            <span class="play">Watch</span>
           </div>
           <div class="meta">
             <p class="title">🌹 Sizzling Fashion Spot</p>
@@ -135,10 +135,10 @@
           </div>
         </article>
 
-        <article class="card" data-url="https://www.youtube.com/watch?v=_KEoIDR9Fr8" title="Tilly Norwood | Sizzling Fashion Spot [Extended Cut] 🔥">
+        <article class="card" data-vid="_KEoIDR9Fr8" data-title="Tilly Norwood | Sizzling Fashion Spot [Extended Cut] 🔥">
           <div class="thumb">
             <img src="https://img.youtube.com/vi/_KEoIDR9Fr8/hqdefault.jpg" alt="Sizzling Fashion Spot — Extended">
-            <span class="play">Watch on YouTube</span>
+            <span class="play">Watch</span>
           </div>
           <div class="meta">
             <p class="title">🌹 Fashion Spot — Extended</p>
@@ -146,10 +146,10 @@
           </div>
         </article>
 
-        <article class="card" data-url="https://www.youtube.com/watch?v=tGeeJbsOt3A" title="BREAKING NEWS: AI Actress Tilly Norwood Hired as News Anchor and Starring Acting Role!">
+        <article class="card" data-vid="tGeeJbsOt3A" data-title="BREAKING NEWS: AI Actress Tilly Norwood Hired as News Anchor and Starring Acting Role!">
           <div class="thumb">
             <img src="https://img.youtube.com/vi/tGeeJbsOt3A/hqdefault.jpg" alt="Breaking News: Hired as Anchor + Starring Role">
-            <span class="play">Watch on YouTube</span>
+            <span class="play">Watch</span>
           </div>
           <div class="meta">
             <p class="title">🌹 Breaking News: Hired!</p>
@@ -157,10 +157,10 @@
           </div>
         </article>
 
-        <article class="card" data-url="https://www.youtube.com/watch?v=XvCLdyiKft0" title="Tilly Norwood – Dustwood (Ep. 1): Whiskey">
+        <article class="card" data-vid="XvCLdyiKft0" data-title="Tilly Norwood – Dustwood (Ep. 1): Whiskey">
           <div class="thumb">
             <img src="https://img.youtube.com/vi/XvCLdyiKft0/hqdefault.jpg" alt="Dustwood Episode 1: Whiskey">
-            <span class="play">Watch on YouTube</span>
+            <span class="play">Watch</span>
           </div>
           <div class="meta">
             <p class="title">🌹 Dustwood (Ep. 1): Whiskey</p>
@@ -225,8 +225,8 @@
       });
     })();
 
-    // --- LONGS: open directly on YouTube in a new tab/window (no overlay = no lock) ---
-    (function openLongsOnYouTube(){
+    // --- LONGS: open a local /watch.html window; it auto-returns here on end ---
+    (function openLongsWithAutoReturn(){
       const grid = document.getElementById('longGrid');
       const toast = document.getElementById('returnToast');
       const focusBtn = document.getElementById('focusBtn');
@@ -234,25 +234,98 @@
 
       function showToast(seconds){
         clearTimeout(toastTimer);
+        if(!toast) return;
         toast.classList.add('show');
-        // Hide the toast after a while so it doesn't linger forever.
         toastTimer = setTimeout(()=> toast.classList.remove('show'), Math.min((seconds||90)*1000, 5*60*1000));
       }
+
+      // Listen for child window ping when video ends
+      window.addEventListener('message', (ev)=>{
+        if(typeof ev.data === 'string' && ev.data.startsWith('tilly:ended:')){
+          window.focus();
+          toast && toast.classList.remove('show');
+        }
+      });
 
       grid.addEventListener('click', (e)=>{
         const card = e.target.closest('.card');
         if(!card) return;
-        const url = card.dataset.url;
-        if(!url) return;
-        // Open on YouTube (new tab). noopener avoids giving control of this page to the new tab.
-        window.open(url + (url.includes('?') ? '&' : '?') + 'autoplay=1', '_blank', 'noopener');
-        // Soft nudge/toast so user has a one-click way to return.
-        showToast();
-      });
+        const vid = card.dataset.vid;
+        const title = encodeURIComponent(card.dataset.title || '
+  </script>
+</body>
 
-      focusBtn.addEventListener('click', ()=>{ window.focus(); toast.classList.remove('show'); });
-      window.addEventListener('focus', ()=>{ toast.classList.remove('show'); });
-    })();
+</html>
+
+<!-- ====================== watch.html (place this as a sibling file) ===================== -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tilly — Watching…</title>
+  <style>
+    html,body{margin:0;height:100%;background:#000;color:#eee;font-family:system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif}
+    .frame{position:fixed;inset:0;display:grid;place-items:center}
+    .player{width:min(100%, 1200px);aspect-ratio:16/9;background:#000}
+    .bar{position:fixed;left:0;right:0;top:0;display:flex;gap:.6rem;align-items:center;padding:.5rem .7rem;background:rgba(0,0,0,.5);backdrop-filter:blur(6px)}
+    .bar button{background:#111;border:1px solid #333;color:#fff;border-radius:999px;padding:.35rem .7rem;cursor:pointer}
+    .title{font-weight:700;opacity:.9}
+  </style>
+  <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+  <div class="bar">
+    <button id="backBtn" type="button">⟵ Back to Tilly</button>
+    <div class="title" id="ttl">Loading…</div>
+  </div>
+  <div class="frame"><div id="player" class="player"></div></div>
+
+  <script>
+    // Parse query
+    const qs = new URLSearchParams(location.search);
+    const vid = qs.get('v');
+    const title = decodeURIComponent(qs.get('title')||'');
+    document.getElementById('ttl').textContent = title || 'Watching…';
+
+    let yt;
+    function onYouTubeIframeAPIReady(){
+      yt = new YT.Player('player',{
+        width:'100%', height:'100%',
+        videoId: vid,
+        playerVars:{autoplay:1, rel:0, modestbranding:1, controls:1, playsinline:1, fs:1},
+        events:{ onStateChange: onState }
+      });
+    }
+    window.onYouTubeIframeAPIReady = window.onYouTubeIframeAPIReady || onYouTubeIframeAPIReady;
+
+    function finishAndReturn(){
+      try{ window.opener && window.opener.postMessage('tilly:ended:'+vid, '*'); }catch(_){}
+      // Try to close ourselves; if blocked, hard-redirect home.
+      window.close();
+      // Fallback: if close() is blocked (most browsers), jump back to the site.
+      setTimeout(()=>{ location.replace('/tilly.html#returned'); }, 100);
+    }
+
+    function onState(e){
+      if(e.data === YT.PlayerState.ENDED){ finishAndReturn(); }
+    }
+
+    document.getElementById('backBtn').addEventListener('click', finishAndReturn);
+
+    // Also auto-return when exiting fullscreen if you want a tighter loop:
+    ['fullscreenchange','webkitfullscreenchange','mozfullscreenchange','MSFullscreenChange'].forEach(ev=>{
+      document.addEventListener(ev,()=>{
+        const fs = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+        // If user exits fullscreen while video is ended (or near end), return.
+        try{
+          if(!fs && yt && yt.getDuration && yt.getCurrentTime){
+            const d=yt.getDuration(), t=yt.getCurrentTime();
+            if(d && t && (d-t)<1.0){ finishAndReturn(); }
+          }
+        }catch(_){ }
+      });
+    });
   </script>
 </body>
 </html>
