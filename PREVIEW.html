@@ -7,7 +7,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PM158KG2QK"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){dataLayer.push(arguments);} 
     gtag('js', new Date());
     gtag('config', 'G-PM158KG2QK');
   </script>
@@ -65,19 +65,15 @@
     .short iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
     .short .label{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.6);color:#fff;font-weight:800;font-size:.74rem;padding:.22rem .42rem;border-radius:7px;letter-spacing:.02em;backdrop-filter:blur(4px)}
 
-    /* Lightbox */
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
-    .lightbox.open{display:flex}
-    .frame{width:min(100%,960px);aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;position:relative;border:1px solid #2a323f}
-    .close{position:fixed;top:14px;right:14px;background:#111;color:#eee;border:1px solid #333;border-radius:999px;padding:.5rem .7rem;cursor:pointer}
-
     /* Info card */
     .bio{margin:10px 0 18px;background:linear-gradient(180deg,var(--accent-soft),rgba(255,79,163,.04));border:1px solid rgba(255,79,163,.28);border-radius:14px;padding:12px 14px}
     .bio p{margin:.2rem 0;color:#f1e9ef}
-  </style>
 
-  <!-- YouTube Iframe API (for long-form lightbox) -->
-  <script src="https://www.youtube.com/iframe_api"></script>
+    /* Return toast */
+    .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#101216;border:1px solid #2a323f;border-radius:999px;padding:.55rem .9rem;font-size:.92rem;color:#eaeaf0;box-shadow:var(--shadow);display:none;z-index:9999}
+    .toast.show{display:inline-flex;gap:.5rem;align-items:center}
+    .toast button{background:#181c24;border:1px solid #353c49;color:#fff;padding:.35rem .6rem;border-radius:999px;cursor:pointer}
+  </style>
 </head>
 <body>
   <div class="wrap">
@@ -112,15 +108,15 @@
       <p>Meet Tilly Norwood — a virtual actress delivering cinematic scenes across Western drama, newsroom satire, and fashion spots. Long films below, then Shorts.</p>
     </section>
 
-    <!-- LONGS FIRST -->
+    <!-- LONGS FIRST (open on YouTube directly — no overlay, no lock) -->
     <section aria-labelledby="longs-title">
       <h2 id="longs-title">Feature Clips & Long-Form</h2>
       <div class="grid" id="longGrid">
 
-        <article class="card" data-yt="onDOOl2yFoY" title="Fake Bomb Scare! Tilly Norwood - Anchorwoman [End is Hilarious]">
+        <article class="card" data-url="https://www.youtube.com/watch?v=onDOOl2yFoY" title="Fake Bomb Scare! Tilly Norwood - Anchorwoman [End is Hilarious]">
           <div class="thumb">
             <img src="https://img.youtube.com/vi/onDOOl2yFoY/hqdefault.jpg" alt="Fake Bomb Scare — Tilly Anchorwoman">
-            <span class="play">Play</span>
+            <span class="play">Watch on YouTube</span>
           </div>
           <div class="meta">
             <p class="title">🌹 Fake Bomb Scare! (Anchorwoman)</p>
@@ -128,10 +124,10 @@
           </div>
         </article>
 
-        <article class="card" data-yt="Vo_PByL6iMQ" title="Tilly Norwood | Sizzling Fashion Spot 🔥">
+        <article class="card" data-url="https://www.youtube.com/watch?v=Vo_PByL6iMQ" title="Tilly Norwood | Sizzling Fashion Spot 🔥">
           <div class="thumb">
             <img src="https://img.youtube.com/vi/Vo_PByL6iMQ/hqdefault.jpg" alt="Sizzling Fashion Spot">
-            <span class="play">Play</span>
+            <span class="play">Watch on YouTube</span>
           </div>
           <div class="meta">
             <p class="title">🌹 Sizzling Fashion Spot</p>
@@ -139,10 +135,10 @@
           </div>
         </article>
 
-        <article class="card" data-yt="_KEoIDR9Fr8" title="Tilly Norwood | Sizzling Fashion Spot [Extended Cut] 🔥">
+        <article class="card" data-url="https://www.youtube.com/watch?v=_KEoIDR9Fr8" title="Tilly Norwood | Sizzling Fashion Spot [Extended Cut] 🔥">
           <div class="thumb">
             <img src="https://img.youtube.com/vi/_KEoIDR9Fr8/hqdefault.jpg" alt="Sizzling Fashion Spot — Extended">
-            <span class="play">Play</span>
+            <span class="play">Watch on YouTube</span>
           </div>
           <div class="meta">
             <p class="title">🌹 Fashion Spot — Extended</p>
@@ -150,10 +146,10 @@
           </div>
         </article>
 
-        <article class="card" data-yt="tGeeJbsOt3A" title="BREAKING NEWS: AI Actress Tilly Norwood Hired as News Anchor and Starring Acting Role!">
+        <article class="card" data-url="https://www.youtube.com/watch?v=tGeeJbsOt3A" title="BREAKING NEWS: AI Actress Tilly Norwood Hired as News Anchor and Starring Acting Role!">
           <div class="thumb">
             <img src="https://img.youtube.com/vi/tGeeJbsOt3A/hqdefault.jpg" alt="Breaking News: Hired as Anchor + Starring Role">
-            <span class="play">Play</span>
+            <span class="play">Watch on YouTube</span>
           </div>
           <div class="meta">
             <p class="title">🌹 Breaking News: Hired!</p>
@@ -161,10 +157,10 @@
           </div>
         </article>
 
-        <article class="card" data-yt="XvCLdyiKft0" title="Tilly Norwood – Dustwood (Ep. 1): Whiskey">
+        <article class="card" data-url="https://www.youtube.com/watch?v=XvCLdyiKft0" title="Tilly Norwood – Dustwood (Ep. 1): Whiskey">
           <div class="thumb">
             <img src="https://img.youtube.com/vi/XvCLdyiKft0/hqdefault.jpg" alt="Dustwood Episode 1: Whiskey">
-            <span class="play">Play</span>
+            <span class="play">Watch on YouTube</span>
           </div>
           <div class="meta">
             <p class="title">🌹 Dustwood (Ep. 1): Whiskey</p>
@@ -205,11 +201,8 @@
     </footer>
   </div>
 
-  <!-- Lightbox for Longs -->
-  <div class="lightbox" id="lightbox">
-    <button class="close" id="closeBtn">✕</button>
-    <div class="frame"><div id="ytPlayer"></div></div>
-  </div>
+  <!-- Soft auto-return toast (can nudge the user back) -->
+  <div class="toast" id="returnToast">Watching on YouTube… <button id="focusBtn" type="button">Back to Tilly</button></div>
 
   <script>
     // --- Shorts: normalize params / iOS inline ---
@@ -230,63 +223,35 @@
           }
         } catch(_) {}
       });
-      if(!window._ytLoaded){
-        const tag=document.createElement('script'); tag.src='https://www.youtube.com/iframe_api';
-        document.head.appendChild(tag); window._ytLoaded=true;
-      }
     })();
 
-    // --- Long-form lightbox player ---
-    let player;
-    const lightbox = document.getElementById('lightbox');
-    const closeBtn = document.getElementById('closeBtn');
-    const longGrid = document.getElementById('longGrid');
+    // --- LONGS: open directly on YouTube in a new tab/window (no overlay = no lock) ---
+    (function openLongsOnYouTube(){
+      const grid = document.getElementById('longGrid');
+      const toast = document.getElementById('returnToast');
+      const focusBtn = document.getElementById('focusBtn');
+      let toastTimer = null;
 
-    function onYouTubeIframeAPIReady(){
-      player = new YT.Player('ytPlayer', {
-        height:'100%', width:'100%', videoId:'',
-        playerVars:{rel:0,modestbranding:1,autoplay:1,controls:1,playsinline:1,fs:1},
-        events:{'onStateChange': onPlayerStateChange}
+      function showToast(seconds){
+        clearTimeout(toastTimer);
+        toast.classList.add('show');
+        // Hide the toast after a while so it doesn't linger forever.
+        toastTimer = setTimeout(()=> toast.classList.remove('show'), Math.min((seconds||90)*1000, 5*60*1000));
+      }
+
+      grid.addEventListener('click', (e)=>{
+        const card = e.target.closest('.card');
+        if(!card) return;
+        const url = card.dataset.url;
+        if(!url) return;
+        // Open on YouTube (new tab). noopener avoids giving control of this page to the new tab.
+        window.open(url + (url.includes('?') ? '&' : '?') + 'autoplay=1', '_blank', 'noopener');
+        // Soft nudge/toast so user has a one-click way to return.
+        showToast();
       });
-    }
-    window.onYouTubeIframeAPIReady = window.onYouTubeIframeAPIReady || onYouTubeIframeAPIReady;
 
-    function onPlayerStateChange(e){
-      if(e.data === YT.PlayerState.ENDED){ closeVideo(); }
-    }
-
-    function openVideo(id){
-      lightbox.classList.add('open');
-      try { player.loadVideoById(id); } catch(e){}
-    }
-
-    function closeVideo(){
-      lightbox.classList.remove('open');
-      try { player.stopVideo(); } catch(e){}
-    }
-
-    longGrid.addEventListener('click', (e)=>{
-      const card=e.target.closest('.card'); if(!card) return;
-      openVideo(card.dataset.yt);
-    });
-    closeBtn.addEventListener('click', closeVideo);
-    lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) closeVideo(); });
-    document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeVideo(); });
-
-    // --- FIX: auto-close overlay after exiting fullscreen ---
-    (function handleFullscreenExit(){
-      const fsEvents = ['fullscreenchange','webkitfullscreenchange','mozfullscreenchange','MSFullscreenChange'];
-      function isFullscreen(){
-        return document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
-      }
-      function onFsChange(){
-        // When user LEAVES fullscreen, close overlay so page is clickable again.
-        if(!isFullscreen() && lightbox.classList.contains('open')){
-          // Small timeout ensures YouTube finishes its own exit transition
-          setTimeout(closeVideo, 50);
-        }
-      }
-      fsEvents.forEach(ev => document.addEventListener(ev, onFsChange));
+      focusBtn.addEventListener('click', ()=>{ window.focus(); toast.classList.remove('show'); });
+      window.addEventListener('focus', ()=>{ toast.classList.remove('show'); });
     })();
   </script>
 </body>
