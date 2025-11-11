@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PM158KG2QK"></script>
@@ -12,7 +12,7 @@
     gtag('config', 'G-PM158KG2QK');
   </script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tilly Norwood — The World’s First AI Actress • Films & Shorts</title>
   <meta name="description" content="Meet Tilly Norwood — the world’s first AI actress. Watch cinematic long-form scenes and 9:16 YouTube Shorts including Dustwood, NCC anchor desk, and fashion spots.">
   <link rel="canonical" href="https://tilly-norwood.net/tilly.html">
@@ -30,6 +30,7 @@
     html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;line-height:1.5}
     .wrap{max-width:1100px;margin:0 auto;padding:22px}
 
+    /* Top */
     .topbar{display:flex;justify-content:flex-start;margin:4px 0 8px}
     .back-home{display:inline-flex;align-items:center;gap:.6rem;padding:.5rem .9rem;border-radius:9999px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,.06);box-shadow:var(--shadow);transition:transform .12s ease,opacity .2s ease}
     .back-home:hover{opacity:.95;transform:translateY(-1px)}
@@ -41,9 +42,11 @@
     .tilly-sig a{color:inherit;text-decoration:none}
     .tagline{font-family:'Cinzel',serif;font-weight:700;letter-spacing:.08em;font-size:14px;color:#fff;text-transform:uppercase}
 
+    /* Section titles */
     h2{margin:14px 0 10px;font-size:1.2rem;letter-spacing:.02em}
     .kicker{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 
+    /* LONGS grid */
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
     .card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:transform .12s ease,opacity .2s ease}
     .card:hover{transform:translateY(-2px)}
@@ -54,6 +57,7 @@
     .title{margin:0 0 .2rem;font-weight:800}
     .desc{margin:0;color:var(--muted);font-size:.92rem}
 
+    /* Shorts grid (9:16 iframes) */
     .shorts-grid{display:grid;gap:14px;justify-items:center;margin-top:10px}
     @media (max-width:640px){.shorts-grid{grid-template-columns:repeat(2,1fr)}}
     @media (min-width:641px){.shorts-grid{grid-template-columns:repeat(4,1fr)}}
@@ -61,12 +65,18 @@
     .short iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
     .short .label{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.6);color:#fff;font-weight:800;font-size:.74rem;padding:.22rem .42rem;border-radius:7px;letter-spacing:.02em;backdrop-filter:blur(4px)}
 
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
+    .lightbox.open{display:flex}
+    .frame{width:min(100%,960px);aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;position:relative;border:1px solid #2a323f}
+    .close{position:fixed;top:14px;right:14px;background:#111;color:#eee;border:1px solid #333;border-radius:999px;padding:.5rem .7rem;cursor:pointer}
+
+    /* Info card */
     .bio{margin:10px 0 18px;background:linear-gradient(180deg,var(--accent-soft),rgba(255,79,163,.04));border:1px solid rgba(255,79,163,.28);border-radius:14px;padding:12px 14px}
     .bio p{margin:.2rem 0;color:#f1e9ef}
 
-    .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#101216;border:1px solid #2a323f;border-radius:999px;padding:.55rem .9rem;font-size:.92rem;color:#eaeaf0;box-shadow:var(--shadow);display:none;z-index:9999}
-    .toast.show{display:inline-flex;gap:.5rem;align-items:center}
-    .toast button{background:#181c24;border:1px solid #353c49;color:#fff;padding:.35rem .6rem;border-radius:999px;cursor:pointer}
+    /* Prevent background scroll when lightbox open */
+    body.noscroll{overflow:hidden}
   </style>
 </head>
 <body>
@@ -102,15 +112,16 @@
       <p>Meet Tilly Norwood — a virtual actress delivering cinematic scenes across Western drama, newsroom satire, and fashion spots. Long films below, then Shorts.</p>
     </section>
 
-    <!-- LONGS -->
+    <!-- LONGS FIRST -->
     <section aria-labelledby="longs-title">
       <h2 id="longs-title">Feature Clips & Long-Form</h2>
       <div class="grid" id="longGrid">
 
-        <article class="card" data-vid="onDOOl2yFoY" data-title="Fake Bomb Scare! Tilly Norwood - Anchorwoman [End is Hilarious]">
+        <!-- onDOOl2yFoY -->
+        <article class="card" data-yt="onDOOl2yFoY" title="Fake Bomb Scare! Tilly Norwood - Anchorwoman [End is Hilarious]">
           <div class="thumb">
             <img src="https://img.youtube.com/vi/onDOOl2yFoY/hqdefault.jpg" alt="Fake Bomb Scare — Tilly Anchorwoman">
-            <span class="play">Watch</span>
+            <span class="play">Play</span>
           </div>
           <div class="meta">
             <p class="title">🌹 Fake Bomb Scare! (Anchorwoman)</p>
@@ -118,10 +129,11 @@
           </div>
         </article>
 
-        <article class="card" data-vid="Vo_PByL6iMQ" data-title="Tilly Norwood | Sizzling Fashion Spot 🔥">
+        <!-- Vo_PByL6iMQ -->
+        <article class="card" data-yt="Vo_PByL6iMQ" title="Tilly Norwood | Sizzling Fashion Spot 🔥">
           <div class="thumb">
             <img src="https://img.youtube.com/vi/Vo_PByL6iMQ/hqdefault.jpg" alt="Sizzling Fashion Spot">
-            <span class="play">Watch</span>
+            <span class="play">Play</span>
           </div>
           <div class="meta">
             <p class="title">🌹 Sizzling Fashion Spot</p>
@@ -129,10 +141,11 @@
           </div>
         </article>
 
-        <article class="card" data-vid="_KEoIDR9Fr8" data-title="Tilly Norwood | Sizzling Fashion Spot [Extended Cut] 🔥">
+        <!-- _KEoIDR9Fr8 -->
+        <article class="card" data-yt="_KEoIDR9Fr8" title="Tilly Norwood | Sizzling Fashion Spot [Extended Cut] 🔥">
           <div class="thumb">
             <img src="https://img.youtube.com/vi/_KEoIDR9Fr8/hqdefault.jpg" alt="Sizzling Fashion Spot — Extended">
-            <span class="play">Watch</span>
+            <span class="play">Play</span>
           </div>
           <div class="meta">
             <p class="title">🌹 Fashion Spot — Extended</p>
@@ -140,10 +153,11 @@
           </div>
         </article>
 
-        <article class="card" data-vid="tGeeJbsOt3A" data-title="BREAKING NEWS: AI Actress Tilly Norwood Hired as News Anchor and Starring Acting Role!">
+        <!-- tGeeJbsOt3A -->
+        <article class="card" data-yt="tGeeJbsOt3A" title="BREAKING NEWS: AI Actress Tilly Norwood Hired as News Anchor and Starring Acting Role!">
           <div class="thumb">
             <img src="https://img.youtube.com/vi/tGeeJbsOt3A/hqdefault.jpg" alt="Breaking News: Hired as Anchor + Starring Role">
-            <span class="play">Watch</span>
+            <span class="play">Play</span>
           </div>
           <div class="meta">
             <p class="title">🌹 Breaking News: Hired!</p>
@@ -151,10 +165,11 @@
           </div>
         </article>
 
-        <article class="card" data-vid="XvCLdyiKft0" data-title="Tilly Norwood – Dustwood (Ep. 1): Whiskey">
+        <!-- XvCLdyiKft0 -->
+        <article class="card" data-yt="XvCLdyiKft0" title="Tilly Norwood – Dustwood (Ep. 1): Whiskey">
           <div class="thumb">
             <img src="https://img.youtube.com/vi/XvCLdyiKft0/hqdefault.jpg" alt="Dustwood Episode 1: Whiskey">
-            <span class="play">Watch</span>
+            <span class="play">Play</span>
           </div>
           <div class="meta">
             <p class="title">🌹 Dustwood (Ep. 1): Whiskey</p>
@@ -197,11 +212,16 @@
     </footer>
   </div>
 
-  <!-- Soft auto-return toast -->
-  <div class="toast" id="returnToast">Watching… <button id="focusBtn" type="button">Back to Tilly</button></div>
+  <!-- Lightbox for Longs -->
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog">
+    <button class="close" id="closeBtn" aria-label="Close video">✕</button>
+    <div class="frame"><div id="ytPlayer"></div></div>
+  </div>
 
+  <!-- YouTube Iframe API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script>
-    // --- Shorts: normalize params (stay inline, avoid YouTube site jumping) ---
+    // Shorts: force inline playback & tidy params (stay on page)
     (function enhanceShorts(){
       document.querySelectorAll('.short iframe').forEach(el => {
         try {
@@ -211,7 +231,7 @@
             u.searchParams.set('modestbranding','1');
             u.searchParams.set('enablejsapi','1');
             u.searchParams.set('origin', location.origin);
-            u.searchParams.set('playsinline','1'); // keep inside page on iOS/Android
+            u.searchParams.set('playsinline','1'); // always inline
             u.searchParams.set('fs','1');
             el.src = u.toString();
             el.setAttribute('allowfullscreen','');
@@ -220,65 +240,51 @@
       });
     })();
 
-    // --- Longs: open local /watch.html; auto-return on end ---
-    (function openLongsWithAutoReturn(){
-      const grid = document.getElementById('longGrid');
-      const toast = document.getElementById('returnToast');
-      const focusBtn = document.getElementById('focusBtn');
-      let toastTimer = null;
+    // Long-form lightbox player (simple, same-page, no popups)
+    let player, apiReady = false, pendingVideoId = null;
+    const lightbox = document.getElementById('lightbox');
+    const closeBtn = document.getElementById('closeBtn');
+    const longGrid = document.getElementById('longGrid');
 
-      function showToast(ms){
-        clearTimeout(toastTimer);
-        if(!toast) return;
-        toast.classList.add('show');
-        toastTimer = setTimeout(()=> toast.classList.remove('show'), ms || 120000);
+    function openVideo(id){
+      document.body.classList.add('noscroll');
+      lightbox.classList.add('open');
+      if (apiReady && player) {
+        try { player.loadVideoById(id); } catch(e){}
+      } else {
+        pendingVideoId = id;
       }
+    }
+    function closeVideo(){
+      lightbox.classList.remove('open');
+      document.body.classList.remove('noscroll');
+      try { player && player.stopVideo(); } catch(e){}
+    }
 
-      function hideToast(){
-        if(!toast) return;
-        toast.classList.remove('show');
+    // YouTube API ready hook
+    function onYouTubeIframeAPIReady(){
+      apiReady = true;
+      player = new YT.Player('ytPlayer', {
+        height:'100%', width:'100%',
+        videoId: pendingVideoId || '',
+        playerVars:{rel:0,modestbranding:1,autoplay:1,controls:1,playsinline:1,origin:location.origin},
+        events:{ onStateChange: e => { if (e.data === YT.PlayerState.ENDED) closeVideo(); } }
+      });
+      if (pendingVideoId) {
+        try { player.loadVideoById(pendingVideoId); } catch(_){}
+        pendingVideoId = null;
       }
+    }
+    window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 
-      window.addEventListener('message', (ev)=>{
-        if (typeof ev.data === 'string' && ev.data.startsWith('tilly:ended:')){
-          // Child says video ended — bring focus back and hide toast
-          window.focus();
-          hideToast();
-          // Optional: scroll user back to where they clicked
-          const id = ev.data.split(':')[2];
-          const el = document.querySelector(`.card[data-vid="${id}"]`);
-          if (el) el.scrollIntoView({behavior:'smooth', block:'center'});
-        }
-      });
-
-      focusBtn && focusBtn.addEventListener('click', ()=>{
-        window.focus();
-        hideToast();
-      });
-
-      grid.addEventListener('click', (e)=>{
-        const card = e.target.closest('.card');
-        if(!card) return;
-        const vid = card.dataset.vid;
-        const title = card.dataset.title || '';
-        const back = location.pathname.replace(/\/+$/, '') + location.hash;
-
-        const url = new URL('./watch.html', location.href);
-        url.searchParams.set('v', vid);
-        url.searchParams.set('title', encodeURIComponent(title));
-        url.searchParams.set('return', back || '/tilly.html');
-
-        // Try popup (keeps this page present); fallback to same-tab if blocked.
-        const w = window.open(url.toString(), 'tillyWatch', 'popup=yes,width=1280,height=720');
-        if (!w) {
-          // Popup blocked: navigate same tab
-          location.href = url.toString();
-        } else {
-          showToast(120000);
-          w.focus();
-        }
-      });
-    })();
+    // Wire up interactions
+    longGrid.addEventListener('click', (e)=>{
+      const card = e.target.closest('.card'); if (!card) return;
+      openVideo(card.dataset.yt);
+    });
+    closeBtn.addEventListener('click', closeVideo);
+    lightbox.addEventListener('click', (e)=>{ if (e.target === lightbox) closeVideo(); });
+    document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeVideo(); });
   </script>
 </body>
 </html>
