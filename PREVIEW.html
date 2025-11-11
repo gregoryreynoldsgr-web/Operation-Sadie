@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PM158KG2QK"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} 
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-PM158KG2QK');
   </script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tilly Norwood — The World’s First AI Actress • Films & Shorts</title>
   <meta name="description" content="Meet Tilly Norwood — the world’s first AI actress. Watch cinematic long-form scenes and 9:16 YouTube Shorts including Dustwood, NCC anchor desk, and fashion spots.">
   <link rel="canonical" href="https://tilly-norwood.net/tilly.html">
@@ -30,7 +30,6 @@
     html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;line-height:1.5}
     .wrap{max-width:1100px;margin:0 auto;padding:22px}
 
-    /* Top */
     .topbar{display:flex;justify-content:flex-start;margin:4px 0 8px}
     .back-home{display:inline-flex;align-items:center;gap:.6rem;padding:.5rem .9rem;border-radius:9999px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,.06);box-shadow:var(--shadow);transition:transform .12s ease,opacity .2s ease}
     .back-home:hover{opacity:.95;transform:translateY(-1px)}
@@ -42,11 +41,9 @@
     .tilly-sig a{color:inherit;text-decoration:none}
     .tagline{font-family:'Cinzel',serif;font-weight:700;letter-spacing:.08em;font-size:14px;color:#fff;text-transform:uppercase}
 
-    /* Section titles */
     h2{margin:14px 0 10px;font-size:1.2rem;letter-spacing:.02em}
     .kicker{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 
-    /* LONGS grid */
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
     .card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:transform .12s ease,opacity .2s ease}
     .card:hover{transform:translateY(-2px)}
@@ -57,7 +54,6 @@
     .title{margin:0 0 .2rem;font-weight:800}
     .desc{margin:0;color:var(--muted);font-size:.92rem}
 
-    /* Shorts grid (9:16 iframes) */
     .shorts-grid{display:grid;gap:14px;justify-items:center;margin-top:10px}
     @media (max-width:640px){.shorts-grid{grid-template-columns:repeat(2,1fr)}}
     @media (min-width:641px){.shorts-grid{grid-template-columns:repeat(4,1fr)}}
@@ -65,11 +61,9 @@
     .short iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
     .short .label{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.6);color:#fff;font-weight:800;font-size:.74rem;padding:.22rem .42rem;border-radius:7px;letter-spacing:.02em;backdrop-filter:blur(4px)}
 
-    /* Info card */
     .bio{margin:10px 0 18px;background:linear-gradient(180deg,var(--accent-soft),rgba(255,79,163,.04));border:1px solid rgba(255,79,163,.28);border-radius:14px;padding:12px 14px}
     .bio p{margin:.2rem 0;color:#f1e9ef}
 
-    /* Return toast */
     .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#101216;border:1px solid #2a323f;border-radius:999px;padding:.55rem .9rem;font-size:.92rem;color:#eaeaf0;box-shadow:var(--shadow);display:none;z-index:9999}
     .toast.show{display:inline-flex;gap:.5rem;align-items:center}
     .toast button{background:#181c24;border:1px solid #353c49;color:#fff;padding:.35rem .6rem;border-radius:999px;cursor:pointer}
@@ -108,7 +102,7 @@
       <p>Meet Tilly Norwood — a virtual actress delivering cinematic scenes across Western drama, newsroom satire, and fashion spots. Long films below, then Shorts.</p>
     </section>
 
-    <!-- LONGS FIRST (opens a local /watch.html that auto-returns on video end) -->
+    <!-- LONGS -->
     <section aria-labelledby="longs-title">
       <h2 id="longs-title">Feature Clips & Long-Form</h2>
       <div class="grid" id="longGrid">
@@ -177,22 +171,24 @@
       <div class="shorts-grid">
         <div class="short">
           <span class="label">Featured</span>
-          <iframe src="https://www.youtube.com/embed/-H5xDC4fKtw?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1"
-            title="Dustwood — Whisky Scene (Short)" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write"
+          <iframe
+            src="https://www.youtube.com/embed/-H5xDC4fKtw?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1"
+            title="Dustwood — Whisky Scene (Short)"
+            allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write"
             allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
 
-        <div class="short"><iframe src="https://www.youtube.com/embed/Clylfbf4z_M?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy"></iframe></div>
-        <div class="short"><iframe src="https://www.youtube.com/embed/sl6XqQecbEs?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy"></iframe></div>
-        <div class="short"><iframe src="https://www.youtube.com/embed/o-oW8R3H6D0?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy"></iframe></div>
-        <div class="short"><iframe src="https://www.youtube.com/embed/bqrbYbixxgI?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy"></iframe></div>
-        <div class="short"><iframe src="https://www.youtube.com/embed/k50jTi87LFM?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy"></iframe></div>
-        <div class="short"><iframe src="https://www.youtube.com/embed/_SnKa0cL-Ok?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy"></iframe></div>
-        <div class="short"><iframe src="https://www.youtube.com/embed/NkCMv4PQGkI?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy"></iframe></div>
-        <div class="short"><iframe src="https://www.youtube.com/embed/nB0nKHTqyMI?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy"></iframe></div>
-        <div class="short"><iframe src="https://www.youtube.com/embed/FWoFET2eeD8?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy"></iframe></div>
-        <div class="short"><iframe src="https://www.youtube.com/embed/-ZkvA5VU10w?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy"></iframe></div>
-        <div class="short"><iframe src="https://www.youtube.com/embed/HDuB3D_47ns?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy"></iframe></div>
+        <div class="short"><iframe src="https://www.youtube.com/embed/Clylfbf4z_M?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+        <div class="short"><iframe src="https://www.youtube.com/embed/sl6XqQecbEs?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+        <div class="short"><iframe src="https://www.youtube.com/embed/o-oW8R3H6D0?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+        <div class="short"><iframe src="https://www.youtube.com/embed/bqrbYbixxgI?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+        <div class="short"><iframe src="https://www.youtube.com/embed/k50jTi87LFM?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+        <div class="short"><iframe src="https://www.youtube.com/embed/_SnKa0cL-Ok?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+        <div class="short"><iframe src="https://www.youtube.com/embed/NkCMv4PQGkI?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+        <div class="short"><iframe src="https://www.youtube.com/embed/nB0nKHTqyMI?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+        <div class="short"><iframe src="https://www.youtube.com/embed/FWoFET2eeD8?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+        <div class="short"><iframe src="https://www.youtube.com/embed/-ZkvA5VU10w?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+        <div class="short"><iframe src="https://www.youtube.com/embed/HDuB3D_47ns?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1" title="Tilly Norwood — Short" allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
       </div>
     </section>
 
@@ -201,13 +197,12 @@
     </footer>
   </div>
 
-  <!-- Soft auto-return toast (can nudge the user back) -->
-  <div class="toast" id="returnToast">Watching on YouTube… <button id="focusBtn" type="button">Back to Tilly</button></div>
+  <!-- Soft auto-return toast -->
+  <div class="toast" id="returnToast">Watching… <button id="focusBtn" type="button">Back to Tilly</button></div>
 
   <script>
-    // --- Shorts: normalize params / iOS inline ---
+    // --- Shorts: normalize params (stay inline, avoid YouTube site jumping) ---
     (function enhanceShorts(){
-      const isiOS = /iP(hone|ad|od)/i.test(navigator.userAgent);
       document.querySelectorAll('.short iframe').forEach(el => {
         try {
           const u = new URL(el.src, location.href);
@@ -216,116 +211,74 @@
             u.searchParams.set('modestbranding','1');
             u.searchParams.set('enablejsapi','1');
             u.searchParams.set('origin', location.origin);
-            u.searchParams.set('playsinline', isiOS ? '0' : '1');
+            u.searchParams.set('playsinline','1'); // keep inside page on iOS/Android
             u.searchParams.set('fs','1');
             el.src = u.toString();
-            el.classList.add('yt-embed');
+            el.setAttribute('allowfullscreen','');
           }
         } catch(_) {}
       });
     })();
 
-    // --- LONGS: open a local /watch.html window; it auto-returns here on end ---
+    // --- Longs: open local /watch.html; auto-return on end ---
     (function openLongsWithAutoReturn(){
       const grid = document.getElementById('longGrid');
       const toast = document.getElementById('returnToast');
       const focusBtn = document.getElementById('focusBtn');
       let toastTimer = null;
 
-      function showToast(seconds){
+      function showToast(ms){
         clearTimeout(toastTimer);
         if(!toast) return;
         toast.classList.add('show');
-        toastTimer = setTimeout(()=> toast.classList.remove('show'), Math.min((seconds||90)*1000, 5*60*1000));
+        toastTimer = setTimeout(()=> toast.classList.remove('show'), ms || 120000);
       }
 
-      // Listen for child window ping when video ends
+      function hideToast(){
+        if(!toast) return;
+        toast.classList.remove('show');
+      }
+
       window.addEventListener('message', (ev)=>{
-        if(typeof ev.data === 'string' && ev.data.startsWith('tilly:ended:')){
+        if (typeof ev.data === 'string' && ev.data.startsWith('tilly:ended:')){
+          // Child says video ended — bring focus back and hide toast
           window.focus();
-          toast && toast.classList.remove('show');
+          hideToast();
+          // Optional: scroll user back to where they clicked
+          const id = ev.data.split(':')[2];
+          const el = document.querySelector(`.card[data-vid="${id}"]`);
+          if (el) el.scrollIntoView({behavior:'smooth', block:'center'});
         }
+      });
+
+      focusBtn && focusBtn.addEventListener('click', ()=>{
+        window.focus();
+        hideToast();
       });
 
       grid.addEventListener('click', (e)=>{
         const card = e.target.closest('.card');
         if(!card) return;
         const vid = card.dataset.vid;
-        const title = encodeURIComponent(card.dataset.title || '
-  </script>
-</body>
+        const title = card.dataset.title || '';
+        const back = location.pathname.replace(/\/+$/, '') + location.hash;
 
-</html>
+        const url = new URL('./watch.html', location.href);
+        url.searchParams.set('v', vid);
+        url.searchParams.set('title', encodeURIComponent(title));
+        url.searchParams.set('return', back || '/tilly.html');
 
-<!-- ====================== watch.html (place this as a sibling file) ===================== -->
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tilly — Watching…</title>
-  <style>
-    html,body{margin:0;height:100%;background:#000;color:#eee;font-family:system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif}
-    .frame{position:fixed;inset:0;display:grid;place-items:center}
-    .player{width:min(100%, 1200px);aspect-ratio:16/9;background:#000}
-    .bar{position:fixed;left:0;right:0;top:0;display:flex;gap:.6rem;align-items:center;padding:.5rem .7rem;background:rgba(0,0,0,.5);backdrop-filter:blur(6px)}
-    .bar button{background:#111;border:1px solid #333;color:#fff;border-radius:999px;padding:.35rem .7rem;cursor:pointer}
-    .title{font-weight:700;opacity:.9}
-  </style>
-  <script src="https://www.youtube.com/iframe_api"></script>
-</head>
-<body>
-  <div class="bar">
-    <button id="backBtn" type="button">⟵ Back to Tilly</button>
-    <div class="title" id="ttl">Loading…</div>
-  </div>
-  <div class="frame"><div id="player" class="player"></div></div>
-
-  <script>
-    // Parse query
-    const qs = new URLSearchParams(location.search);
-    const vid = qs.get('v');
-    const title = decodeURIComponent(qs.get('title')||'');
-    document.getElementById('ttl').textContent = title || 'Watching…';
-
-    let yt;
-    function onYouTubeIframeAPIReady(){
-      yt = new YT.Player('player',{
-        width:'100%', height:'100%',
-        videoId: vid,
-        playerVars:{autoplay:1, rel:0, modestbranding:1, controls:1, playsinline:1, fs:1},
-        events:{ onStateChange: onState }
+        // Try popup (keeps this page present); fallback to same-tab if blocked.
+        const w = window.open(url.toString(), 'tillyWatch', 'popup=yes,width=1280,height=720');
+        if (!w) {
+          // Popup blocked: navigate same tab
+          location.href = url.toString();
+        } else {
+          showToast(120000);
+          w.focus();
+        }
       });
-    }
-    window.onYouTubeIframeAPIReady = window.onYouTubeIframeAPIReady || onYouTubeIframeAPIReady;
-
-    function finishAndReturn(){
-      try{ window.opener && window.opener.postMessage('tilly:ended:'+vid, '*'); }catch(_){}
-      // Try to close ourselves; if blocked, hard-redirect home.
-      window.close();
-      // Fallback: if close() is blocked (most browsers), jump back to the site.
-      setTimeout(()=>{ location.replace('/tilly.html#returned'); }, 100);
-    }
-
-    function onState(e){
-      if(e.data === YT.PlayerState.ENDED){ finishAndReturn(); }
-    }
-
-    document.getElementById('backBtn').addEventListener('click', finishAndReturn);
-
-    // Also auto-return when exiting fullscreen if you want a tighter loop:
-    ['fullscreenchange','webkitfullscreenchange','mozfullscreenchange','MSFullscreenChange'].forEach(ev=>{
-      document.addEventListener(ev,()=>{
-        const fs = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
-        // If user exits fullscreen while video is ended (or near end), return.
-        try{
-          if(!fs && yt && yt.getDuration && yt.getCurrentTime){
-            const d=yt.getDuration(), t=yt.getCurrentTime();
-            if(d && t && (d-t)<1.0){ finishAndReturn(); }
-          }
-        }catch(_){ }
-      });
-    });
+    })();
   </script>
 </body>
 </html>
