@@ -13,9 +13,8 @@
   </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tilly Norwood — The World’s First AI Actress • Films & Shorts</title>
-  <meta name="description" content="Meet Tilly Norwood — the world’s first AI actress. Watch cinematic long-form scenes and 9:16 YouTube Shorts including Dustwood, NCC anchor desk, and fashion spots.">
-  <link rel="canonical" href="https://tilly-norwood.net/tilly.html">
+  <title>Tilly Norwood — Films & Shorts</title>
+  <meta name="description" content="Watch 'Perfect Jeans' featuring Tilly Norwood.">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
@@ -23,74 +22,99 @@
 
   <style>
     :root{
-      --bg:#0b0b0e; --text:#f6f6f8; --muted:#b6b6c2; --card:#111318; --ink:#111;
-      --accent:#ff4fa3; --accent-soft:rgba(255,79,163,.18);
-      --border:#22272f; --shadow:0 8px 22px rgba(0,0,0,.35);
+      --bg:#0b0b0e; --text:#f6f6f8; --muted:#b6b6c2; --ink:#111;
+      --accent:#ff4fa3; --border:#22272f; --shadow:0 8px 22px rgba(0,0,0,.35);
+      --card:#111318;
     }
-    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;line-height:1.5}
+    html,body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+      line-height:1.5;
+    }
     .wrap{max-width:1100px;margin:0 auto;padding:22px}
 
     /* Top */
     .topbar{display:flex;justify-content:flex-start;margin:4px 0 8px}
-    .back-home{display:inline-flex;align-items:center;gap:.6rem;padding:.5rem .9rem;border-radius:9999px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,.06);box-shadow:var(--shadow);transition:transform .12s ease,opacity .2s ease}
+    .back-home{
+      display:inline-flex;align-items:center;gap:.6rem;
+      padding:.5rem .9rem;border-radius:9999px;
+      background:var(--ink);color:#fff;text-decoration:none;
+      font-weight:700;border:1px solid rgba(255,255,255,.06);
+      box-shadow:var(--shadow);
+      transition:transform .12s ease,opacity .2s ease;
+    }
     .back-home:hover{opacity:.95;transform:translateY(-1px)}
-    .home-badge{width:26px;height:26px;border-radius:7px;background:#000;display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 0 0 1px rgba(0,0,0,.6)}
+    .home-badge{
+      width:26px;height:26px;border-radius:7px;
+      background:#000;display:grid;place-items:center;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 0 0 1px rgba(0,0,0,.6)
+    }
     .home-badge svg{width:17px;height:17px;display:block;filter:drop-shadow(0 0 6px rgba(255,79,163,.35))}
 
-    header{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;margin:4px 0 16px}
-    .tilly-sig{font-family:'Great Vibes',cursive;font-size:64px;color:var(--accent);line-height:1;margin-top:2px}
-    .tilly-sig a{color:inherit;text-decoration:none}
-    .tagline{font-family:'Cinzel',serif;font-weight:700;letter-spacing:.08em;font-size:14px;color:#fff;text-transform:uppercase}
-
-    /* Section titles */
-    h2{margin:14px 0 10px;font-size:1.2rem;letter-spacing:.02em}
-    .kicker{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-
-    /* LONGS grid */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:transform .12s ease,opacity .2s ease}
-    .card:hover{transform:translateY(-2px)}
-    .thumb{position:relative;aspect-ratio:16/9;background:#000}
-    .thumb img{width:100%;height:100%;object-fit:cover;display:block;opacity:.95}
-    .play{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.6);padding:.4rem .6rem;border-radius:999px;font-size:.85rem}
-    .meta{padding:.75rem 1rem}
-    .title{margin:0 0 .2rem;font-weight:800}
-    .desc{margin:0;color:var(--muted);font-size:.92rem}
-
-    /* Shorts grid (9:16 iframes) */
-    .shorts-grid{display:grid;gap:14px;justify-items:center;margin-top:10px}
-    @media (max-width:640px){.shorts-grid{grid-template-columns:repeat(2,1fr)}}
-    @media (min-width:641px){.shorts-grid{grid-template-columns:repeat(4,1fr)}}
-    .short{position:relative;width:100%;max-width:240px;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#111;box-shadow:0 2px 14px rgba(0,0,0,.35);border:1px solid #1d222b}
-    .short iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
-    .short .label{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.6);color:#fff;font-weight:800;font-size:.74rem;padding:.22rem .42rem;border-radius:7px;letter-spacing:.02em;backdrop-filter:blur(4px)}
-
-    /* Lightbox */
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
-    .lightbox.open{display:flex}
-    .frame{width:min(100%,960px);aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;position:relative;border:1px solid #2a323f}
-    .close{position:fixed;top:14px;right:14px;background:#111;color:#eee;border:1px solid #333;border-radius:999px;padding:.5rem .7rem;cursor:pointer}
-
-    /* Info card */
-    .bio{margin:10px 0 12px;background:linear-gradient(180deg,var(--accent-soft),rgba(255,79,163,.04));border:1px solid rgba(255,79,163,.28);border-radius:14px;padding:12px 14px}
-    .bio p{margin:.2rem 0;color:#f1e9ef}
-
-    /* CTA under About */
-    .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;background:#151821;border:1px solid #2a2f3a;color:#fff;text-decoration:none;padding:.5rem .8rem;border-radius:9999px;font-weight:700}
-    .btn:hover{opacity:.95;transform:translateY(-1px)}
-
-    /* Prevent background scroll when lightbox open */
-    body.noscroll{overflow:hidden}
-
-    /* Fullscreen hint */
-    .fs-hint{
-      position:fixed;left:50%;top:14px;transform:translateX(-50%);
-      background:rgba(0,0,0,.7);color:#fff;border:1px solid #333;
-      border-radius:999px;padding:.4rem .7rem;font-size:.85rem;
-      z-index:10000;display:none
+    header{
+      display:flex;flex-direction:column;align-items:center;
+      gap:6px;text-align:center;margin:4px 0 18px;
     }
-    .fs-hint.show{display:inline-flex}
+    .tilly-sig{
+      font-family:'Great Vibes',cursive;
+      font-size:64px;color:var(--accent);line-height:1;margin-top:2px;
+    }
+    .tilly-sig a{color:inherit;text-decoration:none}
+    .tagline{
+      font-family:'Cinzel',serif;
+      font-weight:700;letter-spacing:.08em;font-size:14px;
+      color:#fff;text-transform:uppercase;
+    }
+
+    h2{
+      margin:10px 0 8px;
+      font-size:1.1rem;
+      letter-spacing:.03em;
+    }
+    .muted{color:var(--muted);font-size:.95rem;margin:0 0 12px;}
+
+    /* Small feature video card */
+    .feature{
+      max-width:640px;
+      margin:0 auto 24px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .feature-frame{
+      position:relative;
+      aspect-ratio:16/9;
+      background:#000;
+    }
+    .feature-frame iframe{
+      position:absolute;inset:0;
+      width:100%;height:100%;
+      border:0;display:block;
+    }
+    .feature-meta{
+      padding:10px 14px 12px;
+    }
+    .feature-title{
+      margin:0 0 4px;
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+    .feature-text{
+      margin:0;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    footer{
+      text-align:center;
+      font-size:.9rem;
+      margin:26px 0 10px;
+      color:#8c8c9b;
+    }
   </style>
 </head>
 <body>
@@ -121,182 +145,26 @@
       <div class="tagline">The World’s First AI Actress</div>
     </header>
 
-    <section class="bio" aria-label="About Tilly">
-      <div class="kicker">About</div>
-      <p><strong>Tilly Norwood</strong> is where cinema meets code. She’s a virtual actress with a pulse — riding into dusty frontier towns, reading the news with a wink, and turning a lens into a stage. Every scene here is handcrafted from stills to sound, then pushed to the edge of what an AI performance can feel like: expressive, cinematic, a little dangerous.</p>
-      <p>Start with the long clips below, then dive into the Shorts — quick hits of Western grit, newsroom chaos, and fashion heat. If a moment grabs you, it’s by design.</p>
-      <div class="cta-row">
-        <!-- Updated to DustwoodFilms channel -->
-        <a class="btn" href="https://www.youtube.com/@DustwoodFilms" target="_blank" rel="noopener">
-          ▶ Watch on YouTube: @DustwoodFilms
-        </a>
+    <h2>Perfect Jeans — Feature Video</h2>
+    <p class="muted">Watch the full cinematic cut of “Perfect Jeans” featuring Tilly.</p>
+
+    <section class="feature" aria-label="Perfect Jeans full video">
+      <div class="feature-frame">
+        <iframe
+          src="https://www.youtube.com/embed/emeFzk0A9VA?rel=0&modestbranding=1&playsinline=1"
+          title="Perfect Jeans — Tilly Norwood"
+          allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write"
+          allowfullscreen></iframe>
+      </div>
+      <div class="feature-meta">
+        <p class="feature-title">Perfect Jeans — Tilly Norwood</p>
+        <p class="feature-text">A clean, simple cinematic spot. More films and Shorts coming soon.</p>
       </div>
     </section>
 
-    <!-- LONGS FIRST -->
-    <section aria-labelledby="longs-title">
-      <h2 id="longs-title">Feature Clips & Long-Form</h2>
-      <div class="grid" id="longGrid">
-
-        <!-- Single long-form card using https://youtu.be/emeFzk0A9VA -->
-        <article class="card" data-yt="emeFzk0A9VA" title="Long-form Tilly / Dustwood clip">
-          <div class="thumb">
-            <img src="https://img.youtube.com/vi/emeFzk0A9VA/hqdefault.jpg" alt="Long-form cinematic Tilly / Dustwood scene">
-            <span class="play">Play</span>
-          </div>
-          <div class="meta">
-            <p class="title">🌹 Feature Scene</p>
-            <p class="desc">Full cinematic cut from the Dustwood / Tilly universe.</p>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- SHORTS -->
-    <section aria-labelledby="shorts-title" style="margin-top:18px">
-      <h2 id="shorts-title">YouTube Shorts</h2>
-      <div class="shorts-grid">
-
-        <!-- Featured short: 8bsN3pkBzbo -->
-        <div class="short">
-          <span class="label">Featured</span>
-          <iframe
-            src="https://www.youtube.com/embed/8bsN3pkBzbo?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1"
-            title="Dustwood / Tilly Short — Featured"
-            allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write"
-            allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
-
-        <!-- Short 2: sRjCTOnSMH8 -->
-        <div class="short">
-          <iframe
-            src="https://www.youtube.com/embed/sRjCTOnSMH8?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1"
-            title="Dustwood / Tilly Short 2"
-            allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write"
-            allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
-
-        <!-- Short 3: 0NaQ0gTqkQA -->
-        <div class="short">
-          <iframe
-            src="https://www.youtube.com/embed/0NaQ0gTqkQA?rel=0&modestbranding=1&enablejsapi=1&playsinline=1&fs=1"
-            title="Dustwood / Tilly Short 3"
-            allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write"
-            allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
-
-      </div>
-    </section>
-
-    <footer style="text-align:center;font-size:.9rem;margin:26px 0 10px;color:#8c8c9b">
+    <footer>
       © 2025 Tilly-Norwood.net — AI Actress • Official Site
     </footer>
   </div>
-
-  <!-- Lightbox for Longs -->
-  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog">
-    <button class="close" id="closeBtn" aria-label="Close video">✕</button>
-    <div class="frame" tabindex="-1"><div id="ytPlayer"></div></div>
-  </div>
-
-  <!-- Fullscreen hint -->
-  <div class="fs-hint" id="fsHint">Press Esc to exit fullscreen</div>
-
-  <!-- YouTube Iframe API -->
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script>
-    // Shorts: force inline playback & tidy params (stay on page)
-    (function enhanceShorts(){
-      document.querySelectorAll('.short iframe').forEach(el => {
-        try {
-          const u = new URL(el.src, location.href);
-          if (u.hostname.includes('youtube.com')) {
-            u.searchParams.set('rel','0');
-            u.searchParams.set('modestbranding','1');
-            u.searchParams.set('enablejsapi','1');
-            u.searchParams.set('origin', location.origin);
-            u.searchParams.set('playsinline','1'); // always inline
-            u.searchParams.set('fs','1');
-            el.src = u.toString();
-            el.setAttribute('allowfullscreen','');
-          }
-        } catch(_) {}
-      });
-    })();
-
-    // Long-form lightbox player (simple, same-page, no popups)
-    let player, apiReady = false, pendingVideoId = null;
-    const lightbox = document.getElementById('lightbox');
-    const closeBtn = document.getElementById('closeBtn');
-    const longGrid = document.getElementById('longGrid');
-
-    function openVideo(id){
-      document.body.classList.add('noscroll');
-      lightbox.classList.add('open');
-      if (apiReady && player) {
-        try { player.loadVideoById(id); } catch(e){}
-      } else {
-        pendingVideoId = id;
-      }
-    }
-    function closeVideo(){
-      lightbox.classList.remove('open');
-      document.body.classList.remove('noscroll');
-      try { player && player.stopVideo(); } catch(e){}
-    }
-
-    // YouTube API ready hook
-    function onYouTubeIframeAPIReady(){
-      apiReady = true;
-      player = new YT.Player('ytPlayer', {
-        height:'100%', width:'100%',
-        videoId: pendingVideoId || '',
-        playerVars:{rel:0,modestbranding:1,autoplay:1,controls:1,playsinline:1,origin:location.origin},
-        events:{ onStateChange: e => { if (e.data === YT.PlayerState.ENDED) closeVideo(); } }
-      });
-      if (pendingVideoId) {
-        try { player.loadVideoById(pendingVideoId); } catch(_){}
-        pendingVideoId = null;
-      }
-    }
-    window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
-
-    // Wire up interactions
-    longGrid.addEventListener('click', (e)=>{
-      const card = e.target.closest('.card'); if (!card) return;
-      openVideo(card.dataset.yt);
-    });
-    closeBtn.addEventListener('click', closeVideo);
-    lightbox.addEventListener('click', (e)=>{ if (e.target === lightbox) closeVideo(); });
-    document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeVideo(); });
-
-    // Fullscreen UX helper: brief hint + refocus after exit
-    (function fullscreenHelper(){
-      const fsHint = document.getElementById('fsHint');
-      const frameEl = document.querySelector('.frame');
-      let hintTimer=null;
-
-      function isFS(){
-        return document.fullscreenElement || document.webkitFullscreenElement ||
-               document.mozFullScreenElement || document.msFullscreenElement;
-      }
-      function showHint(){
-        clearTimeout(hintTimer);
-        if (!fsHint) return;
-        fsHint.classList.add('show');
-        hintTimer = setTimeout(()=> fsHint.classList.remove('show'), 2200);
-      }
-      function onFSChange(){
-        if (isFS()){
-          showHint();
-        } else {
-          try { frameEl && frameEl.focus({preventScroll:true}); } catch(_){}
-        }
-      }
-      ['fullscreenchange','webkitfullscreenchange','mozfullscreenchange','MSFullscreenChange']
-        .forEach(ev=> document.addEventListener(ev, onFSChange));
-    })();
-  </script>
 </body>
 </html>
