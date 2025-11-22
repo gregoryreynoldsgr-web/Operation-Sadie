@@ -14,7 +14,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tilly Norwood — Films & Shorts</title>
-  <meta name="description" content="Watch 'Perfect Jeans' featuring Tilly Norwood.">
+  <meta name="description" content="Watch 'Perfect Jeans' along with the latest Shorts featuring Tilly Norwood.">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
@@ -75,7 +75,7 @@
     }
     .muted{color:var(--muted);font-size:.95rem;margin:0 0 12px;}
 
-    /* Small feature video card */
+    /* Feature Video */
     .feature{
       max-width:640px;
       margin:0 auto 24px;
@@ -109,6 +109,44 @@
       font-size:.9rem;
     }
 
+    /* Shorts Grid */
+    .shorts-grid{
+      display:grid;
+      gap:16px;
+      justify-items:center;
+      margin-top:6px;
+    }
+    @media (max-width:640px){
+      .shorts-grid{grid-template-columns:repeat(2,1fr);}
+    }
+    @media (min-width:641px){
+      .shorts-grid{grid-template-columns:repeat(4,1fr);}
+    }
+    .short{
+      position:relative;
+      width:100%;
+      max-width:240px;
+      aspect-ratio:9/16;
+      border-radius:12px;
+      overflow:hidden;
+      background:#111;
+      border:1px solid #1d222b;
+      box-shadow:0 2px 14px rgba(0,0,0,.35);
+    }
+    .short iframe{
+      position:absolute;inset:0;
+      width:100%;height:100%;
+      border:0;
+    }
+    .short .label{
+      position:absolute;left:8px;top:8px;
+      background:rgba(0,0,0,.6);
+      color:#fff;font-weight:800;
+      font-size:.74rem;padding:.22rem .42rem;
+      border-radius:7px;letter-spacing:.02em;
+      backdrop-filter:blur(4px);
+    }
+
     footer{
       text-align:center;
       font-size:.9rem;
@@ -119,6 +157,7 @@
 </head>
 <body>
   <div class="wrap">
+
     <div class="topbar">
       <a href="./index.html" class="back-home" aria-label="Back to Home">
         <span class="home-badge" aria-hidden="true">
@@ -128,11 +167,13 @@
                 <stop offset="0" stop-color="#ff4fa3"/><stop offset="1" stop-color="#ffb6d7"/>
               </linearGradient>
               <linearGradient id="wallStroke" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#ff69b7" stop-opacity=".9"/><stop offset="1" stop-color="#ff4fa3" stop-opacity=".9"/>
+                <stop offset="0" stop-color="#ff69b7" stop-opacity=".9"/>
+                <stop offset="1" stop-color="#ff4fa3" stop-opacity=".9"/>
               </linearGradient>
             </defs>
             <path d="M3 11L12 4l9 7" fill="url(#roofGrad)"/>
-            <path d="M6 10.8V19c0 .55.45 1 1 1h3v-5h4v5h3c.55 0 1-.45 1-1v-8.2L12 6.7 6 10.8z" fill="#ffffff" stroke="url(#wallStroke)" stroke-width=".9"/>
+            <path d="M6 10.8V19c0 .55.45 1 1 1h3v-5h4v5h3c.55 0 1-.45 1-1v-8.2L12 6.7 6 10.8z"
+                  fill="#ffffff" stroke="url(#wallStroke)" stroke-width=".9"/>
             <rect x="11.25" y="14.5" width="1.5" height="4" rx=".35" fill="#ff4fa3"/>
           </svg>
         </span>
@@ -141,30 +182,65 @@
     </div>
 
     <header>
-      <div class="tilly-sig"><a href="./tilly.html" aria-label="Tilly Norwood">Tilly Norwood</a></div>
+      <div class="tilly-sig"><a href="./tilly.html">Tilly Norwood</a></div>
       <div class="tagline">The World’s First AI Actress</div>
     </header>
 
+    <!-- FEATURE VIDEO -->
     <h2>Perfect Jeans — Feature Video</h2>
     <p class="muted">Watch the full cinematic cut of “Perfect Jeans” featuring Tilly.</p>
 
-    <section class="feature" aria-label="Perfect Jeans full video">
+    <section class="feature">
       <div class="feature-frame">
         <iframe
           src="https://www.youtube.com/embed/emeFzk0A9VA?rel=0&modestbranding=1&playsinline=1"
           title="Perfect Jeans — Tilly Norwood"
-          allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; clipboard-write"
           allowfullscreen></iframe>
       </div>
       <div class="feature-meta">
         <p class="feature-title">Perfect Jeans — Tilly Norwood</p>
-        <p class="feature-text">A clean, simple cinematic spot. More films and Shorts coming soon.</p>
+        <p class="feature-text">A clean, simple cinematic spot.</p>
       </div>
     </section>
+
+    <!-- SHORTS -->
+    <h2>YouTube Shorts</h2>
+
+    <div class="shorts-grid">
+
+      <!-- Short 1 -->
+      <div class="short">
+        <span class="label">Short</span>
+        <iframe
+          src="https://www.youtube.com/embed/8bsN3pkBzbo?rel=0&modestbranding=1&playsinline=1"
+          title="Tilly Short 1"
+          allowfullscreen></iframe>
+      </div>
+
+      <!-- Short 2 -->
+      <div class="short">
+        <span class="label">Short</span>
+        <iframe
+          src="https://www.youtube.com/embed/sRjCTOnSMH8?rel=0&modestbranding=1&playsinline=1"
+          title="Tilly Short 2"
+          allowfullscreen></iframe>
+      </div>
+
+      <!-- Short 3 -->
+      <div class="short">
+        <span class="label">Short</span>
+        <iframe
+          src="https://www.youtube.com/embed/0NaQ0gTqkQA?rel=0&modestbranding=1&playsinline=1"
+          title="Tilly Short 3"
+          allowfullscreen></iframe>
+      </div>
+
+    </div>
 
     <footer>
       © 2025 Tilly-Norwood.net — AI Actress • Official Site
     </footer>
+
   </div>
 </body>
 </html>
